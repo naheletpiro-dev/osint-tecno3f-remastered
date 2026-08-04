@@ -1,0 +1,22 @@
+{
+  "name": "osint-company-server",
+  "version": "1.0.0",
+  "description": "Backend OSINT Intelligence Server for Company Analysis",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@google/genai": "^2.15.0",
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.7.9",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "osint-company-platform": "file:..",
+    "serverless-http": "^3.2.0"
+  }
+}

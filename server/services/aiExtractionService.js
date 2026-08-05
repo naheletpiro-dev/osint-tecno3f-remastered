@@ -29,6 +29,11 @@ export async function analyzeCompanyWithGemini(companyName, scrapedData = {}, se
   const tenderList = (searchData.tenderSnippets || []).map(t => `${t.title}: ${t.snippet}`).slice(0, 4).join(' | ');
   const searchSnippets = (searchData.overviewSnippets || []).map(s => `${s.title}: ${s.snippet}`).slice(0, 5).join(' | ');
 
+  const afip = extraOsint.afipData || {};
+  const bcra = extraOsint.bcraData || {};
+  const inpi = extraOsint.inpiWipoData || {};
+  const openCorp = extraOsint.openCorporatesData || {};
+  const publicContracts = extraOsint.publicContractsData || {};
   const trade = extraOsint.tradeData || {};
   const pyme = extraOsint.pymeData || {};
 

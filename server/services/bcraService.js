@@ -45,7 +45,11 @@ export async function fetchBcraDeudores(cuit) {
       return response.data.results;
     }
   } catch (error) {
-    console.warn(`[BCRA API Warning] Could not fetch deudores for ${cleanCuit}:`, error.message);
+    if (error.response && error.response.status === 404) {
+      console.log(`[BCRA API INFO] CUIT ${cleanCuit}: Sin deudas bancarias registradas en BCRA (Situación 1 OK).`);
+    } else {
+      console.warn(`[BCRA API Notice] Could not fetch deudores for ${cleanCuit}:`, error.message);
+    }
   }
   return null;
 }
@@ -69,7 +73,11 @@ export async function fetchBcraChequesRechazados(cuit) {
       return response.data.results;
     }
   } catch (error) {
-    console.warn(`[BCRA API Warning] Could not fetch cheques for ${cleanCuit}:`, error.message);
+    if (error.response && error.response.status === 404) {
+      console.log(`[BCRA API INFO] CUIT ${cleanCuit}: Sin cheques rechazados en BCRA (OK).`);
+    } else {
+      console.warn(`[BCRA API Notice] Could not fetch cheques for ${cleanCuit}:`, error.message);
+    }
   }
   return null;
 }

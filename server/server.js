@@ -195,34 +195,59 @@ app.get('/api/osint/samples', (req, res) => {
   ]);
 });
 
-// Main OSINT Scan Endpoint
-app.post('/api/osint/scan', async (req, res) => {
+/**
+ * Diagnostic Sub-Service Wrapper:
+ * Measures execution time and safely catches sub-service failures without halting the overall scan.
+ */
+async function safeExecute(serviceName, asyncFn, fallbackValue = {}) {
+  const startTime = Date.now();
   try {
-    const { companyName, website, region = 'AR' } = req.body;
+    const result = await asyncFn();
+    const durationMs = Date.now() - startTime;
+    console.log(`[OSINT DEBUGGER - OK] ${serviceName} completado en ${durationMs}ms`);
+    return result || fallbackValue;
+  } catch (err) {
+    const durationMs = Date.now() - startTime;
+    console.error(`❌ [OSINT DEBUGGER - ERROR in ${serviceName}] (Falló tras ${durationMs}ms): ${err.message}`);
+    if (err.stack) console.error(err.stack);
+    return fallbackValue;
+  }
+}
 
+// Main OSINT Scan Endpoint with Diagnostic Debugger
+app.post('/api/osint/scan', async (req, res) => {
+  const scanStartTime = Date.now();
+  const { companyName, website, region = 'AR' } = req.body;
+
+  console.log(`\n=================== [OSINT DEBUGGER SCAN START] ===================`);
+  console.log(`[TARGET] Empresa: "${companyName}" | Sitio: "${website || 'No provisto'}" | Inicio: ${new Date().toISOString()}`);
+
+  try {
     if (!companyName || !companyName.trim()) {
+      console.warn(`[OSINT DEBUGGER - WARN] Solicitud rechazada: Falta el nombre de la empresa.`);
       return res.status(400).json({ error: 'El nombre de la empresa es obligatorio' });
     }
 
-    // 1. Concurrent Multi-API OSINT Fetching
+    // 1. Concurrent Multi-API OSINT Fetching wrapped with safeExecute
     const [scrapedData, searchData, bcraData, afipData, inpiWipoData, openCorporatesData, publicContracts, tradeData, pymeData] = await Promise.all([
-      scrapeCompanyWebsite(website, companyName),
-      searchCompanyOSINT(companyName, website, region),
-      getBcraOSINTData(companyName, null),
-      getAfipPadronData(companyName, null),
-      getInpiWipoOSINTData(companyName),
-      getOpenCorporatesOSINTData(companyName),
-      analyzePublicContracts(companyName),
-      getTradeOSINTData(companyName),
-      getPymeRegistryOSINTData(companyName)
+      safeExecute('websiteScraperService', () => scrapeCompanyWebsite(website, companyName), {}),
+      safeExecute('searchService', () => searchCompanyOSINT(companyName, website, region), {}),
+      safeExecute('bcraService', () => getBcraOSINTData(companyName, null), null),
+      safeExecute('afipService', () => getAfipPadronData(companyName, null), null),
+      safeExecute('inpiWipoService', () => getInpiWipoOSINTData(companyName), null),
+      safeExecute('openCorporatesService', () => getOpenCorporatesOSINTData(companyName), null),
+      safeExecute('publicContractsService', () => analyzePublicContracts(companyName), {}),
+      safeExecute('tradeService', () => getTradeOSINTData(companyName), {}),
+      safeExecute('pymeRegistryService', () => getPymeRegistryOSINTData(companyName), {})
     ]);
 
     // 2. Financial & Tax Assessment
-    const financialData = analyzeFinancials(companyName, scrapedData, searchData, bcraData);
+    const financialData = await safeExecute('financialService', () => analyzeFinancials(companyName, scrapedData, searchData, bcraData), {});
     financialData.tradeData = tradeData;
     financialData.pymeData = pymeData;
 
     if (afipData) {
+      financialData.taxProfile = financialData.taxProfile || {};
       financialData.taxProfile.cuit = afipData.cuit;
       financialData.taxProfile.economicActivity = afipData.economicActivity;
       financialData.taxProfile.vatCondition = afipData.vatCondition;
@@ -230,29 +255,25 @@ app.post('/api/osint/scan', async (req, res) => {
     }
 
     // 3. Legal & Judicial OSINT
-    const legalData = analyzeLegalOSINT(companyName);
-    if (inpiWipoData) {
-      legalData.inpiWipoData = inpiWipoData;
-    }
-    if (openCorporatesData) {
-      legalData.openCorporatesData = openCorporatesData;
-    }
+    const legalData = await safeExecute('legalOsintService', () => analyzeLegalOSINT(companyName), {});
+    if (inpiWipoData) legalData.inpiWipoData = inpiWipoData;
+    if (openCorporatesData) legalData.openCorporatesData = openCorporatesData;
 
     // 4. Categorization
-    const categorization = categorizeCompany(companyName, scrapedData, searchData);
+    const categorization = await safeExecute('categorizationService', () => categorizeCompany(companyName, scrapedData, searchData), {});
 
     // 5. Strategic Support Plan
-    const supportPlan = generateSupportPlan(companyName, categorization, financialData, scrapedData, searchData);
+    const supportPlan = await safeExecute('supportAdvisorService', () => generateSupportPlan(companyName, categorization, financialData, scrapedData, searchData), {});
 
     // 6. Matriz FODA / SWOT Analysis
-    const swotAnalysis = generateSwotAnalysis(companyName, categorization, financialData, scrapedData, legalData);
+    const swotAnalysis = await safeExecute('swotAnalysisService', () => generateSwotAnalysis(companyName, categorization, financialData, scrapedData, legalData), {});
 
     // 7. Digital Transformation Analysis
-    const digitalTransformation = analyzeDigitalTransformation(companyName, scrapedData, searchData);
+    const digitalTransformation = await safeExecute('digitalTransformationService', () => analyzeDigitalTransformation(companyName, scrapedData, searchData), {});
 
     // 8. Gemini AI RAG Synthesis (Consolidated Multi-API Knowledge Base Context)
     const extraOsint = { bcraData, afipData, inpiWipoData, openCorporatesData, publicContractsData: publicContracts, tradeData, pymeData };
-    const aiResult = await analyzeCompanyWithGemini(companyName, scrapedData, searchData, extraOsint);
+    const aiResult = await safeExecute('aiExtractionService', () => analyzeCompanyWithGemini(companyName, scrapedData, searchData, extraOsint), null);
 
     if (aiResult) {
       if (aiResult.sector && aiResult.sector !== 'Información no verificada públicamente') {
@@ -299,14 +320,23 @@ app.post('/api/osint/scan', async (req, res) => {
       executiveSummary: aiResult?.executiveSummary || null
     };
 
-    console.log(`[OSINT SCAN COMPLETE] Report ID: ${report.id} generated for "${companyName}"`);
+    const totalDurationMs = Date.now() - scanStartTime;
+    console.log(`[OSINT SCAN COMPLETE] Report ID: ${report.id} generado exitosamente en ${totalDurationMs}ms para "${companyName}"`);
+    console.log(`=================== [OSINT DEBUGGER SCAN END] ===================\n`);
+
     return res.json(report);
 
-  } catch (error) {
-    console.error('OSINT Scan Server Error:', error);
+  } catch (globalError) {
+    const totalDurationMs = Date.now() - scanStartTime;
+    console.error(`\n🔥 [OSINT DEBUGGER CRITICAL FAILURE] (Duración: ${totalDurationMs}ms):`);
+    console.error(`Empresa: "${companyName}" | Error: ${globalError.message}`);
+    console.error(globalError.stack);
+    console.error(`=================================================================\n`);
+
     return res.status(500).json({
       error: 'Inconveniente interno al procesar el análisis OSINT.',
-      details: error.message
+      details: globalError.message,
+      timestamp: new Date().toISOString()
     });
   }
 });

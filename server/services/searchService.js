@@ -49,122 +49,95 @@ export async function searchCompanyOSINT(companyName, domain = '', region = 'AR'
     }
   };
 
-  try {
-    // 1. DuckDuckGo Scrape for Business Overview & Projects (Targeted Search)
-    const searchQuery = cleanTargetHost ? `site:${cleanTargetHost} OR "${companyName}"` : searchQueries.general;
-    const ddgUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(searchQuery)}`;
-    const ddgResponse = await axios.get(ddgUrl, { headers, timeout: 5000 }).catch(() => null);
+  // Run all 4 search requests CONCURRENTLY to avoid serial network delays
+  const searchQuery = cleanTargetHost ? `site:${cleanTargetHost} OR "${companyName}"` : searchQueries.general;
+  const ddgUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(searchQuery)}`;
 
-    if (ddgResponse && ddgResponse.data) {
-      const $ = cheerio.load(ddgResponse.data);
-      $('.result').each((i, el) => {
-        if (i >= 8) return;
-        const title = $(el).find('.result__title').text().trim();
-        const snippet = $(el).find('.result__snippet').text().trim();
-        const link = $(el).find('.result__url').attr('href') || $(el).find('.result__title a').attr('href');
-        const formattedLink = link ? (link.startsWith('//') ? `https:${link}` : link) : '#';
+  const lowerComp = companyName.toLowerCase();
+  const newsQuery = lowerComp.includes('baigorria') || lowerComp.includes('taller') || lowerComp.includes('metal')
+    ? `"${companyName}" empresa OR industria OR taller OR pyme OR mecanizado`
+    : `"${companyName}"`;
+  const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(newsQuery)}&hl=es-419&gl=AR&ceid=AR:es-419`;
 
-        if (title && snippet && isMatchingDomain(formattedLink)) {
-          results.overviewSnippets.push({
-            title,
-            snippet,
-            link: formattedLink
-          });
+  const gazetteUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(searchQueries.gazette)}`;
+  const tendersUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(searchQueries.tenders)}`;
 
-          const lower = (title + ' ' + snippet).toLowerCase();
-          if (lower.includes('proyecto') || lower.includes('camara') || lower.includes('asociacion') || lower.includes('obra') || lower.includes('alianza') || lower.includes('grupo')) {
-            results.projectsAndGroups.push({
-              title,
-              description: snippet,
-              link: formattedLink
-            });
-          }
+  const [ddgRes, newsRes, gazetteRes, tendersRes] = await Promise.allSettled([
+    axios.get(ddgUrl, { headers, timeout: 2000 }).catch(() => null),
+    axios.get(rssUrl, { headers, timeout: 2000 }).catch(() => null),
+    axios.get(gazetteUrl, { headers, timeout: 2000 }).catch(() => null),
+    axios.get(tendersUrl, { headers, timeout: 2000 }).catch(() => null)
+  ]);
+
+  // Parse General Search Results
+  if (ddgRes.status === 'fulfilled' && ddgRes.value && ddgRes.value.data) {
+    const $ = cheerio.load(ddgRes.value.data);
+    $('.result').each((i, el) => {
+      if (i >= 8) return;
+      const title = $(el).find('.result__title').text().trim();
+      const snippet = $(el).find('.result__snippet').text().trim();
+      const link = $(el).find('.result__url').attr('href') || $(el).find('.result__title a').attr('href');
+      const formattedLink = link ? (link.startsWith('//') ? `https:${link}` : link) : '#';
+
+      if (title && snippet && isMatchingDomain(formattedLink)) {
+        results.overviewSnippets.push({ title, snippet, link: formattedLink });
+        const lower = (title + ' ' + snippet).toLowerCase();
+        if (lower.includes('proyecto') || lower.includes('camara') || lower.includes('asociacion') || lower.includes('obra') || lower.includes('alianza') || lower.includes('grupo')) {
+          results.projectsAndGroups.push({ title, description: snippet, link: formattedLink });
         }
-      });
-    }
-  } catch (err) {
-    console.error('General search error:', err.message);
+      }
+    });
   }
 
-  try {
-    // 2. Fetch News (Google News RSS with Strict Company Quotes & Relevance Filtering)
-    const lowerComp = companyName.toLowerCase();
-    const newsQuery = lowerComp.includes('baigorria') || lowerComp.includes('taller') || lowerComp.includes('metal')
-      ? `"${companyName}" empresa OR industria OR taller OR pyme OR mecanizado`
-      : `"${companyName}"`;
+  // Parse News Results
+  const noiseBlacklist = [
+    'granadero baigorria', 'municipio', 'intendente', 'concejal', 'concejo deliberante',
+    'comisaria', 'comisaría', 'vecinos', 'barrio', 'policiales', 'detenido', 'robo',
+    'homicidio', 'accidente', 'choque', 'fiscalia', 'fiscalía', 'susto', 'detenidos'
+  ];
 
-    const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(newsQuery)}&hl=es-419&gl=AR&ceid=AR:es-419`;
-    const newsResponse = await axios.get(rssUrl, { headers, timeout: 5000 }).catch(() => null);
+  if (newsRes.status === 'fulfilled' && newsRes.value && newsRes.value.data) {
+    const $ = cheerio.load(newsRes.value.data, { xmlMode: true });
+    $('item').each((i, el) => {
+      if (results.newsItems.length >= 6) return;
+      const title = $(el).find('title').text().trim();
+      const pubDate = $(el).find('pubDate').text().trim();
+      const link = $(el).find('link').text().trim() || $(el).find('guid').text().trim();
+      const source = $(el).find('source').text().trim() || 'Medio Informativo';
 
-    const noiseBlacklist = [
-      'granadero baigorria', 'municipio', 'intendente', 'concejal', 'concejo deliberante',
-      'comisaria', 'comisaría', 'vecinos', 'barrio', 'policiales', 'detenido', 'robo',
-      'homicidio', 'accidente', 'choque', 'fiscalia', 'fiscalía', 'susto', 'detenidos'
-    ];
+      if (title) {
+        const lowerTitle = title.toLowerCase();
+        const hasNoise = noiseBlacklist.some(w => lowerTitle.includes(w));
+        const hasCorporateKey = lowerTitle.includes('empresa') || lowerTitle.includes('industria') || lowerTitle.includes('fábrica') || lowerTitle.includes('fabrica') || lowerTitle.includes('s.a.') || lowerTitle.includes('s.r.l.') || lowerTitle.includes('pyme') || lowerTitle.includes('inversión') || lowerTitle.includes('licitación') || lowerTitle.includes('desarrollo');
 
-    if (newsResponse && newsResponse.data) {
-      const $ = cheerio.load(newsResponse.data, { xmlMode: true });
-      $('item').each((i, el) => {
-        if (results.newsItems.length >= 6) return;
-        const title = $(el).find('title').text().trim();
-        const pubDate = $(el).find('pubDate').text().trim();
-        const link = $(el).find('link').text().trim() || $(el).find('guid').text().trim();
-        const source = $(el).find('source').text().trim() || 'Medio Informativo';
-
-        if (title) {
-          const lowerTitle = title.toLowerCase();
-          const hasNoise = noiseBlacklist.some(w => lowerTitle.includes(w));
-          const hasCorporateKey = lowerTitle.includes('empresa') || lowerTitle.includes('industria') || lowerTitle.includes('fábrica') || lowerTitle.includes('fabrica') || lowerTitle.includes('s.a.') || lowerTitle.includes('s.r.l.') || lowerTitle.includes('pyme') || lowerTitle.includes('inversión') || lowerTitle.includes('licitación') || lowerTitle.includes('desarrollo');
-
-          // Reject non-corporate municipal/crime noise
-          if (hasNoise && !hasCorporateKey) return;
-
-          results.newsItems.push({
-            title,
-            source,
-            pubDate: pubDate ? new Date(pubDate).toLocaleDateString('es-AR') : 'Reciente',
-            link,
-            sentiment: calculateBasicSentiment(title)
-          });
+        if (!hasNoise || hasCorporateKey) {
+          results.newsItems.push({ title, source, pubDate, link, sentiment: calculateBasicSentiment(title) });
         }
-      });
-    }
-  } catch (err) {
-    console.error('News search error:', err.message);
+      }
+    });
   }
 
-  try {
-    // 3. DuckDuckGo Scrape for Official Gazette (Boletín Oficial) & State Tenders (COMPR.AR)
-    const gazetteUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(searchQueries.gazette)}`;
-    const gazetteResponse = await axios.get(gazetteUrl, { headers, timeout: 4500 }).catch(() => null);
-    if (gazetteResponse && gazetteResponse.data) {
-      const $ = cheerio.load(gazetteResponse.data);
-      $('.result').each((i, el) => {
-        if (i >= 4) return;
-        const title = $(el).find('.result__title').text().trim();
-        const snippet = $(el).find('.result__snippet').text().trim();
-        if (title && snippet) {
-          results.gazetteSnippets.push({ title, snippet });
-        }
-      });
-    }
-  } catch (e) {}
+  // Parse Gazette Results
+  if (gazetteRes.status === 'fulfilled' && gazetteRes.value && gazetteRes.value.data) {
+    const $ = cheerio.load(gazetteRes.value.data);
+    $('.result').each((i, el) => {
+      if (i >= 4) return;
+      const title = $(el).find('.result__title').text().trim();
+      const snippet = $(el).find('.result__snippet').text().trim();
+      if (title && snippet) results.gazetteSnippets.push({ title, snippet });
+    });
+  }
 
-  try {
-    const tendersUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(searchQueries.tenders)}`;
-    const tendersResponse = await axios.get(tendersUrl, { headers, timeout: 4500 }).catch(() => null);
-    if (tendersResponse && tendersResponse.data) {
-      const $ = cheerio.load(tendersResponse.data);
-      $('.result').each((i, el) => {
-        if (i >= 4) return;
-        const title = $(el).find('.result__title').text().trim();
-        const snippet = $(el).find('.result__snippet').text().trim();
-        if (title && snippet) {
-          results.tenderSnippets.push({ title, snippet });
-        }
-      });
-    }
-  } catch (e) {}
+  // Parse Tenders Results
+  if (tendersRes.status === 'fulfilled' && tendersRes.value && tendersRes.value.data) {
+    const $ = cheerio.load(tendersRes.value.data);
+    $('.result').each((i, el) => {
+      if (i >= 4) return;
+      const title = $(el).find('.result__title').text().trim();
+      const snippet = $(el).find('.result__snippet').text().trim();
+      if (title && snippet) results.tenderSnippets.push({ title, snippet });
+    });
+  }
 
   // 4. Social Media Handle Discovery
   const socialPlatforms = [

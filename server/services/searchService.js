@@ -63,10 +63,10 @@ export async function searchCompanyOSINT(companyName, domain = '', region = 'AR'
   const tendersUrl = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(searchQueries.tenders)}`;
 
   const [ddgRes, newsRes, gazetteRes, tendersRes] = await Promise.allSettled([
-    axios.get(ddgUrl, { headers, timeout: 2000 }).catch(() => null),
-    axios.get(rssUrl, { headers, timeout: 2000 }).catch(() => null),
-    axios.get(gazetteUrl, { headers, timeout: 2000 }).catch(() => null),
-    axios.get(tendersUrl, { headers, timeout: 2000 }).catch(() => null)
+    axios.get(ddgUrl, { headers, timeout: 1000 }).catch(() => null),
+    axios.get(rssUrl, { headers, timeout: 1000 }).catch(() => null),
+    axios.get(gazetteUrl, { headers, timeout: 1000 }).catch(() => null),
+    axios.get(tendersUrl, { headers, timeout: 1000 }).catch(() => null)
   ]);
 
   // Parse General Search Results

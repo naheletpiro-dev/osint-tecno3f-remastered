@@ -24,7 +24,7 @@ export async function getInpiWipoOSINTData(companyName) {
     const wipoUrl = `https://branddb.wipo.int/branddb/api/brands/search?q=${encodeURIComponent(cleanName)}`;
     const res = await axios.get(wipoUrl, {
       httpsAgent,
-      timeout: 3500,
+      timeout: 1000,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
 

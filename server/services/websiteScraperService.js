@@ -240,7 +240,7 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8'
       },
-      timeout: 3500
+      timeout: 1200
     });
 
     if (response.data) {
@@ -252,7 +252,6 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
       const unstrippedFullText = $('body').text().replace(/\s+/g, ' ').trim();
       profile.fullText = unstrippedFullText;
       profile.rawText = unstrippedFullText.slice(0, 4000);
-
       $('a[href]').each((i, el) => {
         const href = $(el).attr('href');
         if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:')) return;

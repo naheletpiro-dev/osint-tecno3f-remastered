@@ -37,7 +37,7 @@ export async function fetchBcraDeudores(cuit) {
     const url = `https://api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/${cleanCuit}`;
     const response = await axios.get(url, {
       httpsAgent,
-      timeout: 5000,
+      timeout: 1000,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
 
@@ -65,7 +65,7 @@ export async function fetchBcraChequesRechazados(cuit) {
     const url = `https://api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/ChequesRechazados/${cleanCuit}`;
     const response = await axios.get(url, {
       httpsAgent,
-      timeout: 5000,
+      timeout: 1000,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
 

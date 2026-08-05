@@ -26,7 +26,7 @@ export async function analyzePublicContracts(companyName) {
     const comprarUrl = `https://comprar.gob.ar/api/licitaciones/search?q=${encodeURIComponent(cleanComp)}`;
     const res = await axios.get(comprarUrl, {
       httpsAgent,
-      timeout: 3000,
+      timeout: 1000,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
     if (res.data && Array.isArray(res.data.licitaciones) && res.data.licitaciones.length > 0) {

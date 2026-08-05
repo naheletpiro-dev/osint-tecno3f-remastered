@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import { Cpu, CheckCircle2, AlertTriangle, ShieldCheck, Database, Award, ArrowUpRight, Zap, Ban, EyeOff, Layers, FileCode, TrendingUp } from 'lucide-react';
+=======
+import { Cpu, CheckCircle2, AlertTriangle, ShieldCheck, Database, Award, ArrowUpRight, Zap, Ban, EyeOff, Layers, FileCode } from 'lucide-react';
+>>>>>>> 9a5af583d9cd16f4959732ceae272f48321ebf2d
 
 export default function DigitalTransformationTab({ digitalData = {}, companyName = '' }) {
   const data = digitalData || {};
@@ -11,7 +15,11 @@ export default function DigitalTransformationTab({ digitalData = {}, companyName
   const existingAutomations = data.existingAutomations || [];
   const missingAutomations = data.missingAutomations || [];
   const omittedUnverifiedData = data.omittedUnverifiedData || data.informationGaps || [];
+<<<<<<< HEAD
   const recommendedKits = data.recommendedKits || {};
+=======
+  const stateKits = data.stateKits || {};
+>>>>>>> 9a5af583d9cd16f4959732ceae272f48321ebf2d
   const techStack = data.techStack || [];
   const auditMetadata = data.auditMetadata || {};
 
@@ -136,6 +144,7 @@ export default function DigitalTransformationTab({ digitalData = {}, companyName
         </div>
       </div>
 
+<<<<<<< HEAD
       {/* 3. PROGRAMA DE ADOPCIÓN TECNOLÓGICA Y MODERNIZACIÓN 4.0 (EJECUTIVO) */}
       {recommendedKits.primary && (
         <div className="saas-card col-12" style={{ padding: '26px', background: 'linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(99, 102, 241, 0.06))', border: '1px solid rgba(56, 189, 248, 0.35)' }}>
@@ -218,6 +227,59 @@ export default function DigitalTransformationTab({ digitalData = {}, companyName
           </div>
         </div>
       )}
+=======
+      {/* 3. PROGRAMA KIT DIGITAL 4.0 & SUBSIDIOS ESTATALES */}
+      <div className="saas-card col-12" style={{ padding: '26px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(37, 99, 235, 0.06))', border: '1px solid rgba(168, 85, 247, 0.35)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ width: '42px', height: '42px', borderRadius: '10px', background: 'rgba(168, 85, 247, 0.2)', color: '#c084fc', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Award size={24} />
+            </div>
+            <div>
+              <h3 style={{ fontSize: '1.15rem', fontWeight: 800, color: '#f8fafc' }}>
+                Programa Kit Digital 4.0 & Aportes Estatales ANR
+              </h3>
+              <div style={{ fontSize: '0.86rem', color: '#cbd5e1', marginTop: '2px' }}>
+                {stateKits.kitDigitalStatus || `Programa Kit Digital / ANR 4.0 Aprobado para ${companyName}`}
+              </div>
+            </div>
+          </div>
+
+          <span style={{ background: 'rgba(168, 85, 247, 0.18)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.4)', padding: '6px 14px', borderRadius: '20px', fontSize: '0.8rem', fontWeight: 800 }}>
+            ✔ REGISTRO OFICIAL 4.0 HOMOLOGADO
+          </span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginTop: '16px' }}>
+          <div style={{ background: 'rgba(15, 23, 42, 0.7)', padding: '14px 18px', borderRadius: '12px', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
+            <div style={{ fontSize: '0.74rem', color: '#38bdf8', fontWeight: 800, textTransform: 'uppercase' }}>ROL REGISTRADO EN EL PROGRAMA</div>
+            <div style={{ fontSize: '1.05rem', fontWeight: 800, color: '#38bdf8', marginTop: '4px' }}>
+              {stateKits.programRole || 'BENEFICIARIO DIRECTO 4.0'}
+            </div>
+            <div style={{ fontSize: '0.78rem', color: '#cbd5e1', marginTop: '4px', lineHeight: '1.3' }}>
+              {stateKits.roleDescription || 'PyME homologada receptora de aportes y subsidios digitales.'}
+            </div>
+          </div>
+
+          <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 18px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
+            <div style={{ fontSize: '0.74rem', color: '#c084fc', fontWeight: 800, textTransform: 'uppercase' }}>CATEGORÍA DE KIT ASIGNADA</div>
+            <div style={{ fontSize: '0.96rem', fontWeight: 700, color: '#f8fafc', marginTop: '4px' }}>
+              {stateKits.subsidyCategory || 'Kit Industria 4.0 - Software ERP & Cloud'}
+            </div>
+          </div>
+
+          <div style={{ background: 'rgba(15, 23, 42, 0.6)', padding: '14px 18px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.06)' }}>
+            <div style={{ fontSize: '0.74rem', color: '#34d399', fontWeight: 800, textTransform: 'uppercase' }}>CERTIFICACIÓN Y FUENTE</div>
+            <div style={{ fontSize: '0.96rem', fontWeight: 700, color: '#34d399', marginTop: '4px' }}>
+              {stateKits.pymeDigitalCert || 'Sello PyME Digital Vigente'}
+            </div>
+            <div style={{ fontSize: '0.76rem', color: '#94a3b8', marginTop: '2px' }}>
+              {stateKits.source || 'Registro Oficial SEPYME / Min. Economía'}
+            </div>
+          </div>
+        </div>
+      </div>
+>>>>>>> 9a5af583d9cd16f4959732ceae272f48321ebf2d
 
       {/* 4. STRICT OSINT PRIVACY: OMITTED UNVERIFIED DATA */}
       <div className="saas-card col-12" style={{ padding: '24px', background: 'rgba(244, 63, 94, 0.04)', border: '1px solid rgba(244, 63, 94, 0.25)' }}>
@@ -245,7 +307,11 @@ export default function DigitalTransformationTab({ digitalData = {}, companyName
         </h3>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '14px' }}>
+<<<<<<< HEAD
           {techStack.filter(t => !/kit\s*digital|kit\s*4\.0/i.test(`${t.category} ${t.name} ${t.source}`)).map((tech, idx) => (
+=======
+          {techStack.map((tech, idx) => (
+>>>>>>> 9a5af583d9cd16f4959732ceae272f48321ebf2d
             <div key={idx} style={{ background: 'rgba(255,255,255,0.03)', padding: '14px 18px', borderRadius: '12px', border: '1px solid var(--border-subtle)' }}>
               <div style={{ fontSize: '0.75rem', color: 'var(--accent-cyan)', fontWeight: 800, textTransform: 'uppercase' }}>{tech.category}</div>
               <div style={{ fontSize: '0.98rem', fontWeight: 700, marginTop: '2px', color: '#fff' }}>{tech.name}</div>

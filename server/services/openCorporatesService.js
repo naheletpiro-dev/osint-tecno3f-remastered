@@ -20,7 +20,7 @@ export async function getOpenCorporatesOSINTData(companyName) {
     const ocUrl = `https://api.opencorporates.com/v0.4/companies/search?q=${encodeURIComponent(cleanName)}&jurisdiction_code=ar`;
     const res = await axios.get(ocUrl, {
       httpsAgent,
-      timeout: 3500,
+      timeout: 1000,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
 

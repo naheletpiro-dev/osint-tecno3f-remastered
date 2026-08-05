@@ -45,7 +45,7 @@ export async function getAfipPadronData(companyName, cuitInput = null) {
     const afipUrl = `https://aws.afip.gov.ar/sr-padron/v2/persona/${cleanCuit}`;
     const res = await axios.get(afipUrl, {
       httpsAgent,
-      timeout: 3500,
+      timeout: 1000,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
 

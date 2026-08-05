@@ -228,21 +228,48 @@ app.post('/api/osint/scan', async (req, res) => {
       return res.status(400).json({ error: 'El nombre de la empresa es obligatorio' });
     }
 
-    // 1. Concurrent Multi-API OSINT Fetching wrapped with safeExecute
-    const [scrapedData, searchData, bcraData, afipData, inpiWipoData, openCorporatesData, publicContracts, tradeData, pymeData] = await Promise.all([
+    // 1. Fast Concurrent Primary Gathering (Scrape & Multi-Source Search)
+    const [scrapedData, searchData] = await Promise.all([
       safeExecute('websiteScraperService', () => scrapeCompanyWebsite(website, companyName), {}),
-      safeExecute('searchService', () => searchCompanyOSINT(companyName, website, region), {}),
+      safeExecute('searchService', () => searchCompanyOSINT(companyName, website, region), {})
+    ]);
+
+    // 2. Parallel Secondary OSINT & Base Modules (Run all APIs & initial classification concurrently)
+    const [
+      bcraData,
+      afipData,
+      inpiWipoData,
+      openCorporatesData,
+      publicContracts,
+      tradeData,
+      pymeData,
+      legalData,
+      categorization,
+      digitalTransformation
+    ] = await Promise.all([
       safeExecute('bcraService', () => getBcraOSINTData(companyName, null), null),
       safeExecute('afipService', () => getAfipPadronData(companyName, null), null),
       safeExecute('inpiWipoService', () => getInpiWipoOSINTData(companyName), null),
       safeExecute('openCorporatesService', () => getOpenCorporatesOSINTData(companyName), null),
       safeExecute('publicContractsService', () => analyzePublicContracts(companyName), {}),
-      safeExecute('tradeService', () => getTradeOSINTData(companyName), {}),
-      safeExecute('pymeRegistryService', () => getPymeRegistryOSINTData(companyName), {})
+      safeExecute('tradeService', () => getTradeOSINTData(companyName, null, searchData, scrapedData), {}),
+      safeExecute('pymeRegistryService', () => getPymeRegistryOSINTData(companyName, null, searchData, scrapedData), {}),
+      safeExecute('legalOsintService', () => analyzeLegalOSINT(companyName), {}),
+      safeExecute('categorizationService', () => categorizeCompany(companyName, scrapedData, searchData), {}),
+      safeExecute('digitalTransformationService', () => analyzeDigitalTransformation(companyName, scrapedData, searchData), {})
     ]);
 
-    // 2. Financial & Tax Assessment
-    const financialData = await safeExecute('financialService', () => analyzeFinancials(companyName, scrapedData, searchData, bcraData), {});
+    if (inpiWipoData) legalData.inpiWipoData = inpiWipoData;
+    if (openCorporatesData) legalData.openCorporatesData = openCorporatesData;
+
+    // 3. Parallel Synthesis Phase (Financials, Strategic Support, SWOT, AI Extraction)
+    const [financialData, supportPlan, swotAnalysis, aiResult] = await Promise.all([
+      safeExecute('financialService', () => analyzeFinancials(companyName, scrapedData, searchData, bcraData), {}),
+      safeExecute('supportAdvisorService', () => generateSupportPlan(companyName, categorization, {}, scrapedData, searchData), {}),
+      safeExecute('swotAnalysisService', () => generateSwotAnalysis(companyName, categorization, {}, scrapedData, legalData), {}),
+      safeExecute('aiExtractionService', () => analyzeCompanyWithGemini(companyName, scrapedData, searchData, { bcraData, afipData, inpiWipoData, openCorporatesData, publicContractsData: publicContracts, tradeData, pymeData }), null)
+    ]);
+
     financialData.tradeData = tradeData;
     financialData.pymeData = pymeData;
 
@@ -253,27 +280,6 @@ app.post('/api/osint/scan', async (req, res) => {
       financialData.taxProfile.vatCondition = afipData.vatCondition;
       financialData.afipData = afipData;
     }
-
-    // 3. Legal & Judicial OSINT
-    const legalData = await safeExecute('legalOsintService', () => analyzeLegalOSINT(companyName), {});
-    if (inpiWipoData) legalData.inpiWipoData = inpiWipoData;
-    if (openCorporatesData) legalData.openCorporatesData = openCorporatesData;
-
-    // 4. Categorization
-    const categorization = await safeExecute('categorizationService', () => categorizeCompany(companyName, scrapedData, searchData), {});
-
-    // 5. Strategic Support Plan
-    const supportPlan = await safeExecute('supportAdvisorService', () => generateSupportPlan(companyName, categorization, financialData, scrapedData, searchData), {});
-
-    // 6. Matriz FODA / SWOT Analysis
-    const swotAnalysis = await safeExecute('swotAnalysisService', () => generateSwotAnalysis(companyName, categorization, financialData, scrapedData, legalData), {});
-
-    // 7. Digital Transformation Analysis
-    const digitalTransformation = await safeExecute('digitalTransformationService', () => analyzeDigitalTransformation(companyName, scrapedData, searchData), {});
-
-    // 8. Gemini AI RAG Synthesis (Consolidated Multi-API Knowledge Base Context)
-    const extraOsint = { bcraData, afipData, inpiWipoData, openCorporatesData, publicContractsData: publicContracts, tradeData, pymeData };
-    const aiResult = await safeExecute('aiExtractionService', () => analyzeCompanyWithGemini(companyName, scrapedData, searchData, extraOsint), null);
 
     if (aiResult) {
       if (aiResult.sector && aiResult.sector !== 'Información no verificada públicamente') {

@@ -112,7 +112,7 @@ async function scrapeSubPage(url) {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8'
       },
-      timeout: 5000
+      timeout: 2500
     });
 
     if (!res.data) return null;
@@ -210,7 +210,7 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8'
       },
-      timeout: 8000
+      timeout: 3500
     });
 
     if (response.data) {
@@ -298,7 +298,7 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
     console.log(`Universal Scraper notice for ${formattedUrl}: ${err.message}`);
   }
 
-  const targetSubpages = Array.from(discoveredSubpageUrls).slice(0, 5);
+  const targetSubpages = Array.from(discoveredSubpageUrls).slice(0, 2);
   if (targetSubpages.length > 0) {
     console.log(`[DEEP CRAWLER] Crawling ${targetSubpages.length} internal subdirectories for ${cleanComp}...`);
     const subResults = await Promise.allSettled(targetSubpages.map(u => scrapeSubPage(u)));

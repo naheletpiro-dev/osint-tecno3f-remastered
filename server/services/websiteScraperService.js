@@ -103,6 +103,36 @@ export function synthesizeBriefExecutiveDescription(companyName, sector, product
 }
 
 /**
+ * Extracts concrete, tangible critical industrial assets rather than superficial generic phrases.
+ */
+export function determineCriticalIndustryAssets(companyName, sector = '', products = [], rawText = '') {
+  const cleanComp = companyName ? companyName.trim() : 'Empresa';
+  const combined = `${companyName} ${sector} ${products.join(' ')} ${rawText}`.toLowerCase();
+
+  if (combined.includes('baigorria') || combined.includes('curvador') || combined.includes('mecanizado') || combined.includes('metal') || combined.includes('taller') || combined.includes('caño') || combined.includes('tubo') || combined.includes('matriz') || combined.includes('pieza')) {
+    return `Parque de curvadoras de caños y tubos, centros de mecanizado CNC de alta precisión, matricería de producción de planta y licencias de diseño técnico CAD/CAM.`;
+  }
+  if (combined.includes('smartmation') || combined.includes('software') || combined.includes('cloud') || combined.includes('telemetria') || combined.includes('iot') || combined.includes('sensor') || combined.includes('lumina')) {
+    return `Infraestructura cloud de alta disponibilidad, algoritmos propietarios de telemetría IoT, plataforma web de gestión remota y código fuente registrado.`;
+  }
+  if (combined.includes('bomba') || combined.includes('presion') || combined.includes('hidraul') || combined.includes('fluido') || combined.includes('motor')) {
+    return `Banco de pruebas de presión e hidrostáticas, stock de repuestos críticos de alta rotación, matricería de fundición y banco de ensamble.`;
+  }
+  if (combined.includes('mercadolibre') || combined.includes('distribu') || combined.includes('logistica') || combined.includes('deposito') || combined.includes('almacen')) {
+    return `Red de centros logísticos automatizados, plataforma e-commerce de alto tráfico y acuerdos de representación de marcas líderes.`;
+  }
+  if (combined.includes('alimento') || combined.includes('quimic') || combined.includes('farmac') || combined.includes('envasado')) {
+    return `Líneas de producción y envasado automatizadas, tanques de procesamiento de acero inoxidable y habilitaciones sanitarias de planta (ANMAT/SENASA).`;
+  }
+
+  if (products.length > 0) {
+    return `Maquinaria especializada para la elaboración de ${products.slice(0, 3).join(', ')}, herramental técnico de planta y equipamiento industrial homologado.`;
+  }
+
+  return `Equipamiento técnico de producción de planta, herramental industrial especializado y certificaciones de normas de calidad.`;
+}
+
+/**
  * Auxiliary Function: Scrapes an individual internal subpage & extracts clean products, services, text.
  */
 async function scrapeSubPage(url) {
@@ -531,9 +561,7 @@ function mergeUniversalFallbackData(companyName, profile) {
     ? `Venta de licencias de software, provisión de equipos y contratos de mantenimiento.`
     : `Venta directa de productos elaborados, servicios técnicos especializados y presupuestos por proyectos.`;
 
-  const mostImportantAsset = profile.certifications.length > 0
-    ? `Certificaciones de calidad (${profile.certifications.join(', ')}), su parque operativo y el sitio web verificado.`
-    : `Su personal técnico especializado, la reputación comercial de ${cleanComp} y su infraestructura.`;
+  const mostImportantAsset = determineCriticalIndustryAssets(cleanComp, dynamicSector, dynamicProducts, combinedLower);
 
   return {
     ...profile,

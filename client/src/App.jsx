@@ -17,6 +17,7 @@ import CompareTab from './components/CompareTab';
 import AdminTab from './components/AdminTab';
 import PresentationModal from './components/PresentationModal';
 import OsintChatbot from './components/OsintChatbot';
+import Footer from './components/Footer';
 import { processClientSideOSINT } from './services/clientOsintEngine';
 import { LayoutDashboard, Briefcase, HelpCircle, Target, Scale, Landmark, Newspaper, HeartHandshake, History, AlertCircle, Layers, FileCheck, RefreshCw, Cpu, ShieldCheck } from 'lucide-react';
 
@@ -485,6 +486,8 @@ export default function App() {
             onClose={() => setShowPresentation(false)}
           />
         )}
+        {/* Application Footer */}
+        <Footer />
       </div>
     </ErrorBoundary>
   );

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ShieldCheck, UserPlus, Users, UserX, UserCheck, Trash2, CheckCircle2, AlertCircle, RefreshCw, Lock, ShieldAlert, Search, FileText, Activity, Clock, Shield } from 'lucide-react';
+import { ShieldCheck, UserPlus, Users, UserX, UserCheck, Trash2, CheckCircle2, AlertCircle, RefreshCw, Lock, ShieldAlert, Search, FileText, Activity, Clock, Shield, Download } from 'lucide-react';
 
 export default function AdminTab() {
   const [activeAdminSubTab, setActiveAdminSubTab] = useState('users'); // 'users' | 'audit'
@@ -222,6 +222,33 @@ export default function AdminTab() {
 
   const failedLoginsCount = auditLogs.filter(l => l.type === 'LOGIN_FAILED').length;
   const successfulLoginsCount = auditLogs.filter(l => l.type === 'LOGIN_SUCCESS').length;
+
+  // Enhanced metrics: events last 24h
+  const now24h = Date.now() - 24 * 60 * 60 * 1000;
+  const eventsLast24h = auditLogs.filter(l => new Date(l.timestamp).getTime() > now24h).length;
+
+  // Top active IPs
+  const ipCounts = {};
+  auditLogs.forEach(l => { if (l.ip) ipCounts[l.ip] = (ipCounts[l.ip] || 0) + 1; });
+  const topIPs = Object.entries(ipCounts).sort((a, b) => b[1] - a[1]).slice(0, 3);
+
+  // CSV Export
+  const exportAuditCSV = () => {
+    const headers = ['Fecha,Tipo,Severidad,Usuario,Detalles,IP'];
+    const rows = filteredAuditLogs.map(l => {
+      const date = new Date(l.timestamp).toLocaleString('es-AR');
+      const safe = (str) => `"${(str || '').replace(/"/g, '""')}"`;
+      return `${safe(date)},${safe(l.type)},${safe(l.severity)},${safe(l.username)},${safe(l.details)},${safe(l.ip)}`;
+    });
+    const csv = [headers, ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `AuditLogs_Tecno3F_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -529,20 +556,37 @@ export default function AdminTab() {
       {activeAdminSubTab === 'audit' && (
         <>
           {/* Audit Metrics Row */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '18px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '18px' }}>
             <div style={{ background: '#111827', border: '1px solid #1e293b', borderRadius: '14px', padding: '20px 22px' }}>
               <div style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Eventos Registrados</div>
               <div style={{ fontSize: '1.45rem', fontWeight: 800, color: '#f8fafc', marginTop: '6px' }}>{auditLogs.length} Registros</div>
             </div>
 
             <div style={{ background: '#111827', border: '1px solid #1e293b', borderRadius: '14px', padding: '20px 22px' }}>
-              <div style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Inicios de Sesión Exitosos</div>
+              <div style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Eventos Últimas 24h</div>
+              <div style={{ fontSize: '1.45rem', fontWeight: 800, color: '#38bdf8', marginTop: '6px' }}>{eventsLast24h} Eventos</div>
+            </div>
+
+            <div style={{ background: '#111827', border: '1px solid #1e293b', borderRadius: '14px', padding: '20px 22px' }}>
+              <div style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Logins Exitosos</div>
               <div style={{ fontSize: '1.45rem', fontWeight: 800, color: '#34d399', marginTop: '6px' }}>{successfulLoginsCount} Logins</div>
             </div>
 
             <div style={{ background: '#111827', border: '1px solid #1e293b', borderRadius: '14px', padding: '20px 22px' }}>
-              <div style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Intentos Fallidos / Alertas</div>
+              <div style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Intentos Fallidos</div>
               <div style={{ fontSize: '1.45rem', fontWeight: 800, color: failedLoginsCount > 0 ? '#fb7185' : '#64748b', marginTop: '6px' }}>{failedLoginsCount} Alertas</div>
+            </div>
+
+            <div style={{ background: '#111827', border: '1px solid #1e293b', borderRadius: '14px', padding: '20px 22px' }}>
+              <div style={{ fontSize: '0.76rem', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>IPs Más Activas</div>
+              <div style={{ marginTop: '6px' }}>
+                {topIPs.length > 0 ? topIPs.map(([ip, count], idx) => (
+                  <div key={idx} style={{ fontSize: '0.82rem', color: '#f8fafc', fontFamily: 'monospace', display: 'flex', justifyContent: 'space-between', marginBottom: '2px' }}>
+                    <span>{ip}</span>
+                    <span style={{ color: '#60a5fa', fontWeight: 800 }}>{count}x</span>
+                  </div>
+                )) : <span style={{ fontSize: '0.82rem', color: '#64748b' }}>Sin datos</span>}
+              </div>
             </div>
           </div>
 
@@ -589,6 +633,15 @@ export default function AdminTab() {
                   style={{ padding: '6px 10px', fontSize: '0.78rem', background: '#1e293b' }}
                 >
                   <RefreshCw size={14} />
+                </button>
+
+                <button
+                  className="btn-secondary"
+                  onClick={exportAuditCSV}
+                  disabled={filteredAuditLogs.length === 0}
+                  style={{ padding: '6px 12px', fontSize: '0.78rem', color: '#34d399', background: '#1e293b' }}
+                >
+                  <Download size={14} /> Exportar CSV
                 </button>
 
                 <button

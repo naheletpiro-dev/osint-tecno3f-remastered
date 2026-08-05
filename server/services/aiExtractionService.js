@@ -82,7 +82,7 @@ ESTRUCTURA JSON REQUERIDA:
   "whatItSells": "Qué vende o provee exactamente ${cleanComp} según la información extraída",
   "whoBuys": "Quiénes son los compradores o clientes de ${cleanComp} verificados en su texto web o padrón",
   "howItGeneratesRevenue": "Cómo genera ingresos ${cleanComp} según sus productos/servicios",
-  "mostImportantAsset": "El principal activo, servicio o diferenciador verificado de ${cleanComp}",
+  "mostImportantAsset": "Especifica los ACTIVOS CRÍTICOS concretos de la industria de ${cleanComp} (ej: parque de curvadoras de caños/tubos, centros de mecanizado CNC, servidores cloud de alta disponibilidad, matricería de precisión, licencias CAD/CAM, planta de envasado), NUNCA frases genéricas como 'sitio web' o 'reputación'.",
   "executiveSummary": "Síntesis ejecutiva de 2 párrafos basada 100% en los hechos extraídos y datos oficiales de AFIP, BCRA, INPI y Compr.ar para ${cleanComp}",
   "strengths": ["Fortaleza real 1 verificada en el texto", "Fortaleza real 2 verificada"],
   "weaknesses": ["Debilidad o brecha identificada"],

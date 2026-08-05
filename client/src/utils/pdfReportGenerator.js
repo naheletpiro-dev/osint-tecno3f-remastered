@@ -348,8 +348,8 @@ export async function downloadFullPdfReport(report) {
       </div>
 
       <!-- FOOTER -->
-      <div style="text-align: center; font-size: 10px; color: #94a3b8; border-top: 1px solid #e2e8f0; paddingTop: 10px;">
-        Informe generado automáticamente por la Plataforma OSINT Tecno3F de Inteligencia Empresarial. Documento de carácter confidencial.
+      <div style="text-align: center; font-size: 10px; color: #64748b; border-top: 1px solid #cbd5e1; padding-top: 10px;">
+        © ${new Date().getFullYear()} OSINT Tecno3F. Desarrollado por Tecno3F. Todos los derechos reservados. | Documento de Inteligencia Empresarial Confidencial.
       </div>
     </div>
   `;

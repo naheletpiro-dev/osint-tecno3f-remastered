@@ -188,11 +188,16 @@ export default function OsintChatbot({ currentReport }) {
                     border: msg.sender === 'user' ? 'none' : '1px solid rgba(255,255,255,0.08)',
                     color: '#fff',
                     fontSize: '0.88rem',
-                    lineHeight: '1.5',
+                    lineHeight: '1.55',
                     whiteSpace: 'pre-wrap'
                   }}
                 >
-                  {msg.text}
+                  {msg.text ? msg.text.split(/(\*\*.*?\*\*)/g).map((part, idx) => {
+                    if (part.startsWith('**') && part.endsWith('**')) {
+                      return <strong key={idx} style={{ color: '#38bdf8', fontWeight: 800 }}>{part.slice(2, -2)}</strong>;
+                    }
+                    return part;
+                  }) : ''}
                 </div>
               </div>
             ))}

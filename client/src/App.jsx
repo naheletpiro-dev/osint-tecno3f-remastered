@@ -66,6 +66,36 @@ export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('osint-theme') || 'dark');
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [showPresentation, setShowPresentation] = useState(false);
+  const [scanProgress, setScanProgress] = useState(0);
+  const [scanStageText, setScanStageText] = useState('Iniciando rastreo OSINT...');
+
+  useEffect(() => {
+    let interval;
+    if (loading) {
+      setScanProgress(0);
+      interval = setInterval(() => {
+        setScanProgress(prev => {
+          if (prev >= 95) return 95;
+          const next = prev + (prev < 30 ? 4 : prev < 70 ? 3 : 2);
+
+          if (next < 25) {
+            setScanStageText('1/4: Scrapeando sitio corporativo, dominio y metadatos...');
+          } else if (next < 50) {
+            setScanStageText('2/4: Consultando Central de Deudores BCRA, cheques y AFIP/ARCA...');
+          } else if (next < 75) {
+            setScanStageText('3/4: Verificando marcas en INPI/WIPO y licitaciones públicas COMPR.AR...');
+          } else {
+            setScanStageText('4/4: Auditando madurez digital y emparejamiento con Kits 4.0...');
+          }
+
+          return next;
+        });
+      }, 40);
+    } else {
+      setScanProgress(0);
+    }
+    return () => clearInterval(interval);
+  }, [loading]);
 
   useEffect(() => {
     const handlePopState = () => setCurrentPath(window.location.pathname);
@@ -351,13 +381,69 @@ export default function App() {
             )}
 
             {loading && (
-              <div className="saas-card loading-box">
-                <div className="spinner"></div>
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>Procesando Análisis OSINT Tecno3F...</h3>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '6px' }}>
-                    Extrayendo datos de la empresa, analizando modelo de negocio, matriz FODA, transformación digital y situación impositiva.
-                  </p>
+              <div className="saas-card col-12" style={{
+                padding: '30px',
+                background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.98))',
+                border: '1px solid rgba(56, 189, 248, 0.35)',
+                borderRadius: '16px',
+                boxShadow: '0 12px 35px rgba(0,0,0,0.4)',
+                margin: '20px 0'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap', gap: '14px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                    <div style={{ width: '42px', height: '42px', borderRadius: '12px', background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <RefreshCw size={24} className="spinner" />
+                    </div>
+                    <div>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#f8fafc', margin: 0 }}>
+                        Procesando Análisis OSINT Tecno3F...
+                      </h3>
+                      <div style={{ color: '#38bdf8', fontSize: '0.88rem', fontWeight: 700, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <Layers size={14} /> {scanStageText}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style={{ textAlign: 'right' }}>
+                    <div style={{ fontSize: '1.75rem', fontWeight: 900, color: '#38bdf8', lineHeight: 1 }}>
+                      {scanProgress}%
+                    </div>
+                    <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600, marginTop: '4px' }}>
+                      {scanProgress < 100 ? `Estimado: ~${Math.max(1, Math.ceil((100 - scanProgress) / 45))}s` : '¡Análisis Completado!'}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Progress Track */}
+                <div style={{ width: '100%', height: '12px', background: 'rgba(255, 255, 255, 0.08)', borderRadius: '12px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', padding: '2px' }}>
+                  <div style={{
+                    width: `${scanProgress}%`,
+                    height: '100%',
+                    background: 'linear-gradient(90deg, #2563eb 0%, #06b6d4 50%, #10b981 100%)',
+                    borderRadius: '10px',
+                    transition: 'width 0.12s linear',
+                    boxShadow: '0 0 15px rgba(6, 182, 212, 0.6)'
+                  }} />
+                </div>
+
+                {/* Real-time checklist steps */}
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: '12px', marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                  <div style={{ fontSize: '0.8rem', color: scanProgress >= 25 ? '#34d399' : '#64748b', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px', transition: 'color 0.3s ease' }}>
+                    <ShieldCheck size={15} style={{ color: scanProgress >= 25 ? '#34d399' : '#64748b' }} />
+                    1. Rastreo Web & Dominio
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: scanProgress >= 50 ? '#34d399' : '#64748b', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px', transition: 'color 0.3s ease' }}>
+                    <ShieldCheck size={15} style={{ color: scanProgress >= 50 ? '#34d399' : '#64748b' }} />
+                    2. BCRA & AFIP Impositivo
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: scanProgress >= 75 ? '#34d399' : '#64748b', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px', transition: 'color 0.3s ease' }}>
+                    <ShieldCheck size={15} style={{ color: scanProgress >= 75 ? '#34d399' : '#64748b' }} />
+                    3. Marcas INPI & COMPR.AR
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: scanProgress >= 95 ? '#34d399' : '#64748b', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '6px', transition: 'color 0.3s ease' }}>
+                    <ShieldCheck size={15} style={{ color: scanProgress >= 95 ? '#34d399' : '#64748b' }} />
+                    4. Madurez & Kits 4.0
+                  </div>
                 </div>
               </div>
             )}

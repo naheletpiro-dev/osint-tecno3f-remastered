@@ -4,6 +4,10 @@ server/node_modules/
 client/dist/
 data/users_db.json
 .env
+.env.*
+*.env
+server/.env
+client/.env
 *.log
 .DS_Store
 Thumbs.db

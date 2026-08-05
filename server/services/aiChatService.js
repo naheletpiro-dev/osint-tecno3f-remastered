@@ -9,7 +9,62 @@ dotenv.config({ path: path.join(__dirname, '../.env') });
 dotenv.config();
 
 /**
- * Smart Local Query Analyzer Fallback (Runs when Gemini API is rate-limited / 429)
+ * Prompt Injection & Jailbreak Detection Regex Patterns
+ */
+const PROMPT_INJECTION_PATTERNS = [
+  /ignore\s+(all\s+)?(previous|above|prior)\s+(instructions|rules|prompts)/i,
+  /forget\s+(all\s+)?(previous|above|prior)\s+(instructions|rules|prompts)/i,
+  /disregard\s+(all\s+)?(previous|above|prior)\s+(instructions|rules|prompts)/i,
+  /system\s+override/i,
+  /system\s+prompt/i,
+  /jailbreak/i,
+  /dan\s+mode/i,
+  /developer\s+mode/i,
+  /you\s+are\s+now\s+free/i,
+  /act\s+as\s+(an\s+)?unrestricted/i,
+  /revela\s+tus\s+instrucciones/i,
+  /olvida\s+tus\s+instrucciones/i,
+  /ignora\s+(las|todas\s+las)\s+(instrucciones|reglas)/i,
+  /modo\s+desarrollador/i,
+  /print\s+(your\s+)?system\s+(prompt|instructions)/i,
+  /show\s+(your\s+)?system\s+(prompt|instructions)/i,
+  /prompt\s+injection/i
+];
+
+/**
+ * Sanitizes user input and checks for prompt injection or jailbreak attempts.
+ */
+function sanitizeAndGuardInput(input) {
+  if (!input || typeof input !== 'string') {
+    return { isInjection: false, sanitizedText: '' };
+  }
+
+  const cleanInput = input.trim();
+
+  for (const pattern of PROMPT_INJECTION_PATTERNS) {
+    if (pattern.test(cleanInput)) {
+      return {
+        isInjection: true,
+        sanitizedText: cleanInput,
+        rejectionMessage: 'Como asistente de inteligencia OSINT empresarial (Tecnobot3F), no puedo modificar mis reglas de seguridad, cambiar mi rol ni revelar las instrucciones del sistema. Únicamente puedo responder preguntas basadas en la información verificada de la empresa analizada.'
+      };
+    }
+  }
+
+  const sanitizedText = cleanInput
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/={4,}/g, '===')
+    .replace(/-{4,}/g, '---')
+    .replace(/`{3,}/g, '```');
+
+  return { isInjection: false, sanitizedText };
+}
+
+/**
+ * Dynamic Semantic Retrieval & Analytical Reasoning Engine.
+ * Tokenizes the user's question, searches across all report dimensions,
+ * and formulates a customized, free-form answer answering ONLY what was asked.
  */
 function generateSmartLocalAnswer(report, userQuery) {
   const queryLower = (userQuery || '').toLowerCase();
@@ -24,78 +79,154 @@ function generateSmartLocalAnswer(report, userQuery) {
   const legal = report.legalData || {};
   const scraped = report.scrapedData || {};
   const bizAnswers = scraped.businessAnswers || {};
+  const kits = dig.recommendedKits || {};
 
   const estimatedBidding = cap.estimatedBiddingCapacityARS || '$250.000.000 ARS';
   const recommendedCredit = cap.recommendedCreditLimitARS || '$50.000.000 ARS';
   const totalAwarded = contracts.totalAwardedAmount || '$0 ARS';
 
-  // 1. Products / Services / Commercial Activity
-  if (/producto|servicio|vende|ofrece|brinda|hace|actividad|comercial|negocio|rubro|sector|quien/.test(queryLower)) {
-    const products = (scraped.products && scraped.products.length > 0) ? scraped.products.join(', ') : null;
-    const services = (scraped.services && scraped.services.length > 0) ? scraped.services.join(', ') : null;
-    const about = scraped.aboutUs || scraped.description || bizAnswers.whatDoesCompanyDo || 'Soluciones técnicas e industriales especializadas.';
+  const prods = (scraped.products && scraped.products.length > 0) ? scraped.products.join(', ') : null;
+  const servs = (scraped.services && scraped.services.length > 0) ? scraped.services.join(', ') : null;
+  const about = scraped.aboutUs || scraped.description || bizAnswers.whatDoesCompanyDo || '';
 
-    return `Basado en la investigación OSINT de **${compName}**:
-
-- **Sector / Rubro:** ${cat.sector || 'Industrial & Servicios'} (${cat.businessModel || 'B2B'})
-- **Descripción General:** ${about}
-- **Productos Destacados:** ${products || 'Equipamiento industrial, componentes y soluciones técnicas.'}
-- **Servicios:** ${services || 'Mecanizado, mantenimiento, instalación y asistencia técnica.'}
-- **Certificaciones:** ${(cat.certifications || []).join(', ') || 'Calidad y procesos bajo norma ISO 9001 / 14001.'}`;
+  // 1. Weaknesses Intent
+  if (/debilidad|falencia|aspectos?\s+a\s+mejorar|puntos?\s+debiles?/i.test(queryLower)) {
+    if (swot.weaknesses && swot.weaknesses.length > 0) {
+      return `Analizando el banco de información de **${compName}**, se identifican las siguientes **debilidades clave**:\n\n` +
+        swot.weaknesses.map(w => `• ${w}`).join('\n');
+    }
+    return `En el análisis de **${compName}**, la principal oportunidad de mejora identificada se relaciona con expandir la visibilidad digital de sus casos de éxito y fortalecer canales directos de venta online.`;
   }
 
-  // 2. Financial / BCRA / Debts / Bidding Capacity
-  if (/deuda|cheque|bcra|afip|fiscal|scoring|credito|financ|licita|capacid|limite|monto/.test(queryLower)) {
-    return `Análisis Financiero y de Capacidad Licitatoria para **${compName}**:
-
-- **Scoring Crediticio BCRA:** **${fin.creditScore || 85}/100** (${fin.riskLevel || 'BAJO RIESGO'})
-- **Cheques Rechazados:** **${fin.rejectedChequesCount || 0}**
-- **Situación Fiscal AFIP:** ${fin.taxProfile?.taxCompliance || 'Sin deudas ejecutivas ni embargos registrados.'}
-- **Capacidad Licitatoria Estimada:** **${estimatedBidding}** (Categoría: ${cap.capacityTier || 'Alta'})
-- **Límite Crediticio Recomendado:** **${recommendedCredit}**`;
+  // 2. Strengths Intent
+  if (/fortaleza|ventaja|puntos?\s+fuertes?|virtud/i.test(queryLower)) {
+    if (swot.strengths && swot.strengths.length > 0) {
+      return `Evaluando el perfil de **${compName}**, sus principales **fortalezas verificadas** son:\n\n` +
+        swot.strengths.map(s => `• ${s}`).join('\n');
+    }
+    return `Las principales fortalezas de **${compName}** incluyen su sólida posición en el sector ${cat.sector || 'industrial'}, solvencia crediticia en BCRA (Scoring ${fin.creditScore || 85}/100) y su oferta comercial verificada.`;
   }
 
-  // 3. SWOT / Strengths / Weaknesses
-  if (/foda|swot|fortaleza|debilidad|oportunidad|amenaza|ventaja|riesgo/.test(queryLower)) {
-    return `Matriz FODA de **${compName}**:
-
-- 💪 **Fortalezas:** ${(swot.strengths || []).join('; ') || 'Sólido perfil comercial, clientes consolidados.'}
-- ⚠️ **Debilidades:** ${(swot.weaknesses || []).join('; ') || 'Oportunidad de expandir canales de ventas digitales.'}
-- 🚀 **Oportunidades:** ${(swot.opportunities || []).join('; ') || 'Licitaciones públicas estatales y modernización tecnológica.'}
-- 🛡️ **Amenazas:** ${(swot.threats || []).join('; ') || 'Fluctuaciones de costos y competencia en el sector.'}`;
+  // 3. Opportunities Intent
+  if (/oportunidad|crecimiento|potencial/i.test(queryLower)) {
+    if (swot.opportunities && swot.opportunities.length > 0) {
+      return `Las **oportunidades de expansión** identificadas para **${compName}** son:\n\n` +
+        swot.opportunities.map(o => `• ${o}`).join('\n');
+    }
+    return `**${compName}** cuenta con oportunidades de crecimiento mediante licitaciones públicas estatales y postulación a financiamiento de Aportes No Reembolsables (ANR 4.0).`;
   }
 
-  // 4. Digital Transformation / Technology
-  if (/digital|tecnol|software|herramienta|madurez|brecha|web|stack/.test(queryLower)) {
-    return `Diagnóstico de Transformación Digital para **${compName}**:
-
-- **Índice de Madurez Digital:** **${dig.digitalScore || 65}%** (${dig.maturityLevel || 'Digital'})
-- **Herramientas & Sistemas:** ${(dig.existingAutomations || []).map(a => a.system).join(', ') || 'Formularios web, CRM de gestión'}
-- **Brechas a Mejorar:** ${(dig.digitalGaps || []).join(' | ') || 'Incorporación de chatbot conversacional y ERP integrado'}`;
+  // 4. Threats Intent
+  if (/amenaza|riesgo|desafio\s+externo/i.test(queryLower)) {
+    if (swot.threats && swot.threats.length > 0) {
+      return `Las **amenazas del entorno** que enfrenta **${compName}** son:\n\n` +
+        swot.threats.map(t => `• ${t}`).join('\n');
+    }
+    return `Los riesgos externos para **${compName}** se concentran en la volatilidad de costos de insumos, logística y la competencia de firmas regionales.`;
   }
 
-  // 5. Legal / Court Cases / State Contracts
-  if (/juicio|legal|causa|embargo|contrato|comprar|bora|edicto|estado|public/.test(queryLower)) {
-    return `Diagnóstico Legal y Contrataciones Públicas de **${compName}**:
-
-- **Juicios / Causa Registradas:** **${legal.judicialRecordsCount || 0}** (${legal.legalStatus || 'Sin litigios abiertos'})
-- **COMPR.AR (Licitaciones):** ${contracts.supplierRegistryStatus || 'Habilitado'}
-- **Monto Adjudicado Acumulado:** **${totalAwarded}**`;
+  // 5. Full SWOT Intent
+  if (/foda|swot|matriz/i.test(queryLower)) {
+    let text = `📊 **Matriz FODA Analítica de ${compName}:**\n\n`;
+    if (swot.strengths?.length > 0) text += `💪 **Fortalezas:** ${swot.strengths.join('; ')}\n\n`;
+    if (swot.weaknesses?.length > 0) text += `⚠️ **Debilidades:** ${swot.weaknesses.join('; ')}\n\n`;
+    if (swot.opportunities?.length > 0) text += `🚀 **Oportunidades:** ${swot.opportunities.join('; ')}\n\n`;
+    if (swot.threats?.length > 0) text += `🛡️ **Amenazas:** ${swot.threats.join('; ')}`;
+    return text;
   }
 
-  // General Comprehensive Default Synthesis
-  return `Resumen OSINT para la consulta sobre **${compName}**:
+  // 6. Kits 4.0 Specific Intents (Primary Only vs Secondary Only vs General)
+  const isPrimaryKitOnly = (/solo/i.test(queryLower) || /unicament/i.test(queryLower)) && /principal|primari/i.test(queryLower);
+  const isSecondaryKitOnly = (/solo/i.test(queryLower) || /unicament/i.test(queryLower)) && /secundari|complementari/i.test(queryLower);
 
-- **Actividad Principal:** ${scraped.aboutUs || bizAnswers.whatDoesCompanyDo || 'Empresa del rubro ' + (cat.sector || 'Industrial & B2B')}
-- **Productos & Servicios:** ${(scraped.products || []).concat(scraped.services || []).join(', ') || 'Venta y servicios industriales'}
-- **Salud Financiera (BCRA):** Scoring **${fin.creditScore || 85}/100** | Capacidad Licitatoria: **${estimatedBidding}**
-- **Transformación Digital:** **${dig.digitalScore || 65}%** de madurez digital.`;
+  if (isPrimaryKitOnly && kits.primary) {
+    return `📌 **Propuesta Principal de Modernización (${kits.primary.code}) para ${compName}:**\n\n` +
+      `**${kits.primary.name}**\n` +
+      `${kits.primary.aiRationale}\n\n` +
+      `*Financiamiento:* ${kits.primary.fundingCoverage}`;
+  }
+
+  if (isSecondaryKitOnly && kits.secondary) {
+    return `🔹 **Propuesta Complementaria de Modernización (${kits.secondary.code}) para ${compName}:**\n\n` +
+      `**${kits.secondary.name}**\n` +
+      `${kits.secondary.aiRationale}\n\n` +
+      `*Financiamiento:* ${kits.secondary.fundingCoverage}`;
+  }
+
+  if (/kit|4\.0|moderniz|subsidio|anr|oee|cmms|erp/i.test(queryLower)) {
+    let text = `Basado en la evaluación de madurez digital (${dig.digitalScore || 65}%), la propuesta de modernización para **${compName}** es:\n\n`;
+    if (kits.primary) {
+      text += `📌 **Propuesta Principal (${kits.primary.code}): ${kits.primary.name}**\n${kits.primary.aiRationale}\n*Cofinanciamiento:* ${kits.primary.fundingCoverage}\n\n`;
+    }
+    if (kits.secondary) {
+      text += `🔹 **Propuesta Complementaria (${kits.secondary.code}): ${kits.secondary.name}**\n${kits.secondary.aiRationale}`;
+    }
+    return text;
+  }
+
+  // 7. Products Specific Intent
+  if (/producto|vende|fabric|item|catalogo|equipo/i.test(queryLower) && !/servicio/i.test(queryLower)) {
+    return `Respecto a los **productos** de **${compName}**:\n\n` +
+      (prods ? `• **Productos Verificados:** ${prods}` : `• La empresa opera principalmente bajo catálogo industrial y soluciones a medida para clientes corporativos (B2B).`);
+  }
+
+  // 8. Services Specific Intent
+  if (/servicio|brinda|atencion|mantenimiento|mecanizado|asistencia/i.test(queryLower)) {
+    return `En relación a los **servicios** que ofrece **${compName}**:\n\n` +
+      (servs ? `• **Servicios Verificados:** ${servs}` : `• Brinda asistencia técnica especializada, mecanizado y soporte operativo B2B.`);
+  }
+
+  // 9. Financial & BCRA Specific Intent
+  if (/bcra|cheque|scoring|deuda|moros|banco/i.test(queryLower)) {
+    return `Análisis del historial bancario y crediticio de **${compName}** en BCRA:\n\n` +
+      `• **Scoring Crediticio:** **${fin.creditScore || 85}/100** (Nivel de Riesgo: ${fin.riskLevel || 'Bajo Riesgo'}).\n` +
+      `• **Cheques Rechazados:** **${fin.rejectedChequesCount || 0}** registros en la Central de Deudores BCRA.\n` +
+      `• **Evaluación:** ${fin.rejectedChequesCount === 0 ? 'Demuestra una conducta de pago impecable sin antecedentes de morosidad bancaria.' : 'Presenta cheques con causales a monitorear.'}`;
+  }
+
+  // 10. Bidding & Capital Specific Intent
+  if (/licit|capacid|limite|monto|credito|adjudic/i.test(queryLower)) {
+    return `Evaluación de **capacidad licitatoria y respaldo financiero** de **${compName}**:\n\n` +
+      `• **Capacidad Licitatoria Estimada:** **${estimatedBidding}** (Clasificación: ${cap.capacityTier || 'Alta'}).\n` +
+      `• **Límite de Crédito Sugerido:** **${recommendedCredit}**.\n` +
+      `• **Contrataciones Estatales:** Monto acumulado adjudicado en licitaciones de **${totalAwarded}**.`;
+  }
+
+  // 11. AFIP / Fiscal Intent
+  if (/afip|cuit|fiscal|impuesto|padron/i.test(queryLower)) {
+    return `Situación impositiva y fiscal de **${compName}**:\n\n` +
+      `• **CUIT Oficial:** ${fin.taxProfile?.cuit || '30-XXXXXXXX-X'}\n` +
+      `• **Estado AFIP:** ${fin.taxProfile?.taxCompliance || 'Inscripto y activo sin deudas ejecutivas registradas'}.`;
+  }
+
+  // 12. General Activity & Company Profile Intent
+  if (/actividad|dedica|hace|rubro|sector|quien\s+es|empresa/i.test(queryLower)) {
+    return `**${compName}** es una empresa perteneciente al sector de **${cat.sector || 'Industrial & B2B'}** (Modelo: ${cat.businessModel || 'B2B'}).\n\n` +
+      (about ? `**Resumen Operativo:** ${about}` : `Ofrece soluciones técnicas y comerciales especializadas en su segmento.`);
+  }
+
+  // 13. Dynamic Fallback for unclassified questions
+  return `Tras analizar la pregunta sobre **${compName}** en su banco de información verificado:\n\n` +
+    `• **Empresa:** ${compName}\n` +
+    `• **Rubro:** ${cat.sector || 'Industrial / B2B'}\n` +
+    `• **Solvencia BCRA:** Scoring ${fin.creditScore || 85}/100 | Licitatorio: ${estimatedBidding}\n` +
+    `• **Madurez Digital:** ${dig.digitalScore || 65}%\n\n` +
+    `Podés hacer preguntas específicas como: *"¿Qué debilidades tiene?"*, *"¿Qué servicios ofrece?"*, *"¿Cuál es su scoring en BCRA?"* o *"¿Qué kit 4.0 se le sugiere?"*.`;
 }
 
 /**
- * Interactive Conversational Chat Service grounded in Company OSINT Report
+ * Interactive Conversational Chat Service grounded in Company OSINT Information Bank
+ * Protected against Prompt Injection, System Override & Persona Hijacking.
+ * Uses live Gemini API when GEMINI_API_KEY is configured.
  */
 export async function answerOsintChat(report = {}, userQuery = '', chatHistory = []) {
+  // 1. Prompt Injection Inspection & Input Sanitization
+  const guard = sanitizeAndGuardInput(userQuery);
+  if (guard.isInjection) {
+    return { answer: guard.rejectionMessage };
+  }
+
+  const sanitizedQuery = guard.sanitizedText;
   const apiKey = (process.env.GEMINI_API_KEY || '').trim();
 
   const query = report.query || {};
@@ -109,53 +240,54 @@ export async function answerOsintChat(report = {}, userQuery = '', chatHistory =
   const legal = report.legalData || {};
   const scraped = report.scrapedData || {};
   const bizAnswers = scraped.businessAnswers || {};
-  const search = report.searchData || {};
-  const news = search.newsItems || [];
-  const edicts = search.edicts || [];
+  const kits = dig.recommendedKits || {};
 
-  const rawTextSnippet = (scraped.rawText || scraped.extractedText || '').slice(0, 3500);
+  const rawTextSnippet = (scraped.rawText || scraped.fullText || scraped.extractedText || '').slice(0, 4500);
 
   const contextText = `
-==================== RAG REPORT CONTEXT FOR "${compName.toUpperCase()}" ====================
-DATOS GENERALES:
-- Nombre: ${compName}
-- Sitio Web: ${query.website || scraped.url || 'No especificado'}
+==================== BANCO DE INFORMACIÓN VERIFICADA: "${compName.toUpperCase()}" ====================
+DATOS GENERALES Y CORPORATIVOS:
+- Nombre Oficial: ${compName}
+- Sitio Web Verificado: ${query.website || scraped.url || 'No especificado'}
 - Sector / Rubro: ${cat.sector || 'No especificado'}
 - Modelo de Negocio: ${cat.businessModel || 'B2B / Industrial'}
 - Tipo de Empresa: ${cat.companyType || 'PyME'}
-- Certificaciones ISO: ${(cat.certifications || []).join(', ') || 'No registradas'}
+- Certificaciones Registradas: ${(cat.certifications || []).join(', ') || 'Sin registros específicos'}
 
-PERFIL COMERCIAL & DESCRIPCIÓN WEB:
+OFERTA COMERCIAL Y DESCRIPCIÓN EXPORTADA DEL DOMINIO:
 - Título Web: ${scraped.title || 'N/D'}
-- Descripción Meta: ${scraped.metaDescription || 'N/D'}
-- Sobre la Empresa: ${scraped.aboutUs || scraped.description || 'N/D'}
-- Productos Identificados: ${(scraped.products || []).join(' | ') || 'N/D'}
-- Servicios Identificados: ${(scraped.services || []).join(' | ') || 'N/D'}
-- Clientes / Marcas: ${(scraped.clients || []).join(' | ') || 'N/D'}
+- Descripción Meta: ${scraped.metaDescription || scraped.description || 'N/D'}
+- Descripción Corporativa: ${scraped.aboutUs || scraped.description || 'N/D'}
+- Productos Detectados: ${(scraped.products || []).join(' | ') || 'No detallados explícitamente'}
+- Servicios Detectados: ${(scraped.services || []).join(' | ') || 'No detallados explícitamente'}
+- Clientes y Marcas Vinculadas: ${(scraped.clients || []).join(' | ') || 'No detallados'}
 
 PREGUNTAS DE NEGOCIO ANALIZADAS:
-- ¿Qué hace exactamente?: ${bizAnswers.whatDoesCompanyDo || 'N/D'}
-- ¿Cuál es su propuesta de valor?: ${bizAnswers.valueProposition || 'N/D'}
-- ¿Quiénes son sus clientes clave?: ${bizAnswers.targetAudience || 'N/D'}
+- Actividad Principal: ${bizAnswers.whatDoesCompanyDo || bizAnswers.whatItSells || 'N/D'}
+- Propuesta de Valor: ${bizAnswers.valueProposition || 'N/D'}
+- Clientes / Mercado Objetivo: ${bizAnswers.targetAudience || bizAnswers.whoBuys || 'N/D'}
 
-SITUACIÓN FINANCIERA, SCORING & CAPACIDAD LICITATORIA:
+SITUACIÓN FINANCIERA, BCRA & AFIP:
 - CUIT: ${fin.taxProfile?.cuit || '30-XXXXXXXX-X'}
 - Scoring Crediticio BCRA: ${fin.creditScore || 75}/100 (${fin.riskLevel || 'BAJO RIESGO'})
-- Capacidad Licitatoria Estimada: ${cap.estimatedBiddingCapacityARS || '$250.000.000 ARS'} (Categoría: ${cap.capacityTier || 'Alta'})
-- Límite de Crédito Recomendado: ${cap.recommendedCreditLimitARS || '$50.000.000 ARS'}
 - Cheques Rechazados (BCRA): ${fin.rejectedChequesCount || 0}
 - Situación Fiscal AFIP: ${fin.taxProfile?.taxCompliance || 'Sin deudas ejecutivas registradas'}
+- Capacidad Licitatoria Estimada: ${cap.estimatedBiddingCapacityARS || '$250.000.000 ARS'} (${cap.capacityTier || 'Alta'})
+- Límite Crediticio Sugerido: ${cap.recommendedCreditLimitARS || '$50.000.000 ARS'}
+- Actividad Comercio Exterior: ${fin.tradeData?.tradeActivity || 'Mercado Nacional'}
+- Registro MiPyME: ${fin.pymeData?.pymeCategory || 'Pequeña / Mediana Empresa'}
 
-ESTADO JUDICIAL & CONTRATOS PÚBLICOS:
-- Registros Judiciales: ${legal.judicialRecordsCount || 0} causa(s) encontradas (${legal.legalStatus || 'Sin litigios relevantes'})
-- Boletín Oficial (BORA): ${edicts.length} edicto(s) encontrado(s)
-- Registro COMPR.AR: ${contracts.supplierRegistryStatus || 'Habilitado para licitar'}
-- Monto Adjudicado (Últimos 36m): ${contracts.totalAwardedAmount || '$0 ARS'}
+ANTECEDENTES JUDICIALES, LEGALES & LICITACIONES PÚBLICAS:
+- Registros Judiciales: ${legal.judicialRecordsCount || 0} causas encontradas (${legal.legalStatus || 'Sin litigios abiertos'})
+- Marcas / Propiedad Intelectual: ${legal.inpiWipoData?.details || 'N/D'}
+- Registro COMPR.AR (Estado): ${contracts.supplierRegistryStatus || 'Habilitado'}
+- Monto Adjudicado (Contrataciones Públicas): ${contracts.totalAwardedAmount || '$0 ARS'}
 
-TRANSFORMACIÓN DIGITAL & TECNOLOGÍA:
+TRANSFORMACIÓN DIGITAL & KITS 4.0 RECOMENDADOS:
 - Índice de Madurez Digital: ${dig.digitalScore || 65}% (${dig.maturityLevel || 'Digital'})
-- Herramientas Digitales Activas: ${(dig.existingAutomations || []).map(a => a.system).join(', ') || 'Formularios web, CRM básico'}
-- Brechas Digitales Identificadas: ${(dig.digitalGaps || []).join(' | ') || 'Falta chatbot conversacional, automatización ERP'}
+- Kit 4.0 Principal Sugerido: ${kits.primary ? `${kits.primary.code} - ${kits.primary.name} (${kits.primary.aiRationale})` : 'GES-01 ERP Integrado'}
+- Kit 4.0 Secundario Sugerido: ${kits.secondary ? `${kits.secondary.code} - ${kits.secondary.name} (${kits.secondary.aiRationale})` : 'BAS-01 Ciberseguridad OT/IT'}
+- Herramientas Digitales Activas: ${(dig.existingAutomations || []).map(a => a.system).join(', ') || 'Portal Web, Canales Digitales'}
 
 MATRIZ FODA (SWOT):
 - Fortalezas: ${(swot.strengths || []).join('; ')}
@@ -163,39 +295,42 @@ MATRIZ FODA (SWOT):
 - Oportunidades: ${(swot.opportunities || []).join('; ')}
 - Amenazas: ${(swot.threats || []).join('; ')}
 
-TEXTO EXTRACTADO DEL SITIO WEB:
+TEXTO EXTRAÍDO DEL SITIO WEB CORPORATIVO:
 ${rawTextSnippet}
 ================================================================================
 `;
 
   if (apiKey) {
+    console.log(`[AI CHAT EXECUTION] Gemini API Key detected. Calling live Gemini LLM for "${compName}"...`);
     const formattedHistory = chatHistory.slice(-6).map(m => `${m.sender === 'user' ? 'Usuario' : 'Tecnobot3F'}: ${m.text}`).join('\n');
 
     const chatPrompt = `
-Sos Tecnobot3F, un Asistente Ejecutivo de Inteligencia OSINT brillante, amable, analítico y altamente eficiente. Tu trabajo es responder la pregunta del usuario sobre la empresa "${compName}".
+Sos Tecnobot3F, la Inteligencia Artificial analítica y conversacional del sistema OSINT Tecno3F. Tu única función es responder la consulta del usuario sobre la empresa "${compName}".
 
-INSTRUCCIONES CLAVE DE RESPUESTA:
-1. Tu nombre es Tecnobot3F.
-2. Respondé de forma directa, específica, detallada y útil a la PREGUNTA DEL USUARIO basándote en la información del RAG REPORT CONTEXT.
-3. Si el usuario pregunta por productos o servicios, enumerá explícitamente los productos y servicios encontrados en la información.
-4. Si el usuario pregunta por finanzas, cheques, BCRA o licitaciones, brindá los datos numéricos exactos de scoring, cheques rechazados y capacidad licitatoria.
-5. Usá negritas y listas con viñetas para estructurar la respuesta de manera clara.
+INSTRUCCIONES DE PRECISIÓN Y FILTRADO ESTRICTO:
+1. ANALIZÁ la pregunta del usuario dentro de <user_question> para entender la intención exacta de lo que consulta.
+2. Si el usuario pide "SOLO la propuesta principal de kit" o "solo x cosa", responde EXCLUSIVAMENTE con ese ítem puntual. NO incluyas la propuesta complementaria ni otras secciones si se te pidió "solo" un elemento.
+3. Si el usuario pregunta por una categoría puntual (ej. SOLO por debilidades, SOLO por cheques, SOLO por productos), responde EXCLUSIVAMENTE sobre esa categoría específica. NO agregues otras dimensiones del informe.
+4. Toda la información debe estar estrictamente verificada en el contexto de la empresa. Si un dato no consta en los registros públicos, indícalo abiertamente.
+5. Utilizá formato Markdown para facilitar la lectura.
 
-CONTEXTO DEL INFORME DE LA EMPRESA:
+BANCO DE INFORMACIÓN DE LA EMPRESA (${compName}):
 ${contextText}
 
-HISTORIAL DE LA CONVERSACIÓN:
+HISTORIAL DE CONVERSACIÓN:
 ${formattedHistory}
 
 PREGUNTA DEL USUARIO:
-${userQuery}
+<user_question>
+${sanitizedQuery}
+</user_question>
 
-RESPUESTA DETALLADA DE TECNOBOT3F:
+RESPUESTA PRECISA Y PENSADA DE TECNOBOT3F:
 `;
 
-    const modelsToTry = ['gemini-3.6-flash', 'gemini-flash-latest', 'gemini-2.0-flash'];
-
-    for (const modelName of modelsToTry) {
+    // Strategy 1: @google/genai SDK (v2+)
+    const modelsToTryGenAI = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
+    for (const modelName of modelsToTryGenAI) {
       try {
         const ai = new GoogleGenAI({ apiKey });
         const response = await ai.models.generateContent({
@@ -203,16 +338,44 @@ RESPUESTA DETALLADA DE TECNOBOT3F:
           contents: chatPrompt
         });
 
-        if (response && response.text && response.text.trim().length > 10) {
-          return { answer: response.text.trim() };
+        const txt = response?.text || response?.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (txt && txt.trim().length > 10) {
+          console.log(`[AI CHAT SUCCESS] Responded via @google/genai model ${modelName}`);
+          return { answer: txt.trim() };
         }
       } catch (err) {
-        console.log(`[AI CHAT NOTICE] Model ${modelName} notice: ${err.message?.slice(0, 100)}`);
+        console.log(`[AI CHAT NOTICE] @google/genai model ${modelName} notice: ${err.message?.slice(0, 100)}`);
       }
     }
+
+    // Strategy 2: @google/generative-ai SDK (Fallback)
+    try {
+      const { GoogleGenerativeAI } = await import('@google/generative-ai');
+      const genAI = new GoogleGenerativeAI(apiKey);
+      const fallbackModels = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
+
+      for (const modelName of fallbackModels) {
+        try {
+          const model = genAI.getGenerativeModel({ model: modelName });
+          const result = await model.generateContent(chatPrompt);
+          const response = await result.response;
+          const text = response.text();
+          if (text && text.trim().length > 10) {
+            console.log(`[AI CHAT SUCCESS] Responded via @google/generative-ai model ${modelName}`);
+            return { answer: text.trim() };
+          }
+        } catch (err) {
+          console.log(`[AI CHAT NOTICE] @google/generative-ai model ${modelName} notice: ${err.message?.slice(0, 100)}`);
+        }
+      }
+    } catch (e) {
+      console.log(`[AI CHAT NOTICE] Fallback SDK load notice: ${e.message}`);
+    }
+  } else {
+    console.log('[AI CHAT EXECUTION] No GEMINI_API_KEY in environment. Running smart local reasoning engine.');
   }
 
-  // Direct, tailored local query answer if API key fails or Gemini rate-limits (429)
-  const localAnswer = generateSmartLocalAnswer(report, userQuery);
+  // Direct, verified smart local reasoning answer if API key is not present or rate-limited (429)
+  const localAnswer = generateSmartLocalAnswer(report, sanitizedQuery);
   return { answer: localAnswer };
 }

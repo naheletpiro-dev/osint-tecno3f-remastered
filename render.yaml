@@ -1,11 +1,15 @@
+# Render Deployment Blueprint Configuration for OSINT Tecno3F
 services:
   - type: web
     name: osint-tecno3f-platform
     env: node
+    region: oregon # or frankfurt, singapore, etc.
+    plan: free # or starter
     buildCommand: npm run build
     startCommand: npm start
+    autoDeploy: true
     envVars:
-      - key: NODE_VERSION
-        value: 20.0.0
+      - key: NODE_ENV
+        value: production
       - key: GEMINI_API_KEY
         sync: false

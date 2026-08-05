@@ -17,10 +17,7 @@
     "dotenv": "^17.4.2",
     "express": "^4.21.2",
     "osint-company-platform": "file:..",
-<<<<<<< HEAD
     "pdf-parse": "^2.4.5",
-=======
->>>>>>> 9a5af583d9cd16f4959732ceae272f48321ebf2d
     "serverless-http": "^3.2.0"
   }
 }

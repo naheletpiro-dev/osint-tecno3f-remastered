@@ -224,17 +224,15 @@ export async function processClientSideOSINT(companyName, websiteUrl, region = '
       { system: 'Cotizador Web Instantáneo de Presupuestos', impact: 'ALTO', detail: `Solicitud de cotización manual en ${cleanComp}`, status: 'PENDIENTE' }
     ],
     omittedUnverifiedData: [
-      `Software ERP / CRM privado de ${cleanComp}: Omitido por falta de verificación pública.`,
       `Red de automatización privada: Omitida por criterio estricto OSINT.`
     ],
-<<<<<<< HEAD
     recommendedKits: isIndustrial ? {
       primary: {
         code: 'BAS-02',
         category: 'Básico',
         name: 'Kit Bas-02: Monitoreo y Visualización de Producción (OEE en Tiempo Real)',
         summary: 'Cálculo de Eficiencia General de Equipos (OEE), tableros en tiempo real, registro de micro-paradas y visibilidad del rendimiento de línea.',
-        aiRationale: `Como empresa industrial, ${cleanComp} se beneficiará directamente del monitoreo de línea y cálculo del OEE en tiempo real para visualizar micro-paradas y cuellos de botella en planta.`,
+        aiRationale: `Optimiza el rendimiento productivo de ${cleanComp} mediante la medición en tiempo real del OEE (Eficiencia General de Equipos), facilitando la detección de micro-paradas y cuellos de botella operativos.`,
         fundingCoverage: 'Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)'
       },
       secondary: {
@@ -242,7 +240,7 @@ export async function processClientSideOSINT(companyName, websiteUrl, region = '
         category: 'Básico',
         name: 'Kit Bas-04: Mantenimiento Básico & Gestión de Órdenes de Trabajo (CMMS)',
         summary: 'Inventario ordenado de activos industriales, programación de mantenimiento preventivo y control digital de órdenes de trabajo.',
-        aiRationale: `Permite a ${cleanComp} implementar un sistema de mantenimiento preventivo y control de órdenes de trabajo para evitar fallas imprevistas en la maquinaria.`,
+        aiRationale: `Implementa un esquema de mantenimiento preventivo y digitalización de órdenes de trabajo (CMMS), reduciendo la tasa de fallas imprevistas en la maquinaria de ${cleanComp}.`,
         fundingCoverage: 'Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)'
       }
     } : {
@@ -251,7 +249,7 @@ export async function processClientSideOSINT(companyName, websiteUrl, region = '
         category: 'Gestión',
         name: 'Kit Ges-01: Gestión Operativa Integrada, ERP & Facturación Electrónica',
         summary: 'Servicio y software para ordenar y digitalizar la gestión operativa, compras, inventarios, facturación electrónica y órdenes de producción de una PyME.',
-        aiRationale: `Para ${cleanComp}, este kit es fundamental para integrar la información operativa y comercial en un único sistema de gestión (ERP), sincronizando stock, pedidos y facturación electrónica de forma automatizada.`,
+        aiRationale: `Permite a ${cleanComp} consolidar la gestión operativa y comercial en una única plataforma ERP, automatizando el control de inventarios, emisión de comprobantes AFIP y seguimiento de pedidos.`,
         fundingCoverage: 'Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)'
       },
       secondary: {
@@ -259,26 +257,13 @@ export async function processClientSideOSINT(companyName, websiteUrl, region = '
         category: 'Básico',
         name: 'Kit Bas-01: Conectividad Operacional & Ciberseguridad OT/IT',
         summary: 'Base digital segura para la planta, aislamiento de redes industriales, ciberseguridad operacional y prevención de paradas por vulnerabilidades.',
-        aiRationale: `Complementa la infraestructura digital de ${cleanComp} asegurando la conectividad operacional y la protección ante amenazas de ciberseguridad.`,
+        aiRationale: `Fortalece la infraestructura tecnológica de ${cleanComp} mediante estándares de ciberseguridad industrial y segmentación de redes de trabajo.`,
         fundingCoverage: 'Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)'
       }
     },
     techStack: [
       { category: 'Portal Web Oficial', name: cleanUrl ? 'Portal Web Corporativo Activo & Verificado' : 'Sin Portal Web Oficial Verificado', status: cleanUrl ? 'Activo' : 'No Detectado', type: cleanUrl ? 'VERIFICADO' : 'PENDIENTE', source: cleanUrl ? `Dominio ${cleanUrl}` : 'Búsqueda OSINT' },
       { category: 'Infraestructura & Canales', name: cleanUrl ? 'Servicios HTTP/HTTPS y Presencia Digital Verificada' : 'Canales Tradicionales de Contacto', status: cleanUrl ? 'Operativo' : 'Básico', type: 'VERIFICADO', source: `Rastreo Abierto OSINT (${cleanComp})` }
-=======
-    stateKits: {
-      kitDigitalStatus: `Programa Kit Digital / ANR SEPYME #${kitNum} Aprobado para ${cleanComp}`,
-      subsidyCategory: 'ANR Transformación Digital & Software ERP',
-      pymeDigitalCert: `Sello PyME Digital Reg. #${(positiveHash % 3000) + 1000}`,
-      taxCreditStatus: 'Bono de Crédito Fiscal SEPYME Homologado',
-      verificationBadge: 'VERIFICADO',
-      source: 'Padrón de Subsidios SEPYME / Boletín Oficial'
-    },
-    techStack: [
-      { category: 'Portal Web Oficial', name: cleanUrl ? 'Portal Web Corporativo Activo & Verificado' : 'Sin Portal Web Oficial Verificado', status: cleanUrl ? 'Activo' : 'No Detectado', type: cleanUrl ? 'VERIFICADO' : 'PENDIENTE', source: cleanUrl ? `Dominio ${cleanUrl}` : 'Búsqueda OSINT' },
-      { category: 'Kit Digital Estatal', name: `Inscripto en Programa Kit Digital SEPYME #${(posHash % 899) + 100}`, status: 'Adjudicado & Homologado', type: 'VERIFICADO', source: 'Padrón SEPYME / Min. Economía' }
->>>>>>> 9a5af583d9cd16f4959732ceae272f48321ebf2d
     ]
   };
 

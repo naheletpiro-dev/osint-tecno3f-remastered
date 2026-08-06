@@ -3,9 +3,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 /**
- * Strict RAG (Retrieval-Augmented Generation) AI Extraction Service
- * Uses FULL scraped website context & search snippets.
- * Strictly forbidden from hallucinating or defaulting to templates.
+ * Strict RAG (Retrieval-Augmented Generation) & Taxonomical AI Extraction Service
+ * Uses FULL scraped website context, deep subdirectories & multi-API OSINT feeds.
+ * Organizes, categorizes, and classifies all incoming corporate intelligence.
  */
 export async function analyzeCompanyWithGemini(companyName, scrapedData = {}, searchData = {}, extraOsint = {}) {
   const apiKey = (process.env.GEMINI_API_KEY || '').trim();
@@ -19,11 +19,11 @@ export async function analyzeCompanyWithGemini(companyName, scrapedData = {}, se
   const website = scrapedData.url || '';
   const title = scrapedData.title || '';
   const metaDesc = scrapedData.description || '';
-  const aboutText = (scrapedData.aboutUs || scrapedData.valueProposition || '').slice(0, 2000);
-  const fullRawText = (scrapedData.fullText || '').slice(0, 3500);
-  const productsList = (scrapedData.products || []).slice(0, 10).join('; ');
-  const servicesList = (scrapedData.services || []).slice(0, 10).join('; ');
-  const clientsList = (scrapedData.clients || []).slice(0, 5).join('; ');
+  const aboutText = (scrapedData.aboutUs || scrapedData.valueProposition || '').slice(0, 2500);
+  const fullRawText = (scrapedData.fullText || scrapedData.rawText || '').slice(0, 4500);
+  const productsList = (scrapedData.products || []).slice(0, 12).join('; ');
+  const servicesList = (scrapedData.services || []).slice(0, 12).join('; ');
+  const clientsList = (scrapedData.clients || []).slice(0, 8).join('; ');
   const newsList = (searchData.newsItems || []).map(n => n.title).slice(0, 5).join('; ');
   const gazetteList = (searchData.gazetteSnippets || []).map(g => `${g.title}: ${g.snippet}`).slice(0, 4).join(' | ');
   const tenderList = (searchData.tenderSnippets || []).map(t => `${t.title}: ${t.snippet}`).slice(0, 4).join(' | ');
@@ -45,19 +45,27 @@ export async function analyzeCompanyWithGemini(companyName, scrapedData = {}, se
   const tradeContext = `COMERCIO EXTERIOR: Actividad ${trade.tradeActivity || 'Mercado Nacional'} | Detalle: ${trade.details || 'N/A'}`;
   const pymeContext = `REGISTRO MiPyME: Categoría ${pyme.pymeCategory || 'PyME'} | Beneficios: ${(pyme.fiscalBenefits || []).join(', ')} | Economía del Conocimiento: ${pyme.knowledgeEconomyRegistered ? 'Sí' : 'No'}`;
 
-  const ragContext = `
-==================== RAG GROUNDING CONTEXT FOR ${cleanComp.toUpperCase()} ====================
-DOMINIO / SITIO WEB: ${website || 'No disponible'}
-TÍTULO DEL SITIO: ${title}
-DESCRIPCIÓN META: ${metaDesc}
-SOBRE LA EMPRESA / HISTORIA: ${aboutText}
-TEXTO COMPLETO DEL SITIO WEB: ${fullRawText}
-PRODUCTOS DETECTADOS EN WEB: ${productsList || 'Ninguno detectado'}
-SERVICIOS DETECTADOS EN WEB: ${servicesList || 'Ninguno detectado'}
-CLIENTES / SECTORES DETECTADOS: ${clientsList || 'Ninguno detectado'}
-NOTICIAS PERIODÍSTICAS RECIENTES: ${newsList || 'Sin noticias recientes'}
+  const dynamicSections = (scrapedData.discoveredDynamicSections || []).join(', ');
 
---- DATOS OFICIALES DE INTEGRACIONES API OSINT ---
+  const ragContext = `
+==================== CONTEXTO DE INTELIGENCIA CORPORATIVA OSINT PARA ${cleanComp.toUpperCase()} ====================
+DOMINIO PRINCIPAL: ${website || 'No disponible'}
+TÍTULO DEL SITIO: ${title}
+DESCRIPCIÓN META CORPORATIVA: ${metaDesc}
+SECCIONES DINÁMICAS DESCUBIERTAS AUTOMÁTICAMENTE EN LA WEB: ${dynamicSections || 'Navegación general'}
+TEXTO EXTRAÍDO DE SECCIONES INSTITUCIONALES Y DINÁMICAS:
+${aboutText}
+
+CONTENIDO WEB MULTINIVEL COMPLETO:
+${fullRawText}
+
+PRODUCTOS DETECTADOS EN WEB Y SUBDIRECTORIOS: ${productsList || 'Catálogo a medida B2B'}
+SERVICIOS DETECTADOS EN WEB Y SUBDIRECTORIOS: ${servicesList || 'Asistencia técnica y provisión industrial'}
+CLIENTES Y SEGMENTOS OBJETIVO DETECTADOS: ${clientsList || 'Empresas corporativas e industriales'}
+NOTICIAS Y PRENSA PUBLICADA: ${newsList || 'Sin registros de prensa recientes'}
+BOLETINES OFICIALES / LICITACIONES ESTATALES: ${tenderList || gazetteList || searchSnippets}
+
+--- FUENTES OFICIALES DE INTEGRACIONES API Y REGISTROS ESTATALES ---
 PADRÓN AFIP / ARCA: ${afipContext}
 CENTRAL DE DEUDORES BCRA: ${bcraContext}
 INPI / WIPO PROPIEDAD INTELECTUAL: ${inpiContext}
@@ -67,31 +75,33 @@ COMERCIO EXTERIOR ADUANA: ${tradeContext}
 REGISTRO MiPyME ESTATAL: ${pymeContext}
 ================================================================================
 
-DIRECTIVAS STRICT-RAG (ZERO HALLUCINATION):
-1. Sos un auditor OSINT estricto. Tu única fuente de verdad es el RAG GROUNDING CONTEXT provisto arriba.
-2. NUNCA menciones empresas ajenas, ni uses descripciones de plantilla.
-3. Si un dato no se encuentra en el texto proporcionado, responde exactamente "Información no verificada públicamente".
-4. Toda afirmación debe estar 100% justificada por los datos escaneados de "${cleanComp}".
-5. Responde EXCLUSIVAMENTE en formato JSON válido según la estructura dada.
+DIRECTIVAS DE ORGANIZACIÓN, ANÁLISIS Y CLASIFICACIÓN TAXONÓMICA:
+1. Sos el Auditor Principal de Inteligencia Empresarial OSINT de Tecno3F. Tu tarea es ORGANIZAR, ANALIZAR Y CATALOGAR con máxima precisión toda la información recibida.
+2. CLASIFICACIÓN ESTRICTA:
+   - Organiza el sector exacto sin generalidades.
+   - Discrimina claramente entre Productos (bienes físicos o software) y Servicios (mecanizado, asistencia, desarrollo, mantenimiento).
+   - Identifica activos críticos de planta o infraestructura técnica (ej. centros CNC, curvadoras, servidores cloud, matricería de precisión, licencias CAD/CAM, tanques de acero), NUNCA términos superficiales.
+3. CERO ALUCINACIÓN: Toda conclusión debe ser consecuencia directa de los datos escaneados de "${cleanComp}".
+4. Responde EXCLUSIVAMENTE en formato JSON válido según la estructura dada.
 
-ESTRUCTURA JSON REQUERIDA:
+ESTRUCTURA JSON REQUERIDA Y CATALOGADA:
 {
-  "sector": "Sector exacto o rubro comercial verificado de ${cleanComp}",
-  "businessModel": "Modelo de negocio (ej: B2B, B2C, SaaS, Manufactura Industrial, Servicios Profesionales)",
-  "companyType": "Tipo de empresa (ej: PyME Industrial, Empresa de Software, Distribuidora Mayorista)",
-  "whatItSells": "Qué vende o provee exactamente ${cleanComp} según la información extraída",
-  "whoBuys": "Quiénes son los compradores o clientes de ${cleanComp} verificados en su texto web o padrón",
-  "howItGeneratesRevenue": "Cómo genera ingresos ${cleanComp} según sus productos/servicios",
-  "mostImportantAsset": "Especifica los ACTIVOS CRÍTICOS concretos de la industria de ${cleanComp} (ej: parque de curvadoras de caños/tubos, centros de mecanizado CNC, servidores cloud de alta disponibilidad, matricería de precisión, licencias CAD/CAM, planta de envasado), NUNCA frases genéricas como 'sitio web' o 'reputación'.",
-  "executiveSummary": "Síntesis ejecutiva de 2 párrafos basada 100% en los hechos extraídos y datos oficiales de AFIP, BCRA, INPI y Compr.ar para ${cleanComp}",
-  "strengths": ["Fortaleza real 1 verificada en el texto", "Fortaleza real 2 verificada"],
-  "weaknesses": ["Debilidad o brecha identificada"],
-  "opportunities": ["Oportunidad de mercado o licitación comprobable"],
-  "threats": ["Amenaza o riesgo de su sector"]
+  "sector": "Sector exacto y rubro comercial catalogado de ${cleanComp}",
+  "businessModel": "Modelo de negocio verificado (ej: B2B Industrial, B2C, SaaS Telegestión, Manufactura Metalúrgica, Provisión B2B)",
+  "companyType": "Tipo y clasificación de empresa (ej: PyME Industrial Metalúrgica, Empresa de Software & IoT, Distribuidora Industrial)",
+  "whatItSells": "Catálogo resumido y preciso de lo que vende o provee ${cleanComp}",
+  "whoBuys": "Perfil de compradores, clientes corporativos y sectores destino de ${cleanComp}",
+  "howItGeneratesRevenue": "Mecanismo principal de generación de ingresos según sus productos/servicios",
+  "mostImportantAsset": "Activos críticos concretos de la industria de ${cleanComp} (ej: parque de curvadoras de caños, centros de mecanizado CNC, servidores cloud de alta disponibilidad, matricería de precisión, licencias CAD/CAM)",
+  "executiveSummary": "Síntesis ejecutiva de 2 párrafos que organice y sintetice el perfil comercial, solvencia BCRA, capacidad licitatoria y oferta de ${cleanComp}",
+  "strengths": ["Fortaleza comercial o financiera 1 comprobada", "Fortaleza técnica 2 comprobada"],
+  "weaknesses": ["Debilidad o brecha operativa identificada"],
+  "opportunities": ["Oportunidad de mercado, ANR 4.0 o licitación comprobable"],
+  "threats": ["Amenaza o riesgo sectorial externo"]
 }
 `;
 
-  const modelsToTry = ['gemini-3.6-flash', 'gemini-flash-latest', 'gemini-2.0-flash'];
+  const modelsToTry = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
 
   for (const modelName of modelsToTry) {
     try {
@@ -106,11 +116,11 @@ ESTRUCTURA JSON REQUERIDA:
 
       if (response && response.text) {
         const parsed = JSON.parse(response.text);
-        console.log(`[RAG AI SUCCESS] Gemini Model "${modelName}" generated grounded synthesis for "${cleanComp}"`);
+        console.log(`[TAXONOMICAL RAG SUCCESS] Gemini Model "${modelName}" organized & cataloged profile for "${cleanComp}"`);
         return parsed;
       }
     } catch (err) {
-      console.log(`[RAG AI NOTICE] Model ${modelName} notice: ${err.message?.slice(0, 120)}`);
+      console.log(`[RAG AI NOTICE] Model ${modelName} notice for "${cleanComp}": ${err.message?.slice(0, 100)}`);
     }
   }
 

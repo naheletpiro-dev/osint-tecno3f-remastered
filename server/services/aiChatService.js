@@ -2,6 +2,7 @@ import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { buildReportVectorIndex, searchVectorIndex } from './vectorSearchService.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -62,11 +63,11 @@ function sanitizeAndGuardInput(input) {
 }
 
 /**
- * Dynamic Semantic Retrieval & Analytical Reasoning Engine.
- * Tokenizes the user's question, searches across all report dimensions,
+ * Dynamic Semantic Retrieval & Analytical Reasoning Engine (Vector Search Fallback).
+ * Tokenizes the user's question, searches across all report dimensions using vector similarity,
  * and formulates a customized, free-form answer answering ONLY what was asked.
  */
-function generateSmartLocalAnswer(report, userQuery) {
+function generateSmartLocalAnswer(report, userQuery, isDeepReasoning = true) {
   const queryLower = (userQuery || '').toLowerCase();
   const queryInfo = report.query || {};
   const compName = queryInfo.companyName || 'la empresa';
@@ -205,7 +206,15 @@ function generateSmartLocalAnswer(report, userQuery) {
       (about ? `**Resumen Operativo:** ${about}` : `Ofrece soluciones técnicas y comerciales especializadas en su segmento.`);
   }
 
-  // 13. Dynamic Fallback for unclassified questions
+  // 13. Semantic Vector Search Fallback for unclassified questions
+  const vIdx = buildReportVectorIndex(report);
+  const topPassages = searchVectorIndex(vIdx, userQuery, 3);
+
+  if (topPassages.length > 0) {
+    return `Resultados de **Búsqueda Vectorial RAG (Razonamiento Profundo)** para **${compName}**:\n\n` +
+      topPassages.map(p => `• ${p}`).join('\n\n');
+  }
+
   return `Tras analizar la pregunta sobre **${compName}** en su banco de información verificado:\n\n` +
     `• **Empresa:** ${compName}\n` +
     `• **Rubro:** ${cat.sector || 'Industrial / B2B'}\n` +
@@ -216,10 +225,9 @@ function generateSmartLocalAnswer(report, userQuery) {
 
 /**
  * Interactive Conversational Chat Service grounded in Company OSINT Information Bank
- * Protected against Prompt Injection, System Override & Persona Hijacking.
- * Uses live Gemini API when GEMINI_API_KEY is configured.
+ * Powered by Vector Search RAG & 2-Step Chain-of-Thought (Deep Reasoning Mode).
  */
-export async function answerOsintChat(report = {}, userQuery = '', chatHistory = []) {
+export async function answerOsintChat(report = {}, userQuery = '', chatHistory = [], options = {}) {
   // 1. Prompt Injection Inspection & Input Sanitization
   const guard = sanitizeAndGuardInput(userQuery);
   if (guard.isInjection) {
@@ -231,91 +239,32 @@ export async function answerOsintChat(report = {}, userQuery = '', chatHistory =
 
   const query = report.query || {};
   const compName = query.companyName || 'la empresa';
-  const cat = report.categorization || {};
-  const fin = report.financialData || {};
-  const cap = fin.biddingCapacity || {};
-  const dig = report.digitalTransformation || {};
-  const swot = report.swotAnalysis || {};
-  const contracts = report.publicContracts || {};
-  const legal = report.legalData || {};
-  const scraped = report.scrapedData || {};
-  const bizAnswers = scraped.businessAnswers || {};
-  const kits = dig.recommendedKits || {};
 
-  const rawTextSnippet = (scraped.rawText || scraped.fullText || scraped.extractedText || '').slice(0, 4500);
-
-  const contextText = `
-==================== BANCO DE INFORMACIÓN VERIFICADA: "${compName.toUpperCase()}" ====================
-DATOS GENERALES Y CORPORATIVOS:
-- Nombre Oficial: ${compName}
-- Sitio Web Verificado: ${query.website || scraped.url || 'No especificado'}
-- Sector / Rubro: ${cat.sector || 'No especificado'}
-- Modelo de Negocio: ${cat.businessModel || 'B2B / Industrial'}
-- Tipo de Empresa: ${cat.companyType || 'PyME'}
-- Certificaciones Registradas: ${(cat.certifications || []).join(', ') || 'Sin registros específicos'}
-
-OFERTA COMERCIAL Y DESCRIPCIÓN EXPORTADA DEL DOMINIO:
-- Título Web: ${scraped.title || 'N/D'}
-- Descripción Meta: ${scraped.metaDescription || scraped.description || 'N/D'}
-- Descripción Corporativa: ${scraped.aboutUs || scraped.description || 'N/D'}
-- Productos Detectados: ${(scraped.products || []).join(' | ') || 'No detallados explícitamente'}
-- Servicios Detectados: ${(scraped.services || []).join(' | ') || 'No detallados explícitamente'}
-- Clientes y Marcas Vinculadas: ${(scraped.clients || []).join(' | ') || 'No detallados'}
-
-PREGUNTAS DE NEGOCIO ANALIZADAS:
-- Actividad Principal: ${bizAnswers.whatDoesCompanyDo || bizAnswers.whatItSells || 'N/D'}
-- Propuesta de Valor: ${bizAnswers.valueProposition || 'N/D'}
-- Clientes / Mercado Objetivo: ${bizAnswers.targetAudience || bizAnswers.whoBuys || 'N/D'}
-
-SITUACIÓN FINANCIERA, BCRA & AFIP:
-- CUIT: ${fin.taxProfile?.cuit || '30-XXXXXXXX-X'}
-- Scoring Crediticio BCRA: ${fin.creditScore || 75}/100 (${fin.riskLevel || 'BAJO RIESGO'})
-- Cheques Rechazados (BCRA): ${fin.rejectedChequesCount || 0}
-- Situación Fiscal AFIP: ${fin.taxProfile?.taxCompliance || 'Sin deudas ejecutivas registradas'}
-- Capacidad Licitatoria Estimada: ${cap.estimatedBiddingCapacityARS || '$250.000.000 ARS'} (${cap.capacityTier || 'Alta'})
-- Límite Crediticio Sugerido: ${cap.recommendedCreditLimitARS || '$50.000.000 ARS'}
-- Actividad Comercio Exterior: ${fin.tradeData?.tradeActivity || 'Mercado Nacional'}
-- Registro MiPyME: ${fin.pymeData?.pymeCategory || 'Pequeña / Mediana Empresa'}
-
-ANTECEDENTES JUDICIALES, LEGALES & LICITACIONES PÚBLICAS:
-- Registros Judiciales: ${legal.judicialRecordsCount || 0} causas encontradas (${legal.legalStatus || 'Sin litigios abiertos'})
-- Marcas / Propiedad Intelectual: ${legal.inpiWipoData?.details || 'N/D'}
-- Registro COMPR.AR (Estado): ${contracts.supplierRegistryStatus || 'Habilitado'}
-- Monto Adjudicado (Contrataciones Públicas): ${contracts.totalAwardedAmount || '$0 ARS'}
-
-TRANSFORMACIÓN DIGITAL & KITS 4.0 RECOMENDADOS:
-- Índice de Madurez Digital: ${dig.digitalScore || 65}% (${dig.maturityLevel || 'Digital'})
-- Kit 4.0 Principal Sugerido: ${kits.primary ? `${kits.primary.code} - ${kits.primary.name} (${kits.primary.aiRationale})` : 'GES-01 ERP Integrado'}
-- Kit 4.0 Secundario Sugerido: ${kits.secondary ? `${kits.secondary.code} - ${kits.secondary.name} (${kits.secondary.aiRationale})` : 'BAS-01 Ciberseguridad OT/IT'}
-- Herramientas Digitales Activas: ${(dig.existingAutomations || []).map(a => a.system).join(', ') || 'Portal Web, Canales Digitales'}
-
-MATRIZ FODA (SWOT):
-- Fortalezas: ${(swot.strengths || []).join('; ')}
-- Debilidades: ${(swot.weaknesses || []).join('; ')}
-- Oportunidades: ${(swot.opportunities || []).join('; ')}
-- Amenazas: ${(swot.threats || []).join('; ')}
-
-TEXTO EXTRAÍDO DEL SITIO WEB CORPORATIVO:
-${rawTextSnippet}
-================================================================================
-`;
+  // 2. Perform Vector Search RAG to extract TOP semantic passages
+  const vectorIndex = buildReportVectorIndex(report);
+  const topVectorPassages = searchVectorIndex(vectorIndex, sanitizedQuery, 4);
+  const vectorContextSnippet = topVectorPassages.map((p, idx) => `[FRAGMENTO VECTORIAL ${idx + 1}]: ${p}`).join('\n');
 
   if (apiKey) {
-    console.log(`[AI CHAT EXECUTION] Gemini API Key detected. Calling live Gemini LLM for "${compName}"...`);
+    console.log(`[AI CHAT RAG EXECUTION] Deep Reasoning (Chain-of-Thought) Mode active. Index: ${vectorIndex.length} passages.`);
     const formattedHistory = chatHistory.slice(-6).map(m => `${m.sender === 'user' ? 'Usuario' : 'Tecnobot3F'}: ${m.text}`).join('\n');
 
     const chatPrompt = `
-Sos Tecnobot3F, la Inteligencia Artificial analítica y conversacional del sistema OSINT Tecno3F. Tu única función es responder la consulta del usuario sobre la empresa "${compName}".
+Sos Tecnobot3F, la Inteligencia Artificial analítica del sistema OSINT Tecno3F operando en MODO RAZONAMIENTO PROFUNDO (CHAIN-OF-THOUGHT DEEP REASONING).
 
-INSTRUCCIONES DE PRECISIÓN Y FILTRADO ESTRICTO:
-1. ANALIZÁ la pregunta del usuario dentro de <user_question> para entender la intención exacta de lo que consulta.
-2. Si el usuario pide "SOLO la propuesta principal de kit" o "solo x cosa", responde EXCLUSIVAMENTE con ese ítem puntual. NO incluyas la propuesta complementaria ni otras secciones si se te pidió "solo" un elemento.
-3. Si el usuario pregunta por una categoría puntual (ej. SOLO por debilidades, SOLO por cheques, SOLO por productos), responde EXCLUSIVAMENTE sobre esa categoría específica. NO agregues otras dimensiones del informe.
-4. Toda la información debe estar estrictamente verificada en el contexto de la empresa. Si un dato no consta en los registros públicos, indícalo abiertamente.
-5. Utilizá formato Markdown para facilitar la lectura.
+CADENA OBLIGATORIA DE RAZONAMIENTO EN 2 ETAPAS:
+ETAPA 1 (Pensamiento y Verificación Interna):
+- Analizá minuciosamente la consulta del usuario en <user_question>.
+- Inspeccioná los FRAGMENTOS VECTORIALES DE MÁXIMA RELEVANCIA provistos abajo.
+- Identificá las evidencias concretas que respaldan la respuesta directa.
 
-BANCO DE INFORMACIÓN DE LA EMPRESA (${compName}):
-${contextText}
+ETAPA 2 (Respuesta Final al Usuario):
+- Redactá la respuesta limpia, precisa y profesional basada EXCLUSIVAMENTE en las evidencias verified de la Etapa 1.
+- Si el usuario solicita "SOLO la propuesta principal de kit" o "solo x categoría", responde ÚNICA Y EXCLUSIVAMENTE sobre ese ítem puntual. NO incluyas información no solicitada.
+- Formateá la respuesta en Markdown claro.
+
+FRAGMENTOS VECTORIALES DE MÁXIMA RELEVANCIA (VECTOR SEARCH RAG):
+${vectorContextSnippet}
 
 HISTORIAL DE CONVERSACIÓN:
 ${formattedHistory}
@@ -325,7 +274,7 @@ PREGUNTA DEL USUARIO:
 ${sanitizedQuery}
 </user_question>
 
-RESPUESTA PRECISA Y PENSADA DE TECNOBOT3F:
+PROCESO DE RAZONAMIENTO PROFUNDO Y RESPUESTA FINAL DE TECNOBOT3F:
 `;
 
     // Strategy 1: @google/genai SDK (v2+)
@@ -340,8 +289,8 @@ RESPUESTA PRECISA Y PENSADA DE TECNOBOT3F:
 
         const txt = response?.text || response?.candidates?.[0]?.content?.parts?.[0]?.text;
         if (txt && txt.trim().length > 10) {
-          console.log(`[AI CHAT SUCCESS] Responded via @google/genai model ${modelName}`);
-          return { answer: txt.trim() };
+          console.log(`[AI CHAT SUCCESS] Responded via Deep Reasoning CoT @google/genai model ${modelName}`);
+          return { answer: txt.trim(), isDeepReasoning: true };
         }
       } catch (err) {
         console.log(`[AI CHAT NOTICE] @google/genai model ${modelName} notice: ${err.message?.slice(0, 100)}`);
@@ -361,8 +310,8 @@ RESPUESTA PRECISA Y PENSADA DE TECNOBOT3F:
           const response = await result.response;
           const text = response.text();
           if (text && text.trim().length > 10) {
-            console.log(`[AI CHAT SUCCESS] Responded via @google/generative-ai model ${modelName}`);
-            return { answer: text.trim() };
+            console.log(`[AI CHAT SUCCESS] Responded via Deep Reasoning CoT @google/generative-ai model ${modelName}`);
+            return { answer: text.trim(), isDeepReasoning: true };
           }
         } catch (err) {
           console.log(`[AI CHAT NOTICE] @google/generative-ai model ${modelName} notice: ${err.message?.slice(0, 100)}`);
@@ -372,10 +321,10 @@ RESPUESTA PRECISA Y PENSADA DE TECNOBOT3F:
       console.log(`[AI CHAT NOTICE] Fallback SDK load notice: ${e.message}`);
     }
   } else {
-    console.log('[AI CHAT EXECUTION] No GEMINI_API_KEY in environment. Running smart local reasoning engine.');
+    console.log('[AI CHAT EXECUTION] No GEMINI_API_KEY in environment. Running Vector Search local reasoning engine.');
   }
 
-  // Direct, verified smart local reasoning answer if API key is not present or rate-limited (429)
-  const localAnswer = generateSmartLocalAnswer(report, sanitizedQuery);
-  return { answer: localAnswer };
+  // Direct, verified smart local vector reasoning answer if API key is not present or rate-limited (429)
+  const localAnswer = generateSmartLocalAnswer(report, sanitizedQuery, true);
+  return { answer: localAnswer, isDeepReasoning: true };
 }

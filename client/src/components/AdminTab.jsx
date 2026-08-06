@@ -24,6 +24,10 @@ export default function AdminTab() {
   const [newDisplayName, setNewDisplayName] = useState('');
   const [newRole, setNewRole] = useState('user');
 
+  // Change Password Modal State
+  const [selectedUserForPassword, setSelectedUserForPassword] = useState(null);
+  const [newPasswordInput, setNewPasswordInput] = useState('');
+
   const fetchUsers = async () => {
     setLoading(true);
     setError(null);
@@ -169,6 +173,44 @@ export default function AdminTab() {
       }
     } catch (err) {
       setError('Error al procesar la baja.');
+    } finally {
+      setActionLoading(false);
+    }
+  };
+
+  const handleChangePasswordSubmit = async (e) => {
+    e.preventDefault();
+    if (!selectedUserForPassword || !newPasswordInput.trim()) return;
+
+    setActionLoading(true);
+    setError(null);
+    setSuccessMsg(null);
+
+    try {
+      const res = await fetch('/api/admin/users/change-password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-User-Role': 'admin'
+        },
+        body: JSON.stringify({
+          userId: selectedUserForPassword.id,
+          newPassword: newPasswordInput.trim()
+        })
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setSuccessMsg(`Contraseña actualizada con éxito para el usuario "${selectedUserForPassword.username}".`);
+        setSelectedUserForPassword(null);
+        setNewPasswordInput('');
+        fetchUsers();
+        fetchAuditLogs();
+      } else {
+        setError(data.error || 'Error al cambiar la contraseña.');
+      }
+    } catch (err) {
+      setError('Error de comunicación con el servidor.');
     } finally {
       setActionLoading(false);
     }
@@ -518,28 +560,45 @@ export default function AdminTab() {
                             {new Date(u.createdAt).toLocaleDateString('es-AR')}
                           </td>
                           <td style={{ padding: '14px', textAlign: 'right' }}>
-                            {!isMasterAdmin && (
-                              <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
-                                <button
-                                  className="btn-secondary"
-                                  onClick={() => handleToggleStatus(u.id, u.username)}
-                                  disabled={actionLoading}
-                                  style={{ padding: '5px 10px', fontSize: '0.76rem', color: isActive ? '#f59e0b' : '#34d399', background: '#1e293b' }}
-                                >
-                                  {isActive ? <UserX size={13} /> : <UserCheck size={13} />}
-                                  {isActive ? 'Baja' : 'Activar'}
-                                </button>
-                                <button
-                                  className="btn-secondary"
-                                  onClick={() => handleDeleteUser(u.id, u.username)}
-                                  disabled={actionLoading}
-                                  style={{ padding: '5px 8px', fontSize: '0.76rem', color: '#fb7185', background: '#1e293b' }}
-                                  title="Eliminar usuario"
-                                >
-                                  <Trash2 size={13} />
-                                </button>
-                              </div>
-                            )}
+                            <div style={{ display: 'flex', gap: '8px', justifyContent: 'flex-end' }}>
+                              <button
+                                className="btn-secondary"
+                                onClick={() => {
+                                  setSelectedUserForPassword(u);
+                                  setNewPasswordInput('');
+                                  setError(null);
+                                  setSuccessMsg(null);
+                                }}
+                                disabled={actionLoading}
+                                style={{ padding: '5px 10px', fontSize: '0.76rem', color: '#60a5fa', background: '#1e293b' }}
+                                title="Cambiar contraseña de esta cuenta"
+                              >
+                                <Lock size={13} /> Clave
+                              </button>
+
+                              {!isMasterAdmin && (
+                                <>
+                                  <button
+                                    className="btn-secondary"
+                                    onClick={() => handleToggleStatus(u.id, u.username)}
+                                    disabled={actionLoading}
+                                    style={{ padding: '5px 10px', fontSize: '0.76rem', color: isActive ? '#f59e0b' : '#34d399', background: '#1e293b' }}
+                                  >
+                                    {isActive ? <UserX size={13} /> : <UserCheck size={13} />}
+                                    {isActive ? 'Baja' : 'Activar'}
+                                  </button>
+                                  <button
+                                    className="btn-secondary"
+                                    onClick={() => handleDeleteUser(u.id, u.username)}
+                                    disabled={actionLoading}
+                                    style={{ padding: '5px 8px', fontSize: '0.76rem', color: '#fb7185', background: '#1e293b' }}
+                                    title="Eliminar usuario"
+                                  >
+                                    <Trash2 size={13} />
+                                  </button>
+                                </>
+                              )}
+                            </div>
                           </td>
                         </tr>
                       );
@@ -731,6 +790,84 @@ export default function AdminTab() {
             )}
           </div>
         </>
+      )}
+
+      {/* Modal dialog for resetting user password */}
+      {selectedUserForPassword && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.75)',
+          backdropFilter: 'blur(6px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 9999,
+          padding: '20px'
+        }}>
+          <div style={{
+            background: '#111827',
+            border: '1px solid rgba(96, 165, 250, 0.4)',
+            borderRadius: '20px',
+            padding: '30px',
+            maxWidth: '440px',
+            width: '100%',
+            boxShadow: '0 20px 50px rgba(0,0,0,0.8)'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
+              <div style={{ width: '44px', height: '44px', borderRadius: '12px', background: 'rgba(96, 165, 250, 0.15)', border: '1px solid rgba(96, 165, 250, 0.3)', color: '#60a5fa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Lock size={22} />
+              </div>
+              <div>
+                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#f8fafc', margin: 0 }}>
+                  Cambiar Contraseña
+                </h3>
+                <div style={{ fontSize: '0.84rem', color: '#94a3b8', marginTop: '2px' }}>
+                  Cuenta: <strong style={{ color: '#60a5fa' }}>{selectedUserForPassword.username}</strong> ({selectedUserForPassword.displayName || selectedUserForPassword.username})
+                </div>
+              </div>
+            </div>
+
+            <form onSubmit={handleChangePasswordSubmit}>
+              <div style={{ marginBottom: '22px' }}>
+                <label className="field-label" style={{ fontSize: '0.84rem' }}>
+                  Nueva Contraseña *
+                </label>
+                <input
+                  type="text"
+                  className="input-control"
+                  placeholder="Escriba la nueva clave (ej. Clave2026)..."
+                  value={newPasswordInput}
+                  onChange={(e) => setNewPasswordInput(e.target.value)}
+                  required
+                  autoFocus
+                  style={{ width: '100%', padding: '10px 14px', fontSize: '0.92rem' }}
+                />
+              </div>
+
+              <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end' }}>
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={() => setSelectedUserForPassword(null)}
+                  disabled={actionLoading}
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={actionLoading || !newPasswordInput.trim()}
+                >
+                  {actionLoading ? 'Guardando...' : 'Actualizar Contraseña'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       )}
     </div>
   );

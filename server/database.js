@@ -177,6 +177,25 @@ export function deleteUserFromDB(userId) {
 }
 
 /**
+ * Admin: Change User Password
+ */
+export function updateUserPasswordInDB(userId, newPassword) {
+  const db = readDB();
+  const user = db.users.find(u => u.id === userId);
+
+  if (!user) throw new Error('Usuario no encontrado.');
+
+  if (!newPassword || String(newPassword).trim().length < 4) {
+    throw new Error('La nueva contraseña debe tener al menos 4 caracteres.');
+  }
+
+  user.password = String(newPassword).trim();
+  writeDB(db);
+
+  return { id: user.id, username: user.username, displayName: user.displayName || user.username };
+}
+
+/**
  * Security Audit Log Functions
  */
 export function addAuditLog({ type, username = 'Sistema', details, severity = 'info', ip = '127.0.0.1' }) {

@@ -73,32 +73,9 @@ export default function LegalTab({ legalData = {}, companyName = '' }) {
         </div>
       </div>
 
-      {/* OpenCorporates Global Registry Card */}
-      {openCorp?.corporateDetails && (
-        <div className="saas-card col-6" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(6, 182, 212, 0.05))', border: '1px solid rgba(37, 99, 235, 0.3)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Globe size={20} style={{ color: '#60a5fa' }} />
-              <h4 style={{ fontSize: '1.05rem', fontWeight: 800 }}>OpenCorporates Global Registry</h4>
-            </div>
-            {openCorp.corporateDetails.opencorporatesUrl && (
-              <a href={openCorp.corporateDetails.opencorporatesUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#60a5fa', fontSize: '0.78rem', display: 'flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}>
-                <ExternalLink size={12} /> Ver en OpenCorporates
-              </a>
-            )}
-          </div>
-          <div style={{ fontSize: '0.88rem', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <div><span style={{ color: 'var(--text-muted)' }}>Razón Social / Nombre:</span> <strong>{openCorp.corporateDetails.name}</strong></div>
-            <div><span style={{ color: 'var(--text-muted)' }}>N° de Registro Mercantil:</span> <strong style={{ fontFamily: 'var(--font-mono)' }}>{openCorp.corporateDetails.companyNumber}</strong></div>
-            <div><span style={{ color: 'var(--text-muted)' }}>Jurisdicción:</span> <strong>{openCorp.corporateDetails.jurisdictionCode}</strong></div>
-            <div><span style={{ color: 'var(--text-muted)' }}>Estado Societario:</span> <span style={{ color: 'var(--accent-emerald)', fontWeight: 700 }}>{openCorp.corporateDetails.currentStatus}</span></div>
-          </div>
-        </div>
-      )}
-
       {/* INPI & WIPO Trademarks Card */}
       {inpi?.registeredTrademarks && (
-        <div className="saas-card col-6" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(168, 85, 247, 0.05))', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
+        <div className="saas-card col-12" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(168, 85, 247, 0.05))', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               <Award size={20} style={{ color: 'var(--accent-emerald)' }} />

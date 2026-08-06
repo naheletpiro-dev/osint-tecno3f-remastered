@@ -26,6 +26,7 @@ import {
   createUserByAdmin,
   toggleUserStatusInDB,
   deleteUserFromDB,
+  updateUserPasswordInDB,
   addAuditLog,
   getAuditLogsFromDB,
   clearAuditLogsInDB
@@ -149,6 +150,27 @@ app.delete('/api/admin/users/:id', requireAdminAuth, (req, res) => {
     if (!id) return res.status(400).json({ error: 'ID de usuario requerido.' });
     const result = deleteUserFromDB(String(id).trim());
     addAuditLog({ type: 'USER_DELETED', username: 'Administrador', details: `Eliminación de cuenta ID ${id}.`, severity: 'danger', ip: clientIp });
+    res.json({ success: true, result });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.post('/api/admin/users/change-password', requireAdminAuth, (req, res) => {
+  const clientIp = req.ip || req.connection.remoteAddress || '127.0.0.1';
+  try {
+    const { userId, newPassword } = req.body;
+    if (!userId || !newPassword) {
+      return res.status(400).json({ error: 'ID de usuario y nueva contraseña son requeridos.' });
+    }
+    const result = updateUserPasswordInDB(String(userId).trim(), String(newPassword).trim());
+    addAuditLog({
+      type: 'USER_PASSWORD_CHANGED',
+      username: 'Administrador',
+      details: `Cambio de contraseña efectuado para la cuenta de usuario "${result.username}".`,
+      severity: 'warning',
+      ip: clientIp
+    });
     res.json({ success: true, result });
   } catch (err) {
     res.status(400).json({ error: err.message });

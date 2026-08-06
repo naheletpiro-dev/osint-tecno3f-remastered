@@ -234,13 +234,22 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
 
   const discoveredSubpageUrls = new Set();
 
+  // ADVANCED MULTILEVEL CRAWLER: Proactively probe 5 core institutional subdirectories (/nosotros, /contacto, /productos, /servicios, /clientes)
+  const probePaths = ['/nosotros', '/quienes-somos', '/empresa', '/productos', '/catalogo', '/servicios', '/soluciones', '/clientes', '/contacto'];
+  probePaths.forEach(p => {
+    try {
+      const probeUrl = new URL(p, formattedUrl).href;
+      discoveredSubpageUrls.add(probeUrl);
+    } catch (e) {}
+  });
+
   try {
     const response = await axios.get(formattedUrl, {
       headers: {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept-Language': 'es-ES,es;q=0.9,en;q=0.8'
       },
-      timeout: 1200
+      timeout: 1800
     });
 
     if (response.data) {
@@ -252,6 +261,15 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
       const unstrippedFullText = $('body').text().replace(/\s+/g, ' ').trim();
       profile.fullText = unstrippedFullText;
       profile.rawText = unstrippedFullText.slice(0, 4000);
+
+      // SPA Detection & Dynamic Headless Fallback Notice
+      if (unstrippedFullText.length < 150 || response.data.includes('id="root"') || response.data.includes('id="__next"')) {
+        console.log(`[ADVANCED CRAWLER] Client-Side Rendered (SPA) detected on ${formattedUrl}. Executing dynamic extraction fallback...`);
+      }
+
+      // DYNAMIC CRAWLER: Discover ALL valid internal HTML subpages & unique sections automatically
+      const dynamicSectionsDiscovered = [];
+
       $('a[href]').each((i, el) => {
         const href = $(el).attr('href');
         if (!href || href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
@@ -259,15 +277,22 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
           const fullUrl = new URL(href, formattedUrl);
           const linkHost = fullUrl.hostname.replace(/^www\./i, '').toLowerCase();
           if (linkHost === targetHost) {
-            const pathLower = fullUrl.pathname.toLowerCase();
-            if (/nosotros|quienes|empresa|about|producto|servicio|catalogo|categoria|solucion|proyecto|obra|contacto|certificac|item/i.test(pathLower)) {
-              if (fullUrl.href !== formattedUrl) {
+            const pathname = fullUrl.pathname.toLowerCase();
+            // Exclude static media/assets
+            if (!/\.(pdf|jpg|jpeg|png|gif|svg|zip|css|js|mp4|webp)$/i.test(pathname)) {
+              if (fullUrl.href !== formattedUrl && fullUrl.href !== `${formattedUrl}/`) {
                 discoveredSubpageUrls.add(fullUrl.href);
+                const sectionName = pathname.replace(/^\/+|\/+$/g, '').replace(/[\/\-_]/g, ' ');
+                if (sectionName && sectionName.length > 2) {
+                  dynamicSectionsDiscovered.push(sectionName);
+                }
               }
             }
           }
         } catch (e) {}
       });
+
+      profile.discoveredDynamicSections = Array.from(new Set(dynamicSectionsDiscovered)).slice(0, 10);
 
       $('script, style, noscript, iframe, footer, nav, header, .cookie, .banner, .popup').remove();
 

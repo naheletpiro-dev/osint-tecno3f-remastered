@@ -88,19 +88,65 @@ app.use((req, res, next) => {
   next();
 });
 
-// Strict CORS Whitelist Middleware
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', 'http://127.0.0.1:3000', 'http://127.0.0.1:5000'];
-if (process.env.ALLOWED_ORIGINS) {
-  process.env.ALLOWED_ORIGINS.split(',').forEach(o => allowedOrigins.push(o.trim()));
+// Dynamic CORS Middleware with Support for Render, Netlify & Custom Domains
+const defaultAllowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5000',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:5000'
+];
+
+if (process.env.RENDER_EXTERNAL_URL) {
+  defaultAllowedOrigins.push(process.env.RENDER_EXTERNAL_URL.trim());
 }
 
 app.use(cors({
   origin: function (origin, callback) {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
-      callback(null, true);
-    } else {
-      callback(new Error('CORS no permitido para este origen por política de seguridad.'));
+    // 1. Allow requests without origin (same-origin, server-to-server, cURL)
+    if (!origin) {
+      return callback(null, true);
     }
+
+    // 2. Parse environment variable ALLOWED_ORIGINS
+    const envOrigins = process.env.ALLOWED_ORIGINS
+      ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim())
+      : [];
+
+    if (envOrigins.includes('*') || process.env.ALLOWED_ORIGINS === '*') {
+      return callback(null, true);
+    }
+
+    const allAllowed = [...defaultAllowedOrigins, ...envOrigins];
+
+    // 3. Check exact allowed origins
+    if (allAllowed.includes(origin)) {
+      return callback(null, true);
+    }
+
+    // 4. Automatically permit deployments on .onrender.com, .netlify.app, .vercel.app
+    try {
+      const originUrl = new URL(origin);
+      if (
+        originUrl.hostname.endsWith('.onrender.com') ||
+        originUrl.hostname.endsWith('.netlify.app') ||
+        originUrl.hostname.endsWith('.vercel.app') ||
+        originUrl.hostname === 'localhost' ||
+        originUrl.hostname === '127.0.0.1'
+      ) {
+        return callback(null, true);
+      }
+    } catch (e) {
+      // Ignore URL parse failures
+    }
+
+    // 5. Allow all origins in non-production mode
+    if (process.env.NODE_ENV !== 'production') {
+      return callback(null, true);
+    }
+
+    // Block unallowed origins safely without throwing 500 internal server error crash
+    console.warn(`[CORS Bloqueado] Petición proveniente de un origen no permitido: ${origin}`);
+    return callback(null, false);
   },
   credentials: true
 }));

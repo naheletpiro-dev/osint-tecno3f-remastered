@@ -1,10 +1,10 @@
 /**
- * Customized & Verified SWOT / FODA OSINT Analysis Engine
+ * Customized & Expanded SWOT / FODA OSINT Analysis Engine
  * Generates Fortalezas, Debilidades, Oportunidades y Amenazas strictly customized for the queried company.
  */
 export function generateSwotAnalysis(companyName, categorization = {}, financialData = {}, scrapedData = {}, legalData = {}) {
   const cleanComp = companyName ? companyName.trim() : 'Empresa';
-  const sector = categorization.sector || 'su rubro';
+  const sector = categorization.sector || 'su rubro industrial y comercial';
   const score = financialData.creditScore || 75;
   const hasWebsite = scrapedData.hasWebsite;
   const products = scrapedData.products || [];
@@ -13,44 +13,42 @@ export function generateSwotAnalysis(companyName, categorization = {}, financial
   const cuit = financialData.taxProfile?.cuit || '30-XXXXXXXX-X';
 
   const strengths = [
-    `Presencia operativa y posición de mercado verificada en el sector de ${sector} para ${cleanComp}.`,
+    `Presencia operativa comprobada y posicionamiento de mercado en el sector de ${sector} para ${cleanComp}.`,
     score >= 75
-      ? `Excelente solvencia crediticia con Situación 1 en central de deudores BCRA (${score}/100 pts) para ${cleanComp}.`
-      : `Capacidad de adaptación operativa a los requerimientos de sus clientes.`,
-    `Cumplimiento impositivo en regla con CUIT ${cuit} inscripto y activo en AFIP/ARCA.`
+      ? `Excelente solvencia crediticia con Situación 1 en la Central de Deudores BCRA (${score}/100 pts) y sin deudas morosas.`
+      : `Capacidad de adaptación operativa a las exigencias de entrega de sus clientes corporativos.`,
+    `Cumplimiento impositivo en regla con CUIT ${cuit} inscripto y activo en el padrón de AFIP / ARCA.`,
+    products.length > 0
+      ? `Oferta comercial propia comprobada con líneas destacadas: ${products.slice(0, 3).join(', ')}.`
+      : `Cartera de servicios especializados: ${services.length > 0 ? services.slice(0, 3).join(', ') : 'Asistencia técnica y servicios comerciales'}.`,
+    certs.length > 0
+      ? `Certificaciones técnicas e industriales verificadas: ${certs.join(', ')}.`
+      : `Infraestructura operativa y equipamiento preparado para proyectos de volumen comercial.`
   ];
-
-  if (products.length > 0) {
-    strengths.push(`Oferta comercial verificada con productos destacados: ${products.slice(0, 2).join(', ')}.`);
-  } else if (services.length > 0) {
-    strengths.push(`Cartera de servicios verificada: ${services.slice(0, 2).join(', ')}.`);
-  }
-
-  if (certs.length > 0) {
-    strengths.push(`Certificaciones oficiales verificadas: ${certs[0]}.`);
-  }
 
   const weaknesses = [
     !hasWebsite
-      ? `Sin sitio web oficial propio verificado para ${cleanComp}, lo que limita el alcance de nuevos clientes digitales.`
-      : `Oportunidad de ampliar la visibilidad digital de casos de éxito y proyectos de ${cleanComp}.`,
-    `Concentración de clientes en el mercado regional/provincial actual.`
+      ? `Ausencia de dominio web oficial verificado para ${cleanComp}, lo que dificulta la validación directa por parte de nuevos clientes corporativos.`
+      : `Oportunidad de potenciar la visibilidad digital de sus proyectos ejecutados, casos de éxito y soluciones de ${cleanComp}.`,
+    `Concentración del mayor volumen de facturación en el mercado regional y clientes de proximidad.`,
+    `Margen de mejora en la digitalización de canales directos de venta online y atención comercial automatizada.`,
+    financialData.rejectedChequesCount > 0
+      ? `Registros históricos de pasivos o cheques rechazados que requieren seguimiento crediticio ante SGR/bancos.`
+      : `Dependencia de financiamiento bancario tradicional para capital de trabajo de proyectos de gran escala.`
   ];
 
-  if (financialData.rejectedChequesCount > 0) {
-    weaknesses.push(`Registro histórico de pasivos o cheques rechazados que requieren seguimiento crediticio.`);
-  }
-
   const opportunities = [
-    `Habilitación registrada en el portal COMPR.AR para participar en licitaciones del Estado con ${cleanComp}.`,
-    `Postulación a programas de Aportes No Reembolsables (ANR SEPYME) para financiar equipamiento y tecnología.`,
-    `Vinculación con cámaras del sector de ${sector} para desarrollo de nuevos mercados.`
+    `Habilitación registrada en el portal COMPR.AR para participar en licitaciones y contratos del Estado nacional, provincial y municipal.`,
+    `Postulación a programas de Aportes No Reembolsables (ANR 4.0 SEPYME / FONTAR) para financiar equipamiento, sensórica IoT y automatización.`,
+    `Integración en clústeres productivos y cámaras empresariales de ${sector} para compras comunitarias de insumos a menor costo.`,
+    `Expansión de la cartera de clientes corporativos mediante prospección B2B digital y alianzas estratégicas en el interior del país.`
   ];
 
   const threats = [
-    `Volatilidad en los costos de materias primas, insumos y logística de transporte.`,
-    `Competencia de firmas sustitutas regionales en el segmento de ${sector}.`,
-    `Cambios en las condiciones de financiamiento y crédito comercial.`
+    `Volatilidad en los costos de materias primas, insumos importados y logística de transporte.`,
+    `Competencia de firmas sustitutas regionales o importadas en el segmento de ${sector}.`,
+    `Fluctuaciones en las condiciones del crédito comercial y tasas de interés de corto plazo.`,
+    `Riesgo de demoras en la cadena de cobro de clientes corporativos o licitaciones públicas.`
   ];
 
   return {

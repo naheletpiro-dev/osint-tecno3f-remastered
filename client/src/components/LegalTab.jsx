@@ -1,5 +1,6 @@
 import React from 'react';
 import { Scale, Gavel, Award, Globe, ExternalLink, CheckCircle2 } from 'lucide-react';
+import RealVsEstimatedBadge from './RealVsEstimatedBadge';
 
 export default function LegalTab({ legalData = {}, companyName = '' }) {
   const data = legalData || {};
@@ -74,28 +75,36 @@ export default function LegalTab({ legalData = {}, companyName = '' }) {
       </div>
 
       {/* INPI & WIPO Trademarks Card */}
-      {inpi?.registeredTrademarks && (
-        <div className="saas-card col-12" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(168, 85, 247, 0.05))', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+      {inpi && (
+        <div className="saas-card col-12" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(168, 85, 247, 0.05))', border: inpi.isRealData ? '1px solid rgba(16, 185, 129, 0.3)' : '1px dashed rgba(245, 158, 11, 0.4)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px', flexWrap: 'wrap', gap: '10px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
               <Award size={20} style={{ color: 'var(--accent-emerald)' }} />
               <h4 style={{ fontSize: '1.05rem', fontWeight: 800 }}>Marcas e INPI / WIPO Brand DB</h4>
+              <RealVsEstimatedBadge isRealData={inpi.isRealData} sourceLabel={inpi.apiSource} />
             </div>
             <span style={{ fontSize: '0.78rem', background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', padding: '4px 10px', borderRadius: '12px', fontWeight: 700 }}>
               {inpi.totalTrademarksCount || 0} Registradas
             </span>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {inpi.registeredTrademarks.map((t, idx) => (
-              <div key={idx} style={{ background: 'rgba(0,0,0,0.25)', padding: '10px 14px', borderRadius: '8px', fontSize: '0.85rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div>
-                  <div style={{ fontWeight: 800, color: '#f8fafc' }}>{t.brandName}</div>
-                  <div style={{ color: 'var(--text-muted)', fontSize: '0.76rem' }}>{t.niceClass} • {t.jurisdiction}</div>
+
+          {inpi.registeredTrademarks && inpi.registeredTrademarks.length > 0 ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {inpi.registeredTrademarks.map((t, idx) => (
+                <div key={idx} style={{ background: 'rgba(0,0,0,0.25)', padding: '10px 14px', borderRadius: '8px', fontSize: '0.85rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <div style={{ fontWeight: 800, color: '#f8fafc' }}>{t.brandName}</div>
+                    <div style={{ color: 'var(--text-muted)', fontSize: '0.76rem' }}>{t.niceClass} • {t.jurisdiction}</div>
+                  </div>
+                  <span style={{ color: 'var(--accent-emerald)', fontWeight: 700, fontSize: '0.76rem' }}>✔ {t.status}</span>
                 </div>
-                <span style={{ color: 'var(--accent-emerald)', fontWeight: 700, fontSize: '0.76rem' }}>✔ {t.status}</span>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{ color: 'var(--text-muted)', padding: '20px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', fontSize: '0.86rem' }}>
+              Sin registro de marcas o patentes en la consulta en vivo a INPI / WIPO Brand DB.
+            </div>
+          )}
         </div>
       )}
 

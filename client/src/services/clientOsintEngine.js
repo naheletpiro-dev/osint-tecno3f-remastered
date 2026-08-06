@@ -347,29 +347,7 @@ export async function processClientSideOSINT(companyName, websiteUrl, region = '
     digitalTransformation,
     aiIntelligence,
     searchData: {
-      newsItems: [
-        {
-          title: `${cleanComp} impulsa nuevos proyectos de desarrollo y consolidación en el mercado`,
-          source: 'Diario de Empresas & Comercio',
-          pubDate: 'Hace 4 días',
-          link: '#',
-          sentiment: 'positive'
-        },
-        {
-          title: `Evolución del sector y la participación estratégica de ${cleanComp}`,
-          source: 'Noticias Industriales',
-          pubDate: 'Hace 2 semanas',
-          link: '#',
-          sentiment: 'neutral'
-        },
-        {
-          title: `Participación de ${cleanComp} en encuentros del sector productivo y cámaras comerciales`,
-          source: 'Actualidad Empresarial',
-          pubDate: 'Hace 3 semanas',
-          link: '#',
-          sentiment: 'positive'
-        }
-      ],
+      newsItems: [],
       socialProfiles: [
         { platform: 'LinkedIn', estimatedUrl: `https://linkedin.com/company/${cleanComp.toLowerCase().replace(/[^a-z0-9]/g, '')}`, icon: 'linkedin', status: 'Detectado via OSINT' },
         { platform: 'Instagram', estimatedUrl: `https://instagram.com/${cleanComp.toLowerCase().replace(/[^a-z0-9]/g, '')}`, icon: 'instagram', status: 'Detectado via OSINT' },

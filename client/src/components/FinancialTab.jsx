@@ -1,5 +1,6 @@
 import React from 'react';
 import { DollarSign, ShieldAlert, CheckCircle2, AlertCircle, TrendingDown, FileText, Landmark, FileCheck, ExternalLink, AlertTriangle } from 'lucide-react';
+import RealVsEstimatedBadge from './RealVsEstimatedBadge';
 
 export default function FinancialTab({ financialData = {} }) {
   const data = financialData || {};
@@ -18,15 +19,11 @@ export default function FinancialTab({ financialData = {} }) {
       <div className="saas-card col-12" style={{ padding: '26px', background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(16, 185, 129, 0.05))', border: '1px solid rgba(37, 99, 235, 0.3)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
               <span style={{ fontSize: '0.78rem', color: '#60a5fa', fontWeight: 800, textTransform: 'uppercase' }}>Padrón Fiscal AFIP / ARCA</span>
-              {bcra?.isRealData && (
-                <span style={{ background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.4)', padding: '2px 10px', borderRadius: '12px', fontSize: '0.72rem', fontWeight: 800, display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
-                  <CheckCircle2 size={12} /> Datos En Vivo API BCRA
-                </span>
-              )}
+              <RealVsEstimatedBadge isRealData={tax.isRealData} sourceLabel={tax.apiSource} />
             </div>
-            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginTop: '2px' }}>CUIT: {tax.cuit || '30-XXXXXXXX-X'}</h2>
+            <h2 style={{ fontSize: '1.5rem', fontWeight: 800, marginTop: '4px' }}>CUIT: {tax.cuit || '30-XXXXXXXX-X'}</h2>
             <div style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', marginTop: '4px' }}>
               {tax.economicActivity || 'Actividad Comercial e Industrial Inscripta'}
             </div>
@@ -37,7 +34,7 @@ export default function FinancialTab({ financialData = {} }) {
               {tax.vatCondition || 'IVA Inscripto'}
             </span>
             <span style={{ background: 'rgba(168, 85, 247, 0.12)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.3)', padding: '6px 14px', borderRadius: '20px', fontSize: '0.82rem', fontWeight: 700 }}>
-              {pyme.pymeCategory || 'Certificado MiPyME Activo'}
+              {pyme.pymeCategory || 'Dato no disponible en registros públicos'}
             </span>
             <span style={{ background: 'rgba(56, 189, 248, 0.12)', color: '#38bdf8', border: '1px solid rgba(56, 189, 248, 0.3)', padding: '6px 14px', borderRadius: '20px', fontSize: '0.82rem', fontWeight: 700 }}>
               🚢 {trade.tradeActivity || 'Comercio Exterior: Operativo'}
@@ -66,8 +63,11 @@ export default function FinancialTab({ financialData = {} }) {
                 <Landmark size={28} />
               </div>
               <div>
-                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Central de Deudores BCRA</span>
-                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginTop: '2px', color: bcra.situacionColor || '#f8fafc' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Central de Deudores BCRA</span>
+                  <RealVsEstimatedBadge isRealData={bcra.isRealData} sourceLabel={bcra.apiSource} />
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginTop: '4px', color: bcra.situacionColor || '#f8fafc' }}>
                   {bcra.situacionLabel}
                 </h3>
                 <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', marginTop: '2px' }}>

@@ -29,7 +29,16 @@ import {
   updateUserPasswordInDB,
   addAuditLog,
   getAuditLogsFromDB,
-  clearAuditLogsInDB
+  clearAuditLogsInDB,
+  verifyAuthToken,
+  getWatchlistFromDB,
+  addWatchlistCompany,
+  removeWatchlistCompany,
+  addWatchlistAlert,
+  saveUserReportToDB,
+  getUserHistorySummariesFromDB,
+  getUserReportByIdFromDB,
+  clearUserHistoryFromDB
 } from './database.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -37,6 +46,34 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// In-Memory Report Cache with TTL (15 minutes)
+const scanReportCache = new Map();
+const CACHE_TTL_MS = 15 * 60 * 1000;
+
+function getCachedScanReport(companyName, website) {
+  const cleanComp = (companyName || '').trim().toLowerCase();
+  const cleanUrl = (website || '').trim().toLowerCase();
+  const cacheKey = `${cleanComp}_${cleanUrl}`;
+
+  if (scanReportCache.has(cacheKey)) {
+    const entry = scanReportCache.get(cacheKey);
+    if (Date.now() - entry.timestamp < CACHE_TTL_MS) {
+      console.log(`[OSINT CACHE HIT] Serving cached scan report for "${companyName}" (0ms latency).`);
+      return { ...entry.report, isFromCache: true };
+    } else {
+      scanReportCache.delete(cacheKey);
+    }
+  }
+  return null;
+}
+
+function setCachedScanReport(companyName, website, report) {
+  const cleanComp = (companyName || '').trim().toLowerCase();
+  const cleanUrl = (website || '').trim().toLowerCase();
+  const cacheKey = `${cleanComp}_${cleanUrl}`;
+  scanReportCache.set(cacheKey, { timestamp: Date.now(), report });
+}
 
 // Security Headers Middleware
 app.use((req, res, next) => {
@@ -51,39 +88,108 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(cors());
+// Strict CORS Whitelist Middleware
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5000', 'http://127.0.0.1:3000', 'http://127.0.0.1:5000'];
+if (process.env.ALLOWED_ORIGINS) {
+  process.env.ALLOWED_ORIGINS.split(',').forEach(o => allowedOrigins.push(o.trim()));
+}
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1 || process.env.NODE_ENV !== 'production') {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS no permitido para este origen por política de seguridad.'));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json({ limit: '2mb' }));
+
+// Rate Limiter for Login Endpoint (Max 5 attempts / 15 min window)
+const loginAttempts = new Map();
+
+const loginRateLimiter = (req, res, next) => {
+  const ip = req.ip || req.connection.remoteAddress || '127.0.0.1';
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000;
+  const maxAttempts = 5;
+
+  const record = loginAttempts.get(ip) || { count: 0, resetTime: now + windowMs };
+
+  if (now > record.resetTime) {
+    record.count = 0;
+    record.resetTime = now + windowMs;
+  }
+
+  if (record.count >= maxAttempts) {
+    addAuditLog({
+      type: 'SECURITY_RATE_LIMIT_EXCEEDED',
+      username: req.body?.username || 'IP Bloqueada',
+      details: `Bloqueado por superar 5 intentos fallidos desde IP ${ip}`,
+      severity: 'critical',
+      ip
+    });
+    return res.status(429).json({
+      error: 'Demasiados intentos fallidos. Su dirección IP ha sido bloqueada temporalmente por 15 minutos.'
+    });
+  }
+
+  req.loginRecord = record;
+  req.clientIp = ip;
+  next();
+};
 
 // Serve static frontend build if dist exists
 const clientDistPath = path.join(__dirname, '../client/dist');
 app.use(express.static(clientDistPath));
 
-// Authorization Middleware for Admin Endpoints
+// Strict Authorization Middleware for Admin Endpoints (verifies JWT Bearer token)
 const requireAdminAuth = (req, res, next) => {
-  const userRole = req.headers['x-user-role'];
   const authHeader = req.headers['authorization'];
   
-  // Verify request has admin role header or token
-  if (userRole === 'admin' || (authHeader && authHeader.includes('admin'))) {
-    return next();
-  }
-  
-  // Allow internal/localhost access or fallback
-  const clientIp = req.ip || req.connection.remoteAddress || '';
-  if (clientIp.includes('127.0.0.1') || clientIp.includes('::1') || req.hostname === 'localhost') {
-    return next();
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ error: 'Acceso no autorizado. Se requiere Token Bearer de sesión.' });
   }
 
-  return res.status(403).json({ error: 'Acceso denegado. Se requieren permisos de administrador.' });
+  const token = authHeader.substring(7).trim();
+  const decoded = verifyAuthToken(token);
+
+  if (!decoded) {
+    addAuditLog({
+      type: 'SECURITY_INVALID_TOKEN',
+      username: 'Desconocido',
+      details: `Intento de acceso con token inválido o expirado en ${req.originalUrl}`,
+      severity: 'warning',
+      ip: req.ip
+    });
+    return res.status(401).json({ error: 'Token de sesión inválido o expirado. Vuelva a iniciar sesión.' });
+  }
+
+  if (decoded.role !== 'admin') {
+    addAuditLog({
+      type: 'SECURITY_FORBIDDEN_ROLE',
+      username: decoded.username,
+      details: `Intento de acceso admin rechazado para usuario con rol ${decoded.role}`,
+      severity: 'warning',
+      ip: req.ip
+    });
+    return res.status(403).json({ error: 'Acceso denegado. Se requieren permisos de administrador verificados.' });
+  }
+
+  req.user = decoded;
+  next();
 };
 
 // Auth Endpoints
-app.post('/api/auth/login', async (req, res) => {
-  const clientIp = req.ip || req.connection.remoteAddress || '127.0.0.1';
+app.post('/api/auth/login', loginRateLimiter, async (req, res) => {
+  const clientIp = req.clientIp || '127.0.0.1';
   const { username, password } = req.body;
 
   try {
     if (!username || !password) {
+      if (req.loginRecord) req.loginRecord.count++;
       addAuditLog({ type: 'LOGIN_FAILED', username: username || 'Anonimo', details: 'Intento de inicio de sesion incompleto.', severity: 'warning', ip: clientIp });
       return res.status(400).json({ error: 'Ingresa usuario y contraseña.' });
     }
@@ -91,10 +197,15 @@ app.post('/api/auth/login', async (req, res) => {
     const cleanUsername = String(username).trim().slice(0, 60);
     const cleanPassword = String(password).slice(0, 100);
 
-    const user = authenticateUserInDB(cleanUsername, cleanPassword);
-    addAuditLog({ type: 'LOGIN_SUCCESS', username: user.username, details: `Inicio de sesion exitoso con rol ${user.role}.`, severity: 'info', ip: clientIp });
-    return res.json({ success: true, user });
+    const authResult = authenticateUserInDB(cleanUsername, cleanPassword);
+    
+    // Reset failed attempts on success
+    if (req.loginRecord) req.loginRecord.count = 0;
+
+    addAuditLog({ type: 'LOGIN_SUCCESS', username: authResult.user.username, details: `Inicio de sesion exitoso con rol ${authResult.user.role}.`, severity: 'info', ip: clientIp });
+    return res.json({ success: true, token: authResult.token, user: authResult.user });
   } catch (err) {
+    if (req.loginRecord) req.loginRecord.count++;
     addAuditLog({ type: 'LOGIN_FAILED', username: username || 'Desconocido', details: `Fallo de autenticacion: ${err.message}`, severity: 'warning', ip: clientIp });
     return res.status(400).json({ error: err.message });
   }
@@ -236,7 +347,246 @@ async function safeExecute(serviceName, asyncFn, fallbackValue = {}) {
   }
 }
 
-// Main OSINT Scan Endpoint with Diagnostic Debugger
+// Watchlist & Monitored Companies Endpoints
+app.get('/api/watchlist', (req, res) => {
+  try {
+    const list = getWatchlistFromDB();
+    res.json({ success: true, watchlist: list });
+  } catch (e) {
+    res.status(500).json({ error: 'Error al obtener lista de monitoreo.' });
+  }
+});
+
+app.post('/api/watchlist', (req, res) => {
+  try {
+    const { companyName, cuit, website } = req.body;
+    if (!companyName || !companyName.trim()) return res.status(400).json({ error: 'El nombre de la empresa es obligatorio.' });
+    const item = addWatchlistCompany({ companyName, cuit, website });
+    res.json({ success: true, item });
+  } catch (e) {
+    res.status(400).json({ error: e.message });
+  }
+});
+
+app.delete('/api/watchlist/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = removeWatchlistCompany(id);
+    res.json(result);
+  } catch (e) {
+    res.status(500).json({ error: 'Error al eliminar de monitoreo.' });
+  }
+});
+
+// Server-Side User History Endpoints (Lightweight summaries & full report fetch on demand)
+app.get('/api/history', (req, res) => {
+  try {
+    const authHeader = req.headers['authorization'];
+    const userIdHeader = req.headers['x-user-id'];
+    let userId = userIdHeader;
+
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      const decoded = verifyAuthToken(authHeader.substring(7).trim());
+      if (decoded) userId = decoded.id;
+    }
+
+    if (!userId) return res.json({ success: true, history: [] });
+
+    const summaries = getUserHistorySummariesFromDB(userId);
+    res.json({ success: true, history: summaries });
+  } catch (e) {
+    res.status(500).json({ error: 'Error al consultar historial.' });
+  }
+});
+
+app.get('/api/history/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+    const authHeader = req.headers['authorization'];
+    const userIdHeader = req.headers['x-user-id'];
+    let userId = userIdHeader;
+
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      const decoded = verifyAuthToken(authHeader.substring(7).trim());
+      if (decoded) userId = decoded.id;
+    }
+
+    if (!userId) return res.status(401).json({ error: 'Usuario no identificado.' });
+
+    const report = getUserReportByIdFromDB(userId, id);
+    if (!report) return res.status(404).json({ error: 'Informe no encontrado en el historial.' });
+
+    res.json({ success: true, report });
+  } catch (e) {
+    res.status(500).json({ error: 'Error al recuperar el informe.' });
+  }
+});
+
+app.post('/api/history/save', (req, res) => {
+  try {
+    const { userId, report } = req.body;
+    if (!userId || !report) return res.status(400).json({ error: 'Faltan parámetros requeridos.' });
+
+    const reportId = saveUserReportToDB(userId, report);
+    res.json({ success: true, reportId });
+  } catch (e) {
+    res.status(500).json({ error: 'Error al guardar informe en el historial.' });
+  }
+});
+
+app.delete('/api/history', (req, res) => {
+  try {
+    const { userId } = req.body;
+    if (!userId) return res.status(400).json({ error: 'Falta userId.' });
+
+    clearUserHistoryFromDB(userId);
+    res.json({ success: true });
+  } catch (e) {
+    res.status(500).json({ error: 'Error al purgar historial.' });
+  }
+});
+
+// Periodic Watchlist Monitoring Worker (Checks BCRA credit changes every 10 mins)
+setInterval(async () => {
+  try {
+    const watchlist = getWatchlistFromDB();
+    if (watchlist.length === 0) return;
+    console.log(`[WATCHLIST MONITORING WORKER] Periodic inspection running for ${watchlist.length} monitored companies...`);
+
+    for (const company of watchlist) {
+      const bcra = await getBcraOSINTData(company.companyName, company.cuit !== 'N/D' ? company.cuit : null);
+      if (bcra && bcra.isRealData) {
+        if (bcra.situacionMax > 1 || (bcra.chequesRechazados && bcra.chequesRechazados.totalCount > 0)) {
+          addWatchlistAlert(company.id, {
+            type: 'CREDIT_SITUATION_ALERT',
+            severity: 'warning',
+            title: `Alerta de Crédito BCRA: ${bcra.situacionLabel}`,
+            message: `Registra ${bcra.chequesRechazados?.totalCount || 0} cheques rechazados por ${bcra.chequesRechazados?.totalMontoARS || '$0 ARS'}.`
+          });
+        }
+      }
+    }
+  } catch (e) {
+    console.error('[WATCHLIST WORKER NOTICE]:', e.message);
+  }
+}, 10 * 60 * 1000);
+
+// Real-Time SSE (Server-Sent Events) Scan Progress Endpoint
+app.get('/api/osint/scan-stream', async (req, res) => {
+  const { companyName, website, region = 'AR' } = req.query;
+
+  if (!companyName || !companyName.trim()) {
+    return res.status(400).send('companyName parameter required');
+  }
+
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+
+  const sendEvent = (event, data) => {
+    res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+  };
+
+  sendEvent('progress', { stage: 1, percent: 20, text: `Navegando y extrayendo sitio web de ${companyName}...` });
+
+  // Check cache first
+  const cachedReport = getCachedScanReport(companyName, website);
+  if (cachedReport) {
+    sendEvent('progress', { stage: 4, percent: 100, text: `Informe recuperado desde caché (0ms).` });
+    sendEvent('complete', { report: cachedReport, isFromCache: true });
+    return res.end();
+  }
+
+  try {
+    const scrapedData = await safeExecute('websiteScraperService', () => scrapeCompanyWebsite(website, companyName), {});
+    sendEvent('progress', { stage: 2, percent: 45, text: `Consultando Central de Deudores BCRA y Padrón AFIP/ARCA para ${companyName}...` });
+
+    const searchData = await safeExecute('searchService', () => searchCompanyOSINT(companyName, website, region), {});
+    const bcraData = await safeExecute('bcraService', () => getBcraOSINTData(companyName, null), null);
+    const afipData = await safeExecute('afipService', () => getAfipPadronData(companyName, null), null);
+
+    sendEvent('progress', { stage: 3, percent: 70, text: `Rastreando marcas INPI/WIPO y licitaciones públicas COMPR.AR...` });
+
+    const [inpiWipoData, openCorporatesData, publicContracts, tradeData, pymeData, legalData, categorization, digitalTransformation] = await Promise.all([
+      safeExecute('inpiWipoService', () => getInpiWipoOSINTData(companyName), null),
+      safeExecute('openCorporatesService', () => getOpenCorporatesOSINTData(companyName), null),
+      safeExecute('publicContractsService', () => analyzePublicContracts(companyName, searchData), {}),
+      safeExecute('tradeService', () => getTradeOSINTData(companyName, null, searchData, scrapedData), {}),
+      safeExecute('pymeRegistryService', () => getPymeRegistryOSINTData(companyName, null, searchData, scrapedData), {}),
+      safeExecute('legalOsintService', () => analyzeLegalOSINT(companyName), {}),
+      safeExecute('categorizationService', () => categorizeCompany(companyName, scrapedData, searchData), {}),
+      safeExecute('digitalTransformationService', () => analyzeDigitalTransformation(companyName, scrapedData, searchData), {})
+    ]);
+
+    if (inpiWipoData) legalData.inpiWipoData = inpiWipoData;
+    if (openCorporatesData) legalData.openCorporatesData = openCorporatesData;
+
+    sendEvent('progress', { stage: 4, percent: 90, text: `Sintetizando informe comercial y evaluación de madurez digital...` });
+
+    const [financialData, supportPlan, swotAnalysis, aiResult] = await Promise.all([
+      safeExecute('financialService', () => analyzeFinancials(companyName, scrapedData, searchData, bcraData), {}),
+      safeExecute('supportAdvisorService', () => generateSupportPlan(companyName, categorization, {}, scrapedData, searchData), {}),
+      safeExecute('swotAnalysisService', () => generateSwotAnalysis(companyName, categorization, {}, scrapedData, legalData), {}),
+      safeExecute('aiExtractionService', () => analyzeCompanyWithGemini(companyName, scrapedData, searchData, { bcraData, afipData, inpiWipoData, openCorporatesData, publicContractsData: publicContracts, tradeData, pymeData }), null)
+    ]);
+
+    financialData.tradeData = tradeData;
+    financialData.pymeData = pymeData;
+
+    if (afipData) {
+      financialData.taxProfile = financialData.taxProfile || {};
+      financialData.taxProfile.cuit = afipData.cuit;
+      financialData.taxProfile.economicActivity = afipData.economicActivity;
+      financialData.taxProfile.vatCondition = afipData.vatCondition;
+      financialData.afipData = afipData;
+    }
+
+    if (aiResult) {
+      if (aiResult.sector) categorization.sector = aiResult.sector;
+      if (aiResult.businessModel) categorization.businessModel = aiResult.businessModel;
+      if (aiResult.companyType) categorization.companyType = aiResult.companyType;
+      scrapedData.businessAnswers = {
+        whatDoesCompanyDo: aiResult.whatItSells,
+        whatItSells: aiResult.whatItSells,
+        whoBuys: aiResult.whoBuys,
+        targetAudience: aiResult.whoBuys,
+        howItGeneratesRevenue: aiResult.howItGeneratesRevenue,
+        mostImportantAsset: aiResult.mostImportantAsset
+      };
+      if (aiResult.executiveSummary) categorization.summary = aiResult.executiveSummary;
+      if (Array.isArray(aiResult.strengths)) swotAnalysis.strengths = aiResult.strengths;
+      if (Array.isArray(aiResult.weaknesses)) swotAnalysis.weaknesses = aiResult.weaknesses;
+      if (Array.isArray(aiResult.opportunities)) swotAnalysis.opportunities = aiResult.opportunities;
+      if (Array.isArray(aiResult.threats)) swotAnalysis.threats = aiResult.threats;
+    }
+
+    const finalReport = {
+      query: { companyName, website, region },
+      categorization,
+      scrapedData,
+      financialData,
+      legalData,
+      publicContracts,
+      swotAnalysis,
+      digitalTransformation,
+      supportPlan,
+      searchData,
+      aiIntelligence: aiResult || null,
+      timestamp: new Date().toISOString()
+    };
+
+    setCachedScanReport(companyName, website, finalReport);
+
+    sendEvent('progress', { stage: 4, percent: 100, text: `Informe completado con éxito.` });
+    sendEvent('complete', { report: finalReport });
+    res.end();
+  } catch (err) {
+    sendEvent('error', { error: err.message });
+    res.end();
+  }
+});
+
+// Main OSINT Scan Endpoint with Cache Lookup
 app.post('/api/osint/scan', async (req, res) => {
   const scanStartTime = Date.now();
   const { companyName, website, region = 'AR' } = req.body;
@@ -248,6 +598,12 @@ app.post('/api/osint/scan', async (req, res) => {
     if (!companyName || !companyName.trim()) {
       console.warn(`[OSINT DEBUGGER - WARN] Solicitud rechazada: Falta el nombre de la empresa.`);
       return res.status(400).json({ error: 'El nombre de la empresa es obligatorio' });
+    }
+
+    // Check In-Memory Report Cache (15 min TTL)
+    const cachedReport = getCachedScanReport(companyName, website);
+    if (cachedReport) {
+      return res.json(cachedReport);
     }
 
     // 1. Fast Concurrent Primary Gathering (Scrape & Multi-Source Search)
@@ -273,7 +629,7 @@ app.post('/api/osint/scan', async (req, res) => {
       safeExecute('afipService', () => getAfipPadronData(companyName, null), null),
       safeExecute('inpiWipoService', () => getInpiWipoOSINTData(companyName), null),
       safeExecute('openCorporatesService', () => getOpenCorporatesOSINTData(companyName), null),
-      safeExecute('publicContractsService', () => analyzePublicContracts(companyName), {}),
+      safeExecute('publicContractsService', () => analyzePublicContracts(companyName, searchData), {}),
       safeExecute('tradeService', () => getTradeOSINTData(companyName, null, searchData, scrapedData), {}),
       safeExecute('pymeRegistryService', () => getPymeRegistryOSINTData(companyName, null, searchData, scrapedData), {}),
       safeExecute('legalOsintService', () => analyzeLegalOSINT(companyName), {}),
@@ -348,9 +704,7 @@ app.post('/api/osint/scan', async (req, res) => {
       executiveSummary: aiResult?.executiveSummary || null
     };
 
-    const totalDurationMs = Date.now() - scanStartTime;
-    console.log(`[OSINT SCAN COMPLETE] Report ID: ${report.id} generado exitosamente en ${totalDurationMs}ms para "${companyName}"`);
-    console.log(`=================== [OSINT DEBUGGER SCAN END] ===================\n`);
+    setCachedScanReport(companyName, website, report);
 
     return res.json(report);
 

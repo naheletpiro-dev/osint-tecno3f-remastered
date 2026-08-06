@@ -28,12 +28,29 @@ export default function AdminTab() {
   const [selectedUserForPassword, setSelectedUserForPassword] = useState(null);
   const [newPasswordInput, setNewPasswordInput] = useState('');
 
+  const getAuthHeaders = () => {
+    let token = null;
+    try {
+      const sessionUser = sessionStorage.getItem('osint_user');
+      if (sessionUser) token = JSON.parse(sessionUser).token;
+      if (!token) {
+        const persistentUser = localStorage.getItem('osint_user');
+        if (persistentUser) token = JSON.parse(persistentUser).token;
+      }
+    } catch (e) {}
+
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': token ? `Bearer ${token}` : ''
+    };
+  };
+
   const fetchUsers = async () => {
     setLoading(true);
     setError(null);
     try {
       const res = await fetch('/api/admin/users', {
-        headers: { 'X-User-Role': 'admin' }
+        headers: getAuthHeaders()
       });
       const data = await res.json();
       if (data.success && Array.isArray(data.users)) {
@@ -53,7 +70,7 @@ export default function AdminTab() {
     setError(null);
     try {
       const res = await fetch('/api/admin/audit-logs', {
-        headers: { 'X-User-Role': 'admin' }
+        headers: getAuthHeaders()
       });
       const data = await res.json();
       if (data.success && Array.isArray(data.logs)) {
@@ -87,10 +104,7 @@ export default function AdminTab() {
     try {
       const res = await fetch('/api/admin/users/create', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-User-Role': 'admin'
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({
           username: newUsername.trim(),
           password: newPassword.trim(),
@@ -127,10 +141,7 @@ export default function AdminTab() {
     try {
       const res = await fetch('/api/admin/users/toggle-status', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-User-Role': 'admin'
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({ userId })
       });
       const data = await res.json();
@@ -160,7 +171,7 @@ export default function AdminTab() {
     try {
       const res = await fetch(`/api/admin/users/${userId}`, {
         method: 'DELETE',
-        headers: { 'X-User-Role': 'admin' }
+        headers: getAuthHeaders()
       });
       const data = await res.json();
 
@@ -189,10 +200,7 @@ export default function AdminTab() {
     try {
       const res = await fetch('/api/admin/users/change-password', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-User-Role': 'admin'
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({
           userId: selectedUserForPassword.id,
           newPassword: newPasswordInput.trim()
@@ -226,7 +234,7 @@ export default function AdminTab() {
     try {
       const res = await fetch('/api/admin/audit-logs/clear', {
         method: 'DELETE',
-        headers: { 'X-User-Role': 'admin' }
+        headers: getAuthHeaders()
       });
       const data = await res.json();
 

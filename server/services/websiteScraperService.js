@@ -335,7 +335,10 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
       const paragraphs = [];
       $('p').each((i, el) => {
         const pTxt = $(el).text().trim();
-        if (pTxt.length > 40 && !pTxt.includes('cookie') && !pTxt.includes('copyright') && !pTxt.includes('javascript') && !pTxt.includes('derechos reservados')) {
+        const lowerP = pTxt.toLowerCase();
+        const isAddressOrContact = lowerP.includes('ciudadela') || lowerP.includes('buenos aires') || lowerP.includes('argentina') || lowerP.includes('alvear') || lowerP.includes('9 de julio') || lowerP.includes('tel:') || lowerP.includes('cuit') || lowerP.includes('s 34°') || lowerP.includes('o 058°') || lowerP.includes('calle') || lowerP.includes('av.') || lowerP.includes('coordenadas') || lowerP.includes('prov. de') || lowerP.includes('cp ');
+
+        if (pTxt.length > 40 && !pTxt.includes('cookie') && !pTxt.includes('copyright') && !pTxt.includes('javascript') && !pTxt.includes('derechos reservados') && !isAddressOrContact) {
           paragraphs.push(pTxt);
         }
       });
@@ -610,7 +613,9 @@ function mergeUniversalFallbackData(companyName, profile) {
       whoBuys,
       howItGeneratesRevenue,
       mostImportantAsset,
-      valueProposition: profile.valueProposition || `Brindar máxima precisión y calidad en ${dynamicSector} para ${cleanComp}.`
+      valueProposition: (profile.valueProposition && !profile.valueProposition.toLowerCase().includes('ciudadela') && !profile.valueProposition.toLowerCase().includes('alvear') && !profile.valueProposition.toLowerCase().includes('9 de julio') && !profile.valueProposition.toLowerCase().includes('s 34°'))
+        ? profile.valueProposition
+        : `Ingeniería, calidad técnica y provisión especializada en ${dynamicSector} para ${cleanComp}.`
     }
   };
 }

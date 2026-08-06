@@ -10,25 +10,26 @@ dotenv.config({ path: path.join(__dirname, '../.env') });
 dotenv.config();
 
 /**
- * Prompt Injection & Jailbreak Detection Regex Patterns
+ * Robust Multi-Language Prompt Injection, Jailbreak & Boundary Bypass Detection Patterns
  */
 const PROMPT_INJECTION_PATTERNS = [
-  /ignore\s+(all\s+)?(previous|above|prior)\s+(instructions|rules|prompts)/i,
-  /forget\s+(all\s+)?(previous|above|prior)\s+(instructions|rules|prompts)/i,
-  /disregard\s+(all\s+)?(previous|above|prior)\s+(instructions|rules|prompts)/i,
-  /system\s+override/i,
-  /system\s+prompt/i,
-  /jailbreak/i,
-  /dan\s+mode/i,
-  /developer\s+mode/i,
-  /you\s+are\s+now\s+free/i,
-  /act\s+as\s+(an\s+)?unrestricted/i,
-  /revela\s+tus\s+instrucciones/i,
-  /olvida\s+tus\s+instrucciones/i,
-  /ignora\s+(las|todas\s+las)\s+(instrucciones|reglas)/i,
-  /modo\s+desarrollador/i,
-  /print\s+(your\s+)?system\s+(prompt|instructions)/i,
-  /show\s+(your\s+)?system\s+(prompt|instructions)/i,
+  /ignore\s+(all\s+)?(previous|above|prior|system)\s+(instructions|rules|prompts|directives|constraints)/i,
+  /forget\s+(all\s+)?(previous|above|prior|system)\s+(instructions|rules|prompts|directives|constraints)/i,
+  /disregard\s+(all\s+)?(previous|above|prior|system)\s+(instructions|rules|prompts|directives|constraints)/i,
+  /bypass\s+(all\s+)?(safety|security|system|content)\s+(filters|rules|guardrails|protocols)/i,
+  /system\s*(override|prompt|directive|instruction)/i,
+  /jailbreak|dan\s+mode|developer\s+mode|god\s+mode|unrestricted\s+mode/i,
+  /you\s+are\s+now\s+free|pretend\s+you\s+have\s+no\s+rules|act\s+as\s+(an\s+)?unrestricted/i,
+  /revela\s+(tus|las)\s+(instrucciones|reglas|prompt|directivas)/i,
+  /olvida\s+(tus|las|todas\s+las)\s+(instrucciones|reglas|prompt)/i,
+  /ignora\s+(las|todas\s+las)\s+(instrucciones|reglas|normas)/i,
+  /modo\s+(desarrollador|sin\s+restricciones|libre|admin)/i,
+  /print\s+(your\s+)?(system|initial|hidden)\s+(prompt|instructions|rules)/i,
+  /show\s+(your\s+)?(system|initial|hidden)\s+(prompt|instructions|rules)/i,
+  /muestra\s+(tu|el)\s+(prompt|sistema|instrucciones\s+ocultas)/i,
+  /repeat\s+(everything|all\s+text)\s+above/i,
+  /repeti\s+todo\s+el\s+texto\s+anterior/i,
+  /\[inst\]|<\|im_start\|>|<\|im_end\|>|<\|system\|>|\[sys\]/i,
   /prompt\s+injection/i
 ];
 
@@ -249,8 +250,18 @@ export async function answerOsintChat(report = {}, userQuery = '', chatHistory =
     console.log(`[AI CHAT RAG EXECUTION] Deep Reasoning (Chain-of-Thought) Mode active. Index: ${vectorIndex.length} passages.`);
     const formattedHistory = chatHistory.slice(-6).map(m => `${m.sender === 'user' ? 'Usuario' : 'Tecnobot3F'}: ${m.text}`).join('\n');
 
+    const FEW_SHOT_GUIDANCE = `
+EJEMPLOS DE COMPORTAMIENTO (FEW-SHOT EXAMPLES):
+- Pregunta fuera de alcance (ej: "¿cuál es la capital de Francia?"):
+  "Como asistente especializado de Inteligencia OSINT empresarial (Tecnobot3F), únicamente puedo responder consultas enfocadas en el análisis comercial, financiero y operativo de la empresa auditada."
+- Pregunta ambigua o vaga (ej: "decime más"):
+  "Con gusto. Puedo profundizar sobre la situación bancaria en BCRA, la capacidad licitatoria estimada, el catálogo de productos/servicios o las fortalezas y debilidades de ${compName}. ¿Sobre qué aspecto específico te gustaría consultar?"
+`;
+
     const chatPrompt = `
 Sos Tecnobot3F, la Inteligencia Artificial analítica del sistema OSINT Tecno3F operando en MODO RAZONAMIENTO PROFUNDO (CHAIN-OF-THOUGHT DEEP REASONING).
+
+${FEW_SHOT_GUIDANCE}
 
 CADENA OBLIGATORIA DE RAZONAMIENTO EN 2 ETAPAS:
 ETAPA 1 (Pensamiento y Verificación Interna):
@@ -259,7 +270,7 @@ ETAPA 1 (Pensamiento y Verificación Interna):
 - Identificá las evidencias concretas que respaldan la respuesta directa.
 
 ETAPA 2 (Respuesta Final al Usuario):
-- Redactá la respuesta limpia, precisa y profesional basada EXCLUSIVAMENTE en las evidencias verified de la Etapa 1.
+- Redactá la respuesta limpia, precisa y profesional basada EXCLUSIVAMENTE en las evidencias verificadas de la Etapa 1.
 - Si el usuario solicita "SOLO la propuesta principal de kit" o "solo x categoría", responde ÚNICA Y EXCLUSIVAMENTE sobre ese ítem puntual. NO incluyas información no solicitada.
 - Formateá la respuesta en Markdown claro.
 
@@ -277,8 +288,13 @@ ${sanitizedQuery}
 PROCESO DE RAZONAMIENTO PROFUNDO Y RESPUESTA FINAL DE TECNOBOT3F:
 `;
 
-    // Strategy 1: @google/genai SDK (v2+)
-    const modelsToTryGenAI = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
+// Model memory cache: remember the last working model to prevent sequential 4-model cascade delays
+let cachedWorkingModel = 'gemini-2.0-flash';
+
+    // Strategy 1: @google/genai SDK (v2+) with cached model priority
+    const baseModels = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
+    const modelsToTryGenAI = [cachedWorkingModel, ...baseModels.filter(m => m !== cachedWorkingModel)];
+
     for (const modelName of modelsToTryGenAI) {
       try {
         const ai = new GoogleGenAI({ apiKey });
@@ -289,11 +305,19 @@ PROCESO DE RAZONAMIENTO PROFUNDO Y RESPUESTA FINAL DE TECNOBOT3F:
 
         const txt = response?.text || response?.candidates?.[0]?.content?.parts?.[0]?.text;
         if (txt && txt.trim().length > 10) {
-          console.log(`[AI CHAT SUCCESS] Responded via Deep Reasoning CoT @google/genai model ${modelName}`);
+          cachedWorkingModel = modelName; // Save working model for instant next query
+          console.log(`[AI CHAT SUCCESS] Responded via model ${modelName} (Cached for next queries).`);
+          addChatEvaluationLog({
+            companyName: compName,
+            userQuery: sanitizedQuery,
+            botAnswer: txt.trim(),
+            modelUsed: modelName,
+            isInjection: false
+          });
           return { answer: txt.trim(), isDeepReasoning: true };
         }
       } catch (err) {
-        console.log(`[AI CHAT NOTICE] @google/genai model ${modelName} notice: ${err.message?.slice(0, 100)}`);
+        console.log(`[AI CHAT NOTICE] Model ${modelName} notice: ${err.message?.slice(0, 100)}`);
       }
     }
 

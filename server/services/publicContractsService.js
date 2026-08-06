@@ -4,102 +4,93 @@ import https from 'https';
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 /**
- * Public Contracts & Tenders OSINT Engine
- * Scans State Purchasing, COMPR.AR, Suppliers Registry, Tenders & Awarded Contracts.
+ * Multi-Jurisdictional Public Contracts & Tenders OSINT Engine
+ * Scans COMPR.AR (Nación), Provincial Purchasing Portals (Santa Fe, CABA, Córdoba),
+ * Official Gazette Award Notices, and RUP Provider Registries.
  */
-export async function analyzePublicContracts(companyName) {
+export async function analyzePublicContracts(companyName, searchData = {}) {
   const cleanComp = companyName ? companyName.trim() : 'Empresa';
   const lowerComp = cleanComp.toLowerCase();
 
-  let hash = 0;
-  for (let i = 0; i < cleanComp.length; i++) hash = (hash << 5) - hash + cleanComp.charCodeAt(i);
-  const positiveHash = Math.abs(hash);
-
-  const isTech = lowerComp.includes('libre') || lowerComp.includes('globant') || lowerComp.includes('tech') || lowerComp.includes('soft');
-  const isIndustrial = lowerComp.includes('baigorria') || lowerComp.includes('taller') || lowerComp.includes('metal') || lowerComp.includes('ind');
-
   let isRealData = false;
   let realContracts = [];
+  let detectedSource = 'Dato no disponible en registros públicos';
 
-  // Attempt real COMPR.AR / Datos Abiertos API call
+  // 1. Attempt COMPR.AR Nacional API call (4500ms timeout)
   try {
     const comprarUrl = `https://comprar.gob.ar/api/licitaciones/search?q=${encodeURIComponent(cleanComp)}`;
     const res = await axios.get(comprarUrl, {
       httpsAgent,
-      timeout: 1000,
+      timeout: 4500,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
+
     if (res.data && Array.isArray(res.data.licitaciones) && res.data.licitaciones.length > 0) {
       isRealData = true;
-      realContracts = res.data.licitaciones.map(l => ({
-        id: l.numeroLicitacion || `LIC-${Math.floor(Math.random() * 8999) + 1000}`,
-        organism: l.organismo || 'Ministerio del Estado',
-        amount: `$${(Number(l.monto) || 15000000).toLocaleString('es-AR')} ARS`,
-        rawAmount: Number(l.monto) || 15000000,
-        date: l.fechaPublicacion || '2024-08-10',
-        status: l.estado || 'Adjudicado y Finalizado',
-        description: l.objeto || `Contratación directa / licitación para ${cleanComp}`
-      }));
-    }
-  } catch (e) {
-    // Graceful fallback to deterministic OSINT engine
-  }
-
-  const years = ['2025', '2024', '2023'];
-  const statusList = ['Adjudicado y Finalizado', 'En Ejecución / Vigente', 'Presentado en Evaluación'];
-  const buyers = isTech ? [
-    'Ministerio de Innovación & Tecnología',
-    'Secretaría de Digitalización y Modernización Estatal',
-    'Agencia Nacional de Sistemas e Informática',
-    'Banco Central de la República Argentina / TI',
-    'Gobierno Provincial - Dirección de Innovación'
-  ] : (isIndustrial ? [
-    'Ministerio de Obras y Servicios Públicos',
-    'Municipalidad Regional / Secretaría de Industria',
-    'Empresa de Agua y Saneamiento Estatal',
-    'Dirección Provincial de Vialidad y Logística',
-    'Aysa / Fabricaciones e Infraestructura'
-  ] : [
-    'Secretaria de Comercio & Desarrollo Económico',
-    'Municipalidad / Dirección de Compras',
-    'Ministerio de Desarrollo Social y Servicios',
-    'Empresa Estatal de Logística y Suministros'
-  ]);
-
-  const contracts = isRealData && realContracts.length > 0 ? realContracts : [];
-
-  if (contracts.length === 0) {
-    const contractCount = (positiveHash % 3) + 1;
-    for (let i = 0; i < contractCount; i++) {
-      const amount = ((positiveHash % 45) + (i * 18) + 12) * 1000000;
-      const desc = isTech
-        ? `Provisión de licenciamiento de software, servicios de infraestructura en la nube y soporte digital de ${cleanComp}.`
-        : (isIndustrial
-          ? `Suministro de piezas mecánicas, mantenimiento de planta y estructuras elaborado por ${cleanComp}.`
-          : `Provisión de insumos comerciales, bienes elaborados y servicios técnicos por parte de ${cleanComp}.`);
-
-      contracts.push({
-        id: `LIC-${2025 - i}-${(positiveHash % 899) + 100}`,
-        organism: buyers[(positiveHash + i) % buyers.length],
-        amount: `$${amount.toLocaleString('es-AR')} ARS`,
-        rawAmount: amount,
-        date: `15/${((positiveHash + i * 3) % 11) + 1}/${years[i % years.length]}`,
-        status: statusList[i % statusList.length],
-        description: desc
+      detectedSource = 'Portal Oficial COMPR.AR Nacional (comprar.gob.ar)';
+      res.data.licitaciones.forEach(l => {
+        realContracts.push({
+          id: l.numeroLicitacion || `LIC-${Math.floor(Math.random() * 8999) + 1000}`,
+          organism: l.organismo || 'Administración Pública Nacional',
+          jurisdiction: 'Nacional',
+          amount: `$${(Number(l.monto) || 0).toLocaleString('es-AR')} ARS`,
+          rawAmount: Number(l.monto) || 0,
+          date: l.fechaPublicacion || 'Reciente',
+          status: l.estado || 'Adjudicado',
+          description: l.objeto || `Contratación pública / licitación para ${cleanComp}`,
+          link: 'https://comprar.gob.ar/'
+        });
       });
     }
+  } catch (e) {
+    console.log(`[COMPR.AR API Notice] Search notice for ${cleanComp}: ${e.message}`);
   }
 
-  const totalAwarded = contracts.reduce((acc, c) => acc + c.rawAmount, 0);
+  // 2. Scan Tender & Official Gazette Snippets from Multi-Jurisdiction Search (Santa Fe, CABA, Provincial Bulletins)
+  const tenderSnippets = searchData.tenderSnippets || [];
+  const gazetteSnippets = searchData.gazetteSnippets || [];
+
+  [...tenderSnippets, ...gazetteSnippets].forEach(item => {
+    const text = `${item.title || ''} ${item.snippet || ''}`.toLowerCase();
+    const isRelevant = text.includes(lowerComp) || (lowerComp.length > 4 && text.includes(lowerComp.slice(0, 5)));
+
+    if (isRelevant && (text.includes('licitacion') || text.includes('adjudic') || text.includes('proveedor') || text.includes('contrato') || text.includes('compra'))) {
+      isRealData = true;
+      if (detectedSource.includes('Dato no disponible')) {
+        detectedSource = 'Boletín Oficial & Registro de Contrataciones Estatales';
+      }
+
+      let jurisdiction = 'Provincial / Municipal';
+      if (text.includes('santa fe') || item.link?.includes('santafe')) jurisdiction = 'Provincia de Santa Fe';
+      else if (text.includes('buenos aires') || text.includes('caba')) jurisdiction = 'CABA / Buenos Aires';
+      else if (text.includes('nacion') || item.link?.includes('gob.ar')) jurisdiction = 'Nacional';
+
+      realContracts.push({
+        id: `ADJ-${Math.floor(Math.random() * 8990) + 1009}`,
+        organism: item.title?.slice(0, 70) || 'Organismo Público Estatal',
+        jurisdiction,
+        amount: 'Monto en Pliego / Adjudicación',
+        rawAmount: 0,
+        date: 'Reciente',
+        status: 'Adjudicado / Publicado',
+        description: item.snippet?.slice(0, 160) || `Proceso de contratación verificado para ${cleanComp}`,
+        link: item.link || 'https://comprar.gob.ar/'
+      });
+    }
+  });
+
+  const totalAwarded = realContracts.reduce((acc, c) => acc + (c.rawAmount || 0), 0);
 
   return {
-    isRegisteredSupplier: true,
+    isRegisteredSupplier: isRealData,
     isRealData,
-    supplierRegistryStatus: `Habilitado en Portal de Compras Públicas para ${cleanComp} (COMPR.AR / RUP / BAC)`,
-    totalContracts: contracts.length,
-    totalAwardedAmount: `$${totalAwarded.toLocaleString('es-AR')} ARS`,
-    contracts,
+    supplierRegistryStatus: isRealData
+      ? `Habilitado en Registro Estatal de Proveedores para ${cleanComp}`
+      : 'Dato no disponible en registros públicos',
+    totalContracts: realContracts.length,
+    totalAwardedAmount: totalAwarded > 0 ? `$${totalAwarded.toLocaleString('es-AR')} ARS` : (isRealData ? 'Ver pliego' : '$0 ARS'),
+    contracts: realContracts,
     comprarPortalUrl: `https://comprar.gob.ar/`,
-    apiSource: isRealData ? 'Portal Oficial COMPR.AR (comprar.gob.ar)' : 'Estimación de Licitaciones / Engine OSINT'
+    apiSource: detectedSource
   };
 }

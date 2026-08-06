@@ -93,6 +93,7 @@ ESTRUCTURA JSON REQUERIDA Y CATALOGADA:
   "whoBuys": "Perfil de compradores, clientes corporativos y sectores destino de ${cleanComp}",
   "howItGeneratesRevenue": "Mecanismo principal de generación de ingresos según sus productos/servicios",
   "mostImportantAsset": "Activos críticos concretos de la industria de ${cleanComp} (ej: parque de curvadoras de caños, centros de mecanizado CNC, servidores cloud de alta disponibilidad, matricería de precisión, licencias CAD/CAM)",
+  "valueProposition": "Propuesta de valor y diferenciador competitivo principal de ${cleanComp} (ej: Soluciones tecnológicas de telegestión inteligente con desarrollo a medida y soporte directo de planta)",
   "executiveSummary": "Síntesis ejecutiva de 2 párrafos que organice y sintetice el perfil comercial, solvencia BCRA, capacidad licitatoria y oferta de ${cleanComp}",
   "strengths": ["Fortaleza comercial o financiera 1 comprobada", "Fortaleza técnica 2 comprobada"],
   "weaknesses": ["Debilidad o brecha operativa identificada"],
@@ -101,7 +102,11 @@ ESTRUCTURA JSON REQUERIDA Y CATALOGADA:
 }
 `;
 
-  const modelsToTry = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
+// Model memory cache: remember the last working extraction model
+let lastWorkingExtractionModel = 'gemini-2.0-flash';
+
+  const baseModels = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
+  const modelsToTry = [lastWorkingExtractionModel, ...baseModels.filter(m => m !== lastWorkingExtractionModel)];
 
   for (const modelName of modelsToTry) {
     try {
@@ -116,8 +121,10 @@ ESTRUCTURA JSON REQUERIDA Y CATALOGADA:
 
       if (response && response.text) {
         const parsed = JSON.parse(response.text);
+        const validatedData = validateAndSanitizeExtraction(parsed, cleanComp);
+        lastWorkingExtractionModel = modelName; // Save working model for instant next extraction
         console.log(`[TAXONOMICAL RAG SUCCESS] Gemini Model "${modelName}" organized & cataloged profile for "${cleanComp}"`);
-        return parsed;
+        return validatedData;
       }
     } catch (err) {
       console.log(`[RAG AI NOTICE] Model ${modelName} notice for "${cleanComp}": ${err.message?.slice(0, 100)}`);
@@ -125,4 +132,49 @@ ESTRUCTURA JSON REQUERIDA Y CATALOGADA:
   }
 
   return null;
+}
+
+/**
+ * Validates JSON structure returned by Gemini against required schema.
+ * Ensures default values for missing keys so server/frontend merge never crashes.
+ */
+function validateAndSanitizeExtraction(parsed = {}, cleanComp = '') {
+  return {
+    sector: typeof parsed.sector === 'string' && parsed.sector.length > 2
+      ? parsed.sector
+      : `Sector Comercial e Industrial de ${cleanComp}`,
+    businessModel: typeof parsed.businessModel === 'string' && parsed.businessModel.length > 2
+      ? parsed.businessModel
+      : 'B2B / Provisión Comercial',
+    companyType: typeof parsed.companyType === 'string' && parsed.companyType.length > 2
+      ? parsed.companyType
+      : 'PyME Operativa',
+    whatItSells: typeof parsed.whatItSells === 'string' && parsed.whatItSells.length > 2
+      ? parsed.whatItSells
+      : `Soluciones y servicios comerciales de ${cleanComp}`,
+    whoBuys: typeof parsed.whoBuys === 'string' && parsed.whoBuys.length > 2
+      ? parsed.whoBuys
+      : 'Empresas corporativas y clientes del sector público/privado',
+    howItGeneratesRevenue: typeof parsed.howItGeneratesRevenue === 'string' && parsed.howItGeneratesRevenue.length > 2
+      ? parsed.howItGeneratesRevenue
+      : 'Venta de productos y prestación de servicios especializados',
+    mostImportantAsset: typeof parsed.mostImportantAsset === 'string' && parsed.mostImportantAsset.length > 2
+      ? parsed.mostImportantAsset
+      : 'Infraestructura operativa y equipamiento de producción',
+    executiveSummary: typeof parsed.executiveSummary === 'string' && parsed.executiveSummary.length > 10
+      ? parsed.executiveSummary
+      : `Síntesis ejecutiva de ${cleanComp} basada en registros públicos y web oficial.`,
+    strengths: Array.isArray(parsed.strengths) && parsed.strengths.length > 0
+      ? parsed.strengths
+      : [`Trayectoria y presencia operativa en su rubro para ${cleanComp}`],
+    weaknesses: Array.isArray(parsed.weaknesses) && parsed.weaknesses.length > 0
+      ? parsed.weaknesses
+      : ['Oportunidad de ampliar canales directos digitales y comercio electrónico'],
+    opportunities: Array.isArray(parsed.opportunities) && parsed.opportunities.length > 0
+      ? parsed.opportunities
+      : ['Postulación a licitaciones públicas y programas de financiamiento ANR 4.0'],
+    threats: Array.isArray(parsed.threats) && parsed.threats.length > 0
+      ? parsed.threats
+      : ['Volatilidad sectorial y presiones logísticas o de costos de insumos']
+  };
 }

@@ -1,86 +1,105 @@
 /**
  * OSINT Support & Action Plan Advisor Service for Companies
- * Generates tailored recommendations to support and empower the business.
+ * Generates tailored recommendations to support and empower the business with official funding programs.
  */
-export function generateSupportPlan(companyName, categorization, financialData, scrapedData, searchResults) {
+export function generateSupportPlan(companyName, categorization = {}, financialData = {}, scrapedData = {}, searchResults = {}) {
+  const cleanComp = companyName ? companyName.trim() : 'la empresa';
+  const sector = categorization.sector || 'su rubro industrial y comercial';
+  const creditScore = financialData.creditScore || 75;
+  const hasCheques = financialData.rejectedChequesCount > 0;
+
   const recommendations = [];
 
-  // 1. Business Projects & Market Expansion
+  // 1. Programa ANR 4.0 & Financiamiento a Tasa Subsidiada (FONTAR / SEPYME)
   recommendations.push({
-    category: 'Desarrollo de Mercado & Proyectos',
+    category: 'Financiamiento & Subsidios 4.0',
     priority: 'RECOMENDADA',
-    icon: 'briefcase',
-    title: 'Vinculación a Oportunidades y Proyectos del Sector',
-    description: `Acompañar a ${companyName} en la presentación a licitaciones públicas o contrataciones privadas en el sector de ${categorization.sector}.`,
+    icon: 'trending-up',
+    title: 'Aportes No Reembolsables (ANR 4.0) & FONTAR para Modernización',
+    description: `Asistencia financiera de hasta el 70% de co-financiamiento no reembolsable a través de SEPYME/FONTAR para incorporar telegestión, software ERP/MES, sensórica IoT y automatización de procesos en ${cleanComp}.`,
     actionSteps: [
-      'Identificar licitaciones vigentes y compras estatales en su región.',
-      'Conectar con redes de proveedores y clusters productivos.',
-      'Desarrollar catálogo digital de proyectos y casos de éxito.'
+      'Presentación del proyecto de modernización tecnológica ante la Agencia I+D+i.',
+      'Solicitud de bonificación de tasa en líneas de financiamiento de inversión productiva BNA / Banco BICE.',
+      'Formulación de carpetas técnicas para la adquisición de bienes de capital e infraestructura de planta.'
     ]
   });
 
-  // 2. Financial & Debt Support
-  if (financialData.creditScore < 72 || financialData.rejectedChequesCount > 0) {
+  // 2. Crédito Fiscal PyME & Capacitación de Personal
+  recommendations.push({
+    category: 'Capacitación & Crédito Fiscal',
+    priority: 'RECOMENDADA',
+    icon: 'award',
+    title: 'Programa de Crédito Fiscal para Capacitación & Certificaciones ISO',
+    description: `Reembolso de hasta $15.000.000 ARS en bono de crédito fiscal (endosable para pago de impuestos nacionales) para financiar la formación técnica del equipo de ${cleanComp} e implementar certificaciones de calidad (ISO 9001, ISO 14001, ISO 45001).`,
+    actionSteps: [
+      'Inscripción en el Régimen de Crédito Fiscal para Capacitación de la Secretaría de Industria y Desarrollo Productivo.',
+      'Ejecución del plan anual de capacitación para mandos medios y técnicos de planta.',
+      'Cómputo del bono electrónico fiscal contra el pago de IVA y Ganancias.'
+    ]
+  });
+
+  // 3. Financiamiento y Saneamiento Crediticio (si aplica) o Expansión Licitatoria
+  if (creditScore < 72 || hasCheques) {
     recommendations.push({
       category: 'Saneamiento Financiero & Pasivos',
       priority: 'ALTA',
       icon: 'alert-triangle',
-      title: 'Plan de Reestructuración de Deudas & Asistencia Crediticia',
-      description: `La empresa presenta observaciones crediticias o registros bancarios en seguimiento. Requiere apoyo técnico para regularizar la situación en BCRA y acceder a capital de trabajo.`,
+      title: 'Plan de Reestructuración de Deudas & Asistencia Crediticia SGR',
+      description: `Regularización de la posición crediticia en la Central de Deudores BCRA mediante la intervención de Sociedades de Garantía Recíproca (FOGAR / Acindar PyME / Garantizar) para respaldar cheques de pago diferido y acceder a tasas preferenciales.`,
       actionSteps: [
-        'Gestionar moratoria fiscal y planes de facilidades de pago (AFIP / Rentas).',
-        'Tramitar rescate de cheques rechazados para limpiar scoring comercial.',
-        'Solicitar refinanciación de deudas bancarias con garantías de Fondos de Garantía (FOGAR / SGR).'
+        'Gestionar moratoria fiscal y planes de facilidades de pago de AFIP / ARCA.',
+        'Rescate e informe de cheques cancelados ante la Central de Deudores BCRA.',
+        'Solicitar avales SGR para mejorar la calificación del scoring crediticio corporativo.'
       ]
     });
   } else {
     recommendations.push({
-      category: 'Financiamiento & Subsidios',
+      category: 'Desarrollo Licitatorio & COMPR.AR',
       priority: 'RECOMENDADA',
-      icon: 'trending-up',
-      title: 'Acceso a Líneas de Crédito Bonificadas y Subsidios PyME',
-      description: `Gracias a su buena calificación crediticia (${financialData.creditScore}/100), la empresa califica para líneas de financiamiento productivo a tasa subsidiada y Aportes No Reembolsables (ANR).`,
+      icon: 'briefcase',
+      title: 'Consolidación en el Registro de Proveedores del Estado (COMPR.AR)',
+      description: `Aprovechar la sólida salud financiera de ${cleanComp} (${creditScore}/100 pts) para postular a licitaciones públicas de gran escala en ministerios, municipios y empresas estatales.`,
       actionSteps: [
-        'Postulación a créditos de inversión productiva para equipamiento e insumos.',
-        'Solicitud de Aportes No Reembolsables (ANR) para desarrollo de proyectos e innovación.'
+        'Actualizar el Certificado MiPyME y la capacidad licitatoria aprobada.',
+        'Activar alertas automatizadas de pliegos licitatorios del sector de ${sector}.',
+        'Presentar antecedentes técnicos comprobables en licitaciones de provisión pública.'
       ]
     });
   }
 
-  // 3. Chamber & Association Linkage
+  // 4. Programa de Internacionalización y Oferta Exportadora (ProArgentina / Cancillería)
   recommendations.push({
-    category: 'Integración Institucional & Grupos',
+    category: 'Internacionalización & Comercio Exterior',
     priority: 'MEDIA',
-    icon: 'users',
-    title: 'Vinculación con Cámaras Empresariales y Grupos de Apoyo',
-    description: `Impulsar la integración de ${companyName} en cámaras sectoriales o asociaciones industriales para fortalecer la representatividad y acuerdos comerciales.`,
+    icon: 'globe',
+    title: 'Asistencia Técnica para Posicionamiento Exportador en América Latina',
+    description: `Incorporación de ${cleanComp} en misiones comerciales internacionales y rondas de negocios organizadas por la Agencia Argentina de Inversiones y Comercio Internacional para exportar productos y servicios en la región.`,
     actionSteps: [
-      'Gestionar membresía en Cámaras de Industria, Comercio o Metalúrgicas locales.',
-      'Participar en rondas de negocios y ferias sectoriales.',
-      'Integrar grupos de compras comunitarias para reducir costos de insumos.'
+      'Elaboración del perfil exportador en la plataforma Argentina Trade Net.',
+      'Participación en ferias internacionales con subsidio de stand institucional.',
+      'Adecuación de embalajes, normas de origen y certificaciones para exportación.'
     ]
   });
 
-  // 4. Digital & Commercial Visibility
-  if (!scrapedData.hasWebsite) {
-    recommendations.push({
-      category: 'Visibilidad Comercial',
-      priority: 'ALTA',
-      icon: 'globe',
-      title: 'Desarrollo de Presencia Digital Oficial',
-      description: `Crear un sitio web y catálogo digital para ${companyName} permitirá validar sus proyectos y productos ante nuevos clientes y entidades financieras.`,
-      actionSteps: [
-        'Diseñar sitio web institucional optimizado para dispositivos móviles.',
-        'Incorporar ficha de servicios, clientes y canal directo de WhatsApp/Mail.'
-      ]
-    });
-  }
+  // 5. Integración a Clústeres Industriales & Cámaras (ADIMRA, CACIEL, Polo Tecnológico)
+  recommendations.push({
+    category: 'Vinculación Institucional & Clústeres',
+    priority: 'MEDIA',
+    icon: 'users',
+    title: 'Vinculación a Cámaras Sectoriales y Rondas de Negocios B2B',
+    description: `Membresía e integración activa de ${cleanComp} en cámaras empresariales (Cámara Metalúrgica, CACIEL, Polo Tecnológico) para acceder a compras comunitarias de insumos, economías de escala y convenios colectivos favorables.`,
+    actionSteps: [
+      'Participación en rondas de negocios sectoriales B2B locales e interprovinciales.',
+      'Acceso a convenios institucionales para adquisición de materia prima a precio de clúster.',
+      'Red de alianzas estratégicas con integradores y distribuidores regionales.'
+    ]
+  });
 
-  const supportTier = financialData.creditScore >= 75
-    ? 'Empresa Candidata a Escalamiento, Créditos e Inversión'
-    : financialData.creditScore >= 55
-    ? 'Empresa Apta para Consolidación y Vinculación Comercial'
-    : 'Empresa Prioritaria para Saneamiento Financiero y Apoyo Técnico';
+  const supportTier = creditScore >= 75
+    ? 'Empresa Candidata a Escalamiento, Créditos Productivos e Inversión 4.0'
+    : creditScore >= 55
+    ? 'Empresa Apta para Consolidación Licitatoria y Vinculación Comercial'
+    : 'Empresa Prioritaria para Saneamiento Financiero y Apoyo Técnico SGR';
 
   return {
     supportTier,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Landmark, Building, HeartHandshake, FolderGit2, Globe, Tag, Users, ChevronRight, FileSearch, EyeOff, ShieldAlert, Calendar, Database, CheckCircle2, ShieldCheck, Sparkles } from 'lucide-react';
+import { Landmark, Building, HeartHandshake, FolderGit2, Globe, Tag, Users, ChevronRight, FileSearch, EyeOff, ShieldAlert, Calendar, Database, CheckCircle2, ShieldCheck, Sparkles, ExternalLink } from 'lucide-react';
 
 export default function OverviewTab({ report = {}, onTabChange }) {
   const data = report || {};
@@ -68,6 +68,62 @@ export default function OverviewTab({ report = {}, onTabChange }) {
             <span style={{ fontSize: '0.72rem', fontWeight: 800, padding: '4px 10px', borderRadius: '20px', background: 'rgba(16, 185, 129, 0.15)', color: '#34d399', border: '1px solid rgba(16, 185, 129, 0.3)' }}>
               ✔ VERIFICADO EN MÚLTIPLES FUENTES
             </span>
+          </div>
+        </div>
+      </div>
+
+      {/* PyME, GeorefAR & ARCA Official Registration Summary Card */}
+      <div className="saas-card col-12" style={{ padding: '24px', background: 'rgba(15, 23, 42, 0.7)', border: '1px solid rgba(56, 189, 248, 0.3)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginBottom: '16px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <div style={{ background: 'rgba(56, 189, 248, 0.15)', color: '#38bdf8', padding: '10px', borderRadius: '10px' }}>
+              <ShieldCheck size={24} />
+            </div>
+            <div>
+              <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#f8fafc' }}>
+                Registro Oficial MiPyME & ARCA
+              </h3>
+              <p style={{ fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+                Información consolidada de registros nacionales para {companyName}.
+              </p>
+            </div>
+          </div>
+          <span style={{ fontSize: '0.76rem', fontWeight: 800, padding: '4px 12px', borderRadius: '20px', background: 'rgba(168, 85, 247, 0.15)', color: '#c084fc', border: '1px solid rgba(168, 85, 247, 0.3)' }}>
+            ✔ REGISTRO MIPYME Y AFIP ACTIVO
+          </span>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}>
+          <div style={{ background: 'rgba(0,0,0,0.3)', padding: '14px', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
+            <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Categorización MiPyME</span>
+            <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#34d399', marginTop: '4px', display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '6px' }}>
+              <span>{financialData.pymeData?.pymeCategory || 'Dato no disponible en registros públicos'}</span>
+              {financialData.pymeData?.evidenceLink && (
+                <a
+                  href={financialData.pymeData.evidenceLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ fontSize: '0.72rem', color: '#60a5fa', display: 'inline-flex', alignItems: 'center', gap: '3px', textDecoration: 'none', background: 'rgba(37, 99, 235, 0.15)', padding: '2px 8px', borderRadius: '12px', border: '1px solid rgba(37, 99, 235, 0.3)' }}
+                  title="Ver fuente de evidencia verificada"
+                >
+                  <ExternalLink size={11} /> Ver fuente ↗
+                </a>
+              )}
+            </div>
+          </div>
+
+          <div style={{ background: 'rgba(0,0,0,0.3)', padding: '14px', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
+            <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Padrón ARCA / AFIP</span>
+            <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#c084fc', marginTop: '4px' }}>
+              CUIT: {financialData.taxProfile?.cuit || '30-XXXXXXXX-X'}
+            </div>
+          </div>
+
+          <div style={{ background: 'rgba(0,0,0,0.3)', padding: '14px', borderRadius: '10px', border: '1px solid var(--border-subtle)' }}>
+            <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', textTransform: 'uppercase', fontWeight: 700 }}>Central de Deudores BCRA</span>
+            <div style={{ fontSize: '0.95rem', fontWeight: 700, color: riskColor, marginTop: '4px' }}>
+              Scoring {creditScore} / 100 ({riskLevel})
+            </div>
           </div>
         </div>
       </div>

@@ -16,6 +16,7 @@ import HistoryTab from './components/HistoryTab';
 import CompareTab from './components/CompareTab';
 import AdminTab from './components/AdminTab';
 import PresentationModal from './components/PresentationModal';
+import WatchlistModal from './components/WatchlistModal';
 import OsintChatbot from './components/OsintChatbot';
 import Footer from './components/Footer';
 import { processClientSideOSINT } from './services/clientOsintEngine';
@@ -66,6 +67,7 @@ export default function App() {
   const [theme, setTheme] = useState(() => localStorage.getItem('osint-theme') || 'dark');
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [showPresentation, setShowPresentation] = useState(false);
+  const [showWatchlistModal, setShowWatchlistModal] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [scanStageText, setScanStageText] = useState('Iniciando rastreo OSINT...');
 
@@ -131,24 +133,73 @@ export default function App() {
     } catch (e) {}
   }, []);
 
-  // Load History ONLY if user is logged in
+  // Load History Summary ONLY if user is logged in
   useEffect(() => {
     if (user) {
-      try {
-        const historyKey = `osint_tecno3f_history_${user.id}`;
-        const savedHistory = localStorage.getItem(historyKey);
-        if (savedHistory) {
-          setHistory(JSON.parse(savedHistory));
-        } else {
-          setHistory([]);
+      const token = user.token || localStorage.getItem('osint_auth_token');
+      fetch('/api/history', {
+        headers: {
+          'Authorization': token ? `Bearer ${token}` : '',
+          'X-User-Id': user.id || ''
         }
-      } catch (e) {
-        setHistory([]);
-      }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && Array.isArray(data.history)) {
+          setHistory(data.history);
+        }
+      })
+      .catch(() => setHistory([]));
     } else {
       setHistory([]);
     }
   }, [user]);
+
+  const saveReportToHistory = async (reportData) => {
+    if (!user || !reportData) return;
+    try {
+      await fetch('/api/history/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId: user.id, report: reportData })
+      });
+      const token = user.token || localStorage.getItem('osint_auth_token');
+      const res = await fetch('/api/history', {
+        headers: { 'Authorization': token ? `Bearer ${token}` : '', 'X-User-Id': user.id || '' }
+      });
+      const data = await res.json();
+      if (data.success && Array.isArray(data.history)) {
+        setHistory(data.history);
+      }
+    } catch(e) {}
+  };
+
+  const handleLoadReportFromHistory = async (summaryItem) => {
+    if (!summaryItem) return;
+    if (summaryItem.categorization) {
+      setReport(summaryItem);
+      setActiveTab('overview');
+      setShowHistoryOnly(false);
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const token = user?.token || localStorage.getItem('osint_auth_token');
+      const res = await fetch(`/api/history/${summaryItem.id}`, {
+        headers: { 'Authorization': token ? `Bearer ${token}` : '', 'X-User-Id': user?.id || '' }
+      });
+      const data = await res.json();
+      if (data.success && data.report) {
+        setReport(data.report);
+        setActiveTab('overview');
+        setShowHistoryOnly(false);
+      }
+    } catch(e) {
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleLogin = (userData, keepSession = false) => {
     setUser(userData);
@@ -212,14 +263,9 @@ export default function App() {
       setReport(data);
       setActiveTab('overview');
 
-      // Save history ONLY if user is logged in
+      // Save history to server
       if (user) {
-        setHistory(prev => {
-          const updated = [data, ...prev.filter(h => h.id !== data.id)].slice(0, 25);
-          const historyKey = `osint_tecno3f_history_${user.id}`;
-          localStorage.setItem(historyKey, JSON.stringify(updated));
-          return updated;
-        });
+        saveReportToHistory(data);
       }
 
     } catch (err) {
@@ -332,6 +378,7 @@ export default function App() {
           onNavigateHome={handleNavigateHome}
           currentPath={currentPath}
           onOpenPresentation={() => setShowPresentation(true)}
+          onOpenWatchlist={() => setShowWatchlistModal(true)}
         />
 
         {/* 403 Forbidden Access Protection against IDOR & Parameter Tampering */}
@@ -509,7 +556,7 @@ export default function App() {
                 {activeTab === 'financial' && <FinancialTab financialData={report.financialData || {}} />}
                 {activeTab === 'news' && <NewsTab searchData={report.searchData || {}} companyName={companyName} />}
                 {activeTab === 'support' && <SupportTab supportPlan={report.supportPlan || {}} companyName={companyName} />}
-                {user && activeTab === 'history' && <HistoryTab history={history} onLoadReport={(rep) => { setReport(rep); setActiveTab('overview'); }} onClearHistory={handleClearHistory} />}
+                {user && activeTab === 'history' && <HistoryTab history={history} onLoadReport={handleLoadReportFromHistory} onClearHistory={handleClearHistory} />}
               </div>
             )}
 
@@ -526,11 +573,7 @@ export default function App() {
                     </div>
                     <HistoryTab
                       history={history}
-                      onLoadReport={(rep) => {
-                        setReport(rep);
-                        setActiveTab('overview');
-                        setShowHistoryOnly(false);
-                      }}
+                      onLoadReport={handleLoadReportFromHistory}
                       onClearHistory={handleClearHistory}
                     />
                   </div>
@@ -572,6 +615,13 @@ export default function App() {
             onClose={() => setShowPresentation(false)}
           />
         )}
+
+        {/* Watchlist & Active Monitoring Modal */}
+        <WatchlistModal
+          isOpen={showWatchlistModal}
+          onClose={() => setShowWatchlistModal(false)}
+          currentCompany={report?.query}
+        />
         {/* Application Footer */}
         <Footer />
       </div>

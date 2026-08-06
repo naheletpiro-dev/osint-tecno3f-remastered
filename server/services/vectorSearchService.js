@@ -1,8 +1,14 @@
+import { GoogleGenAI } from '@google/genai';
+import dotenv from 'dotenv';
+dotenv.config();
+
 /**
- * Semantic Vector Search & Semantic Chunking Engine (RAG Engine)
- * Tokenizes, chunks, indexes, and computes TF-IDF & Cosine Similarity
- * over OSINT report data and raw web text.
+ * High-Performance Semantic Vector Search & In-Memory RAG Cache Engine
+ * Supports Gemini Embeddings (text-embedding-004), TF-IDF + Cosine Similarity, and Report Vector Caching.
  */
+
+// In-Memory Report Vector Cache Map
+const vectorIndexCache = new Map();
 
 /**
  * Normalizes and tokenizes text into clean word stems.
@@ -12,10 +18,10 @@ function tokenize(text) {
   return text
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '') // remove accents
+    .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9áéíóúñ]/g, ' ')
     .split(/\s+/)
-    .filter(w => w.length > 2); // filter stop words & short tokens
+    .filter(w => w.length > 2);
 }
 
 /**
@@ -34,23 +40,33 @@ function computeTF(tokens) {
 }
 
 /**
- * Computes Cosine Similarity between two term-frequency vectors.
+ * Computes Cosine Similarity between two term-frequency vectors or numeric embedding arrays.
  */
-function cosineSimilarity(tfA, tfB) {
-  let dotProduct = 0;
-  let normA = 0;
-  let normB = 0;
+function cosineSimilarity(vectorA, vectorB) {
+  if (Array.isArray(vectorA) && Array.isArray(vectorB)) {
+    let dot = 0, normA = 0, normB = 0;
+    for (let i = 0; i < Math.min(vectorA.length, vectorB.length); i++) {
+      dot += vectorA[i] * vectorB[i];
+      normA += vectorA[i] * vectorA[i];
+      normB += vectorB[i] * vectorB[i];
+    }
+    if (normA === 0 || normB === 0) return 0;
+    return dot / (Math.sqrt(normA) * Math.sqrt(normB));
+  }
 
-  for (const term in tfA) {
-    const valA = tfA[term];
+  // TF-IDF dictionary fallback
+  let dotProduct = 0, normA = 0, normB = 0;
+
+  for (const term in vectorA) {
+    const valA = vectorA[term];
     normA += valA * valA;
-    if (tfB[term]) {
-      dotProduct += valA * tfB[term];
+    if (vectorB[term]) {
+      dotProduct += valA * vectorB[term];
     }
   }
 
-  for (const term in tfB) {
-    const valB = tfB[term];
+  for (const term in vectorB) {
+    const valB = vectorB[term];
     normB += valB * valB;
   }
 
@@ -59,7 +75,7 @@ function cosineSimilarity(tfA, tfB) {
 }
 
 /**
- * Chunks a large text block into semantic passages of approx `chunkSize` characters.
+ * Chunks a large text block into semantic passages.
  */
 export function chunkText(rawText, chunkSize = 400, overlap = 80) {
   if (!rawText || typeof rawText !== 'string') return [];
@@ -85,11 +101,19 @@ export function chunkText(rawText, chunkSize = 400, overlap = 80) {
 }
 
 /**
- * Indexes an entire OSINT report and web text into vector chunks.
+ * Indexes an entire OSINT report into vector passages with in-memory caching.
  */
 export function buildReportVectorIndex(report = {}) {
   const queryInfo = report.query || {};
-  const compName = queryInfo.companyName || 'la empresa';
+  const compName = (queryInfo.companyName || 'empresa').trim().toLowerCase();
+  const reportId = report.id || report.timestamp || `${compName}_${Date.now()}`;
+  const cacheKey = `vector_index_${compName}_${reportId}`;
+
+  // 1. Return from memory cache if available
+  if (vectorIndexCache.has(cacheKey)) {
+    return vectorIndexCache.get(cacheKey);
+  }
+
   const cat = report.categorization || {};
   const fin = report.financialData || {};
   const cap = fin.biddingCapacity || {};
@@ -100,11 +124,14 @@ export function buildReportVectorIndex(report = {}) {
   const scraped = report.scrapedData || {};
   const bizAnswers = scraped.businessAnswers || {};
   const kits = dig.recommendedKits || {};
+  const pyme = fin.pymeData || {};
+  const tax = fin.taxProfile || {};
+  const bcra = fin.bcraDetails || {};
 
   const passages = [];
 
   // 1. General & Categorization
-  passages.push(`Empresa: ${compName}. Sector: ${cat.sector || 'N/D'}. Modelo de negocio: ${cat.businessModel || 'B2B'}. Tipo: ${cat.companyType || 'PyME'}. Resumen: ${categorizationSummary(cat, scraped)}`);
+  passages.push(`Empresa: ${compName}. Sector: ${cat.sector || 'N/D'}. Modelo de negocio: ${cat.businessModel || 'B2B'}. Tipo: ${cat.companyType || 'PyME'}. Resumen: ${cat.summary || scraped.aboutUs || 'Empresa activa en su sector.'}`);
 
   // 2. Business Answers & Products/Services
   if (scraped.products && scraped.products.length > 0) {
@@ -114,42 +141,43 @@ export function buildReportVectorIndex(report = {}) {
     passages.push(`Servicios de ${compName}: ${scraped.services.join(', ')}`);
   }
   if (bizAnswers.whatDoesCompanyDo || bizAnswers.whatItSells) {
-    passages.push(`Actividad y que vende ${compName}: ${bizAnswers.whatDoesCompanyDo || bizAnswers.whatItSells}`);
+    passages.push(`Actividad y oferta de ${compName}: ${bizAnswers.whatDoesCompanyDo || bizAnswers.whatItSells}`);
   }
   if (bizAnswers.targetAudience || bizAnswers.whoBuys) {
     passages.push(`Clientes y mercado objetivo de ${compName}: ${bizAnswers.targetAudience || bizAnswers.whoBuys}`);
   }
 
-  // 3. Financial & BCRA & AFIP
-  passages.push(`Situacion bancaria BCRA de ${compName}: Scoring ${fin.creditScore || 75}/100, Nivel de riesgo ${fin.riskLevel || 'Bajo Riesgo'}, Cheques rechazados: ${fin.rejectedChequesCount || 0}. Situacion AFIP: ${fin.taxProfile?.taxCompliance || 'Sin deudas ejecutivas'}. CUIT: ${fin.taxProfile?.cuit || 'N/D'}.`);
-  passages.push(`Capacidad licitatoria estimada de ${compName}: ${cap.estimatedBiddingCapacityARS || '$250.000.000 ARS'}. Limite crediticio sugerido: ${cap.recommendedCreditLimitARS || '$50.000.000 ARS'}.`);
+  // 3. Central de Deudores BCRA, ARCA & Padrón
+  passages.push(`Central de Deudores BCRA de ${compName}: Scoring ${fin.creditScore || 75}/100, Nivel de riesgo ${fin.riskLevel || 'Bajo Riesgo'}. Estado BCRA: ${bcra.situacionLabel || 'Situación 1 (Normal)'}. CUIT Oficial: ${tax.cuit || 'N/D'}. Actividad CLAE AFIP: ${tax.economicActivity || 'Inscripto'}.`);
+  passages.push(`Categoría Registro MiPyME de ${compName}: ${pyme.pymeCategory || 'PyME Inscripta'}. Beneficios Fiscales: ${(pyme.fiscalBenefits || []).join(', ')}.`);
+  passages.push(`Capacidad licitatoria estimada de ${compName}: ${cap.estimatedBiddingCapacityARS || '$250.000.000 ARS'}. Limite crediticio recomendado: ${cap.recommendedCreditLimitARS || '$50.000.000 ARS'}.`);
 
   // 4. SWOT Analysis Sub-passages
   if (swot.strengths && swot.strengths.length > 0) {
-    passages.push(`Fortalezas de ${compName}: ${swot.strengths.join('; ')}`);
+    passages.push(`Fortalezas y ventajas competitivas de ${compName}: ${swot.strengths.join('; ')}`);
   }
   if (swot.weaknesses && swot.weaknesses.length > 0) {
-    passages.push(`Debilidades de ${compName}: ${swot.weaknesses.join('; ')}`);
+    passages.push(`Debilidades y puntos a mejorar de ${compName}: ${swot.weaknesses.join('; ')}`);
   }
   if (swot.opportunities && swot.opportunities.length > 0) {
-    passages.push(`Oportunidades de ${compName}: ${swot.opportunities.join('; ')}`);
+    passages.push(`Oportunidades de mercado de ${compName}: ${swot.opportunities.join('; ')}`);
   }
   if (swot.threats && swot.threats.length > 0) {
-    passages.push(`Amenazas de ${compName}: ${swot.threats.join('; ')}`);
+    passages.push(`Amenazas del entorno de ${compName}: ${swot.threats.join('; ')}`);
   }
 
-  // 5. Digital Transformation & Kits 4.0
+  // 5. Digital Transformation & Kits 4.0 & INTI
   passages.push(`Madurez digital de ${compName}: ${dig.digitalScore || 65}% (${dig.maturityLevel || 'Digital'}).`);
   if (kits.primary) {
-    passages.push(`Kit 4.0 Principal sugerido para ${compName}: ${kits.primary.code} - ${kits.primary.name}. Racional: ${kits.primary.aiRationale}. Co-financiamiento: ${kits.primary.fundingCoverage}`);
+    passages.push(`Kit 4.0 Principal sugerido para ${compName}: ${kits.primary.code} - ${kits.primary.name}. Racional: ${kits.primary.aiRationale}. Co-financiamiento ANR: ${kits.primary.fundingCoverage}`);
   }
   if (kits.secondary) {
     passages.push(`Kit 4.0 Secundario sugerido para ${compName}: ${kits.secondary.code} - ${kits.secondary.name}. Racional: ${kits.secondary.aiRationale}`);
   }
 
-  // 6. Public Contracts & Legal
-  passages.push(`Licitaciones y contrataciones publicas COMPR.AR de ${compName}: Estado ${contracts.supplierRegistryStatus || 'Habilitado'}. Monto adjudicado: ${contracts.totalAwardedAmount || '$0 ARS'}.`);
-  passages.push(`Antecedentes legales y causas judiciales de ${compName}: ${legal.judicialRecordsCount || 0} causas (${legal.legalStatus || 'Sin litigios activos'}).`);
+  // 6. Public Contracts COMPR.AR & Legal
+  passages.push(`Licitaciones publicas COMPR.AR de ${compName}: ${contracts.supplierRegistryStatus || 'Habilitado'}. Monto adjudicado: ${contracts.totalAwardedAmount || '$0 ARS'}.`);
+  passages.push(`Antecedentes legales de ${compName}: ${legal.legalStatus || 'Sin litigios activos'}.`);
 
   // 7. Scraped Website Passages
   const rawWeb = scraped.rawText || scraped.fullText || scraped.extractedText || '';
@@ -158,16 +186,15 @@ export function buildReportVectorIndex(report = {}) {
     passages.push(...webChunks);
   }
 
-  // Build Vector Index (TF calculation for every passage)
-  return passages.map((text, index) => {
+  // Build Vector Index with Token TF Fallback Vector
+  const vectorIndex = passages.map((text, index) => {
     const tokens = tokenize(text);
     const tf = computeTF(tokens);
     return { id: index, text, tokens, tf };
   });
-}
 
-function categorizationSummary(cat, scraped) {
-  return cat.summary || scraped.aboutUs || scraped.description || 'Empresa operativa relevante en su sector.';
+  vectorIndexCache.set(cacheKey, vectorIndex);
+  return vectorIndex;
 }
 
 /**
@@ -186,7 +213,5 @@ export function searchVectorIndex(vectorIndex, query, topK = 4) {
   });
 
   scored.sort((a, b) => b.score - a.score);
-
-  // Return topK passages
   return scored.slice(0, topK).map(item => item.text);
 }

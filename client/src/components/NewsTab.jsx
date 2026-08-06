@@ -2,7 +2,9 @@ import React from 'react';
 import { Newspaper, ExternalLink, Share2, Linkedin, Instagram, Twitter, Facebook, Youtube, Calendar, Globe } from 'lucide-react';
 
 export default function NewsTab({ searchData = {}, companyName = '' }) {
-  const newsItems = (searchData && searchData.newsItems) ? searchData.newsItems : [];
+  const rawNews = (searchData && searchData.newsItems) ? searchData.newsItems : [];
+  // Strict filter: only display news with real external HTTP/HTTPS links
+  const newsItems = rawNews.filter(n => n.link && /^https?:\/\//i.test(n.link));
   const socialProfiles = (searchData && searchData.socialProfiles) ? searchData.socialProfiles : [];
 
   const getSocialIcon = (iconName) => {
@@ -25,7 +27,7 @@ export default function NewsTab({ searchData = {}, companyName = '' }) {
             <Newspaper size={22} /> Noticias, Publicaciones y Menciones en Medios
           </h3>
           <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-            {newsItems.length} publicaciones registradas
+            {newsItems.length} publicaciones con enlace verificado
           </span>
         </div>
 
@@ -44,19 +46,33 @@ export default function NewsTab({ searchData = {}, companyName = '' }) {
                   </div>
                 </div>
 
-                <h4 className="news-title-heading">{news.title}</h4>
-
-                {news.link && news.link !== '#' && (
-                  <a href={news.link} target="_blank" rel="noreferrer" className="news-link-btn">
-                    Leer nota en el medio original <ExternalLink size={14} />
+                <h4 className="news-title-heading">
+                  <a
+                    href={news.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: '#f8fafc', textDecoration: 'none', transition: 'color 0.2s ease' }}
+                    onMouseEnter={(e) => e.target.style.color = '#38bdf8'}
+                    onMouseLeave={(e) => e.target.style.color = '#f8fafc'}
+                    title="Abrir nota original en nueva pestaña"
+                  >
+                    {news.title}
                   </a>
-                )}
+                </h4>
+
+                <a href={news.link} target="_blank" rel="noopener noreferrer" className="news-link-btn">
+                  Leer nota completa en el medio original <ExternalLink size={14} />
+                </a>
               </article>
             ))}
           </div>
         ) : (
-          <div style={{ color: 'var(--text-muted)', padding: '24px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '10px' }}>
-            No se registraron artículos periodísticos recientes para esta consulta.
+          <div style={{ color: 'var(--text-muted)', padding: '36px 24px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px dashed var(--border-subtle)' }}>
+            <Newspaper size={36} style={{ color: '#64748b', marginBottom: '12px' }} />
+            <div style={{ fontSize: '0.98rem', fontWeight: 700, color: '#94a3b8' }}>Sin artículos periodísticos verificados para {companyName}</div>
+            <div style={{ fontSize: '0.82rem', color: '#64748b', marginTop: '6px', maxWidth: '420px', margin: '6px auto 0' }}>
+              No se detectaron noticias con enlaces externos activos en los medios indexados para esta consulta.
+            </div>
           </div>
         )}
       </div>

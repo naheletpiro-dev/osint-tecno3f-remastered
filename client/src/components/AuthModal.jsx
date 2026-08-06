@@ -58,7 +58,7 @@ export default function AuthModal({ user, onLogin, onLogout, onOpenHistory, hist
         }
       }
 
-      onLogin(data.user, keepSession);
+      onLogin({ ...data.user, token: data.token }, keepSession);
       setShowModal(false);
       resetForm();
 

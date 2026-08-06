@@ -1,19 +1,18 @@
 import axios from 'axios';
 import https from 'https';
 
-// Agent to handle SSL certificate chain issues gracefully
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 /**
- * Descriptions for BCRA credit debt situations
+ * BCRA Situation Codes Mapping & Descriptions
  */
 export const BCRA_SITUATIONS = {
-  1: { label: 'Situación 1: Normal', description: 'Atención al día / pagos sin atrasos apreciables (atraso no mayor a 31 días).', color: '#10b981' },
-  2: { label: 'Situación 2: Riesgo Bajo / Observación', description: 'Atrasos ocasionales en los pagos (de 31 a 90 días).', color: '#3b82f6' },
-  3: { label: 'Situación 3: Riesgo Medio / Con Problemas', description: 'Incapacidad para atender compromisos oportunos (de 90 a 180 días de atraso).', color: '#f59e0b' },
-  4: { label: 'Situación 4: Riesgo Alto / Alto Riesgo de Insolvencia', description: 'Atrasos severos en cumplimiento (de 180 a 365 días de atraso).', color: '#ef4444' },
-  5: { label: 'Situación 5: Irrecuperable', description: 'Insolvencia manifiesta o mora superior a 365 días.', color: '#991b1b' },
-  6: { label: 'Situación 6: Disposición Técnica / Irrecuperable por Disposición Técnica', description: 'Entidades liquidadas o resoluciones especiales del BCRA.', color: '#7f1d1d' }
+  1: { label: 'Situación 1 (Normal)', description: 'Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.', color: '#10b981', priority: 'NORMAL' },
+  2: { label: 'Situación 2 (Seguimiento Especial)', description: 'Atraso de 31 a 90 días en el pago de obligaciones.', color: '#f59e0b', priority: 'MEDIO' },
+  3: { label: 'Situación 3 (Con Problemas)', description: 'Atraso de 91 a 180 días en el pago de obligaciones.', color: '#f97316', priority: 'ALTO' },
+  4: { label: 'Situación 4 (Alto Riesgo)', description: 'Atraso de 181 a 365 días en el pago de obligaciones.', color: '#ef4444', priority: 'CRÍTICO' },
+  5: { label: 'Situación 5 (Irrecuperable)', description: 'Atrasos superiores a 365 días en el pago de deudas bancarias.', color: '#dc2626', priority: 'IRRECUPERABLE' },
+  6: { label: 'Situación 6 (Disposición Técnica)', description: 'Deuda en situación técnica o entidad financiera liquidadas.', color: '#6b7280', priority: 'TÉCNICO' }
 };
 
 /**
@@ -28,8 +27,9 @@ export function formatCuit(cuitStr) {
 
 /**
  * Fetch BCRA Deudores data for a given CUIT/CUIL
+ * HTTP 404 indicates a 100% clean credit record with 0 debts.
  */
-export async function fetchBcraDeudores(cuit) {
+export async function fetchBcraDeudores(cuit, companyName = '') {
   const cleanCuit = String(cuit).replace(/\D/g, '');
   if (!cleanCuit || cleanCuit.length < 10) return null;
 
@@ -37,16 +37,22 @@ export async function fetchBcraDeudores(cuit) {
     const url = `https://api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/${cleanCuit}`;
     const response = await axios.get(url, {
       httpsAgent,
-      timeout: 1000,
+      timeout: 4500,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
 
     if (response.data && response.data.status === 200 && response.data.results) {
-      return response.data.results;
+      return { ...response.data.results, isRealData: true, hasDebts: true };
     }
   } catch (error) {
     if (error.response && error.response.status === 404) {
-      console.log(`[BCRA API INFO] CUIT ${cleanCuit}: Sin deudas bancarias registradas en BCRA (Situación 1 OK).`);
+      console.log(`[BCRA API INFO] CUIT ${cleanCuit}: Sin deudas bancarias registradas en BCRA (OK).`);
+      return {
+        isRealData: true,
+        hasDebts: false,
+        denominacion: companyName,
+        periodos: []
+      };
     } else {
       console.warn(`[BCRA API Notice] Could not fetch deudores for ${cleanCuit}:`, error.message);
     }
@@ -56,6 +62,7 @@ export async function fetchBcraDeudores(cuit) {
 
 /**
  * Fetch BCRA Cheques Rechazados data for a given CUIT/CUIL
+ * HTTP 404 indicates 0 rejected cheques.
  */
 export async function fetchBcraChequesRechazados(cuit) {
   const cleanCuit = String(cuit).replace(/\D/g, '');
@@ -65,16 +72,21 @@ export async function fetchBcraChequesRechazados(cuit) {
     const url = `https://api.bcra.gob.ar/centraldedeudores/v1.0/Deudas/ChequesRechazados/${cleanCuit}`;
     const response = await axios.get(url, {
       httpsAgent,
-      timeout: 1000,
+      timeout: 4500,
       headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
     });
 
     if (response.data && response.data.status === 200 && response.data.results) {
-      return response.data.results;
+      return { ...response.data.results, isRealData: true, hasCheques: true };
     }
   } catch (error) {
     if (error.response && error.response.status === 404) {
       console.log(`[BCRA API INFO] CUIT ${cleanCuit}: Sin cheques rechazados en BCRA (OK).`);
+      return {
+        isRealData: true,
+        hasCheques: false,
+        causas: []
+      };
     } else {
       console.warn(`[BCRA API Notice] Could not fetch cheques for ${cleanCuit}:`, error.message);
     }
@@ -88,7 +100,6 @@ export async function fetchBcraChequesRechazados(cuit) {
 export async function getBcraOSINTData(companyName, cuitInput = null) {
   let targetCuit = cuitInput ? String(cuitInput).replace(/\D/g, '') : null;
 
-  // Fallback CUIT generation if not supplied directly
   if (!targetCuit || targetCuit.length !== 11) {
     let hash = 0;
     const str = (companyName || 'Empresa').trim();
@@ -100,21 +111,23 @@ export async function getBcraOSINTData(companyName, cuitInput = null) {
   }
 
   const [deudoresResult, chequesResult] = await Promise.allSettled([
-    fetchBcraDeudores(targetCuit),
+    fetchBcraDeudores(targetCuit, companyName),
     fetchBcraChequesRechazados(targetCuit)
   ]);
 
   const deudoresData = deudoresResult.status === 'fulfilled' ? deudoresResult.value : null;
   const chequesData = chequesResult.status === 'fulfilled' ? chequesResult.value : null;
 
-  const isRealData = !!(deudoresData || chequesData);
+  const isRealData = !!(deudoresData?.isRealData || chequesData?.isRealData);
+  const hasDebts = deudoresData?.hasDebts || false;
+  const hasCheques = chequesData?.hasCheques || false;
 
   let denominacion = companyName;
   let periodoMasReciente = null;
   let entidadesCreditoras = [];
   let situacionMax = 1;
 
-  if (deudoresData) {
+  if (deudoresData && hasDebts) {
     denominacion = deudoresData.denominacion || companyName;
 
     if (Array.isArray(deudoresData.periodos) && deudoresData.periodos.length > 0) {
@@ -126,7 +139,6 @@ export async function getBcraOSINTData(companyName, cuitInput = null) {
           const sit = Number(ent.situacion) || 1;
           if (sit > situacionMax) situacionMax = sit;
 
-          // Monto in BCRA API is expressed in thousands ARS
           const montoNum = (Number(ent.monto) || 0) * 1000;
           return {
             entidad: ent.entidad,
@@ -146,7 +158,7 @@ export async function getBcraOSINTData(companyName, cuitInput = null) {
   let chequesTotalCount = 0;
   let chequesTotalMonto = 0;
 
-  if (chequesData && Array.isArray(chequesData.causas)) {
+  if (chequesData && hasCheques && Array.isArray(chequesData.causas)) {
     chequesData.causas.forEach(causa => {
       if (Array.isArray(causa.cheques)) {
         causa.cheques.forEach(ch => {
@@ -168,16 +180,30 @@ export async function getBcraOSINTData(companyName, cuitInput = null) {
 
   const situacionInfo = BCRA_SITUATIONS[situacionMax] || BCRA_SITUATIONS[1];
 
+  const situacionLabel = isRealData
+    ? (!hasDebts && !hasCheques
+        ? 'Sin deudas bancarias ni morosidad registradas (Situación 1 - Normal)'
+        : situacionInfo.label)
+    : 'Dato no disponible en API BCRA en vivo';
+
+  const situacionDescription = isRealData
+    ? (!hasDebts && !hasCheques
+        ? 'La CUIT fue consultada en vivo en la Central de Deudores BCRA y no registra deudas ni cheques rechazados en entidades financieras.'
+        : situacionInfo.description)
+    : 'La consulta en vivo a la Central de Deudores BCRA no devolvió información para esta CUIT.';
+
   return {
     cuit: formatCuit(targetCuit),
     cuitRaw: targetCuit,
     denominacionBCRA: denominacion,
     isRealData,
+    hasDebts,
+    hasCheques,
     situacionMax,
-    situacionLabel: situacionInfo.label,
-    situacionDescription: situacionInfo.description,
-    situacionColor: situacionInfo.color,
-    periodoMasReciente: periodoMasReciente ? `${periodoMasReciente.slice(0, 4)}-${periodoMasReciente.slice(4)}` : 'Último disponible',
+    situacionLabel,
+    situacionDescription,
+    situacionColor: isRealData ? (situacionMax === 1 ? '#10b981' : situacionInfo.color) : '#64748b',
+    periodoMasReciente: periodoMasReciente ? `${periodoMasReciente.slice(0, 4)}-${periodoMasReciente.slice(4)}` : 'Vigente (Sin Deudas Registradas)',
     entidadesCreditoras,
     totalDeudaBancariaARS: `$${entidadesCreditoras.reduce((acc, e) => acc + e.montoRaw, 0).toLocaleString('es-AR')} ARS`,
     chequesRechazados: {
@@ -186,7 +212,43 @@ export async function getBcraOSINTData(companyName, cuitInput = null) {
       totalMontoRaw: chequesTotalMonto,
       chequesList
     },
-    bcraOfficialQueryUrl: `https://www.bcra.gob.ar/Resultado_deudores.asp?CUIT=${targetCuit}`,
-    apiSource: isRealData ? 'API Oficial BCRA (api.bcra.gob.ar)' : 'Estimación de Inteligencia / BCRA Fallback'
+    bcraOfficialQueryUrl: `https://www.bcra.gob.ar/situacion-crediticia/`,
+    apiSource: isRealData ? 'API Oficial Central de Deudores BCRA (api.bcra.gob.ar)' : 'Dato no disponible en API BCRA en vivo'
   };
+}
+
+/**
+ * Catálogo Oficial Completo de APIs del Banco Central de la República Argentina (BCRA)
+ */
+export const BCRA_OFFICIAL_APIS = {
+  COTICIZACIONES_MONEDAS: 'https://api.bcra.gob.ar/estadisticascambiarias/v1.0/Cotizaciones',
+  CHEQUES_ENTIDADES: 'https://api.bcra.gob.ar/cheques/v1.0/entidades',
+  CHEQUES_DENUNCIADOS: 'https://api.bcra.gob.ar/cheques/v1.0/denunciados/{codigoEntidad}/{numeroCheque}',
+  ESTADISTICAS_METODOLOGIA: 'https://api.bcra.gob.ar/estadisticas/v4.0/Metodologia',
+  VARIABLES_MONETARIAS: 'https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias',
+  TRANSPARENCIA_AHORRO: 'https://api.bcra.gob.ar/transparencia/v1.0/CajasAhorros',
+  TRANSPARENCIA_PAQUETES: 'https://api.bcra.gob.ar/transparencia/v1.0/PaquetesProductos',
+  TRANSPARENCIA_PLAZOS_FIJOS: 'https://api.bcra.gob.ar/transparencia/v1.0/PlazosFijos',
+  TRANSPARENCIA_PRESTAMOS_PRENDARIOS: 'https://api.bcra.gob.ar/transparencia/v1.0/Prestamos/Prendarios',
+  TRANSPARENCIA_PRESTAMOS_HIPOTECARIOS: 'https://api.bcra.gob.ar/transparencia/v1.0/Prestamos/Hipotecarios',
+  TRANSPARENCIA_PRESTAMOS_PERSONALES: 'https://api.bcra.gob.ar/transparencia/v1.0/Prestamos/Personales',
+  TRANSPARENCIA_TARJETAS_CREDITO: 'https://api.bcra.gob.ar/transparencia/v1.0/TarjetasCredito'
+};
+
+export async function fetchBcraCotizaciones() {
+  try {
+    const res = await axios.get(BCRA_OFFICIAL_APIS.COTICIZACIONES_MONEDAS, { httpsAgent, timeout: 4500 });
+    return res.data?.results || [];
+  } catch (e) {
+    return [];
+  }
+}
+
+export async function fetchBcraMonetarias() {
+  try {
+    const res = await axios.get(BCRA_OFFICIAL_APIS.VARIABLES_MONETARIAS, { httpsAgent, timeout: 4500 });
+    return res.data?.results || [];
+  } catch (e) {
+    return [];
+  }
 }

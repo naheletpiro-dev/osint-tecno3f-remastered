@@ -51,12 +51,12 @@ export function analyzeFinancials(companyName, scrapedData = {}, searchResults =
     cuit: cuitFormatted,
     cuitRaw: cuitFormatted.replace(/\D/g, ''),
     denominacionBCRA: cleanComp,
-    isRealData: true,
+    isRealData: false,
     hasDebts: false,
     hasCheques: false,
     situacionMax: 1,
-    situacionLabel: 'Sin deudas bancarias ni morosidad registradas (Situación 1 - Normal)',
-    situacionDescription: 'La CUIT fue consultada en vivo en la Central de Deudores BCRA y no registra deudas ni cheques rechazados en entidades financieras.',
+    situacionLabel: 'Sin deudas bancarias ni morosidad registradas (Estimación algorítmica)',
+    situacionDescription: 'Estimación algorítmica OSINT (la consulta en vivo en Central de Deudores BCRA no estuvo disponible).',
     situacionColor: '#10b981',
     periodoMasReciente: 'Vigente (Sin Deudas Registradas)',
     entidadesCreditoras: [],
@@ -68,14 +68,14 @@ export function analyzeFinancials(companyName, scrapedData = {}, searchResults =
       chequesList: []
     },
     bcraOfficialQueryUrl: 'https://www.bcra.gob.ar/situacion-crediticia/',
-    apiSource: 'API Oficial Central de Deudores BCRA (api.bcra.gob.ar)'
+    apiSource: 'Estimación Algorítmica OSINT (Fallback BCRA)'
   };
 
   const finalBcraDetails = bcraData || defaultBcraDetails;
 
   return {
     creditScore: riskScore,
-    isRealData: true,
+    isRealData: Boolean(bcraData && bcraData.isRealData),
     riskLevel: riskScore > 75 ? 'BAJO' : (riskScore > 50 ? 'MEDIO' : 'ALTO'),
     riskColor: riskScore > 75 ? '#10b981' : (riskScore > 50 ? '#f59e0b' : '#ef4444'),
     bcraSituation: finalBcraDetails.situacionLabel,
@@ -106,8 +106,8 @@ export function analyzeFinancials(companyName, scrapedData = {}, searchResults =
       inscriptionStatus: `Inscripto en Registro Padronal AFIP / ARCA para ${cleanComp}`,
       economicActivity: activity,
       vatCondition: 'IVA Responsable Inscripto',
-      publicCertificates: `Certificado MiPyME de ${cleanComp}`,
-      stateContractorStatus: `Apto para Contratar con el Estado Nacional y Provincial (${cleanComp})`,
+      publicCertificates: 'Sin registro en Padrón MiPyME Oficial',
+      stateContractorStatus: `Habilitación General para Proveedores Estatales (${cleanComp})`,
       taxCompliance: 'Sin Deudas Fiscales en Ejecución Registradas'
     }
   };

@@ -20,6 +20,7 @@ import { compareCompaniesOSINT } from './services/compareService.js';
 import { answerOsintChat } from './services/aiChatService.js';
 import { getTradeOSINTData } from './services/tradeService.js';
 import { getPymeRegistryOSINTData } from './services/pymeRegistryService.js';
+import { getBoletinOficialOSINTData } from './services/boletinOficialService.js';
 import {
   authenticateUserInDB,
   getAllUsersFromDB,
@@ -696,6 +697,9 @@ app.post('/api/osint/scan', async (req, res) => {
 
     financialData.tradeData = tradeData;
     financialData.pymeData = pymeData;
+    if (financialData.taxProfile) {
+      financialData.taxProfile.publicCertificates = pymeData?.pymeCategory || 'Sin registro en Padrón MiPyME Oficial';
+    }
 
     if (afipData) {
       financialData.taxProfile = financialData.taxProfile || {};
@@ -703,6 +707,42 @@ app.post('/api/osint/scan', async (req, res) => {
       financialData.taxProfile.economicActivity = afipData.economicActivity;
       financialData.taxProfile.vatCondition = afipData.vatCondition;
       financialData.afipData = afipData;
+
+      // Re-run PyME, Legal, Public Contracts (COMPR.AR/CONTRAT.AR) & Boletín Oficial lookups using resolved CUIT
+      if (afipData.cuit) {
+        const cleanCuit = String(afipData.cuit).replace(/\D/g, '');
+        try {
+          const [refinedPyme, refinedLegal, refinedContracts, boletinData] = await Promise.all([
+            getPymeRegistryOSINTData(companyName, cleanCuit, searchData, scrapedData),
+            analyzeLegalOSINT(companyName, {}, cleanCuit),
+            analyzePublicContracts(companyName, searchData, cleanCuit),
+            getBoletinOficialOSINTData(companyName, cleanCuit)
+          ]);
+
+          if (refinedPyme && refinedPyme.isRealData) {
+            pymeData = refinedPyme;
+            financialData.pymeData = refinedPyme;
+            financialData.taxProfile.publicCertificates = refinedPyme.pymeCategory;
+          }
+
+          if (refinedLegal && refinedLegal.isRealData) {
+            legalData.sociedadDetail = refinedLegal.sociedadDetail;
+            legalData.isRealData = true;
+            legalData.apiSource = refinedLegal.apiSource;
+            legalData.legalSummary = refinedLegal.legalSummary;
+          }
+
+          if (refinedContracts && refinedContracts.isRealData) {
+            legalData.publicContracts = refinedContracts;
+          }
+
+          if (boletinData && boletinData.isRealData) {
+            legalData.boletinOficialData = boletinData;
+          }
+        } catch (e) {
+          console.warn('[Refined CUIT Lookup Notice]:', e.message);
+        }
+      }
     }
 
     if (aiResult) {

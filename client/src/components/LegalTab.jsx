@@ -54,8 +54,11 @@ export default function LegalTab({ legalData = {}, companyName = '' }) {
               <Scale size={28} />
             </div>
             <div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Rastreo Judicial, Penal y Sanciones Públicas</h3>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '2px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800 }}>Rastreo Judicial, Penal y Sanciones Públicas</h3>
+                <RealVsEstimatedBadge isRealData={data.isRealData || false} sourceLabel={data.apiSource || 'Estimación Algorítmica OSINT (No Verificado)'} />
+              </div>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginTop: '4px' }}>
                 Búsqueda consolidada en fueros comerciales, laborales, causas penales, multas ambientales y defensa del consumidor.
               </p>
             </div>
@@ -73,6 +76,105 @@ export default function LegalTab({ legalData = {}, companyName = '' }) {
           {legalSummary}
         </div>
       </div>
+
+      {/* Official Registro Nacional de Sociedades (Ley 26.047) Card */}
+      {data.sociedadDetail && (
+        <div className="saas-card col-12" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(16, 185, 129, 0.05))', border: '1px solid rgba(37, 99, 235, 0.35)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <Gavel size={26} style={{ color: '#60a5fa' }} />
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#60a5fa', textTransform: 'uppercase', fontWeight: 800 }}>Registro Nacional de Sociedades (Ley 26.047)</span>
+                  <RealVsEstimatedBadge isRealData={true} sourceLabel="Ministerio de Justicia & ARCA (Padrón Federal)" />
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginTop: '4px', color: '#f8fafc' }}>
+                  {data.sociedadDetail.razonSocial}
+                </h3>
+              </div>
+            </div>
+            <a
+              href="https://www.argentina.gob.ar/justicia/registro-nacional-sociedades"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+              style={{ fontSize: '0.8rem', padding: '6px 12px', gap: '6px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}
+            >
+              <ExternalLink size={14} /> Registro Nacional de Sociedades ↗
+            </a>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', background: 'rgba(0,0,0,0.25)', padding: '16px', borderRadius: '12px', fontSize: '0.84rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+            <div>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>CUIT</span>
+              <strong style={{ color: '#f8fafc', fontFamily: 'var(--font-mono)' }}>{data.sociedadDetail.cuit}</strong>
+            </div>
+            <div>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Tipo Societario</span>
+              <strong style={{ color: '#34d399' }}>{data.sociedadDetail.tipoSocietario}</strong>
+            </div>
+            <div>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Fecha Contrato Social</span>
+              <strong style={{ color: '#f8fafc' }}>{data.sociedadDetail.fechaContratoSocial}</strong>
+            </div>
+            <div>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Domicilio Fiscal Inscripto</span>
+              <strong style={{ color: '#cbd5e1', fontSize: '0.8rem' }}>{data.sociedadDetail.domicilioFiscal}</strong>
+            </div>
+            <div>
+              <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Domicilio Legal Inscripto</span>
+              <strong style={{ color: '#cbd5e1', fontSize: '0.8rem' }}>{data.sociedadDetail.domicilioLegal}</strong>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Boletín Oficial (BORA / timeline.boletinoficial.gob.ar) Card */}
+      {data.boletinOficialData && (
+        <div className="saas-card col-12" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.08), rgba(37, 99, 235, 0.05))', border: '1px solid rgba(245, 158, 11, 0.35)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <Globe size={26} style={{ color: 'var(--accent-amber)' }} />
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.78rem', color: 'var(--accent-amber)', textTransform: 'uppercase', fontWeight: 800 }}>Boletín Oficial de la República Argentina (BORA)</span>
+                  <RealVsEstimatedBadge isRealData={true} sourceLabel={data.boletinOficialData.apiSource} />
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginTop: '4px', color: '#f8fafc' }}>
+                  Edictos y Publicaciones Oficiales
+                </h3>
+              </div>
+            </div>
+            <a
+              href={data.boletinOficialData.officialPortalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary"
+              style={{ fontSize: '0.8rem', padding: '6px 12px', gap: '6px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', borderColor: 'rgba(245, 158, 11, 0.4)', color: 'var(--accent-amber)' }}
+            >
+              <ExternalLink size={14} /> Portal BORA ↗
+            </a>
+          </div>
+
+          <div style={{ background: 'rgba(0,0,0,0.25)', padding: '14px 18px', borderRadius: '10px', fontSize: '0.88rem', color: '#cbd5e1', marginBottom: '14px' }}>
+            {data.boletinOficialData.publicationSummary}
+          </div>
+
+          {data.boletinOficialData.edicts?.length > 0 && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {data.boletinOficialData.edicts.map((ed, idx) => (
+                <div key={idx} style={{ background: 'rgba(0,0,0,0.3)', padding: '12px 16px', borderRadius: '10px', border: '1px solid rgba(255,255,255,0.05)', fontSize: '0.85rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '4px' }}>
+                    <strong style={{ color: '#f8fafc' }}>{ed.title}</strong>
+                    <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)' }}>{ed.date}</span>
+                  </div>
+                  <div style={{ color: 'var(--text-secondary)', fontSize: '0.82rem' }}>{ed.snippet}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* INPI & WIPO Trademarks Card */}
       {inpi && (

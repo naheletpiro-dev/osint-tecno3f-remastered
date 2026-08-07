@@ -54,6 +54,87 @@ export default function FinancialTab({ financialData = {} }) {
         </div>
       </div>
 
+      {/* Official PyME Registry Card (Base de Datos SEPyME) */}
+      {pyme && (
+        <div className="saas-card col-12" style={{ padding: '24px', background: 'linear-gradient(135deg, rgba(168, 85, 247, 0.08), rgba(37, 99, 235, 0.05))', border: pyme.isRealData ? '1px solid rgba(168, 85, 247, 0.35)' : '1px dashed rgba(245, 158, 11, 0.4)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', marginBottom: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <div style={{ background: 'rgba(168, 85, 247, 0.18)', padding: '14px', borderRadius: '12px', color: '#c084fc' }}>
+                <FileCheck size={28} />
+              </div>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '0.78rem', color: '#c084fc', textTransform: 'uppercase', fontWeight: 800 }}>Registro Oficial MiPyME (datos.gob.ar)</span>
+                  <RealVsEstimatedBadge isRealData={pyme.isRealData} sourceLabel={pyme.apiSource} />
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 800, marginTop: '4px', color: '#f8fafc' }}>
+                  {pyme.pymeCategory}
+                </h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.86rem', marginTop: '2px' }}>
+                  {pyme.details}
+                </p>
+              </div>
+            </div>
+
+            {pyme.evidenceLink && (
+              <a
+                href={pyme.evidenceLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary"
+                style={{ fontSize: '0.8rem', padding: '6px 12px', gap: '6px', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', borderColor: 'rgba(168, 85, 247, 0.4)', color: '#c084fc' }}
+              >
+                <ExternalLink size={14} /> Padrón PyME Oficial (datos.gob.ar)
+              </a>
+            )}
+          </div>
+
+          {/* Certificate Detail Grid */}
+          {pyme.certDetail && (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '12px', background: 'rgba(0,0,0,0.25)', padding: '16px', borderRadius: '12px', fontSize: '0.84rem', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <div>
+                <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Categoría</span>
+                <strong style={{ color: '#f8fafc' }}>{pyme.certDetail.categoria}</strong>
+              </div>
+              <div>
+                <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Sector Productivo</span>
+                <strong style={{ color: '#f8fafc' }}>{pyme.certDetail.sector}</strong>
+              </div>
+              <div>
+                <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Régimen Tributario</span>
+                <strong style={{ color: '#f8fafc' }}>{pyme.certDetail.regimenTributario}</strong>
+              </div>
+              <div>
+                <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Jurisdicción</span>
+                <strong style={{ color: '#f8fafc' }}>{pyme.certDetail.provincia}</strong>
+              </div>
+              <div>
+                <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Emisión / Vencimiento</span>
+                <strong style={{ color: '#f8fafc' }}>{pyme.certDetail.emisionCertificado} al {pyme.certDetail.vencimientoCertificado}</strong>
+              </div>
+              <div>
+                <span style={{ color: 'var(--text-muted)', display: 'block', fontSize: '0.74rem', textTransform: 'uppercase', fontWeight: 700 }}>Estado Certificado</span>
+                <strong style={{ color: pyme.certDetail.isVigente ? 'var(--accent-emerald)' : 'var(--accent-amber)' }}>
+                  {pyme.certDetail.isVigente ? '✔ VIGENTE' : 'HISTÓRICO'}
+                </strong>
+              </div>
+            </div>
+          )}
+
+          {/* Fiscal Benefits */}
+          {pyme.fiscalBenefits?.length > 0 && (
+            <div style={{ marginTop: '14px', display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center' }}>
+              <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)', fontWeight: 700 }}>Beneficios Fiscales Habilitados:</span>
+              {pyme.fiscalBenefits.map((benefit, idx) => (
+                <span key={idx} style={{ background: 'rgba(16, 185, 129, 0.12)', color: 'var(--accent-emerald)', border: '1px solid rgba(16, 185, 129, 0.3)', padding: '4px 10px', borderRadius: '14px', fontSize: '0.78rem', fontWeight: 600 }}>
+                  ✔ {benefit}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* BCRA Credit Situation & Live Debt Summary Banner */}
       {bcra && (
         <div className="saas-card col-12" style={{ padding: '24px', background: 'rgba(15, 23, 42, 0.6)', border: `1px solid ${bcra.situacionColor || 'rgba(37, 99, 235, 0.3)'}` }}>
@@ -153,26 +234,37 @@ export default function FinancialTab({ financialData = {} }) {
 
       {/* Balances & Financial Statements */}
       <div className="saas-card col-6" style={{ padding: '26px' }}>
-        <h3 style={{ fontSize: '1.15rem', marginBottom: '18px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-emerald)' }}>
-          <FileText size={20} /> Balances y Estados Financieros
-        </h3>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap', gap: '10px' }}>
+          <h3 style={{ fontSize: '1.15rem', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--accent-emerald)', margin: 0 }}>
+            <FileText size={20} /> Balances y Estados Financieros
+          </h3>
+          <RealVsEstimatedBadge isRealData={Boolean(fin.isRealData)} sourceLabel={fin.apiSource || 'Declaraciones Contables / IGJ'} />
+        </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '0.92rem' }}>
           <div>
             <span style={{ color: 'var(--text-muted)', fontWeight: 700 }}>Último Balance Presentado:</span>
-            <div style={{ fontWeight: 600, color: '#f8fafc', marginTop: '2px' }}>{fin.lastBalanceYear || '2024'}</div>
+            <div style={{ fontWeight: 600, color: '#f8fafc', marginTop: '2px' }}>
+              {fin.lastBalanceYear || 'Dato no público / Presentación reservada en IGJ'}
+            </div>
           </div>
           <div>
             <span style={{ color: 'var(--text-muted)', fontWeight: 700 }}>Memoria Anual & Registros:</span>
-            <div style={{ fontWeight: 600, color: '#f8fafc', marginTop: '2px' }}>{fin.annualReportStatus || 'Presentado en IGJ / Registro'}</div>
+            <div style={{ fontWeight: 600, color: '#f8fafc', marginTop: '2px' }}>
+              {fin.annualReportStatus || 'Sujeto a presentación periódica en Registro Público de Comercio'}
+            </div>
           </div>
           <div>
             <span style={{ color: 'var(--text-muted)', fontWeight: 700 }}>Bancos y Acreedores Principales:</span>
-            <div style={{ fontWeight: 600, color: '#f8fafc', marginTop: '2px' }}>{(fin.creditorBanks || ['Bancos de Red Nacional']).join(', ')}</div>
+            <div style={{ fontWeight: 600, color: '#f8fafc', marginTop: '2px' }}>
+              {bcra?.entidadesCreditoras?.length > 0
+                ? bcra.entidadesCreditoras.map(e => e.entidad).join(', ')
+                : 'Sin deudas con entidades bancarias registradas en el BCRA'}
+            </div>
           </div>
           <div>
             <span style={{ color: 'var(--text-muted)', fontWeight: 700 }}>Quiebras, Concursos & Embargos:</span>
-            <div style={{ fontWeight: 600, color: (fin.insolvencyStatus || '').includes('cheques') ? 'var(--accent-rose)' : 'var(--accent-emerald)', marginTop: '2px' }}>
-              {fin.insolvencyStatus || 'Sin quiebras ni embargos'}
+            <div style={{ fontWeight: 600, color: (fin.insolvencyStatus || '').includes('alerta') || (fin.insolvencyStatus || '').includes('quiebra') ? 'var(--accent-rose)' : 'var(--accent-emerald)', marginTop: '2px' }}>
+              {fin.insolvencyStatus || 'Sin registros de quiebras ni edictos concursales en Boletín Oficial'}
             </div>
           </div>
         </div>

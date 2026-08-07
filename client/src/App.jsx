@@ -17,6 +17,7 @@ import CompareTab from './components/CompareTab';
 import AdminTab from './components/AdminTab';
 import PresentationModal from './components/PresentationModal';
 import WatchlistModal from './components/WatchlistModal';
+import AuthModal from './components/AuthModal';
 import OsintChatbot from './components/OsintChatbot';
 import Footer from './components/Footer';
 import { processClientSideOSINT } from './services/clientOsintEngine';
@@ -68,6 +69,7 @@ export default function App() {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [showPresentation, setShowPresentation] = useState(false);
   const [showWatchlistModal, setShowWatchlistModal] = useState(false);
+  const [showAuthModal, setShowAuthModal] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
   const [scanStageText, setScanStageText] = useState('Iniciando rastreo OSINT...');
 
@@ -363,12 +365,26 @@ export default function App() {
 
   return (
     <ErrorBoundary>
+      <AuthModal
+        user={user}
+        onLogin={(userData, keepSession) => {
+          handleLogin(userData, keepSession);
+          setShowAuthModal(false);
+        }}
+        onLogout={handleLogout}
+        onOpenHistory={handleOpenHistory}
+        historyCount={history.length}
+        isForcedLock={!user}
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onOpenAdmin={handleOpenAdmin}
+      />
       <div className="app-container" style={{ filter: !user ? 'blur(4px)' : 'none', opacity: !user ? 0.9 : 1, pointerEvents: !user ? 'none' : 'auto', transition: 'all 0.3s ease' }}>
         <Header
           currentReport={report}
           onReset={handleReset}
           user={user}
-          onLogin={handleLogin}
+          onLogin={() => setShowAuthModal(true)}
           onLogout={handleLogout}
           onOpenHistory={handleOpenHistory}
           historyCount={history.length}

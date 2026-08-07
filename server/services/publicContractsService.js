@@ -1,96 +1,158 @@
+import fs from 'fs';
+import path from 'path';
+import Database from 'better-sqlite3';
 import axios from 'axios';
 import https from 'https';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const dbPath = path.join(__dirname, '../data/contrataciones_database.db');
+
+let contratacionesDb = null;
+try {
+  if (fs.existsSync(dbPath)) {
+    contratacionesDb = new Database(dbPath, { readonly: true });
+  }
+} catch (e) {
+  console.warn('[Contrataciones DB Notice]: Could not open SQLite database:', e.message);
+}
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 /**
- * Multi-Jurisdictional Public Contracts & Tenders OSINT Engine
- * Scans COMPR.AR (Nación), Provincial Purchasing Portals (Santa Fe, CABA, Córdoba),
- * Official Gazette Award Notices, and RUP Provider Registries.
+ * Multi-Jurisdictional Public Contracts, COMPR.AR, CONTRAT.AR & Obra Pública OSINT Engine
  */
-export async function analyzePublicContracts(companyName, searchData = {}) {
+export async function analyzePublicContracts(companyName, searchData = {}, cuit = '') {
   const cleanComp = companyName ? companyName.trim() : 'Empresa';
+  const cleanCuit = cuit ? String(cuit).replace(/\D/g, '') : '';
   const lowerComp = cleanComp.toLowerCase();
 
   let isRealData = false;
   let realContracts = [];
-  let detectedSource = 'Dato no disponible en registros públicos';
+  let detectedSource = 'Base de Datos Oficial COMPR.AR / CONTRAT.AR (datos.gob.ar)';
+  let isRegisteredSupplier = false;
+  let supplierRegistryStatus = 'Sin registro en Padrón Estatal de Proveedores';
+  let totalAwardedSum = 0;
 
-  // 1. Attempt COMPR.AR Nacional API call (4500ms timeout)
-  try {
-    const comprarUrl = `https://comprar.gob.ar/api/licitaciones/search?q=${encodeURIComponent(cleanComp)}`;
-    const res = await axios.get(comprarUrl, {
-      httpsAgent,
-      timeout: 4500,
-      headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Tecno3F/4.0' }
-    });
+  // 1. Direct Lookup in local SQLite Database (COMPR.AR, CONTRAT.AR & SiPRO datasets)
+  if (contratacionesDb) {
+    try {
+      // Check SiPRO Supplier Registry
+      let supplier = null;
+      if (cleanCuit) {
+        supplier = contratacionesDb.prepare('SELECT * FROM sipro_suppliers WHERE cuit = ? LIMIT 1').get(cleanCuit);
+      }
+      if (!supplier && cleanComp.length >= 3) {
+        supplier = contratacionesDb.prepare('SELECT * FROM sipro_suppliers WHERE razon_social LIKE ? LIMIT 1').get(`%${cleanComp}%`);
+      }
 
-    if (res.data && Array.isArray(res.data.licitaciones) && res.data.licitaciones.length > 0) {
-      isRealData = true;
-      detectedSource = 'Portal Oficial COMPR.AR Nacional (comprar.gob.ar)';
-      res.data.licitaciones.forEach(l => {
+      if (supplier) {
+        isRealData = true;
+        isRegisteredSupplier = true;
+        supplierRegistryStatus = `Inscripto en Padrón SIPRO COMPR.AR - Estado: ${supplier.estado || 'ACTIVO'} (Rubro: ${supplier.rubro || 'General'})`;
+      }
+
+      // Check CONTRAT.AR Public Works Contracts
+      let works = [];
+      if (cleanCuit) {
+        works = contratacionesDb.prepare('SELECT * FROM contratar_obras WHERE cuit = ?').all(cleanCuit);
+      }
+      if (works.length === 0 && cleanComp.length >= 3) {
+        works = contratacionesDb.prepare('SELECT * FROM contratar_obras WHERE razon_social LIKE ?').all(`%${cleanComp}%`);
+      }
+
+      works.forEach(w => {
+        isRealData = true;
+        totalAwardedSum += (w.monto_ars || 0);
         realContracts.push({
-          id: l.numeroLicitacion || `LIC-${Math.floor(Math.random() * 8999) + 1000}`,
-          organism: l.organismo || 'Administración Pública Nacional',
+          id: `OBRA-${w.id}`,
+          organism: w.organismo || 'Ministerio de Obras Públicas / CONTRAT.AR',
+          jurisdiction: 'Nacional - Obra Pública',
+          amount: w.monto_ars > 0 ? `$${w.monto_ars.toLocaleString('es-AR')} ARS` : 'Monto en Acta',
+          rawAmount: w.monto_ars || 0,
+          date: 'Vigente',
+          status: w.estado_obra || 'Adjudicado / En Ejecución',
+          description: w.titulo_obra || `Contratación de Obra Pública para ${cleanComp}`,
+          link: 'https://contratar.gob.ar/'
+        });
+      });
+
+      // Check COMPR.AR Awarded Contracts
+      let awards = [];
+      if (cleanCuit) {
+        awards = contratacionesDb.prepare('SELECT * FROM comprar_adjudicaciones WHERE cuit = ?').all(cleanCuit);
+      }
+      if (awards.length === 0 && cleanComp.length >= 3) {
+        awards = contratacionesDb.prepare('SELECT * FROM comprar_adjudicaciones WHERE razon_social LIKE ? LIMIT 20').all(`%${cleanComp}%`);
+      }
+
+      awards.forEach(a => {
+        isRealData = true;
+        totalAwardedSum += (a.monto_ars || 0);
+        realContracts.push({
+          id: a.numero_proceso || `COMPRAR-${a.id}`,
+          organism: a.organismo || 'Administración Pública Nacional (COMPR.AR)',
           jurisdiction: 'Nacional',
-          amount: `$${(Number(l.monto) || 0).toLocaleString('es-AR')} ARS`,
-          rawAmount: Number(l.monto) || 0,
-          date: l.fechaPublicacion || 'Reciente',
-          status: l.estado || 'Adjudicado',
-          description: l.objeto || `Contratación pública / licitación para ${cleanComp}`,
+          amount: a.monto_ars > 0 ? `$${a.monto_ars.toLocaleString('es-AR')} ARS` : 'Ver Pliego',
+          rawAmount: a.monto_ars || 0,
+          date: a.fecha_adjudicacion || 'Reciente',
+          status: 'Adjudicado',
+          description: a.objeto || `Contratación de Bienes y Servicios para ${cleanComp}`,
           link: 'https://comprar.gob.ar/'
         });
       });
+
+      if (isRealData) {
+        detectedSource = 'Base de Datos Oficial COMPR.AR / CONTRAT.AR / SiPRO (datos.gob.ar)';
+      }
+    } catch (e) {
+      console.warn('[Contrataciones DB Query Notice]:', e.message);
     }
-  } catch (e) {
-    console.log(`[COMPR.AR API Notice] Search notice for ${cleanComp}: ${e.message}`);
   }
 
-  // 2. Scan Tender & Official Gazette Snippets from Multi-Jurisdiction Search (Santa Fe, CABA, Provincial Bulletins)
-  const tenderSnippets = searchData.tenderSnippets || [];
-  const gazetteSnippets = searchData.gazetteSnippets || [];
+  // 2. Fallback Web & Snippets Scanner (Boletín Oficial & Web Tenders)
+  if (!isRealData) {
+    const tenderSnippets = searchData.tenderSnippets || [];
+    const gazetteSnippets = searchData.gazetteSnippets || [];
 
-  [...tenderSnippets, ...gazetteSnippets].forEach(item => {
-    const text = `${item.title || ''} ${item.snippet || ''}`.toLowerCase();
-    const isRelevant = text.includes(lowerComp) || (lowerComp.length > 4 && text.includes(lowerComp.slice(0, 5)));
+    [...tenderSnippets, ...gazetteSnippets].forEach(item => {
+      const text = `${item.title || ''} ${item.snippet || ''}`.toLowerCase();
+      const isRelevant = text.includes(lowerComp) || (lowerComp.length > 4 && text.includes(lowerComp.slice(0, 5)));
 
-    if (isRelevant && (text.includes('licitacion') || text.includes('adjudic') || text.includes('proveedor') || text.includes('contrato') || text.includes('compra'))) {
-      isRealData = true;
-      if (detectedSource.includes('Dato no disponible')) {
-        detectedSource = 'Boletín Oficial & Registro de Contrataciones Estatales';
+      if (isRelevant && (text.includes('licitacion') || text.includes('adjudic') || text.includes('proveedor') || text.includes('contrato'))) {
+        isRealData = true;
+        detectedSource = 'Boletín Oficial & Portales Estatales de Compras';
+
+        let jurisdiction = 'Provincial / Municipal';
+        if (text.includes('santa fe') || item.link?.includes('santafe')) jurisdiction = 'Provincia de Santa Fe';
+        else if (text.includes('buenos aires') || text.includes('caba')) jurisdiction = 'CABA / Buenos Aires';
+        else if (text.includes('nacion') || item.link?.includes('gob.ar')) jurisdiction = 'Nacional';
+
+        realContracts.push({
+          id: `ADJ-${Math.floor(Math.random() * 8990) + 1009}`,
+          organism: item.title?.slice(0, 70) || 'Organismo Público Estatal',
+          jurisdiction,
+          amount: 'Monto en Pliego / Adjudicación',
+          rawAmount: 0,
+          date: 'Reciente',
+          status: 'Adjudicado / Publicado',
+          description: item.snippet?.slice(0, 160) || `Proceso de contratación verificado para ${cleanComp}`,
+          link: item.link || 'https://comprar.gob.ar/'
+        });
       }
-
-      let jurisdiction = 'Provincial / Municipal';
-      if (text.includes('santa fe') || item.link?.includes('santafe')) jurisdiction = 'Provincia de Santa Fe';
-      else if (text.includes('buenos aires') || text.includes('caba')) jurisdiction = 'CABA / Buenos Aires';
-      else if (text.includes('nacion') || item.link?.includes('gob.ar')) jurisdiction = 'Nacional';
-
-      realContracts.push({
-        id: `ADJ-${Math.floor(Math.random() * 8990) + 1009}`,
-        organism: item.title?.slice(0, 70) || 'Organismo Público Estatal',
-        jurisdiction,
-        amount: 'Monto en Pliego / Adjudicación',
-        rawAmount: 0,
-        date: 'Reciente',
-        status: 'Adjudicado / Publicado',
-        description: item.snippet?.slice(0, 160) || `Proceso de contratación verificado para ${cleanComp}`,
-        link: item.link || 'https://comprar.gob.ar/'
-      });
-    }
-  });
-
-  const totalAwarded = realContracts.reduce((acc, c) => acc + (c.rawAmount || 0), 0);
+    });
+  }
 
   return {
-    isRegisteredSupplier: isRealData,
+    isRegisteredSupplier: isRealData || isRegisteredSupplier,
     isRealData,
-    supplierRegistryStatus: isRealData
-      ? `Habilitado en Registro Estatal de Proveedores para ${cleanComp}`
-      : 'Dato no disponible en registros públicos',
+    supplierRegistryStatus: isRealData ? (supplierRegistryStatus !== 'Sin registro en Padrón Estatal de Proveedores' ? supplierRegistryStatus : `Habilitado en Padrón Estatal de Proveedores`) : 'Sin registro en Padrón Estatal de Proveedores',
     totalContracts: realContracts.length,
-    totalAwardedAmount: totalAwarded > 0 ? `$${totalAwarded.toLocaleString('es-AR')} ARS` : (isRealData ? 'Ver pliego' : '$0 ARS'),
+    totalAwardedAmount: totalAwardedSum > 0 ? `$${totalAwardedSum.toLocaleString('es-AR')} ARS` : (isRealData ? 'Ver pliegos adjudicados' : '$0 ARS'),
     contracts: realContracts,
     comprarPortalUrl: `https://comprar.gob.ar/`,
+    contratarPortalUrl: `https://contratar.gob.ar/`,
     apiSource: detectedSource
   };
 }

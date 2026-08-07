@@ -46,7 +46,7 @@ export async function getTradeOSINTData(companyName, cuit = '', searchData = {},
         headers: {
           'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
         },
-        timeout: 800
+        timeout: 4500
       });
 
       if (res.data) {

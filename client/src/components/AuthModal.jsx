@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { LogIn, X, ShieldCheck, Lock, User, CheckCircle2, History, LogOut, AlertCircle, Eye, EyeOff } from 'lucide-react';
 
-export default function AuthModal({ user, onLogin, onLogout, onOpenHistory, historyCount, isForcedLock = false, onOpenAdmin }) {
+export default function AuthModal({ user, onLogin, onLogout, onOpenHistory, historyCount, isForcedLock = false, onOpenAdmin, isOpen = false, onClose }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleClose = () => {
+    setShowModal(false);
+    if (onClose) onClose();
+  };
 
   // Form Fields (Username & Password)
   const [username, setUsername] = useState('');
@@ -59,7 +64,7 @@ export default function AuthModal({ user, onLogin, onLogout, onOpenHistory, hist
       }
 
       onLogin({ ...data.user, token: data.token }, keepSession);
-      setShowModal(false);
+      handleClose();
       resetForm();
 
     } catch (err) {
@@ -69,7 +74,7 @@ export default function AuthModal({ user, onLogin, onLogout, onOpenHistory, hist
     }
   };
 
-  const isModalOpen = showModal || isForcedLock;
+  const isModalOpen = showModal || isOpen || isForcedLock;
 
   const modalJSX = isModalOpen ? (
     <div
@@ -110,7 +115,7 @@ export default function AuthModal({ user, onLogin, onLogout, onOpenHistory, hist
       >
         {!isForcedLock && (
           <button
-            onClick={() => setShowModal(false)}
+            onClick={handleClose}
             style={{
               position: 'absolute',
               top: '18px',
@@ -219,113 +224,5 @@ export default function AuthModal({ user, onLogin, onLogout, onOpenHistory, hist
     </div>
   ) : null;
 
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', position: 'relative' }}>
-      {user && (
-        <button
-          onClick={onOpenHistory}
-          className="btn-secondary"
-          style={{ borderColor: 'rgba(37, 99, 235, 0.35)', color: '#60a5fa' }}
-        >
-          <History size={16} /> Ver mi Historial ({historyCount})
-        </button>
-      )}
-
-      {user ? (
-        <div style={{ position: 'relative' }}>
-          <button
-            onClick={() => setShowDropdown(!showDropdown)}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-              background: 'rgba(37, 99, 235, 0.15)',
-              border: '1px solid rgba(37, 99, 235, 0.4)',
-              padding: '6px 16px',
-              borderRadius: '30px',
-              color: '#fff',
-              cursor: 'pointer'
-            }}
-          >
-            <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: user.role === 'admin' ? 'linear-gradient(135deg, #a855f7, #2563eb)' : 'linear-gradient(135deg, #2563eb, #06b6d4)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: '0.85rem' }}>
-              {(user.username || 'U').charAt(0).toUpperCase()}
-            </div>
-            <span style={{ fontSize: '0.88rem', fontWeight: 700 }}>{user.username}</span>
-            {user.role === 'admin' && (
-              <span style={{ fontSize: '0.7rem', background: 'rgba(168, 85, 247, 0.25)', color: '#c084fc', padding: '2px 6px', borderRadius: '10px', fontWeight: 800 }}>ADMIN</span>
-            )}
-            <CheckCircle2 size={14} style={{ color: 'var(--accent-emerald)' }} />
-          </button>
-
-          {showDropdown && (
-            <div className="saas-card" style={{
-              position: 'absolute',
-              right: 0,
-              top: '46px',
-              width: '260px',
-              padding: '18px',
-              zIndex: 100,
-              boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
-            }}>
-              <div style={{ fontSize: '0.88rem', fontWeight: 700, color: '#f8fafc' }}>Usuario: {user.username}</div>
-              <div style={{ fontSize: '0.74rem', color: user.role === 'admin' ? '#c084fc' : 'var(--accent-emerald)', background: 'rgba(255,255,255,0.05)', padding: '6px 10px', borderRadius: '6px', margin: '10px 0 14px 0', border: '1px solid var(--border-subtle)', display: 'flex', alignItems: 'center', gap: '6px' }}>
-                <ShieldCheck size={14} /> Rol: {user.role === 'admin' ? 'Administrador' : 'Usuario Estándar'}
-              </div>
-              <div style={{ borderTop: '1px solid var(--border-subtle)', paddingTop: '10px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                {user.role === 'admin' && (
-                  <button
-                    onClick={() => { setShowDropdown(false); onOpenAdmin(); }}
-                    style={{
-                      width: '100%',
-                      background: 'rgba(168, 85, 247, 0.14)',
-                      border: '1px solid rgba(168, 85, 247, 0.35)',
-                      color: '#c084fc',
-                      padding: '8px 12px',
-                      borderRadius: '8px',
-                      cursor: 'pointer',
-                      fontSize: '0.84rem',
-                      fontWeight: 700,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    <ShieldCheck size={15} /> Panel Administrador
-                  </button>
-                )}
-                <button
-                  onClick={() => { setShowDropdown(false); onLogout(); }}
-                  style={{
-                    width: '100%',
-                    background: 'none',
-                    border: 'none',
-                    color: 'var(--accent-rose)',
-                    cursor: 'pointer',
-                    fontSize: '0.84rem',
-                    fontWeight: 600,
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '6px 4px'
-                  }}
-                >
-                  <LogOut size={15} /> Cerrar Sesión
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      ) : (
-        <button
-          className="btn-primary"
-          onClick={() => { resetForm(); setShowModal(true); }}
-          style={{ fontSize: '0.85rem' }}
-        >
-          <LogIn size={15} /> Iniciar Sesión
-        </button>
-      )}
-
-      {modalJSX && ReactDOM.createPortal(modalJSX, document.body)}
-    </div>
-  );
+  return modalJSX ? ReactDOM.createPortal(modalJSX, document.body) : null;
 }

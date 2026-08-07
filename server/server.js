@@ -21,6 +21,7 @@ import { answerOsintChat } from './services/aiChatService.js';
 import { getTradeOSINTData } from './services/tradeService.js';
 import { getPymeRegistryOSINTData } from './services/pymeRegistryService.js';
 import { getBoletinOficialOSINTData } from './services/boletinOficialService.js';
+import { refineCrossModuleSynthesis } from './services/crossModuleSynthesis.js';
 import {
   authenticateUserInDB,
   getAllUsersFromDB,
@@ -743,6 +744,25 @@ app.post('/api/osint/scan', async (req, res) => {
           console.warn('[Refined CUIT Lookup Notice]:', e.message);
         }
       }
+    }
+
+    // 4. Cross-Module Synthesis & Inter-Service Data Propagation Phase
+    try {
+      refineCrossModuleSynthesis({
+        companyName,
+        financialData,
+        supportPlan,
+        swotAnalysis,
+        digitalTransformation,
+        tradeData,
+        pymeData,
+        publicContracts,
+        legalData,
+        bcraData
+      });
+      console.log(`[CROSS-MODULE SYNTHESIS] Inter-service data propagation completed for "${companyName}".`);
+    } catch (e) {
+      console.warn('[Cross-Module Synthesis Notice]:', e.message);
     }
 
     if (aiResult) {

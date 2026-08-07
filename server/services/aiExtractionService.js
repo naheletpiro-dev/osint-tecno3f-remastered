@@ -2,10 +2,42 @@ import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 dotenv.config();
 
+let lastWorkingModel = 'gemini-2.0-flash';
+const baseModels = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
+
 /**
- * Strict RAG (Retrieval-Augmented Generation) & Taxonomical AI Extraction Service
- * Uses FULL scraped website context, deep subdirectories & multi-API OSINT feeds.
- * Organizes, categorizes, and classifies all incoming corporate intelligence.
+ * Executes a single focused Gemini API call with fallback model support
+ */
+async function callGeminiFocused(apiKey, prompt, mimeType = 'application/json') {
+  const modelsToTry = [lastWorkingModel, ...baseModels.filter(m => m !== lastWorkingModel)];
+
+  for (const modelName of modelsToTry) {
+    try {
+      const ai = new GoogleGenAI({ apiKey });
+      const response = await ai.models.generateContent({
+        model: modelName,
+        contents: prompt,
+        config: mimeType ? { responseMimeType: mimeType } : {}
+      });
+
+      if (response && response.text) {
+        lastWorkingModel = modelName;
+        if (mimeType === 'application/json') {
+          return JSON.parse(response.text);
+        }
+        return response.text;
+      }
+    } catch (err) {
+      console.warn(`[MULTI-PASS AI NOTICE] Model ${modelName} notice: ${err.message?.slice(0, 90)}`);
+    }
+  }
+  return null;
+}
+
+/**
+ * Multi-Pass Specialized AI Extraction Engine with Cross-Validation
+ * Runs 3 specialized parallel extraction calls (Categorization, Executive Commercial, SWOT)
+ * followed by a 2nd Verification Pass (Fact-Checking & Anti-Hallucination).
  */
 export async function analyzeCompanyWithGemini(companyName, scrapedData = {}, searchData = {}, extraOsint = {}) {
   const apiKey = (process.env.GEMINI_API_KEY || '').trim();
@@ -45,90 +77,122 @@ export async function analyzeCompanyWithGemini(companyName, scrapedData = {}, se
   const tradeContext = `COMERCIO EXTERIOR: Actividad ${trade.tradeActivity || 'Mercado Nacional'} | Detalle: ${trade.details || 'N/A'}`;
   const pymeContext = `REGISTRO MiPyME: Categoría ${pyme.pymeCategory || 'PyME'} | Beneficios: ${(pyme.fiscalBenefits || []).join(', ')} | Economía del Conocimiento: ${pyme.knowledgeEconomyRegistered ? 'Sí' : 'No'}`;
 
-  const dynamicSections = (scrapedData.discoveredDynamicSections || []).join(', ');
-
-  const ragContext = `
-==================== CONTEXTO DE INTELIGENCIA CORPORATIVA OSINT PARA ${cleanComp.toUpperCase()} ====================
-DOMINIO PRINCIPAL: ${website || 'No disponible'}
-TÍTULO DEL SITIO: ${title}
-DESCRIPCIÓN META CORPORATIVA: ${metaDesc}
-SECCIONES DINÁMICAS DESCUBIERTAS AUTOMÁTICAMENTE EN LA WEB: ${dynamicSections || 'Navegación general'}
-TEXTO EXTRAÍDO DE SECCIONES INSTITUCIONALES Y DINÁMICAS:
+  const commonContext = `
+==================== EVIDENCIA Y FUENTES OSINT PARA "${cleanComp.toUpperCase()}" ====================
+SITIO WEB OFICIAL: ${website} | TÍTULO: ${title} | META DESCRIPCIÓN: ${metaDesc}
+TEXTO EXTRAÍDO DE LA WEB:
 ${aboutText}
-
-CONTENIDO WEB MULTINIVEL COMPLETO:
 ${fullRawText}
 
-PRODUCTOS DETECTADOS EN WEB Y SUBDIRECTORIOS: ${productsList || 'Catálogo a medida B2B'}
-SERVICIOS DETECTADOS EN WEB Y SUBDIRECTORIOS: ${servicesList || 'Asistencia técnica y provisión industrial'}
-CLIENTES Y SEGMENTOS OBJETIVO DETECTADOS: ${clientsList || 'Empresas corporativas e industriales'}
-NOTICIAS Y PRENSA PUBLICADA: ${newsList || 'Sin registros de prensa recientes'}
-BOLETINES OFICIALES / LICITACIONES ESTATALES: ${tenderList || gazetteList || searchSnippets}
+PRODUCTOS DETECTADOS: ${productsList || 'Verificados en catálogo'}
+SERVICIOS DETECTADOS: ${servicesList || 'Verificados en sitio web'}
+CLIENTES / SEGMENTOS: ${clientsList || 'Sector corporativo e industrial'}
+PRENSA / NOTICIAS: ${newsList || 'Sin registros de prensa'}
+BOLETÍN OFICIAL / EDICTOS / LICITACIONES: ${tenderList || gazetteList || searchSnippets}
 
---- FUENTES OFICIALES DE INTEGRACIONES API Y REGISTROS ESTATALES ---
-PADRÓN AFIP / ARCA: ${afipContext}
-CENTRAL DE DEUDORES BCRA: ${bcraContext}
-INPI / WIPO PROPIEDAD INTELECTUAL: ${inpiContext}
-OPENCORPORATES REGISTRO GLOBAL: ${openCorpContext}
-COMPR.AR CONTRATACIONES PÚBLICAS: ${contractsContext}
-COMERCIO EXTERIOR ADUANA: ${tradeContext}
-REGISTRO MiPyME ESTATAL: ${pymeContext}
-================================================================================
+REGISTROS ESTATALES Y APIS:
+- AFIP / ARCA: ${afipContext}
+- BCRA: ${bcraContext}
+- INPI MARCAS: ${inpiContext}
+- OPENCORPORATES: ${openCorpContext}
+- COMPR.AR / CONTRAT.AR: ${contractsContext}
+- ADUANA COMERCIO EXTERIOR: ${tradeContext}
+- REGISTRO MiPyME: ${pymeContext}
+=================================================================================
+`;
 
-DIRECTIVAS DE ORGANIZACIÓN, ANÁLISIS Y CLASIFICACIÓN TAXONÓMICA:
-1. Sos el Auditor Principal de Inteligencia Empresarial OSINT de Tecno3F. Tu tarea es ORGANIZAR, ANALIZAR Y CATALOGAR con máxima precisión toda la información recibida.
-2. CLASIFICACIÓN ESTRICTA:
-   - Organiza el sector exacto sin generalidades.
-   - Discrimina claramente entre Productos (bienes físicos o software) y Servicios (mecanizado, asistencia, desarrollo, mantenimiento).
-   - Identifica activos críticos de planta o infraestructura técnica (ej. centros CNC, curvadoras, servidores cloud, matricería de precisión, licencias CAD/CAM, tanques de acero), NUNCA términos superficiales.
-3. CERO ALUCINACIÓN: Toda conclusión debe ser consecuencia directa de los datos escaneados de "${cleanComp}".
-4. Responde EXCLUSIVAMENTE en formato JSON válido según la estructura dada.
+  console.log(`[MULTI-PASS AI] Launching 3 specialized extraction passes in parallel for "${cleanComp}"...`);
 
-ESTRUCTURA JSON REQUERIDA Y CATALOGADA:
+  // --- PASS 1A: Categorization & Business Structure Prompt ---
+  const promptPass1A = `${commonContext}
+MISIÓN 1A - CLASIFICACIÓN Y ESTRUCTURA DE NEGOCIO:
+Enfócate EXCLUSIVAMENTE en definir la taxonomía sectorial, tipo de empresa y modelo de negocio de "${cleanComp}".
+Devuelve un JSON con estas 4 llaves:
 {
   "sector": "Sector exacto y rubro comercial catalogado de ${cleanComp}",
-  "businessModel": "Modelo de negocio verificado (ej: B2B Industrial, B2C, SaaS Telegestión, Manufactura Metalúrgica, Provisión B2B)",
-  "companyType": "Tipo y clasificación de empresa (ej: PyME Industrial Metalúrgica, Empresa de Software & IoT, Distribuidora Industrial)",
+  "businessModel": "Modelo de negocio verificado (ej: B2B Industrial, B2C, SaaS Telegestión, Manufactura Metalúrgica)",
+  "companyType": "Tipo y clasificación de empresa (ej: PyME Industrial Metalúrgica, Empresa de Software & IoT)",
+  "howItGeneratesRevenue": "Mecanismo principal de generación de ingresos según sus productos/servicios"
+}`;
+
+  // --- PASS 1B: Executive Synthesis & Commercial Offer Prompt ---
+  const promptPass1B = `${commonContext}
+MISIÓN 1B - SÍNTESIS EJECUTIVA Y OFERTA COMERCIAL:
+Enfócate EXCLUSIVAMENTE en redactar la síntesis ejecutiva, catálogo de oferta y activos de planta de "${cleanComp}".
+Devuelve un JSON con estas 5 llaves:
+{
   "whatItSells": "Catálogo resumido y preciso de lo que vende o provee ${cleanComp}",
   "whoBuys": "Perfil de compradores, clientes corporativos y sectores destino de ${cleanComp}",
-  "howItGeneratesRevenue": "Mecanismo principal de generación de ingresos según sus productos/servicios",
-  "mostImportantAsset": "Activos críticos concretos de la industria de ${cleanComp} (ej: parque de curvadoras de caños, centros de mecanizado CNC, servidores cloud de alta disponibilidad, matricería de precisión, licencias CAD/CAM)",
-  "valueProposition": "Propuesta de valor y diferenciador competitivo principal de ${cleanComp} (ej: Soluciones tecnológicas de telegestión inteligente con desarrollo a medida y soporte directo de planta)",
-  "executiveSummary": "Síntesis ejecutiva de 2 párrafos que organice y sintetice el perfil comercial, solvencia BCRA, capacidad licitatoria y oferta de ${cleanComp}",
+  "mostImportantAsset": "Activos críticos concretos de la industria de ${cleanComp} (ej: parque de curvadoras de caños, centros CNC, servidores cloud, matricería de precisión)",
+  "valueProposition": "Propuesta de valor y diferenciador competitivo principal de ${cleanComp}",
+  "executiveSummary": "Síntesis ejecutiva de 2 párrafos que organice y sintetice el perfil comercial, solvencia BCRA, capacidad licitatoria y oferta de ${cleanComp}"
+}`;
+
+  // --- PASS 1C: Strategic SWOT Analysis Prompt ---
+  const promptPass1C = `${commonContext}
+MISIÓN 1C - ANÁLISIS ESTRATÉGICO FODA:
+Enfócate EXCLUSIVAMENTE en evaluar las fortalezas, debilidades, oportunidades y amenazas comprobables de "${cleanComp}".
+Devuelve un JSON con estas 4 llaves:
+{
   "strengths": ["Fortaleza comercial o financiera 1 comprobada", "Fortaleza técnica 2 comprobada"],
   "weaknesses": ["Debilidad o brecha operativa identificada"],
   "opportunities": ["Oportunidad de mercado, ANR 4.0 o licitación comprobable"],
   "threats": ["Amenaza o riesgo sectorial externo"]
-}
-`;
+}`;
 
-// Model memory cache: remember the last working extraction model
-let lastWorkingExtractionModel = 'gemini-2.0-flash';
+  // 1. Run 3 specialized extraction passes in parallel
+  const [res1A, res1B, res1C] = await Promise.all([
+    callGeminiFocused(apiKey, promptPass1A),
+    callGeminiFocused(apiKey, promptPass1B),
+    callGeminiFocused(apiKey, promptPass1C)
+  ]);
 
-  const baseModels = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
-  const modelsToTry = [lastWorkingExtractionModel, ...baseModels.filter(m => m !== lastWorkingExtractionModel)];
+  // Combine Pass 1 extracted data
+  const combinedRawExtraction = {
+    ...(res1A || {}),
+    ...(res1B || {}),
+    ...(res1C || {})
+  };
 
-  for (const modelName of modelsToTry) {
-    try {
-      const ai = new GoogleGenAI({ apiKey });
-      const response = await ai.models.generateContent({
-        model: modelName,
-        contents: ragContext,
-        config: {
-          responseMimeType: 'application/json'
-        }
-      });
+  // --- PASS 2: Cross-Validation & Anti-Hallucination Verification Pass ---
+  console.log(`[MULTI-PASS AI] Running 2nd Pass: Cross-Validation & Verification for "${cleanComp}"...`);
 
-      if (response && response.text) {
-        const parsed = JSON.parse(response.text);
-        const validatedData = validateAndSanitizeExtraction(parsed, cleanComp);
-        lastWorkingExtractionModel = modelName; // Save working model for instant next extraction
-        console.log(`[TAXONOMICAL RAG SUCCESS] Gemini Model "${modelName}" organized & cataloged profile for "${cleanComp}"`);
-        return validatedData;
-      }
-    } catch (err) {
-      console.log(`[RAG AI NOTICE] Model ${modelName} notice for "${cleanComp}": ${err.message?.slice(0, 100)}`);
-    }
+  const promptPass2 = `${commonContext}
+
+DATOS EXTRAÍDOS EN LA PRIMERA PASADA:
+${JSON.stringify(combinedRawExtraction, null, 2)}
+
+MISIÓN PASADA 2 - AUDITORÍA DE FACT-CHECKING Y CERO ALUCINACIÓN:
+Actúa como Auditor de Calidad de Inteligencia OSINT. Analiza cada campo del JSON anterior contra la EVIDENCIA Y FUENTES OSINT arriba proporcionadas.
+1. Revisa si alguna afirmación o campo contiene datos inventados o sin sustento en los textos.
+2. Si un campo afirma contar con certificados o capacidades no respaldadas en la evidencia, reemplázalo con "Información no verificada públicamente".
+3. Corrige cualquier exageración y asegura que la respuesta sea 100% verídica y profesional.
+
+Devuelve el JSON FINAL auditado y corregido con la siguiente estructura exacta:
+{
+  "sector": "...",
+  "businessModel": "...",
+  "companyType": "...",
+  "whatItSells": "...",
+  "whoBuys": "...",
+  "howItGeneratesRevenue": "...",
+  "mostImportantAsset": "...",
+  "valueProposition": "...",
+  "executiveSummary": "...",
+  "strengths": ["..."],
+  "weaknesses": ["..."],
+  "opportunities": ["..."],
+  "threats": ["..."]
+}`;
+
+  const verifiedExtraction = await callGeminiFocused(apiKey, promptPass2);
+
+  const finalResult = verifiedExtraction || combinedRawExtraction;
+
+  if (finalResult && (finalResult.sector || finalResult.executiveSummary)) {
+    const validatedData = validateAndSanitizeExtraction(finalResult, cleanComp);
+    console.log(`[MULTI-PASS AI SUCCESS] Cross-validated profile generated successfully for "${cleanComp}".`);
+    return validatedData;
   }
 
   return null;

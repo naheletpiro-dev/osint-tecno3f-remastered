@@ -12,13 +12,13 @@
     "@google/genai": "^2.15.0",
     "@google/generative-ai": "^0.24.1",
     "axios": "^1.7.9",
-    "better-sqlite3": "^11.0.0",
     "cheerio": "^1.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.4.2",
     "express": "^4.21.2",
     "osint-company-platform": "file:..",
     "pdf-parse": "^2.4.5",
-    "serverless-http": "^3.2.0"
+    "serverless-http": "^3.2.0",
+    "sql.js": "^1.14.1"
   }
 }

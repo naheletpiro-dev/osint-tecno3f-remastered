@@ -1,22 +1,15 @@
 import fs from 'fs';
 import path from 'path';
-import Database from 'better-sqlite3';
 import axios from 'axios';
 import https from 'https';
 import { fileURLToPath } from 'url';
+import { openSqliteDb } from '../utils/sqliteHelper.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dbPath = path.join(__dirname, '../data/pyme_database.db');
 
-let pymeDb = null;
-try {
-  if (fs.existsSync(dbPath)) {
-    pymeDb = new Database(dbPath, { readonly: true });
-  }
-} catch (e) {
-  console.warn('[PyME DB Notice]: Could not open SQLite database:', e.message);
-}
+let pymeDbPromise = openSqliteDb(dbPath);
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
@@ -44,8 +37,7 @@ export async function queryGeorefAR(provinceName = '') {
 }
 
 /**
- * Registro MiPyME OSINT Scanner using Local Official PyME SQLite Database
- * Exact lookup in official SEPyME 2.7M dataset (registro_mipyme_21-07-2026.csv).
+ * Registro MiPyME OSINT Scanner using Local Official PyME SQLite Database (sql.js WebAssembly)
  */
 export async function getPymeRegistryOSINTData(companyName, cuit = '', searchData = {}, scrapedData = {}) {
   const cleanComp = companyName ? companyName.trim() : 'la empresa';
@@ -59,6 +51,8 @@ export async function getPymeRegistryOSINTData(companyName, cuit = '', searchDat
   let evidenceLink = PYME_OFFICIAL_APIS.SEPYME_DATASET_URL;
   let certDetail = null;
 
+  const pymeDb = await pymeDbPromise;
+
   // 1. Multi-Criteria Lookup in local SQLite Database (built from official SEPyME 2.7M dataset)
   if (pymeDb) {
     try {
@@ -66,24 +60,24 @@ export async function getPymeRegistryOSINTData(companyName, cuit = '', searchDat
 
       // Strategy A: Direct Lookup by ID / CUIT Reference
       if (cleanCuit) {
-        rec = pymeDb.prepare('SELECT * FROM pyme_registry WHERE id = ? LIMIT 1').get(cleanCuit);
+        rec = pymeDb.get('SELECT * FROM pyme_registry WHERE id = ? LIMIT 1', [cleanCuit]);
       }
 
       // Strategy B: Lookup by AFIP CLAE6 Economic Activity Code
       const claeCode = searchData.claeCode || scrapedData.claeCode || (companyName.toLowerCase().includes('soft') || companyName.toLowerCase().includes('tech') ? '620100' : null);
       if (!rec && claeCode) {
-        rec = pymeDb.prepare('SELECT * FROM pyme_registry WHERE clae6 = ? AND vigente = 1 LIMIT 1').get(claeCode);
+        rec = pymeDb.get('SELECT * FROM pyme_registry WHERE clae6 = ? AND vigente = 1 LIMIT 1', [claeCode]);
       }
 
       // Strategy C: Lookup by Sector & Active Certificate
       if (!rec && (scrapedData.sector || searchData.sector)) {
         const secTerm = scrapedData.sector || searchData.sector;
-        rec = pymeDb.prepare('SELECT * FROM pyme_registry WHERE sector LIKE ? AND vigente = 1 LIMIT 1').get(`%${secTerm}%`);
+        rec = pymeDb.get('SELECT * FROM pyme_registry WHERE sector LIKE ? AND vigente = 1 LIMIT 1', [`%${secTerm}%`]);
       }
 
       if (rec) {
         isRealData = true;
-        hasPymeCertificate = rec.vigente === 1;
+        hasPymeCertificate = rec.vigente === 1 || rec.vigente === '1';
 
         const catMap = {
           micro: 'Microempresa',
@@ -91,9 +85,9 @@ export async function getPymeRegistryOSINTData(companyName, cuit = '', searchDat
           tramo1: 'Mediana Empresa - Tramo 1',
           tramo2: 'Mediana Empresa - Tramo 2'
         };
-        const catReadable = catMap[rec.categoria.toLowerCase()] || rec.categoria || 'PyME Registrada';
+        const catReadable = catMap[String(rec.categoria).toLowerCase()] || rec.categoria || 'PyME Registrada';
 
-        pymeCategory = `${catReadable} (${rec.sector || 'General'}) - ${rec.vigente === 1 ? 'Certificado Vigente' : 'Certificado Histórico'}`;
+        pymeCategory = `${catReadable} (${rec.sector || 'General'}) - ${hasPymeCertificate ? 'Certificado Vigente' : 'Certificado Histórico'}`;
 
         fiscalBenefits = [
           'Diferimiento de Pago de IVA a 90 días',
@@ -110,7 +104,7 @@ export async function getPymeRegistryOSINTData(companyName, cuit = '', searchDat
           sector: rec.sector,
           provincia: rec.provincia,
           clae6: rec.clae6,
-          isVigente: rec.vigente === 1
+          isVigente: hasPymeCertificate
         };
         detectedSource = 'Base de Datos Oficial Registro MiPyME (datos.gob.ar - Ministerio de Economía)';
       }

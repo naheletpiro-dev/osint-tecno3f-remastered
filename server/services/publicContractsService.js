@@ -1,27 +1,20 @@
 import fs from 'fs';
 import path from 'path';
-import Database from 'better-sqlite3';
 import axios from 'axios';
 import https from 'https';
 import { fileURLToPath } from 'url';
+import { openSqliteDb } from '../utils/sqliteHelper.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dbPath = path.join(__dirname, '../data/contrataciones_database.db');
 
-let contratacionesDb = null;
-try {
-  if (fs.existsSync(dbPath)) {
-    contratacionesDb = new Database(dbPath, { readonly: true });
-  }
-} catch (e) {
-  console.warn('[Contrataciones DB Notice]: Could not open SQLite database:', e.message);
-}
+let contratacionesDbPromise = openSqliteDb(dbPath);
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
 /**
- * Multi-Jurisdictional Public Contracts, COMPR.AR, CONTRAT.AR & Obra Pública OSINT Engine
+ * Multi-Jurisdictional Public Contracts, COMPR.AR, CONTRAT.AR & Obra Pública OSINT Engine (sql.js WebAssembly)
  */
 export async function analyzePublicContracts(companyName, searchData = {}, cuit = '') {
   const cleanComp = companyName ? companyName.trim() : 'Empresa';
@@ -35,16 +28,18 @@ export async function analyzePublicContracts(companyName, searchData = {}, cuit 
   let supplierRegistryStatus = 'Sin registro en Padrón Estatal de Proveedores';
   let totalAwardedSum = 0;
 
+  const contratacionesDb = await contratacionesDbPromise;
+
   // 1. Direct Lookup in local SQLite Database (COMPR.AR, CONTRAT.AR & SiPRO datasets)
   if (contratacionesDb) {
     try {
       // Check SiPRO Supplier Registry
       let supplier = null;
       if (cleanCuit) {
-        supplier = contratacionesDb.prepare('SELECT * FROM sipro_suppliers WHERE cuit = ? LIMIT 1').get(cleanCuit);
+        supplier = contratacionesDb.get('SELECT * FROM sipro_suppliers WHERE cuit = ? LIMIT 1', [cleanCuit]);
       }
       if (!supplier && cleanComp.length >= 3) {
-        supplier = contratacionesDb.prepare('SELECT * FROM sipro_suppliers WHERE razon_social LIKE ? LIMIT 1').get(`%${cleanComp}%`);
+        supplier = contratacionesDb.get('SELECT * FROM sipro_suppliers WHERE razon_social LIKE ? LIMIT 1', [`%${cleanComp}%`]);
       }
 
       if (supplier) {
@@ -56,10 +51,10 @@ export async function analyzePublicContracts(companyName, searchData = {}, cuit 
       // Check CONTRAT.AR Public Works Contracts
       let works = [];
       if (cleanCuit) {
-        works = contratacionesDb.prepare('SELECT * FROM contratar_obras WHERE cuit = ?').all(cleanCuit);
+        works = contratacionesDb.all('SELECT * FROM contratar_obras WHERE cuit = ?', [cleanCuit]);
       }
       if (works.length === 0 && cleanComp.length >= 3) {
-        works = contratacionesDb.prepare('SELECT * FROM contratar_obras WHERE razon_social LIKE ?').all(`%${cleanComp}%`);
+        works = contratacionesDb.all('SELECT * FROM contratar_obras WHERE razon_social LIKE ?', [`%${cleanComp}%`]);
       }
 
       works.forEach(w => {
@@ -81,10 +76,10 @@ export async function analyzePublicContracts(companyName, searchData = {}, cuit 
       // Check COMPR.AR Awarded Contracts
       let awards = [];
       if (cleanCuit) {
-        awards = contratacionesDb.prepare('SELECT * FROM comprar_adjudicaciones WHERE cuit = ?').all(cleanCuit);
+        awards = contratacionesDb.all('SELECT * FROM comprar_adjudicaciones WHERE cuit = ?', [cleanCuit]);
       }
       if (awards.length === 0 && cleanComp.length >= 3) {
-        awards = contratacionesDb.prepare('SELECT * FROM comprar_adjudicaciones WHERE razon_social LIKE ? LIMIT 20').all(`%${cleanComp}%`);
+        awards = contratacionesDb.all('SELECT * FROM comprar_adjudicaciones WHERE razon_social LIKE ? LIMIT 20', [`%${cleanComp}%`]);
       }
 
       awards.forEach(a => {

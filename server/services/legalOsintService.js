@@ -1,26 +1,19 @@
 import fs from 'fs';
 import path from 'path';
-import Database from 'better-sqlite3';
 import { fileURLToPath } from 'url';
+import { openSqliteDb } from '../utils/sqliteHelper.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const dbPath = path.join(__dirname, '../data/sociedades_database.db');
 
-let sociedadesDb = null;
-try {
-  if (fs.existsSync(dbPath)) {
-    sociedadesDb = new Database(dbPath, { readonly: true });
-  }
-} catch (e) {
-  console.warn('[Sociedades DB Notice]: Could not open SQLite database:', e.message);
-}
+let sociedadesDbPromise = openSqliteDb(dbPath);
 
 /**
- * Legal & Judicial OSINT Engine for Companies
+ * Legal & Judicial OSINT Engine for Companies (sql.js WebAssembly)
  * Cross-references court records and official Registro Nacional de Sociedades (Ley 26.047).
  */
-export function analyzeLegalOSINT(companyName, domainAnalysis = {}, cuit = '') {
+export async function analyzeLegalOSINT(companyName, domainAnalysis = {}, cuit = '') {
   const cleanComp = companyName ? companyName.trim() : 'la empresa';
   const cleanCuit = cuit ? String(cuit).replace(/\D/g, '') : '';
 
@@ -28,15 +21,17 @@ export function analyzeLegalOSINT(companyName, domainAnalysis = {}, cuit = '') {
   let apiSource = 'Estimación Algorítmica OSINT (Registros públicos no API-directos)';
   let sociedadDetail = null;
 
+  const sociedadesDb = await sociedadesDbPromise;
+
   // 1. Direct Lookup in Registro Nacional de Sociedades (Ley 26.047 / ARCA)
   if (sociedadesDb) {
     try {
       let rec = null;
       if (cleanCuit) {
-        rec = sociedadesDb.prepare('SELECT * FROM sociedades_registry WHERE cuit = ? LIMIT 1').get(cleanCuit);
+        rec = sociedadesDb.get('SELECT * FROM sociedades_registry WHERE cuit = ? LIMIT 1', [cleanCuit]);
       }
       if (!rec && cleanComp) {
-        rec = sociedadesDb.prepare('SELECT * FROM sociedades_registry WHERE razon_social LIKE ? LIMIT 1').get(`%${cleanComp}%`);
+        rec = sociedadesDb.get('SELECT * FROM sociedades_registry WHERE razon_social LIKE ? LIMIT 1', [`%${cleanComp}%`]);
       }
 
       if (rec) {

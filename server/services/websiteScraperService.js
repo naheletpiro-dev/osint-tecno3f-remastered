@@ -133,6 +133,96 @@ export function determineCriticalIndustryAssets(companyName, sector = '', produc
 }
 
 /**
+ * Helper: Validates and adds URLs from sitemaps
+ */
+function addValidSitemapUrl(urlStr, targetHost, baseUrl, resultSet) {
+  try {
+    const fullUrl = new URL(urlStr, baseUrl);
+    const host = fullUrl.hostname.replace(/^www\./i, '').toLowerCase();
+    if (host === targetHost) {
+      const pathname = fullUrl.pathname.toLowerCase();
+      if (!/\.(pdf|jpg|jpeg|png|gif|svg|zip|css|js|mp4|webp|xml)$/i.test(pathname)) {
+        if (fullUrl.href !== baseUrl && fullUrl.href !== `${baseUrl}/`) {
+          resultSet.add(fullUrl.href);
+        }
+      }
+    }
+  } catch (e) {}
+}
+
+/**
+ * Discovers & parses sitemap.xml / robots.txt to extract all real indexable site URLs
+ */
+async function discoverSitemapUrls(baseUrl, targetHost) {
+  const discovered = new Set();
+  const sitemapCandidates = [
+    new URL('/sitemap.xml', baseUrl).href,
+    new URL('/sitemap_index.xml', baseUrl).href,
+    new URL('/sitemap-index.xml', baseUrl).href,
+    new URL('/sitemaps.xml', baseUrl).href
+  ];
+
+  // 1. Probe robots.txt for explicit Sitemap directives
+  try {
+    const robotsUrl = new URL('/robots.txt', baseUrl).href;
+    const robotsRes = await axios.get(robotsUrl, { timeout: 1500 }).catch(() => null);
+    if (robotsRes && robotsRes.data && typeof robotsRes.data === 'string') {
+      const matches = robotsRes.data.matchAll(/Sitemap:\s*(https?:\/\/[^\s]+)/gi);
+      for (const m of matches) {
+        if (m[1]) sitemapCandidates.unshift(m[1].trim());
+      }
+    }
+  } catch (e) {}
+
+  // 2. Fetch and parse sitemap XML candidate URLs
+  for (const smUrl of sitemapCandidates) {
+    try {
+      const res = await axios.get(smUrl, {
+        headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) OSINT-Crawler/4.0' },
+        timeout: 1800
+      }).catch(() => null);
+
+      if (res && res.data && typeof res.data === 'string' && (res.data.includes('<urlset') || res.data.includes('<sitemapindex') || res.data.includes('<loc>'))) {
+        const $ = cheerio.load(res.data, { xmlMode: true });
+
+        // If it's a sitemap index, parse child sitemaps (limit to 3)
+        const childSitemaps = [];
+        $('sitemap > loc').each((i, el) => {
+          if (i < 3) childSitemaps.push($(el).text().trim());
+        });
+
+        if (childSitemaps.length > 0) {
+          for (const cSm of childSitemaps) {
+            try {
+              const cRes = await axios.get(cSm, { timeout: 1500 }).catch(() => null);
+              if (cRes && cRes.data) {
+                const c$ = cheerio.load(cRes.data, { xmlMode: true });
+                c$('url > loc, loc').each((i, el) => {
+                  const locTxt = c$(el).text().trim();
+                  if (locTxt) addValidSitemapUrl(locTxt, targetHost, baseUrl, discovered);
+                });
+              }
+            } catch (e) {}
+          }
+        } else {
+          $('url > loc, loc').each((i, el) => {
+            const locTxt = $(el).text().trim();
+            if (locTxt) addValidSitemapUrl(locTxt, targetHost, baseUrl, discovered);
+          });
+        }
+
+        if (discovered.size > 0) {
+          console.log(`[SITEMAP CRAWLER] Successfully discovered ${discovered.size} indexable URLs via ${smUrl}`);
+          break; // Stop after first valid sitemap
+        }
+      }
+    } catch (e) {}
+  }
+
+  return Array.from(discovered);
+}
+
+/**
  * Auxiliary Function: Scrapes an individual internal subpage & extracts clean products, services, text.
  */
 async function scrapeSubPage(url) {
@@ -234,7 +324,17 @@ export async function scrapeCompanyWebsite(websiteUrl, companyName) {
 
   const discoveredSubpageUrls = new Set();
 
-  // ADVANCED MULTILEVEL CRAWLER: Proactively probe 5 core institutional subdirectories (/nosotros, /contacto, /productos, /servicios, /clientes)
+  // SITEMAP.XML DISCOVERY ENGINE: Parse sitemap.xml & robots.txt for 100% real indexable site paths
+  try {
+    const sitemapUrls = await discoverSitemapUrls(formattedUrl, targetHost);
+    if (sitemapUrls.length > 0) {
+      profile.sitemapFound = true;
+      profile.sitemapUrlsCount = sitemapUrls.length;
+      sitemapUrls.forEach(u => discoveredSubpageUrls.add(u));
+    }
+  } catch (e) {}
+
+  // ADVANCED MULTILEVEL CRAWLER: Proactively probe core institutional subdirectories
   const probePaths = ['/nosotros', '/quienes-somos', '/empresa', '/productos', '/catalogo', '/servicios', '/soluciones', '/clientes', '/contacto'];
   probePaths.forEach(p => {
     try {

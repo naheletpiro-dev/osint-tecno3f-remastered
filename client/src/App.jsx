@@ -141,8 +141,7 @@ export default function App() {
       const token = user.token || localStorage.getItem('osint_auth_token');
       fetch('/api/history', {
         headers: {
-          'Authorization': token ? `Bearer ${token}` : '',
-          'X-User-Id': user.id || ''
+          'Authorization': token ? `Bearer ${token}` : ''
         }
       })
       .then(res => res.json())
@@ -160,20 +159,35 @@ export default function App() {
   const saveReportToHistory = async (reportData) => {
     if (!user || !reportData) return;
     try {
+      const token = user.token || localStorage.getItem('osint_auth_token');
       await fetch('/api/history/save', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: user.id, report: reportData })
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token ? `Bearer ${token}` : ''
+        },
+        body: JSON.stringify({ report: reportData })
       });
-      const token = user.token || localStorage.getItem('osint_auth_token');
       const res = await fetch('/api/history', {
-        headers: { 'Authorization': token ? `Bearer ${token}` : '', 'X-User-Id': user.id || '' }
+        headers: { 'Authorization': token ? `Bearer ${token}` : '' }
       });
       const data = await res.json();
       if (data.success && Array.isArray(data.history)) {
         setHistory(data.history);
       }
     } catch(e) {}
+  };
+
+  const handleClearHistory = async () => {
+    if (!user) return;
+    try {
+      const token = user.token || localStorage.getItem('osint_auth_token');
+      await fetch('/api/history', {
+        method: 'DELETE',
+        headers: { 'Authorization': token ? `Bearer ${token}` : '' }
+      });
+      setHistory([]);
+    } catch (e) {}
   };
 
   const handleLoadReportFromHistory = async (summaryItem) => {
@@ -318,14 +332,6 @@ export default function App() {
       setActiveTab('compare');
     } finally {
       setLoading(false);
-    }
-  };
-
-  const handleClearHistory = () => {
-    if (user) {
-      const historyKey = `osint_tecno3f_history_${user.id}`;
-      localStorage.removeItem(historyKey);
-      setHistory([]);
     }
   };
 

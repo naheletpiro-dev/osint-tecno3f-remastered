@@ -395,9 +395,29 @@ async function safeExecute(serviceName, asyncFn, fallbackValue = {}) {
   }
 }
 
-// Watchlist & Monitored Companies Endpoints
+/**
+ * Strict Authentication Helper: Extracts & verifies JWT token from Authorization header.
+ * Completely ignores unauthenticated X-User-Id headers or req.body.userId to prevent IDOR attacks.
+ */
+function getAuthenticatedUserId(req) {
+  const authHeader = req.headers['authorization'];
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    const token = authHeader.substring(7).trim();
+    if (token) {
+      const decoded = verifyAuthToken(token);
+      if (decoded && (decoded.id || decoded.username)) {
+        return decoded.id || decoded.username;
+      }
+    }
+  }
+  return null;
+}
+
+// Watchlist & Monitored Companies Endpoints (Secured against IDOR)
 app.get('/api/watchlist', (req, res) => {
   try {
+    const userId = getAuthenticatedUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Token de autenticación requerido o inválido.' });
     const list = getWatchlistFromDB();
     res.json({ success: true, watchlist: list });
   } catch (e) {
@@ -407,9 +427,11 @@ app.get('/api/watchlist', (req, res) => {
 
 app.post('/api/watchlist', (req, res) => {
   try {
+    const userId = getAuthenticatedUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Token de autenticación requerido o inválido.' });
     const { companyName, cuit, website } = req.body;
     if (!companyName || !companyName.trim()) return res.status(400).json({ error: 'El nombre de la empresa es obligatorio.' });
-    const item = addWatchlistCompany({ companyName, cuit, website });
+    const item = addWatchlistCompany({ companyName, cuit, website, userId });
     res.json({ success: true, item });
   } catch (e) {
     res.status(400).json({ error: e.message });
@@ -418,6 +440,8 @@ app.post('/api/watchlist', (req, res) => {
 
 app.delete('/api/watchlist/:id', (req, res) => {
   try {
+    const userId = getAuthenticatedUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Token de autenticación requerido o inválido.' });
     const { id } = req.params;
     const result = removeWatchlistCompany(id);
     res.json(result);
@@ -426,19 +450,11 @@ app.delete('/api/watchlist/:id', (req, res) => {
   }
 });
 
-// Server-Side User History Endpoints (Lightweight summaries & full report fetch on demand)
+// Server-Side User History Endpoints (Secured against IDOR)
 app.get('/api/history', (req, res) => {
   try {
-    const authHeader = req.headers['authorization'];
-    const userIdHeader = req.headers['x-user-id'];
-    let userId = userIdHeader;
-
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-      const decoded = verifyAuthToken(authHeader.substring(7).trim());
-      if (decoded) userId = decoded.id;
-    }
-
-    if (!userId) return res.json({ success: true, history: [] });
+    const userId = getAuthenticatedUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Token de autenticación requerido o inválido.' });
 
     const summaries = getUserHistorySummariesFromDB(userId);
     res.json({ success: true, history: summaries });
@@ -449,18 +465,10 @@ app.get('/api/history', (req, res) => {
 
 app.get('/api/history/:id', (req, res) => {
   try {
+    const userId = getAuthenticatedUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Token de autenticación requerido o inválido.' });
+
     const { id } = req.params;
-    const authHeader = req.headers['authorization'];
-    const userIdHeader = req.headers['x-user-id'];
-    let userId = userIdHeader;
-
-    if (authHeader && authHeader.startsWith('Bearer ')) {
-      const decoded = verifyAuthToken(authHeader.substring(7).trim());
-      if (decoded) userId = decoded.id;
-    }
-
-    if (!userId) return res.status(401).json({ error: 'Usuario no identificado.' });
-
     const report = getUserReportByIdFromDB(userId, id);
     if (!report) return res.status(404).json({ error: 'Informe no encontrado en el historial.' });
 
@@ -472,8 +480,11 @@ app.get('/api/history/:id', (req, res) => {
 
 app.post('/api/history/save', (req, res) => {
   try {
-    const { userId, report } = req.body;
-    if (!userId || !report) return res.status(400).json({ error: 'Faltan parámetros requeridos.' });
+    const userId = getAuthenticatedUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Token de autenticación requerido o inválido.' });
+
+    const { report } = req.body;
+    if (!report) return res.status(400).json({ error: 'Faltan parámetros requeridos.' });
 
     const reportId = saveUserReportToDB(userId, report);
     res.json({ success: true, reportId });
@@ -484,8 +495,8 @@ app.post('/api/history/save', (req, res) => {
 
 app.delete('/api/history', (req, res) => {
   try {
-    const { userId } = req.body;
-    if (!userId) return res.status(400).json({ error: 'Falta userId.' });
+    const userId = getAuthenticatedUserId(req);
+    if (!userId) return res.status(401).json({ error: 'Token de autenticación requerido o inválido.' });
 
     clearUserHistoryFromDB(userId);
     res.json({ success: true });

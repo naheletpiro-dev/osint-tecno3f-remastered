@@ -661,7 +661,7 @@ app.post('/api/osint/scan', async (req, res) => {
     ]);
 
     // 2. Parallel Secondary OSINT & Base Modules (Run all APIs & initial classification concurrently)
-    const [
+    let [
       bcraData,
       afipData,
       inpiWipoData,
@@ -741,7 +741,7 @@ app.post('/api/osint/scan', async (req, res) => {
             legalData.boletinOficialData = boletinData;
           }
         } catch (e) {
-          console.warn('[Refined CUIT Lookup Notice]:', e.message);
+          console.error('[Refined CUIT Lookup Error]:', e);
         }
       }
     }

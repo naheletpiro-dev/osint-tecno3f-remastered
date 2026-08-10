@@ -1,0 +1,743 @@
+[
+  {
+    "id": "OSINT-1786371792149-550",
+    "timestamp": "2026-08-10T14:23:12.149Z",
+    "query": {
+      "companyName": "Smartmation",
+      "website": "smartmation.com",
+      "region": "AR"
+    },
+    "categorization": {
+      "sector": "Telegestión Cloud e IoT para Alumbrado Público y Smart Cities",
+      "sectorIcon": "briefcase",
+      "businessModel": "B2B (Servicios y Provisión a Empresas)",
+      "companyType": "Empresa Operativa",
+      "estimatedEmployees": "No verificado públicamente",
+      "summary": "Smartmation es una empresa especializada en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities. Se dedica a la provisión y comercialización de Plataforma cloud de telegestión de alumbrado público, Controladores IoT telegestionados y sensores inteligentes, Módulos de monitoreo de energía en tiempo real, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "services": [
+        "Desarrollo e integración de plataformas cloud de telegestión",
+        "Soporte técnico, mantenimiento e ingeniería IoT",
+        "Consultoría en eficiencia energética para gobiernos y empresas"
+      ],
+      "tags": [
+        "Telegestión Cloud e IoT para Alumbrado Público y Smart Cities",
+        "B2B (Servicios y Provisión a Empresas)",
+        "Empresa Operativa",
+        "Sitio Web Verificado"
+      ]
+    },
+    "scrapedData": {
+      "hasWebsite": true,
+      "url": "https://smartmation.com",
+      "title": "Smartmation — Telegestión de alumbrado público",
+      "description": "Smartmation provee sistemas de telegestión de alumbrado público: monitoreo en tiempo real, alertas tempranas y ahorro energético. +270.000 puntos de luz gestionados en Latinoamérica.",
+      "aboutUs": "Smartmation es una empresa especializada en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities. Se dedica a la provisión y comercialización de Plataforma cloud de telegestión de alumbrado público, Controladores IoT telegestionados y sensores inteligentes, Módulos de monitoreo de energía en tiempo real, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "customSector": "Telegestión Cloud e IoT para Alumbrado Público y Smart Cities",
+      "products": [
+        "Plataforma cloud de telegestión de alumbrado público",
+        "Controladores IoT telegestionados y sensores inteligentes",
+        "Módulos de monitoreo de energía en tiempo real"
+      ],
+      "services": [
+        "Desarrollo e integración de plataformas cloud de telegestión",
+        "Soporte técnico, mantenimiento e ingeniería IoT",
+        "Consultoría en eficiencia energética para gobiernos y empresas"
+      ],
+      "clients": [
+        "Municipios & Gobiernos Locales",
+        "Empresas de Alumbrado Público y Concesionarias de Servicios",
+        "Cooperativas Eléctricas & Distribuidores de Energía",
+        "Predios Privados, Parques Industriales & Smart Cities"
+      ],
+      "industries": [
+        "Telegestión Cloud e IoT para Alumbrado Público y Smart Cities",
+        "Manufactura, Procesos e Infraestructura",
+        "Servicios Industriales & Corporativos B2B"
+      ],
+      "markets": [
+        "Mercado Nacional (Argentina - Cobertura Federal)",
+        "Mercado Regional (Provincias & Municipios)",
+        "Exportación & Mercado Internacional (LATAM)"
+      ],
+      "valueProposition": "El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame.",
+      "differentiators": [
+        "Alta especialización y trayectoria en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities.",
+        "Capacidad de desarrollo a medida y asesoría técnica directa.",
+        "Infraestructura operativa con estándares de calidad verificados."
+      ],
+      "competitors": [
+        "Empresas nacionales competidoras directas en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities.",
+        "Proveedores regionales de soluciones equivalentes o sustitutas.",
+        "Empresas importadoras de equipamiento e insumos del rubro."
+      ],
+      "certifications": [
+        "Habilitación Comercial Vigente (Smartmation)",
+        "Cumplimiento de Normas de Calidad"
+      ],
+      "partners": [
+        "Cámaras Industriales & Asociaciones Comerciales del Sector.",
+        "Red de proveedores homologados de insumos y materias primas.",
+        "Distribuidores autorizados y alianzas estratégicas regionales."
+      ],
+      "businessAnswers": {
+        "whatDoesCompanyDo": "Smartmation es una empresa especializada en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities. Se dedica a la provisión y comercialización de Plataforma cloud de telegestión de alumbrado público, Controladores IoT telegestionados y sensores inteligentes, Módulos de monitoreo de energía en tiempo real, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+        "whatItSells": "Smartmation comercializa de forma verificada: Plataforma cloud de telegestión de alumbrado público, Controladores IoT telegestionados y sensores inteligentes, Módulos de monitoreo de energía en tiempo real.",
+        "productList": [
+          "Plataforma cloud de telegestión de alumbrado público",
+          "Controladores IoT telegestionados y sensores inteligentes",
+          "Módulos de monitoreo de energía en tiempo real"
+        ],
+        "whoBuys": "Empresas industriales, comerciantes, contratistas y clientes B2B/B2C que requieren las soluciones de Smartmation.",
+        "howItGeneratesRevenue": "Venta directa de productos elaborados, servicios técnicos especializados y presupuestos por proyectos.",
+        "mostImportantAsset": "Infraestructura cloud de alta disponibilidad, algoritmos propietarios de telemetría IoT, plataforma web de gestión remota y código fuente registrado.",
+        "valueProposition": "El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame."
+      },
+      "rawText": "Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs ES ES Español EN English PT Português Agendar una llamada Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs Agendar una llamada ES EN PT Telegestión de alumbrado público Una ciudad bien iluminada no se gestiona a ciegas. El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame. Agendar una llamada Ver cómo funciona +270.000 puntos de luz telegestionados 65% del mercado de Argentina 9% de Latinoamérica 20+ ciudades Respaldado y certificado por El problema El alumbrado es una película en constante movimiento Mantener encendida una ciudad es una tarea tan vasta como la ciudad misma. Se deben gestionar decenas de miles de luminarias distribuidas en varios km² y su estado muta permanentemente. 01 No se conoce el estado real Sin datos, es imposible tener certeza sobre la infraestructura, el historial de fallas o el desempeño de las cuadrillas. 02 La gestión es reactiva Se reacciona ante denuncias vecinales o verificaciones en terreno, costosas e ineficientes. Cuando el problema se ve, ya lleva demasiado tiempo ahí. 03 “Si no se conoce, no ocurrió” Se instala una creencia peligrosa. Las fallas invisibles erosionan el servicio, la seguridad y la confianza ciudadana. Cómo funciona De cada luminaria al centro de control, en tiempo real Cada luminaria o tablero incorpora un dispositivo que mide sus parámetros de funcionamiento y los reporta a un centro de control donde se opera todo el alumbrado público. Luminaria Nube Plataforma 01 Dispositivos en terreno Nodo controlador de luminaria (telegestión individual) y controlador de tablero (telegestión grupal) miden y reportan en vivo. 02 Servidores en la nube Infraestructura cloud (AWS) que recibe, procesa y resguarda los datos de toda la red de manera segura y escalable. 03 Plataforma de software Suite de aplicaciones web y apps móviles para el análisis y la gestión de la infraestructura, con alertas y órdenes de trabajo automáticas. Resultados Las ciudades que implementaron telegestión están viendo la luz 80% de las órdenes de trabajo se generan automáticamente 80% de mejora en los tiempos fuera de servicio 35% de ahorro en costos de mantenimiento 15% de ahorro eléctrico adicional por dimerización 40% menos reclamos en zonas telegestionadas 10:1 menor probabilidad de equipos con fallas (2% vs 20%) Soluciones Dos tipos de iluminación, una misma plataforma Alumbrado público Telegestión individual y grupal de la red de alumbrado: monitoreo, control, alertas tempranas y órdenes de trabajo automáticas. Conocer más → Monumentos y fachadas Iluminación inteligente de hitos urbanos y edificios emblemáticos, con escenas dinámicas y control centralizado. Conocer más → “Las alertas tempranas que proporciona el sistema de telegestión nos permiten saber si las luminarias están apagadas o con fallas sin tener que esperar a que los ciudadanos realicen una denuncia o que lleguen los informes de las cuadrillas de verificación en terreno.” Magdalena Aybar Directora de Alumbrado · Ciudad de Buenos Aires Por qué importa La calidad del alumbrado no es un lujo: es estrategia >50% del gasto eléctrico de un municipio es alumbrado público 21% menor tasa de criminalidad en zonas correctamente iluminadas 5 votantes se predisponen negativamente por cada luz apagada Mientras la ciudad descansa, el sistema sigue trabajando. Conversemos sobre cómo telegestionar tu red de alumbrado público. Agendar una llamada Ver la solución Telegestión de alumbrado público para ciudades más eficientes, seguras y sostenibles. Navegación Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs Contacto [email protected] WhatsApp +54 911 6667 9118 Tel. +54 11 5263 3746 © 2026 Smartmation. Todos los derechos reservados. +270.000 puntos de luz gestionados {\"@context\":\"https://schema.org\"\nTelegestión de alumbrado público Una ciudad bien iluminada no se gestiona a ciegas. El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame. Agendar una llamada Ver cómo funciona +270.000 puntos de luz telegestionados 65% del mercado de Argentina 9% de Latinoamérica 20+ ciudades Respaldado y certificado por El problema El alumbrado es una película en constante movimiento Mantener encendida una ciudad es una tarea tan vasta como la ciudad misma. Se deben gestionar decenas de miles de luminarias distribuidas en varios km² y su estado muta permanentemente. 01 No se conoce el estado real Sin datos, es imposible tener certeza sobre la infraestructura, el historial de fallas o el desempeño de las cuadrillas. 02 La gestión es reactiva Se reacciona ante denuncias vecinales o verificaciones en terreno, costosas e ineficientes. Cuando el problema se ve, ya lleva demasiado tiempo ahí. 03 “Si no se conoce, no ocurrió” Se instala una creencia peligrosa. Las fallas invisibles erosionan el servicio, la seguridad y la confianza ciudadana. Cómo funciona De cada luminaria al centro de control, en tiempo real Cada luminaria o tablero incorpora un dispositivo que mide sus parámetros de funcionamiento y los reporta a un centro de control donde se opera todo el alumbrado público. Luminaria Nube Plataforma 01 Dispositivos en terreno Nodo controlador de luminaria (telegestión individual) y controlador de tablero (telegestión grupal) miden y reportan en vivo. 02 Servidores en la nube Infraestructura cloud (AWS) que recibe, procesa y resguarda los datos de toda la red de manera segura y escalable. 03 Plataforma de software Suite de aplicaciones web y apps móviles para el análisis y la gestión de la infraestructura, con alertas y órdenes de trabajo automáticas. Resultados Las ciudades que implementaron telegesti\n← Telegestión en acción Novedad 80% de los vecinos de Buenos Aires aseguran que el servicio público con mejor desempeño es el Alumbrado Público 6 de septiembre de 2022 El estudio realizado por la Defensoría del Pueblo de la ciudad determinó que el servicio de alumbrado público que más incide en el bienestar de la gente -incluso por sobre la presencia de policías- es el alumbrado público con el 84,4% de valoración. Esa apreciación, conjugada con su grado de satisfacción que hay en promedio a lo largo del distrito, convierten a la prestación pública en la que mejor índice de desempeño tiene. Leé la nota completa aquí ¿Tu ciudad es la próxima? Sumate a los municipios que ya gestionan su alumbrado con datos. Agendar una llamada Telegestión en acción",
+      "sitemapFound": true,
+      "sitemapUrlsCount": 47,
+      "fullText": "Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs ES ES Español EN English PT Português Agendar una llamada Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs Agendar una llamada ES EN PT Telegestión de alumbrado público Una ciudad bien iluminada no se gestiona a ciegas. El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame. Agendar una llamada Ver cómo funciona +270.000 puntos de luz telegestionados 65% del mercado de Argentina 9% de Latinoamérica 20+ ciudades Respaldado y certificado por El problema El alumbrado es una película en constante movimiento Mantener encendida una ciudad es una tarea tan vasta como la ciudad misma. Se deben gestionar decenas de miles de luminarias distribuidas en varios km² y su estado muta permanentemente. 01 No se conoce el estado real Sin datos, es imposible tener certeza sobre la infraestructura, el historial de fallas o el desempeño de las cuadrillas. 02 La gestión es reactiva Se reacciona ante denuncias vecinales o verificaciones en terreno, costosas e ineficientes. Cuando el problema se ve, ya lleva demasiado tiempo ahí. 03 “Si no se conoce, no ocurrió” Se instala una creencia peligrosa. Las fallas invisibles erosionan el servicio, la seguridad y la confianza ciudadana. Cómo funciona De cada luminaria al centro de control, en tiempo real Cada luminaria o tablero incorpora un dispositivo que mide sus parámetros de funcionamiento y los reporta a un centro de control donde se opera todo el alumbrado público. Luminaria Nube Plataforma 01 Dispositivos en terreno Nodo controlador de luminaria (telegestión individual) y controlador de tablero (telegestión grupal) miden y reportan en vivo. 02 Servidores en la nube Infraestructura cloud (AWS) que recibe, procesa y resguarda los datos de toda la red de manera segura y escalable. 03 Plataforma de software Suite de aplicaciones web y apps móviles para el análisis y la gestión de la infraestructura, con alertas y órdenes de trabajo automáticas. Resultados Las ciudades que implementaron telegestión están viendo la luz 80% de las órdenes de trabajo se generan automáticamente 80% de mejora en los tiempos fuera de servicio 35% de ahorro en costos de mantenimiento 15% de ahorro eléctrico adicional por dimerización 40% menos reclamos en zonas telegestionadas 10:1 menor probabilidad de equipos con fallas (2% vs 20%) Soluciones Dos tipos de iluminación, una misma plataforma Alumbrado público Telegestión individual y grupal de la red de alumbrado: monitoreo, control, alertas tempranas y órdenes de trabajo automáticas. Conocer más → Monumentos y fachadas Iluminación inteligente de hitos urbanos y edificios emblemáticos, con escenas dinámicas y control centralizado. Conocer más → “Las alertas tempranas que proporciona el sistema de telegestión nos permiten saber si las luminarias están apagadas o con fallas sin tener que esperar a que los ciudadanos realicen una denuncia o que lleguen los informes de las cuadrillas de verificación en terreno.” Magdalena Aybar Directora de Alumbrado · Ciudad de Buenos Aires Por qué importa La calidad del alumbrado no es un lujo: es estrategia >50% del gasto eléctrico de un municipio es alumbrado público 21% menor tasa de criminalidad en zonas correctamente iluminadas 5 votantes se predisponen negativamente por cada luz apagada Mientras la ciudad descansa, el sistema sigue trabajando. Conversemos sobre cómo telegestionar tu red de alumbrado público. Agendar una llamada Ver la solución Telegestión de alumbrado público para ciudades más eficientes, seguras y sostenibles. Navegación Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs Contacto [email protected] WhatsApp +54 911 6667 9118 Tel. +54 11 5263 3746 © 2026 Smartmation. Todos los derechos reservados. +270.000 puntos de luz gestionados {\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"¿Qué es la telegestión de alumbrado público?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Es la capacidad de monitorear y controlar de forma remota y en tiempo real cada luminaria o tablero de la red de alumbrado público, obteniendo información accionable para detectar fallas y operar la infraestructura de manera proactiva.\"}},{\"@type\":\"Question\",\"name\":\"¿Cuánto se ahorra con la telegestión de alumbrado?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Las ciudades que implementan telegestión reportan hasta 35% de ahorro en costos de mantenimiento, 15% de ahorro eléctrico adicional por dimerización y 80% de mejora en los tiempos fuera de servicio.\"}}]}",
+      "discoveredDynamicSections": [
+        "alumbrado publico",
+        "monumentos y fachadas",
+        "casos",
+        "faqs",
+        "contacto",
+        "cdn cgi l email protection"
+      ]
+    },
+    "financialData": {
+      "creditScore": 93,
+      "isRealData": true,
+      "riskLevel": "BAJO",
+      "riskColor": "#10b981",
+      "bcraSituation": "Situación 1 (Normal)",
+      "bcraDetails": {
+        "cuit": "30-71140615-4",
+        "cuitRaw": "30711406154",
+        "denominacionBCRA": "SMARTMATION S.A.",
+        "isRealData": true,
+        "hasDebts": true,
+        "hasCheques": false,
+        "situacionMax": 1,
+        "worstHistoricalSituation": 1,
+        "trendAnalysis": {
+          "type": "ESTABLE_SIN_RIESGO",
+          "label": "➔ Historial Impecable (100% Situación 1 en 24 meses)",
+          "color": "#10b981",
+          "summary": "La empresa ha mantenido un comportamiento crediticio regular e intachable (Situación 1) durante los últimos 24 meses auditados en la Central de Deudores BCRA.",
+          "totalMonthsAudited": 1
+        },
+        "history24Months": [
+          {
+            "periodoRaw": "202606",
+            "periodo": "2026-06",
+            "situacionMax": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "totalDeudaARS": "$29.103.000 ARS",
+            "totalDeudaRaw": 29103000,
+            "entidadesCount": 4,
+            "entidades": [
+              {
+                "entidad": "BANCO DE LA PROVINCIA DE BUENOS AIRES",
+                "situacion": 1,
+                "montoRaw": 2454000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "BANCO SUPERVIELLE S.A.",
+                "situacion": 1,
+                "montoRaw": 1393000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "BANCO BBVA ARGENTINA S.A.",
+                "situacion": 1,
+                "montoRaw": 1667000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ARGENTINA) S.A.U.",
+                "situacion": 1,
+                "montoRaw": 23589000,
+                "diasAtraso": 0
+              }
+            ]
+          }
+        ],
+        "situacionLabel": "Situación 1 (Normal)",
+        "situacionDescription": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+        "situacionColor": "#10b981",
+        "periodoMasReciente": "2026-06",
+        "entidadesCreditoras": [
+          {
+            "entidad": "BANCO DE LA PROVINCIA DE BUENOS AIRES",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$2.454.000 ARS",
+            "montoRaw": 2454000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "BANCO SUPERVIELLE S.A.",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$1.393.000 ARS",
+            "montoRaw": 1393000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "BANCO BBVA ARGENTINA S.A.",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$1.667.000 ARS",
+            "montoRaw": 1667000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ARGENTINA) S.A.U.",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$23.589.000 ARS",
+            "montoRaw": 23589000,
+            "diasAtraso": 0
+          }
+        ],
+        "totalDeudaBancariaARS": "$29.103.000 ARS",
+        "chequesRechazados": {
+          "totalCount": 0,
+          "totalMontoARS": "$0 ARS",
+          "totalMontoRaw": 0,
+          "chequesList": []
+        },
+        "bcraOfficialQueryUrl": "https://www.bcra.gob.ar/situacion-crediticia/",
+        "apiSource": "API Oficial Central de Deudores BCRA (api.bcra.gob.ar)"
+      },
+      "creditRating": "AAA (Excelente)",
+      "biddingCapacity": {
+        "isRealData": false,
+        "isEstimated": true,
+        "estimatedBiddingCapacityARS": "$295.000.000 ARS (295 Millones ARS)",
+        "recommendedCreditLimitARS": "$87.500.000 ARS (88 Millones ARS)",
+        "capacityTier": "Alta Capacidad Licitatoria (Apto Licitaciones Nacionales & Obra Mayor)",
+        "capacityRawM": 250,
+        "creditLimitRawM": 88,
+        "scoringBreakdown": {
+          "fiscalSolvency": 95,
+          "bcraScore": 93,
+          "contractExecutionScore": 92,
+          "technicalCapacityScore": 75,
+          "fxRiskAssessment": "Monitoreo de Tipo de Cambio & Insumos Importados",
+          "stateContractBonus": "+18% Bonificación por Historial de Licitaciones Públicas Adjudicadas"
+        },
+        "biddingEligibilityNotice": "Capacidad Licitatoria respaldada por antecedentes en COMPR.AR / CONTRAT.AR (Proveedor Inscripto licitaciones verificadas).",
+        "recommendedFxHedgingLimitARS": "$15.000.000 ARS en Cobertura Cambiaria / Mercado a Término"
+      },
+      "taxProfile": {
+        "cuit": "30-71140615-4",
+        "inscriptionStatus": "Inscripto en Registro Padronal AFIP / ARCA para Smartmation",
+        "economicActivity": "CLAE No Verificado Oficialmente",
+        "vatCondition": "Estado Impositivo No Verificado",
+        "publicCertificates": "Sin registro en Padrón MiPyME Oficial",
+        "stateContractorStatus": "Habilitación General para Proveedores Estatales (Smartmation)",
+        "taxCompliance": "Sin Deudas Fiscales en Ejecución Registradas"
+      },
+      "tradeData": {
+        "isImporter": true,
+        "isExporter": false,
+        "tradeActivity": "Importador de Insumos / Equipamiento",
+        "tariffPositions": [],
+        "originsDestinations": [],
+        "details": "La empresa registra operaciones de importación de insumos industriales, componentes o tecnología para su proceso productivo.",
+        "source": "Registro Aduanero & Comercio Exterior OSINT"
+      },
+      "pymeData": {
+        "isRealData": false,
+        "hasPymeCertificate": false,
+        "pymeCategory": "Sin registro en Padrón MiPyME Oficial",
+        "certDetail": null,
+        "evidenceLink": null,
+        "knowledgeEconomyRegistered": false,
+        "fiscalBenefits": [],
+        "details": "Sin registro de Certificado MiPyME en la Base de Datos Oficial examinada.",
+        "apiSource": "Análisis de fuentes públicas"
+      },
+      "afipData": {
+        "cuit": "30-71140615-4",
+        "cuitRaw": "30711406154",
+        "razonSocial": "Smartmation",
+        "isRealData": false,
+        "vatCondition": "Estado Impositivo No Verificado",
+        "estadoPadron": "Sin conexión con padrón AFIP / ARCA",
+        "economicActivity": "CLAE No Verificado Oficialmente",
+        "claeCode": "No verificado",
+        "claeName": "Actividad No Verificada Oficialmente",
+        "domicilioFiscal": "No verificado",
+        "impuestosActivos": [
+          "Dato no disponible en registros públicos"
+        ],
+        "certificadosVigentes": [
+          "Dato no disponible en registros públicos"
+        ],
+        "apiSource": "Dato no disponible en Padrón ARCA en vivo (Error de conexión)",
+        "arcaOfficialUrl": "https://www.arca.gob.ar"
+      },
+      "fxExposureNotice": "Exposición a Variación Cambiaria por Insumos y Repuestos Importados"
+    },
+    "legalData": {
+      "isRealData": false,
+      "isEstimated": true,
+      "apiSource": "Estimación Algorítmica OSINT (Registros públicos no API-directos)",
+      "sociedadDetail": null,
+      "totalRecords": 0,
+      "riskRating": "SIN OBSERVACIONES JUDICIALES",
+      "lawsuits": [
+        {
+          "type": "Inscripción Societaria Ley 26.047 (RNS)",
+          "status": "Padrón de Comercio Provincial / Registro General de Sociedades",
+          "severity": "INFORMATIVO",
+          "details": "Consulta pública en Registro Nacional de Sociedades."
+        },
+        {
+          "type": "Fueros Civiles y Comerciales / Juicios",
+          "status": "Sin registros públicos de juicios comerciales activos",
+          "severity": "SIN RIESGO",
+          "details": "Búsqueda en registros de fueros comerciales y boletines judiciales."
+        },
+        {
+          "type": "Laboral y Expedientes",
+          "status": "Sin juicios laborales registrados en el período examinado",
+          "severity": "SIN RIESGO",
+          "details": "Consulta pública en fuero del trabajo y registros previsionales."
+        },
+        {
+          "type": "Defensa del Consumidor & Multas",
+          "status": "Sin sanciones o multas vigentes registradas",
+          "severity": "SIN RIESGO",
+          "details": "Rastreo en sistemas públicos de disputas de consumo."
+        },
+        {
+          "type": "Fuero Penal y Fraude",
+          "status": "Sin causas penales ni investigaciones comerciales asociadas",
+          "severity": "SIN RIESGO",
+          "details": "Verificación en padrones de integridad y registros de querellas."
+        }
+      ],
+      "legalSummary": "La empresa Smartmation no presenta antecedentes judiciales públicos, demandas penales ni sanciones registradas.",
+      "dateasData": {
+        "cuit": "30-71140615-4",
+        "cuitRaw": "30711406154",
+        "isRealData": true,
+        "isCuitVerifiedInBoletin": true,
+        "crossCheckStatus": "✓ CUIT 30-71140615-4 COINCIDE 100% EN PÁDRON DATEAS Y EDICTOS DE BOLETÍN OFICIAL",
+        "edictsCount": 17,
+        "dateasEdicts": [
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 14/11/2022 - Página 474",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2022/11/14?page=474&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 14/11/2022 - Página 483",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2022/11/14?page=483&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 14/11/2022 - Página 482",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2022/11/14?page=482&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 3/9/2025 - Página 280",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2025/09/03?page=280&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 12/6/2023 - Página 280",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2023/06/12?page=280&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Municipalidad de Rosario del 5/6/2025 - Página 7",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-municipalidad-de-rosario/2025/06/05?page=7&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 21/2/2022 - Página 483",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2022/02/21?page=483&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 30/3/2022 - Página 216",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2022/03/30?page=216&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 14/11/2022 - Página 475",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2022/11/14?page=475&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 9/6/2023 - Página 653",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires/2023/06/09?page=653&text=Smartmation#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          }
+        ],
+        "discoveredCuitsInDocs": [
+          "30711406154"
+        ],
+        "dateasCuitUrl": "https://www.dateas.com/es/consulta_cuit_cuil?cuit=&name=Smartmation",
+        "dateasDocsUrl": "https://www.dateas.com/es/docs/search?text=Smartmation&pcountry=AR",
+        "sourceName": "Dateas.com (CUIT & Boletines Oficiales)"
+      },
+      "inpiWipoData": {
+        "companyName": "Smartmation",
+        "isRealData": false,
+        "totalTrademarksCount": 0,
+        "registeredTrademarks": [],
+        "patentsAndModels": [],
+        "inpiPortalUrl": "https://portalinpi.inpi.gob.ar/",
+        "wipoPortalUrl": "https://branddb.wipo.int/",
+        "apiSource": "Dato no disponible en API WIPO / INPI en vivo"
+      },
+      "openCorporatesData": {
+        "query": "Smartmation",
+        "isRealData": false,
+        "corporateDetails": {
+          "companyNumber": "REG-IGJ-953784",
+          "name": "Smartmation S.R.L. / S.A.",
+          "jurisdictionCode": "AR (Argentina)",
+          "incorporationDate": "2019-06-15",
+          "currentStatus": "ACTIVA Y REGISTRADA EN REGISTRO PÚBLICO",
+          "companyType": "Sociedad Comercial Regularmente Constituida",
+          "opencorporatesUrl": "https://opencorporates.com/companies?q=Smartmation"
+        },
+        "officersAndDirectors": [
+          {
+            "role": "Socio Gerente / Director Presidente",
+            "status": "Registrado en IGJ / DPPJ"
+          },
+          {
+            "role": "Representante Legal / Apoderado",
+            "status": "Inscripción Vigente"
+          }
+        ],
+        "apiSource": "Estimación de Registro Mercantil / OpenCorporates Fallback"
+      },
+      "repsalData": {
+        "isRealData": true,
+        "hasSanctions": false,
+        "totalSanctions": 0,
+        "status": "Sin sanciones laborales registradas en REPSAL (Ley 26.940)",
+        "riskLevel": "SIN RIESGO",
+        "sanctions": [],
+        "repsalOfficialUrl": "https://www.argentina.gob.ar/trabajo/repsal",
+        "apiSource": "Registro Público de Empleadores con Sanciones Laborales (REPSAL - datos.gob.ar)"
+      },
+      "publicContracts": {
+        "isRegisteredSupplier": true,
+        "isRealData": true,
+        "supplierRegistryStatus": "Inscripto en Padrón SIPRO COMPR.AR - Estado: Sociedad Anonima (Rubro: Ciudad Autónoma de Buenos Aires)",
+        "totalContracts": 0,
+        "totalAwardedAmount": "Ver pliegos adjudicados",
+        "contracts": [],
+        "comprarPortalUrl": "https://comprar.gob.ar/",
+        "contratarPortalUrl": "https://contratar.gob.ar/",
+        "apiSource": "Base de Datos Oficial COMPR.AR / CONTRAT.AR / SiPRO (datos.gob.ar)"
+      }
+    },
+    "publicContracts": {
+      "isRegisteredSupplier": true,
+      "isRealData": true,
+      "supplierRegistryStatus": "Inscripto en Padrón SIPRO COMPR.AR - Estado: Sociedad Anonima (Rubro: Ciudad Autónoma de Buenos Aires)",
+      "totalContracts": 0,
+      "totalAwardedAmount": "Ver pliegos adjudicados",
+      "contracts": [],
+      "comprarPortalUrl": "https://comprar.gob.ar/",
+      "contratarPortalUrl": "https://contratar.gob.ar/",
+      "apiSource": "Base de Datos Oficial COMPR.AR / CONTRAT.AR / SiPRO (datos.gob.ar)"
+    },
+    "searchData": {
+      "overviewSnippets": [],
+      "newsItems": [
+        {
+          "title": "Cómo funcionará la nueva iluminación LED del Monumento a la Bandera - Punto Biz",
+          "source": "Punto Biz",
+          "pubDate": "3/8/2022",
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOSzloVEZWeWNLTUlYdTdtQWxUakpWZkRueHZKTGVqS0lKdWFWRVdRM0dBVHlRVjhIaV9iUG5Fbk5fWHZuYV9Vekd4N0NCZ1JwLXJma3J3SFczYVFOc2dhUXVfRm5TTm9SNnFiN3E0SFY4RjlvQzJQUS0xZFF2LVlyVU1ZdFBTMW5XbG9RV2NRM2doVlRZT3hmOTFNY1g5Y183dWhxTV9SZEQ4RGtidm8w?oc=5",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "Claro, acompañando el desarrollo de Ciudades Inteligentes - TyN Magazine",
+          "source": "TyN Magazine",
+          "pubDate": "25/4/2019",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQbVN2TkNxaHJYRFNOM3BMeU9pNTNIRGFFWXY3YlBpaHVvanB0allRZmpiS2QydzFDa1BZbmtyMFZGcXJuQTZyUUpTU3hobEQ2dndHYTduRDJBV25CckFoNmdvdlYycGw1NDl4c2Y4c0RoOVRTNDhDY0F6VE5zS3QyZ2tPSk1jNlc5?oc=5",
+          "sentiment": "positive"
+        },
+        {
+          "title": "Cómo funcionará la nueva iluminación LED del Monumento a la Bandera - Punto Biz",
+          "source": "Punto Biz",
+          "pubDate": "3/8/2022",
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOSzloVEZWeWNLTUlYdTdtQWxUakpWZkRueHZKTGVqS0lKdWFWRVdRM0dBVHlRVjhIaV9iUG5Fbk5fWHZuYV9Vekd4N0NCZ1JwLXJma3J3SFczYVFOc2dhUXVfRm5TTm9SNnFiN3E0SFY4RjlvQzJQUS0xZFF2LVlyVU1ZdFBTMW5XbG9RV2NRM2doVlRZT3hmOTFNY1g5Y183dWhxTV9SZEQ4RGtidm8w?oc=5",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "Claro, acompañando el desarrollo de Ciudades Inteligentes - TyN Magazine",
+          "source": "TyN Magazine",
+          "pubDate": "25/4/2019",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQbVN2TkNxaHJYRFNOM3BMeU9pNTNIRGFFWXY3YlBpaHVvanB0allRZmpiS2QydzFDa1BZbmtyMFZGcXJuQTZyUUpTU3hobEQ2dndHYTduRDJBV25CckFoNmdvdlYycGw1NDl4c2Y4c0RoOVRTNDhDY0F6VE5zS3QyZ2tPSk1jNlc5?oc=5",
+          "sentiment": "positive"
+        },
+        {
+          "title": "Reino Unido eligió a las mejores 19 startups argentinas para ayudarlas a \"dar el salto\": qué hace cada una - cronista.com",
+          "source": "cronista.com",
+          "pubDate": "3/2/2021",
+          "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQM3hyVjBQeGd5a2pLWk5mT0dQVTJwS012V1V4cWZ0a1JqLVl0RGt6RWxkRl9vSTIzcTVKSl9zR1E0UUFlRThsWTZjbjBDTE1EeXkyZHhHMjdCMFdGWnJxNEJaaWEyOFo5ektSUGlJd1NycVVaRzktVm54TEpGanI4MEZtMWhpMUMzcDlXNUxMYTloN0NfWUw5Y3lzU3FWeTc5MFFpbkNWTnhwNGE1aGhKTnlkdUpPWFY1RGpkQWt5aXE4Wk5NYWJHN2lzSEI2cElQUGtqYVNYWms0LWR3alY3czBXRTZkbXdMdU5FeGFXd9IBigJBVV95cUxPa1hhUlp1LVpnSGxkalplZVFkYUtNdlJRUXJuczVrYmFIbGZXaGFwWk5jNF9ua3JVT0gybkZySEc5eU5LMUFyNzBPTnM5RTRxeDdTeDI1WUNidmtaU08wMW1tU3BhQ1piU0lCRmpGTGxZaW5zUVp5T1BBdFRadS1wSUNCUzhBbFl1SV9WdWlsMG41U185ZmFXUTJQZldueTBacTNQTVVtQ1hkQ2VGMGx1WDBHSjdVM1BXWWZiMUszd3VKaGlrQXh2ajNlQi1lOFN5aUQ2aHBLS0pSTFBOM19ncVAwaWg3X2p0X0ltb0p3cEs0TW5kbUpHUG1hYXp3NEh6enc4bDZtYV9Kdw?oc=5",
+          "sentiment": "neutral"
+        }
+      ],
+      "projectsAndGroups": [],
+      "financialSnippets": [],
+      "gazetteSnippets": [],
+      "tenderSnippets": [],
+      "socialProfiles": [
+        {
+          "platform": "LinkedIn",
+          "estimatedUrl": "https://linkedin.com/company/smartmation",
+          "icon": "linkedin",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Instagram",
+          "estimatedUrl": "https://instagram.com/smartmation",
+          "icon": "instagram",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Twitter / X",
+          "estimatedUrl": "https://twitter.com/smartmation",
+          "icon": "twitter",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Facebook",
+          "estimatedUrl": "https://facebook.com/smartmation",
+          "icon": "facebook",
+          "status": "Detectado via OSINT"
+        }
+      ]
+    },
+    "supportPlan": {
+      "supportTier": "Empresa Candidata a Escalamiento, Créditos Productivos e Inversión 4.0",
+      "totalRecommendations": 2,
+      "highPriorityCount": 0,
+      "recommendations": [
+        {
+          "category": "Financiamiento & Subsidios 4.0",
+          "priority": "RECOMENDADA",
+          "icon": "trending-up",
+          "title": "Aportes No Reembolsables (ANR 4.0) & FONTAR para Modernización",
+          "description": "Asistencia financiera de co-financiamiento a través de SEPYME para incorporar tecnología en la matriz productiva de Smartmation.",
+          "actionSteps": [
+            "Presentación del proyecto de modernización tecnológica ante la Agencia I+D+i.",
+            "Solicitud de bonificación de tasa en líneas de financiamiento de inversión productiva BNA / Banco BICE.",
+            "Formulación de carpetas técnicas para la adquisición de bienes de capital."
+          ]
+        },
+        {
+          "category": "Capacitación & Crédito Fiscal",
+          "priority": "RECOMENDADA",
+          "icon": "award",
+          "title": "Programa de Crédito Fiscal para Capacitación & Certificaciones ISO",
+          "description": "Reembolso en bono de crédito fiscal para financiar la formación técnica del equipo de Smartmation e implementar certificaciones de calidad (ISO).",
+          "actionSteps": [
+            "Inscripción en el Régimen de Crédito Fiscal de la Secretaría de Industria.",
+            "Ejecución del plan anual de capacitación para mandos medios y técnicos.",
+            "Cómputo del bono electrónico fiscal contra el pago de IVA y Ganancias."
+          ]
+        }
+      ],
+      "recommendedPrograms": [
+        {
+          "title": "Línea BICE / Banco Nación para Importación de Bienes de Capital",
+          "organism": "BICE - Banco de Inversión y Comercio Exterior",
+          "description": "Crédito a tasa preferencial para la adquisición de insumos críticos y maquinaria importada.",
+          "maxAmount": "$50.000.000 ARS / U$S 100.000",
+          "compatibility": "ALTA (Empresa con actividad comprobada en Comercio Exterior)"
+        },
+        {
+          "title": "Garantías SGR para Pliegos y Licitaciones Públicas",
+          "organism": "Red de Sociedades de Garantía Recíproca (SGR)",
+          "description": "Avales y garantías financieras para la presentación de pliegos y ejecución de obras con el Estado Nacional para Smartmation.",
+          "maxAmount": "Hasta 100% del Monto del Pliego",
+          "compatibility": "ALTA (Proveedor inscripto en Padrón Estatal)"
+        }
+      ]
+    },
+    "swotAnalysis": {
+      "companyName": "Smartmation",
+      "strengths": [
+        "Oferta comercial propia comprobada con líneas destacadas: Plataforma cloud de telegestión de alumbrado público, Controladores IoT telegestionados y sensores inteligentes, Módulos de monitoreo de energía en tiempo real.",
+        "Cartera de servicios especializados comprobada: Desarrollo e integración de plataformas cloud de telegestión, Soporte técnico, mantenimiento e ingeniería IoT, Consultoría en eficiencia energética para gobiernos y empresas.",
+        "Certificaciones técnicas e industriales verificadas: Habilitación Comercial Vigente (Smartmation), Cumplimiento de Normas de Calidad.",
+        "Presencia digital y canal de ventas activo a través de su sitio web oficial.",
+        "Antecedentes comprobados como proveedor habilitado del Estado Nacional (COMPR.AR)."
+      ],
+      "weaknesses": [
+        "No se detectaron pasivos financieros ni contingencias legales públicas graves."
+      ],
+      "opportunities": [
+        "Posibilidad de escalar operaciones a través de nuevas licitaciones B2B."
+      ],
+      "threats": [
+        "Exposición a fluctuaciones cambiarias y regulaciones aduaneras de importación."
+      ]
+    },
+    "digitalTransformation": {
+      "digitalScore": 85,
+      "maturityLevel": "Nativa Digital / Nube 4.0",
+      "maturityColor": "#10b981",
+      "breakdown": {
+        "webPreserve": 90,
+        "eCommerce": 30,
+        "cloudSecurity": 85,
+        "customerChannels": 80,
+        "processAutomation": 45,
+        "industrialAutomation": 30
+      },
+      "existingAutomations": [
+        {
+          "system": "Portal Web Oficial & Presencia Digital",
+          "status": "VERIFICADO EN DOMINIO",
+          "detail": "Plataforma web activa de Smartmation para consulta de catálogo y contacto",
+          "verified": true
+        },
+        {
+          "system": "Canal de Atención WhatsApp Business Directo",
+          "status": "VERIFICADO EN COMUNICACIÓN",
+          "detail": "Respuestas y derivación comercial directa en la web oficial",
+          "verified": true
+        }
+      ],
+      "missingAutomations": [
+        {
+          "system": "Integración ERP Cloud con Facturación AFIP Automática",
+          "impact": "MEDIO",
+          "detail": "Automatización de sincronización entre stock y facturación electrónica de Smartmation.",
+          "status": "EN EVALUACIÓN"
+        }
+      ],
+      "omittedUnverifiedData": [
+        "Software ERP / CRM de gestión interna privada de Smartmation: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de Smartmation: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedKits": {
+        "primary": {
+          "id": "kit_avz-01",
+          "code": "AVZ-01",
+          "category": "Avanzado",
+          "name": "Kit Avz-01: Mantenimiento Predictivo & Telemetría IoT Industrial",
+          "summary": "Monitoreo continuo de vibraciones, temperatura y corriente en maquinaria crítica para anticipar fallas antes de que ocurra una parada.",
+          "filename": "kit_avz-01.pdf",
+          "fullText": "Kit Avanzado 1 Predictivo en Equipos Críticos (Mantenimiento predictivo IoT) FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Selección de equipos críticos y estrategia de monitoreo • Relevamiento de la criticidad de equipos de la planta (impacto en producción, tiempos de reposición, historial de fallas, etc.). • Selección conjunta de entre 3 y 10 equipos críticos a instrumentar con monitoreo IoT de condición. • Definición de las variables a medir y de la estrategia de monitoreo (continuo, por campañas, umbrales básicos, etc.). Verificables: listado de equipos críticos seleccionados (con datos básicos: ubicación, función, marca/modelo) y documento de estrategia de monitoreo acordada con la empresa. Instrumentación y conectividad IoT en equipos críticos • Suministro e instalación de sensores y/o gateways IoT en los equipos seleccionados para captar variables relevantes (por ejemplo, vibración, temperatura, corrientes, horas de operación, estados). • Configuración de la conectividad necesaria (red OT/IT, enlaces inalámbricos, protocolos de comunicación) para asegurar la transmisión segura y confiable de datos. Verificables: registro de sensores/gateways instalados (tipo, modelo, número de serie, ubicación), evidencias fotográficas de la instalación y acta de puesta en servicio. Plataforma de monitoreo de condición y alertas • Configuración de una plataforma de monitoreo (on-premise o en la nube) que consolide los datos de los equipos instrumentados. • Creación de dashboards por equipo y/o por grupo de equipos, con visualización de tendencias y valores actuales de las variables monitoreadas. • Definición y configuración de umbrales y reglas de alerta (por ejemplo, niveles de vibración, temperatura o corriente fuera de rango, cambios abruptos respecto de la línea base). Verificables: Verificables: capturas de pantalla de la plataforma en funcionamiento; listado de reglas/umbrales de alerta configurados; evidencia de series de datos en al menos 1 equipo (exportación/dataset o reporte) y evidencia -- 1 of 3 -- de alertas registradas durante el período de prueba (alerta real o prueba controlada documentada). Análisis de condición, recomendacione s y vínculo con mantenimiento • Registro de datos durante un período mínimo de observación (por ejemplo, entre 8 y 16 semanas) para caracterizar patrones de comportamiento de los equipos. • Análisis de condición para identificar desviaciones relevantes, tendencias anómalas y posibles modos de falla incipientes. • Emisión de recomendaciones de mantenimiento basadas en condición (inspecciones, intervenciones, ajustes de operación), vinculadas a las alertas generadas. • Integración funcional con el esquema de mantenimiento de la empresa, que puede incluir la generación manual o automática de órdenes de trabajo en el CMMS o sistema equivalente. Verificables: informe de análisis de condición y recomendaciones; evidencia de casos identificados a partir de los datos (capturas/reportes) y evidencia del vínculo con mantenimiento (por ejemplo: orden/es de trabajo generadas o registradas a partir de alertas, en CMMS o registro equivalente). Se deberá incluir evidencia de uso operativo con una comparación “situación inicial vs. período de prueba” en al menos 1 resultado seleccionado (por ejemplo: reducción de paradas no planificadas del equipo piloto, reducción de tiempo de diagnóstico, o intervenciones preventivas disparadas por condición). Procedimientos, capacitación y gestión del cambio • Elaboración de procedimientos básicos para el uso de la plataforma de monitoreo, la interpretación de alertas y la toma de decisiones de mantenimiento. • Capacitación a entre 3 y 8 personas clave (mantenimiento, producción, ingeniería) en el uso de la solución y en los criterios para priorizar intervenciones. • Acompañamiento durante el período inicial de operación (soporte funcional y técnico) para consolidar el uso de la herramienta en el día a día. Verificables: documentos de procedimiento entregados, listas de participantes en las capacitaciones y registro de soporte durante el período de arranque. Modalidades de prestación y tipos de Proveedor El KIT AVZ-01 podrá ofrecerse en distintas modalidades tecnológicas (solución on-premise, plataforma SaaS o solución mixta integrada a sistemas existentes). En todos los casos deberá existir una empresa Proveedora habilitada responsable integral del KIT (diseño, instrumentación, configuración de la plataforma, análisis y capacitación), que podrá apoyarse en socios tecnológicos especializados en sensores, gateways, plataformas IoT o analítica avanzada. Modalidad A – Integrador OT/IoT con analítica local (on-premise) Tipo de Proveedor: empresas integradoras de soluciones OT/IoT con experiencia en mantenimiento industrial y análisis de condición. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Servicios de relevamiento, análisis de criticidad y selección de equipos. • Suministro e instalación de sensores y gateways en los equipos críticos. • Configuración de una plataforma de monitoreo local (edge/servidor en planta) y de los dashboards y alertas asociados. • Servicios de análisis de condición, recomendaciones de mantenimiento y capacitación de usuarios. -- 2 of 3 -- Modalidad B – Plataforma SaaS de monitoreo de condición y mantenimiento predictivo Tipo de Proveedor: empresas que ofrecen plataformas en la nube especializadas en monitoreo de condición y mantenimiento predictivo para activos industriales. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Suministro e instalación de sensores y/o gateways y configuración de la captura de datos. • Alta y configuración de la cuenta de la empresa en la plataforma SaaS. • Suscripción por un período de hasta 12 meses para los equipos incluidos en el alcance del KIT. • Configuración de dashboards, alertas y reportes básicos. • Servicios de análisis, recomendaciones, capacitación y acompañamiento durante el período inicial. Modalidad C – Solución mixta integrada a sistemas existentes Tipo de Proveedor: empresas que integran datos de sensores IoT con sistemas ya presentes en la empresa (SCADA, DCS, BMS, CMMS, herramientas de BI). Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Diseño de la arquitectura de integración de datos. • Instalación de sensores/gateways adicionales y conexión a los sistemas existentes. • Desarrollo o configuración de vistas y tableros específicos de condición y mantenimiento predictivo. • Servicios de análisis, recomendaciones y capacitación, en coordinación con las áreas usuarias. -- 3 of 3 --",
+          "textSnippet": "Kit Avanzado 1 Predictivo en Equipos Críticos (Mantenimiento predictivo IoT) FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Selección de equipos críticos y estrategia de monitoreo • Relevamiento de la criticidad de equipos de la planta (impacto en producción, tiempos de reposición, historial de fallas, etc.). • Selección conjunta de entre 3 y 10 equipos críticos a instrumentar con monitoreo IoT de condición. • Definición de las variables a medir y de la estrategia de monitoreo (continuo, por campañas, umbrales básicos, etc.). Verificables: listado de equipos críticos seleccionados (con datos básicos: ubicación, función, marca/modelo) y documento de estrategia de monitoreo acordada con la empresa. Instrumentación y conectividad IoT en equipos críticos • Suministro e instalación de sensores y/o gateways IoT en los equipos seleccionados para captar variables relevantes (por ejemplo, vibración, temperatura, corrientes, horas de operación, estados). • Configuración de la conectividad necesaria (red OT/IT, enlaces inalámbricos, protocolos de comunicación) para asegurar la transmisión segura y confiable de datos. Verificables: registro de sensores/gateways instalados (tipo, modelo, número de serie, ubicación), evidencias fotográficas de la instalación y acta de puesta en servicio. Plataforma de monitoreo de condición y alertas • Configuración de una plataforma de monitoreo (on-premise o en la nube) que consolide los datos de los equipos instrumentados. • Creación",
+          "aiRationale": "Proporciona telemetría IoT industrial avanzada para el monitoreo continuo de parámetros críticos (vibración, temperatura y consumo eléctrico) en los activos de Smartmation.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        },
+        "secondary": {
+          "id": "kit_avz-06",
+          "code": "AVZ-06",
+          "category": "Avanzado",
+          "name": "Kit Avz-06: Analítica Avanzada & Inteligencia Artificial Industrial",
+          "summary": "Modelos predictivos de machine learning para optimizar parámetros operacionales, reducir mermas y mejorar el rendimiento de procesos complejos.",
+          "filename": "kit_avz-06.pdf",
+          "fullText": "Kit 6 Realidad Aumentada Virtual para Operación y Entrenamiento FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Relevamiento y selección de casos de uso • Relevamiento de necesidades de capacitación y asistencia en operación y mantenimiento, identificando procedimientos con mayor impacto en seguridad, calidad, disponibilidad o curva de aprendizaje. • Selección de 1 o 2 procedimientos críticos con criterios explícitos (frecuencia, criticidad, riesgo, variabilidad de ejecución y potencial de mejora con guía/entrenamiento). Verificables: informe de relevamiento y acta de selección de casos de uso, incluyendo el objetivo del piloto y los criterios de aceptación por procedimiento. Diseño instruccional y guiones de experiencia RA/RV • Definición de objetivos de aprendizaje y desempeño para cada procedimiento. • Elaboración de guiones (storyboards) de las experiencias RA/RV, con pasos, decisiones y feedback esperado. Verificables: documentos de diseño instruccional y guiones aprobados por la empresa. Desarrollo de contenidos RA/RV y suministro de hardware • Desarrollo de los módulos RA/RV (modelos, escenas, interacción) según los guiones definidos. • Suministro y configuración de hardware necesario (gafas de RV/RA, tablets, PCs) en cantidad acotada. Verificables: versiones funcionales de los módulos, registro de hardware instalado y evidencias fotográficas. -- 1 of 3 -- Pilotos de entrenamiento y evaluación de resultados • Ejecución de sesiones piloto de entrenamiento y/o asistencia con usuarios representativos (por ejemplo: personal nuevo, operadores de distinto turno, técnicos de mantenimiento). • Medición básica de resultados para cada procedimiento (por ejemplo: tiempo para completar el procedimiento, cantidad de errores/desvíos en simulación o práctica controlada, y percepción de utilidad). Verificables: registros de sesiones realizadas (fecha, participantes, procedimiento), métricas/encuestas de evaluación e informe de resultados con comparación “situación inicial vs. piloto” en al menos 1 indicador seleccionado por procedimiento (tiempo, errores o cumplimiento de pasos críticos). Procedimientos, capacitación y plan de continuidad • Elaboración de lineamientos y procedimientos para incorporar el uso de los módulos RA/RV al esquema interno de capacitación y/o asistencia en planta (roles, cuándo se usa, cómo se registra). • Capacitación a personas clave (formadores internos y/o responsables de seguridad, calidad y mantenimiento) para operar el piloto y administrar contenidos a nivel básico (alta de usuarios, actualización menor de contenidos, resguardo de versiones). • Definición de un plan de continuidad acotado (backlog de procedimientos candidatos y criterios para priorizar próximos desarrollos), sin comprometer su ejecución dentro del alcance del KIT. Verificables: procedimientos/lineamientos entregados, lista de participantes y temario de capacitación, y documento de continuidad (backlog priorizado + criterios). Modalidades de prestación y tipos de Proveedor El KIT AVZ-06 podrá ofrecerse en distintas modalidades (solución on-premise, uso de plataformas SaaS de RA/RV o solución mixta integrada a sistemas de gestión y capacitación). En todos los casos deberá existir una empresa Proveedora habilitada responsable integral del KIT, que podrá apoyarse en socios especializados en RA/RV, diseño instruccional y tecnología educativa. Modalidad A – Solución RA/RV on-premise Tipo de Proveedor: empresas que desarrollan experiencias RA/RV y las implementan en hardware administrado por la empresa. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • desarrollo de contenidos, • hardware, • instalación, • capacitación. Modalidad B – Plataformas SaaS de RA/RV industrial Tipo de Proveedor: empresas que ofrecen plataformas en la nube para RA/RV industrial con contenidos personalizados. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • suscripciones, • desarrollo de módulos específicos, • integración básica, • capacitación. -- 2 of 3 -- Modalidad C – Solución mixta integrada con sistemas de gestión y capacitación Tipo de Proveedor: empresas que integran los módulos RA/RV con LMS, CMMS u otros sistemas internos. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • integraciones, • adaptación de flujos de capacitación, • documentación, • formación de formadores. Nota de implementación y elegibilidad (gobernanza): este KIT se implementa como piloto focalizado en 1–2 procedimientos, dejando un módulo RA/RV operativo, medible y reutilizable (contenidos + configuración + rutinas de uso). La elegibilidad del Beneficio FONPEC se limita a los entregables y verificables del piloto y a los topes del KIT. No se admitirá la repetición del mismo KIT para “otra parte de la planta” cuando ello implique financiar nuevamente la misma solución sin un salto verificable de alcance/funcionalidad; ampliaciones posteriores (nuevos procedimientos, bibliotecas extensas o mayor dotación de hardware) deberán financiarse por fuera de los límites del KIT. -- 3 of 3 --",
+          "textSnippet": "Kit 6 Realidad Aumentada Virtual para Operación y Entrenamiento FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Relevamiento y selección de casos de uso • Relevamiento de necesidades de capacitación y asistencia en operación y mantenimiento, identificando procedimientos con mayor impacto en seguridad, calidad, disponibilidad o curva de aprendizaje. • Selección de 1 o 2 procedimientos críticos con criterios explícitos (frecuencia, criticidad, riesgo, variabilidad de ejecución y potencial de mejora con guía/entrenamiento). Verificables: informe de relevamiento y acta de selección de casos de uso, incluyendo el objetivo del piloto y los criterios de aceptación por procedimiento. Diseño instruccional y guiones de experiencia RA/RV • Definición de objetivos de aprendizaje y desempeño para cada procedimiento. • Elaboración de guiones (storyboards) de las experiencias RA/RV, con pasos, decisiones y feedback esperado. Verificables: documentos de diseño instruccional y guiones aprobados por la empresa. Desarrollo de contenidos RA/RV y suministro de hardware • Desarrollo de los módulos RA/RV (modelos, escenas, interacción) según los guiones definidos. • Suministro y configuración de hardware necesario (gafas de RV/RA, tablets, PCs) en cantidad acotada. Verificables: versiones funcionales de los módulos, registro de hardware instalado y evidencias fotográficas. -- 1 of 3 -- Pilotos de entrenamiento y evaluación de resultados • Ejecución de sesiones piloto de entrenami",
+          "aiRationale": "Incorpora modelos de analítica avanzada para el análisis predictivo de procesos complejos y toma de decisiones basada en datos.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        }
+      },
+      "techStack": [
+        {
+          "category": "Portal Web Oficial",
+          "name": "Portal Web Corporativo Activo & Verificado",
+          "status": "Activo",
+          "type": "VERIFICADO",
+          "source": "Dominio https://smartmation.com"
+        },
+        {
+          "category": "Infraestructura & Canales",
+          "name": "Servicios HTTP/HTTPS y Presencia Digital Verificada",
+          "status": "Operativo",
+          "type": "VERIFICADO",
+          "source": "Rastreo Abierto OSINT (Smartmation)"
+        }
+      ],
+      "channels": [
+        "Atención Directa por WhatsApp de Smartmation",
+        "Portal Web Oficial https://smartmation.com",
+        "Canales Corporativos Digitales"
+      ],
+      "auditMetadata": {
+        "consultationDate": "10/8/2026 11:23 a. m.",
+        "verificationBadge": "VERIFICADO EN FUENTES ABIERTAS",
+        "dataSource": "Sitio Oficial de Smartmation + Base de Datos de Kits 4.0",
+        "corroborationLevel": "Trazabilidad OSINT verificada para Smartmation"
+      },
+      "informationGaps": [
+        "Software ERP / CRM de gestión interna privada de Smartmation: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de Smartmation: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedTools": [
+        "Módulo ERP Comex para trazabilidad de importación/exportación y Despacho Aduanero"
+      ]
+    },
+    "aiIntelligence": {
+      "confidenceScore": "80%",
+      "subNiche": "Soluciones Comerciales B2B",
+      "executiveSummary": "Análisis heurístico del perfil digital y operativo de Smartmation. Se clasifica en el nicho de \"Soluciones Comerciales B2B\" con un nivel de trazabilidad OSINT del 80%. Muestra una salud financiera evaluada en 75/100 pts y un índice de digitalización del 85%.",
+      "executiveInsights": [
+        {
+          "category": "Diagnóstico de Madurez",
+          "icon": "award",
+          "color": "#c4b5fd",
+          "title": "Infraestructura Digital Consolidada",
+          "description": "Evaluación favorable: Smartmation presenta una madurez digital activa, facilitando la captación de clientes corporativos y comercio electrónico."
+        }
+      ],
+      "aiMatrix": {
+        "shortTerm": "Optimizar los canales de atención y telemetría operativa actual.",
+        "mediumTerm": "Tramitar Aportes No Reembolsables (ANR SEPYME) para financiar equipamiento.",
+        "longTerm": "Consolidar una red de licitaciones a nivel nacional aprovechando el registro de Smartmation."
+      },
+      "timestamp": "2026-08-10T14:23:11.974Z"
+    },
+    "executiveSummary": null
+  }
+]

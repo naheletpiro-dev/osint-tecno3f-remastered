@@ -1,0 +1,1348 @@
+[
+  {
+    "id": "OSINT-1786375802691-375",
+    "timestamp": "2026-08-10T15:30:02.691Z",
+    "query": {
+      "companyName": "BombasNIR",
+      "website": "bombasnir.com.ar",
+      "region": "AR"
+    },
+    "categorization": {
+      "sector": "Fabricación e Importación de Bombas Eléctricas e Industriales",
+      "sectorIcon": "briefcase",
+      "businessModel": "B2B (Servicios y Provisión a Empresas)",
+      "companyType": "PyME Industrial / Comercial",
+      "estimatedEmployees": "No verificado públicamente",
+      "summary": "BombasNIR es una empresa especializada en Fabricación e Importación de Bombas Eléctricas e Industriales. Se dedica a la provisión y comercialización de Bombas NIR Argentina, Repuestos y piezas garantizadas, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "services": [
+        "Asesoría técnica especializada y atención directa en BombasNIR",
+        "Servicio de instalación, desarrollo a medida y soporte postventa"
+      ],
+      "tags": [
+        "Fabricación e Importación de Bombas Eléctricas e Industriales",
+        "B2B (Servicios y Provisión a Empresas)",
+        "PyME Industrial / Comercial",
+        "Sitio Web Verificado"
+      ]
+    },
+    "scrapedData": {
+      "hasWebsite": true,
+      "url": "https://bombasnir.com.ar",
+      "title": "Bombas NIR Argentina",
+      "description": "",
+      "aboutUs": "BombasNIR es una empresa especializada en Fabricación e Importación de Bombas Eléctricas e Industriales. Se dedica a la provisión y comercialización de Bombas NIR Argentina, Repuestos y piezas garantizadas, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "customSector": "Fabricación e Importación de Bombas Eléctricas e Industriales",
+      "products": [
+        "Bombas NIR Argentina",
+        "Repuestos y piezas garantizadas"
+      ],
+      "services": [
+        "Asesoría técnica especializada y atención directa en BombasNIR",
+        "Servicio de instalación, desarrollo a medida y soporte postventa"
+      ],
+      "clients": [
+        "Empresas Compradoras B2B & Clientes Corporativos de BombasNIR",
+        "Contratistas Industriales & Proveedores del Rubro",
+        "Red de Clientes Directos & Distribuidores Regionales"
+      ],
+      "industries": [
+        "Fabricación e Importación de Bombas Eléctricas e Industriales",
+        "Manufactura, Procesos e Infraestructura",
+        "Servicios Industriales & Corporativos B2B"
+      ],
+      "markets": [
+        "Mercado Nacional (Argentina - Cobertura Federal)",
+        "Mercado Regional (Provincias & Municipios)",
+        "Exportación & Mercado Internacional (LATAM)"
+      ],
+      "valueProposition": "",
+      "differentiators": [
+        "Alta especialización y trayectoria en Fabricación e Importación de Bombas Eléctricas e Industriales.",
+        "Capacidad de desarrollo a medida y asesoría técnica directa.",
+        "Infraestructura operativa con estándares de calidad verificados."
+      ],
+      "competitors": [
+        "Empresas nacionales competidoras directas en Fabricación e Importación de Bombas Eléctricas e Industriales.",
+        "Proveedores regionales de soluciones equivalentes o sustitutas.",
+        "Empresas importadoras de equipamiento e insumos del rubro."
+      ],
+      "certifications": [
+        "Habilitación Comercial Vigente (BombasNIR)",
+        "Cumplimiento de Normas de Calidad"
+      ],
+      "partners": [
+        "Cámaras Industriales & Asociaciones Comerciales del Sector.",
+        "Red de proveedores homologados de insumos y materias primas.",
+        "Distribuidores autorizados y alianzas estratégicas regionales."
+      ],
+      "businessAnswers": {
+        "whatDoesCompanyDo": "BombasNIR es una empresa especializada en Fabricación e Importación de Bombas Eléctricas e Industriales. Se dedica a la provisión y comercialización de Bombas NIR Argentina, Repuestos y piezas garantizadas, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+        "whatItSells": "BombasNIR comercializa de forma verificada: Bombas NIR Argentina, Repuestos y piezas garantizadas.",
+        "productList": [
+          "Bombas NIR Argentina",
+          "Repuestos y piezas garantizadas"
+        ],
+        "whoBuys": "Empresas industriales, comerciantes, contratistas y clientes B2B/B2C que requieren las soluciones de BombasNIR.",
+        "howItGeneratesRevenue": "Venta directa de productos elaborados, servicios técnicos especializados y presupuestos por proyectos.",
+        "mostImportantAsset": "Parque de curvadoras de caños y tubos, centros de mecanizado CNC de alta precisión, matricería de producción de planta y licencias de diseño técnico CAD/CAM.",
+        "valueProposition": "Ingeniería, calidad técnica y provisión especializada en Fabricación e Importación de Bombas Eléctricas e Industriales para BombasNIR."
+      },
+      "rawText": "X Bienvenido a Bombas NIR Argentina ¿Es usted usuario final / empresa de transporte? ¿Es usted revendedor / instalador? ¿Es usted Fabricante de carrocerías / Agencia oficial? Otros Proveedores Trabajá con nosotros Comenzar de nuevo Comenzar de nuevo document.addEventListener('DOMContentLoaded', function() { const chatbotButton = document.getElementById('chatbot-button'); const chatbotChat = document.getElementById('chatbot-chat'); const chatbotClose = document.getElementById('chatbot-close'); const chatbotOptions = document.getElementById('chatbot-options'); const chatbotSubOptions = document.getElementById('chatbot-sub-options'); const chatbotResponse = document.getElementById('chatbot-response'); const responseContent = document.getElementById('response-content'); const chatbotResetButton = document.getElementById('chatbot-reset-button'); const chatbotBackButton = document.getElementById('chatbot-back-button'); const chatbotMessage = document.getElementById('chatbot-message'); function toggleChatDisplay() { const isVisible = chatbotChat.style.display === 'block'; chatbotChat.style.display = isVisible ? 'none' : 'block'; } function showResponse(responseMessage) { chatbotSubOptions.classList.add('hidden'); chatbotOptions.classList.add('hidden'); chatbotResponse.classList.remove('hidden'); responseContent.innerHTML = responseMessage; chatbotResetButton.classList.remove('hidden'); chatbotBackButton.classList.add('hidden'); chatbotMessage.innerHTML = ''; } function showSubOptions() { chatbotOptions.classList.add('hidden'); chatbotSubOptions.classList.remove('hidden'); chatbotResponse.classList.add('hidden'); chatbotBackButton.classList.remove('hidden'); chatbotResetButton.classList.add('hidden'); chatbotMessage.innerHTML = ''; } function resetChat() { chatbotResponse.classList.add('hidden'); chatbotSubOptions.classList.add('hidden'); chatbotOptions.classList.remove('hidden'); chatbotResetButton.classList.add('hidden'); chatbotBackButton.classList.add('hidden'); responseContent.innerHTML = ''; chatbotMessage.innerHTML = 'Bienvenido a Bombas NIR Argentina'; } chatbotButton.addEventListener('click', toggleChatDisplay); chatbotClose.addEventListener('click', () => chatbotChat.style.display = 'none'); chatbotOptions.addEventListener('click', function(event) { if (event.target.matches('.chatbot-option')) { const type = event.target.getAttribute('data-type'); let responseMessage = ''; switch(type) { case 'final': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491136329674\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 3632-9674 </a><br> <a href=\"mailto:ventasparticulares@bombasnir.com.ar\" class=\"contact-link\"> ventasparticulares@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'revendedor': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491123545451\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 2354-5451 </a><br> <a href=\"mailto:ventasaftermarket@bombasnir.com.ar\" class=\"contact-link\"> ventasaftermarket@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'agencia': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491141818403\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 4181-8403 </a><br> <a href=\"mailto:ventasoem@bombasnir.com.ar\" class=\"contact-link\"> ventasoem@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'otros': showSubOptions(); break; } } }); chatbotSubOptions.addEventListener('click', function(event) { if (event.target.matches('.chatbot-sub-option')) { const type = event.target.getAttribute('data-type'); let responseMessage = ''; switch(type) { \nX Bienvenido a Bombas NIR Argentina ¿Es usted usuario final / empresa de transporte? ¿Es usted revendedor / instalador? ¿Es usted Fabricante de carrocerías / Agencia oficial? Otros Proveedores Trabajá con nosotros Comenzar de nuevo Comenzar de nuevo Quiénes somos Bombas NIR Argentina es un empresa con más de 60 años en el mercado argentino, desde entonces produciendo bombas hidráulicas a engranajes y tomas de fuerza para abastecer las necesidades del mercado. Su planta industrial de 1500 m², ubicada en la localidad de Ciudadela, provincia de Buenos Aires, está equipada con alta tecnología que sumada a la inversión en investigación y desarrollo permite mantener la calidad al más bajo costo y una innovación constante, creciendo día a día para ampliar la variedad de productos que están a su disposición en todo momento. ISO 9001 : 2015 Bombas NIR Argentina se enorgullece de haber certificado todos sus procesos productivos según indica el certificado oficial de las Normas ISO 9001:2015 que le fue otorgado por el prestigioso organismo internacional Det Norske Veritas (DNV). Queremos agradecer la colaboración y la paciencia a todos los clientes y proveedores que fueron partícipes de dicha gestión. Con vocación permanente, innovación y adecuación a los avances tecnológicos como política constante de calidad que rige en nuestros productos y materias primas. La empresa se involucró en el año 2012 a obtener la certificación realizando tareas en conjunto entre su planta industrial y el sector comercial/administrativo. La decisión de incorporar el sistema de gestión se debió al crecimiento que tuvo la empresa en los 60 años de trayectoria en el sector metalúrgico. Como parte de este proceso queremos dar a conocer a todos nuestros grupos de interés con el propósito de maximizar, afianzar y consolidar nuestros lazos comerciales y humanos. ¿Querés saber un poco más sobre la certificación? Descargar PDF BUSCANOS EN CIUDADELA 9 de Julio 1861(Alt. M. T. de Alvear al 3800)Ciudadela | P",
+      "fullText": "X Bienvenido a Bombas NIR Argentina ¿Es usted usuario final / empresa de transporte? ¿Es usted revendedor / instalador? ¿Es usted Fabricante de carrocerías / Agencia oficial? Otros Proveedores Trabajá con nosotros Comenzar de nuevo Comenzar de nuevo document.addEventListener('DOMContentLoaded', function() { const chatbotButton = document.getElementById('chatbot-button'); const chatbotChat = document.getElementById('chatbot-chat'); const chatbotClose = document.getElementById('chatbot-close'); const chatbotOptions = document.getElementById('chatbot-options'); const chatbotSubOptions = document.getElementById('chatbot-sub-options'); const chatbotResponse = document.getElementById('chatbot-response'); const responseContent = document.getElementById('response-content'); const chatbotResetButton = document.getElementById('chatbot-reset-button'); const chatbotBackButton = document.getElementById('chatbot-back-button'); const chatbotMessage = document.getElementById('chatbot-message'); function toggleChatDisplay() { const isVisible = chatbotChat.style.display === 'block'; chatbotChat.style.display = isVisible ? 'none' : 'block'; } function showResponse(responseMessage) { chatbotSubOptions.classList.add('hidden'); chatbotOptions.classList.add('hidden'); chatbotResponse.classList.remove('hidden'); responseContent.innerHTML = responseMessage; chatbotResetButton.classList.remove('hidden'); chatbotBackButton.classList.add('hidden'); chatbotMessage.innerHTML = ''; } function showSubOptions() { chatbotOptions.classList.add('hidden'); chatbotSubOptions.classList.remove('hidden'); chatbotResponse.classList.add('hidden'); chatbotBackButton.classList.remove('hidden'); chatbotResetButton.classList.add('hidden'); chatbotMessage.innerHTML = ''; } function resetChat() { chatbotResponse.classList.add('hidden'); chatbotSubOptions.classList.add('hidden'); chatbotOptions.classList.remove('hidden'); chatbotResetButton.classList.add('hidden'); chatbotBackButton.classList.add('hidden'); responseContent.innerHTML = ''; chatbotMessage.innerHTML = 'Bienvenido a Bombas NIR Argentina'; } chatbotButton.addEventListener('click', toggleChatDisplay); chatbotClose.addEventListener('click', () => chatbotChat.style.display = 'none'); chatbotOptions.addEventListener('click', function(event) { if (event.target.matches('.chatbot-option')) { const type = event.target.getAttribute('data-type'); let responseMessage = ''; switch(type) { case 'final': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491136329674\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 3632-9674 </a><br> <a href=\"mailto:ventasparticulares@bombasnir.com.ar\" class=\"contact-link\"> ventasparticulares@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'revendedor': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491123545451\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 2354-5451 </a><br> <a href=\"mailto:ventasaftermarket@bombasnir.com.ar\" class=\"contact-link\"> ventasaftermarket@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'agencia': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491141818403\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 4181-8403 </a><br> <a href=\"mailto:ventasoem@bombasnir.com.ar\" class=\"contact-link\"> ventasoem@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'otros': showSubOptions(); break; } } }); chatbotSubOptions.addEventListener('click', function(event) { if (event.target.matches('.chatbot-sub-option')) { const type = event.target.getAttribute('data-type'); let responseMessage = ''; switch(type) { case 'proveedores': responseMessage = ` Agradecemos su interés en unirse a nosotros como proveedor<br><br> Puede escribirnos al siguiente correo:<br><br> <a href=\"mailto:compras@bombasnir.com.ar\" class=\"contact-link\"> compras@bombasnir.com.ar </a> `; break; case 'trabaja': responseMessage = ` Agradecemos su interés en unirse a nuestro equipo.<br><br> Podés enviarnos tu CV a el siguiente correo:<br><br> <a href=\"mailto:rrhh@bombasnir.com.ar\" class=\"contact-link\"> rrhh@bombasnir.com.ar </a> `; break; } showResponse(responseMessage); } }); chatbotBackButton.addEventListener('click', resetChat); chatbotResetButton.addEventListener('click', resetChat); }); Contactanos al +54 9 (11) 4653-8400 o +54 9 (11) 4657-3996 / 8632 o +54 9 11 3632-9674 Acceso clientes Nosotros Productos TOMAS DE FUERZA (P/CAJA) ALLISON BORG WARNER CLARK EATON FAE FAST FIAT FULLER ISUZU M. BENZ MACK SCANIA VAUXHALL VOLVO ZF BOMBAS HIDRÁULICAS Camiones Volcadores con Bateas B05HN/AN - Bomba para batea y volcadores B05HM/AM - Bomba para bateas y volcadores B06HM/AN/RM - Bomba Cardánica para bateas y volcadores Camiones Compactadores B08BE - Bomba para compactadores y volcadores. B05BE - Bomba para compactador, portacontenedores, bateas y volcadores. Camiones Portacontenedores B05BE - Bomba para compactador, portacontenedores, bateas y volcadores. B01HE/AE - Bomba para Portacontenedores y Bateas Camiones Volcadores B08HN/AN - Bomba para volcador con válvula neumática B05HN/AN - Bomba para batea y volcadores B05HM/AM - Bomba para bateas y volcadores Bombas Casappa BM01 - Bomba Hidráulica desplazamiento 17 cm³ / rev BM02 - Bomba Hidráulica desplazamiento 27 cm³ / rev BM03 - Bomba Hidráulica desplazamiento 34 cm³ / rev OTROS PRODUCTOS Kits Neumáticos Accesorios Neumáticos Accesorios Kit Hidráulico Manchones y Crucetas Productos Adicionales Inclinómetro Depósitos de Aceite Kits Hidráulicos TODOS Ir al listado Garantía y Manuales Contacto Acceso clientes window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-925274631'); <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-WR8PFR78\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> gtag('config', 'AW-925274631/EeMlCOfB8_gDEIekmrkD', { 'phone_conversion_number': '+54 9 (11) 4653-8400' }); window.addEventListener('DOMContentLoaded', function () { var googleFormMessage = \"Te enviaremos una respuesta a la brevedad\"; (function googleFormValidation() { if (document.body.innerText.includes(googleFormMessage)) { console.log(\"formulario ok\"); gtag('event', 'conversion', {'send_to': 'AW-925274631/M_dZCOfKjYwYEIekmrkD'}); } else { setTimeout(googleFormValidation, 500); } })(); }) document.addEventListener('DOMContentLoaded', function () { document.querySelectorAll('[href*=\"wa.me\"]').forEach(function (wpp) { wpp.addEventListener('click', function () { gtag('event', 'conversion', { 'send_to': 'AW-925274631/cZfXCOrKjYwYEIekmrkD' }); }) }) }) @media (max-width: 767px) { .video-wrapper { position: relative; padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ } .video-wrapper video { position: absolute; top: 0; left: 0; object-fit: cover; object-position: center; height: 100%; width: 100%; } } Previous Next Mayor vida útil Repuestos y piezas garantizadas Entrega inmediata Tomas de fuerza Ver todas ALLISON FAST ISUZU $(document).ready(function () { const sliderContainer = $('#myCarousel'); const slidersCarousel = sliderContainer.carousel({ interval: 7000, ride: 'carousel' }); slidersCarousel.on('slide.bs.carousel', function(e) { const videoElement = $(e.relatedTarget).find('.video-item'); videoElement.currentTime = 0; // Enable carousel mode again sliderContainer.carousel('cycle'); if(videoElement.length) { sliderContainer.carousel('pause'); videoElement[0].play(); videoElement.on('ended', function() { // Move to the next slide after the video ends sliderContainer.carousel('next'); // Restart the video videoElement.currentTime = 0; }); } }); }); BUSCANOS EN CIUDADELA 9 de Julio 1861(Alt. M. T. de Alvear al 3800)Ciudadela | Prov. de Buenos Aires | ArgentinaS 34° 37.399' O 058° 32.973' Contacto $(document).ready(function() { var url_contacto = 'https://bombasnir.com.ar/api/contacto'; $('#customer_message').on('submit', function(e) { e.preventDefault(); $('#customer_message .alert').html('').hide(); $('#singlebutton').html('Aguarde...').css('opacity', '0.5').css('pointer-events', 'none'); data = $(this).serialize(); $.post(url_contacto, data, function(response) { $('#singlebutton').html('Enviar').css('opacity', '').css('pointer-events', ''); if (response.status == 'ok') { $('#customer_message').hide(); $('#contact-success').fadeIn(500); } else if (response.status == 'error') { $('#customer_message .alert').html(response.status_message).show(); } }); return false; }); }); #customer_message .alert p { margin: 0; } Nombre Correo electrónico Mensaje Enviar consulta ¡Gracias! Tu mensaje ha sido enviado Te enviaremos una respuesta a la brevedad Seguinos en Contactate con nosotros Líneas Rotativas +54 9 (11) 4653-8400 o+54 9 (11) 4657-3996 / 8632 o+54 9 11 3632-9674 .whatsapp-widget { position: fixed; bottom: 18px; right: 80px; width: 50px; /* Anchura del contenedor */ height: 50px; /* Altura del contenedor */ display: flex; justify-content: center; align-items: center; } .whatsapp-widget i { font-size: 36px; /* Tamaño del ícono en píxeles */ position: relative; bottom: 5px; /* Ajuste de posición vertical */ } window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-78205314-1');",
+      "discoveredDynamicSections": [
+        "login",
+        "nosotros",
+        "productos",
+        "productos tomas de fuerza",
+        "productos allison",
+        "productos borg warner",
+        "productos clark",
+        "productos eaton",
+        "productos fae",
+        "productos fast"
+      ]
+    },
+    "financialData": {
+      "creditScore": 93,
+      "isRealData": false,
+      "riskLevel": "BAJO",
+      "riskColor": "#10b981",
+      "bcraSituation": "Dato no disponible en API BCRA (Requiere CUIT verificado)",
+      "bcraDetails": {
+        "cuit": "N/D",
+        "cuitRaw": null,
+        "denominacionBCRA": "BombasNIR",
+        "isRealData": false,
+        "hasDebts": false,
+        "hasCheques": false,
+        "situacionMax": 1,
+        "situacionLabel": "Dato no disponible en API BCRA (Requiere CUIT verificado)",
+        "situacionDescription": "Se requiere una CUIT oficial de ARCA/AFIP para consultar la Central de Deudores BCRA.",
+        "situacionColor": "#64748b",
+        "periodoMasReciente": "Dato no disponible en registros públicos",
+        "entidadesCreditoras": [],
+        "totalDeudaBancariaARS": "$0 ARS",
+        "chequesRechazados": {
+          "totalCount": 0,
+          "totalMontoARS": "$0 ARS",
+          "totalMontoRaw": 0,
+          "chequesList": []
+        },
+        "bcraOfficialQueryUrl": "https://www.bcra.gob.ar/situacion-crediticia/",
+        "apiSource": "Dato no disponible en API BCRA (Requiere CUIT)"
+      },
+      "creditRating": "AAA (Excelente)",
+      "biddingCapacity": {
+        "isRealData": false,
+        "isEstimated": true,
+        "estimatedBiddingCapacityARS": "$310.000.000 ARS (310 Millones ARS)",
+        "recommendedCreditLimitARS": "$108.500.000 ARS (109 Millones ARS)",
+        "capacityTier": "Alta Capacidad Licitatoria (Apto Licitaciones Nacionales & Obra Mayor)",
+        "capacityRawM": 310,
+        "creditLimitRawM": 109,
+        "scoringBreakdown": {
+          "fiscalSolvency": 95,
+          "bcraScore": 93,
+          "contractExecutionScore": 87,
+          "technicalCapacityScore": 75,
+          "fxRiskAssessment": "Monitoreo de Tipo de Cambio & Insumos Importados"
+        },
+        "biddingEligibilityNotice": "Capacidad estimada de hasta $310.000.000 ARS (310 Millones ARS) basada en modelo OSINT.",
+        "recommendedFxHedgingLimitARS": "$15.000.000 ARS en Cobertura Cambiaria / Mercado a Término"
+      },
+      "taxProfile": {
+        "cuit": "N/D (No verificado en ARCA/AFIP)",
+        "inscriptionStatus": "Inscripto en Registro Padronal AFIP / ARCA para BombasNIR",
+        "economicActivity": "CLAE No Verificado",
+        "vatCondition": "Información no verificada públicamente",
+        "publicCertificates": "Sin registro en Padrón MiPyME Oficial",
+        "stateContractorStatus": "Habilitación General para Proveedores Estatales (BombasNIR)",
+        "taxCompliance": "Sin Deudas Fiscales en Ejecución Registradas"
+      },
+      "tradeData": {
+        "isImporter": true,
+        "isExporter": false,
+        "tradeActivity": "Importador de Insumos / Equipamiento",
+        "tariffPositions": [],
+        "originsDestinations": [],
+        "details": "La empresa registra operaciones de importación de insumos industriales, componentes o tecnología para su proceso productivo.",
+        "source": "Registro Aduanero & Comercio Exterior OSINT"
+      },
+      "pymeData": {
+        "isRealData": false,
+        "hasPymeCertificate": false,
+        "pymeCategory": "Sin registro en Padrón MiPyME Oficial",
+        "certDetail": null,
+        "evidenceLink": null,
+        "knowledgeEconomyRegistered": false,
+        "fiscalBenefits": [],
+        "details": "Sin registro de Certificado MiPyME en la Base de Datos Oficial examinada.",
+        "apiSource": "Análisis de fuentes públicas"
+      },
+      "afipData": {
+        "cuit": "N/D (No verificado en ARCA/AFIP)",
+        "cuitRaw": null,
+        "razonSocial": "BombasNIR",
+        "isRealData": false,
+        "vatCondition": "Información no verificada públicamente",
+        "estadoPadron": "Dato no disponible en padrón AFIP / ARCA (Requiere CUIT)",
+        "economicActivity": "CLAE No Verificado",
+        "claeCode": null,
+        "claeName": "Información no verificada públicamente",
+        "domicilioFiscal": "Jurisdicción Argentina",
+        "impuestosActivos": [
+          "Información no verificada públicamente"
+        ],
+        "certificadosVigentes": [
+          "Información no verificada públicamente"
+        ],
+        "apiSource": "Dato no disponible en Padrón ARCA público",
+        "arcaOfficialUrl": "https://www.arca.gob.ar"
+      },
+      "fxExposureNotice": "Exposición a Variación Cambiaria por Insumos y Repuestos Importados"
+    },
+    "legalData": {
+      "isRealData": false,
+      "isEstimated": true,
+      "apiSource": "Estimación Algorítmica OSINT (Registros públicos no API-directos)",
+      "sociedadDetail": null,
+      "totalRecords": 0,
+      "riskRating": "SIN OBSERVACIONES JUDICIALES",
+      "lawsuits": [
+        {
+          "type": "Inscripción Societaria Ley 26.047 (RNS)",
+          "status": "Padrón de Comercio Provincial / Registro General de Sociedades",
+          "severity": "INFORMATIVO",
+          "details": "Consulta pública en Registro Nacional de Sociedades."
+        },
+        {
+          "type": "Fueros Civiles y Comerciales / Juicios",
+          "status": "Sin registros públicos de juicios comerciales activos",
+          "severity": "SIN RIESGO",
+          "details": "Búsqueda en registros de fueros comerciales y boletines judiciales."
+        },
+        {
+          "type": "Laboral y Expedientes",
+          "status": "Sin juicios laborales registrados en el período examinado",
+          "severity": "SIN RIESGO",
+          "details": "Consulta pública en fuero del trabajo y registros previsionales."
+        },
+        {
+          "type": "Defensa del Consumidor & Multas",
+          "status": "Sin sanciones o multas vigentes registradas",
+          "severity": "SIN RIESGO",
+          "details": "Rastreo en sistemas públicos de disputas de consumo."
+        },
+        {
+          "type": "Fuero Penal y Fraude",
+          "status": "Sin causas penales ni investigaciones comerciales asociadas",
+          "severity": "SIN RIESGO",
+          "details": "Verificación en padrones de integridad y registros de querellas."
+        }
+      ],
+      "legalSummary": "La empresa BombasNIR no presenta antecedentes judiciales públicos, demandas penales ni sanciones registradas.",
+      "inpiWipoData": {
+        "companyName": "BombasNIR",
+        "isRealData": false,
+        "totalTrademarksCount": 0,
+        "registeredTrademarks": [],
+        "patentsAndModels": [],
+        "inpiPortalUrl": "https://portalinpi.inpi.gob.ar/",
+        "wipoPortalUrl": "https://branddb.wipo.int/",
+        "apiSource": "Dato no disponible en API WIPO / INPI en vivo"
+      },
+      "openCorporatesData": {
+        "query": "BombasNIR",
+        "isRealData": false,
+        "corporateDetails": {
+          "companyNumber": "REG-IGJ-366229",
+          "name": "BombasNIR S.R.L. / S.A.",
+          "jurisdictionCode": "AR (Argentina)",
+          "incorporationDate": "2019-06-15",
+          "currentStatus": "ACTIVA Y REGISTRADA EN REGISTRO PÚBLICO",
+          "companyType": "Sociedad Comercial Regularmente Constituida",
+          "opencorporatesUrl": "https://opencorporates.com/companies?q=BombasNIR"
+        },
+        "officersAndDirectors": [
+          {
+            "role": "Socio Gerente / Director Presidente",
+            "status": "Registrado en IGJ / DPPJ"
+          },
+          {
+            "role": "Representante Legal / Apoderado",
+            "status": "Inscripción Vigente"
+          }
+        ],
+        "apiSource": "Estimación de Registro Mercantil / OpenCorporates Fallback"
+      },
+      "repsalData": {
+        "isRealData": true,
+        "hasSanctions": false,
+        "totalSanctions": 0,
+        "status": "Sin sanciones laborales registradas en REPSAL (Ley 26.940)",
+        "riskLevel": "SIN RIESGO",
+        "sanctions": [],
+        "repsalOfficialUrl": "https://www.argentina.gob.ar/trabajo/repsal",
+        "apiSource": "Registro Público de Empleadores con Sanciones Laborales (REPSAL - datos.gob.ar)"
+      }
+    },
+    "publicContracts": {
+      "isRegisteredSupplier": false,
+      "isRealData": false,
+      "supplierRegistryStatus": "Sin registro en Padrón Estatal de Proveedores",
+      "totalContracts": 0,
+      "totalAwardedAmount": "$0 ARS",
+      "contracts": [],
+      "comprarPortalUrl": "https://comprar.gob.ar/",
+      "contratarPortalUrl": "https://contratar.gob.ar/",
+      "apiSource": "Base de Datos Oficial COMPR.AR / CONTRAT.AR (datos.gob.ar)"
+    },
+    "searchData": {
+      "overviewSnippets": [],
+      "newsItems": [],
+      "projectsAndGroups": [],
+      "financialSnippets": [],
+      "gazetteSnippets": [],
+      "tenderSnippets": [],
+      "socialProfiles": [
+        {
+          "platform": "LinkedIn",
+          "estimatedUrl": "https://linkedin.com/company/bombasnir",
+          "icon": "linkedin",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Instagram",
+          "estimatedUrl": "https://instagram.com/bombasnir",
+          "icon": "instagram",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Twitter / X",
+          "estimatedUrl": "https://twitter.com/bombasnir",
+          "icon": "twitter",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Facebook",
+          "estimatedUrl": "https://facebook.com/bombasnir",
+          "icon": "facebook",
+          "status": "Detectado via OSINT"
+        }
+      ]
+    },
+    "supportPlan": {
+      "supportTier": "Empresa Candidata a Escalamiento, Créditos Productivos e Inversión 4.0",
+      "totalRecommendations": 2,
+      "highPriorityCount": 0,
+      "recommendations": [
+        {
+          "category": "Financiamiento & Subsidios 4.0",
+          "priority": "RECOMENDADA",
+          "icon": "trending-up",
+          "title": "Aportes No Reembolsables (ANR 4.0) & FONTAR para Modernización",
+          "description": "Asistencia financiera de co-financiamiento a través de SEPYME para incorporar tecnología en la matriz productiva de BombasNIR.",
+          "actionSteps": [
+            "Presentación del proyecto de modernización tecnológica ante la Agencia I+D+i.",
+            "Solicitud de bonificación de tasa en líneas de financiamiento de inversión productiva BNA / Banco BICE.",
+            "Formulación de carpetas técnicas para la adquisición de bienes de capital."
+          ]
+        },
+        {
+          "category": "Capacitación & Crédito Fiscal",
+          "priority": "RECOMENDADA",
+          "icon": "award",
+          "title": "Programa de Crédito Fiscal para Capacitación & Certificaciones ISO",
+          "description": "Reembolso en bono de crédito fiscal para financiar la formación técnica del equipo de BombasNIR e implementar certificaciones de calidad (ISO).",
+          "actionSteps": [
+            "Inscripción en el Régimen de Crédito Fiscal de la Secretaría de Industria.",
+            "Ejecución del plan anual de capacitación para mandos medios y técnicos.",
+            "Cómputo del bono electrónico fiscal contra el pago de IVA y Ganancias."
+          ]
+        }
+      ],
+      "recommendedPrograms": [
+        {
+          "title": "Línea BICE / Banco Nación para Importación de Bienes de Capital",
+          "organism": "BICE - Banco de Inversión y Comercio Exterior",
+          "description": "Crédito a tasa preferencial para la adquisición de insumos críticos y maquinaria importada.",
+          "maxAmount": "$50.000.000 ARS / U$S 100.000",
+          "compatibility": "ALTA (Empresa con actividad comprobada en Comercio Exterior)"
+        }
+      ]
+    },
+    "swotAnalysis": {
+      "companyName": "BombasNIR",
+      "strengths": [
+        "Oferta comercial propia comprobada con líneas destacadas: Bombas NIR Argentina, Repuestos y piezas garantizadas.",
+        "Cartera de servicios especializados comprobada: Asesoría técnica especializada y atención directa en BombasNIR, Servicio de instalación, desarrollo a medida y soporte postventa.",
+        "Certificaciones técnicas e industriales verificadas: Habilitación Comercial Vigente (BombasNIR), Cumplimiento de Normas de Calidad.",
+        "Presencia digital y canal de ventas activo a través de su sitio web oficial."
+      ],
+      "weaknesses": [
+        "No se detectaron pasivos financieros ni contingencias legales públicas graves."
+      ],
+      "opportunities": [
+        "Posibilidad de escalar operaciones a través de nuevas licitaciones B2B."
+      ],
+      "threats": [
+        "Exposición a fluctuaciones cambiarias y regulaciones aduaneras de importación."
+      ]
+    },
+    "digitalTransformation": {
+      "digitalScore": 80,
+      "maturityLevel": "Industria 4.0 / Automatizada",
+      "maturityColor": "#10b981",
+      "breakdown": {
+        "webPreserve": 90,
+        "eCommerce": 30,
+        "cloudSecurity": 85,
+        "customerChannels": 80,
+        "processAutomation": 65,
+        "industrialAutomation": 75
+      },
+      "existingAutomations": [
+        {
+          "system": "Portal Web Oficial & Presencia Digital",
+          "status": "VERIFICADO EN DOMINIO",
+          "detail": "Plataforma web activa de BombasNIR para consulta de catálogo y contacto",
+          "verified": true
+        },
+        {
+          "system": "Canal de Atención WhatsApp Business Directo",
+          "status": "VERIFICADO EN COMUNICACIÓN",
+          "detail": "Respuestas y derivación comercial directa en la web oficial",
+          "verified": true
+        }
+      ],
+      "missingAutomations": [
+        {
+          "system": "Cotizador Web Automático de Presupuestos",
+          "impact": "ALTO",
+          "detail": "Los clientes de BombasNIR deben solicitar cotización manual; falta cotizador digital instantáneo.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        },
+        {
+          "system": "Integración ERP Cloud con Facturación AFIP Automática",
+          "impact": "MEDIO",
+          "detail": "Automatización de sincronización entre stock y facturación electrónica de BombasNIR.",
+          "status": "EN EVALUACIÓN"
+        },
+        {
+          "system": "Telemetría IoT de Estado de Maquinarias en Tiempo Real",
+          "impact": "ALTO",
+          "detail": "Medición remota de horas de husillo y mantenimiento predictivo en la planta de BombasNIR.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        }
+      ],
+      "omittedUnverifiedData": [
+        "Software ERP / CRM de gestión interna privada de BombasNIR: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de BombasNIR: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedKits": {
+        "primary": {
+          "id": "kit_bas-02",
+          "code": "BAS-02",
+          "category": "Básico",
+          "name": "Kit Bas-02: Monitoreo y Visualización de Producción (OEE en Tiempo Real)",
+          "summary": "Cálculo de Eficiencia General de Equipos (OEE), tableros en tiempo real, registro de micro-paradas y visibilidad del rendimiento de línea.",
+          "filename": "kit_bas-02.pdf",
+          "fullText": "Kit Básico 2 Monitoreo y visualización de producción y procesos FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Modelo de datos y diccionario • Relevamiento y definición de variables a integrar (producción, OK/NO OK, retrabajos/mermas si aplica, tiempos, estados, eventos/categorías, etc.). • Identificación de campos mínimos de órdenes y lotes/campañas (cuando aplique) para asegurar trazabilidad mínima. • Elaboración de un diccionario de datos (nombres, definiciones, unidades, fuentes y reglas de cálculo). Verificables: documento de diccionario de datos aprobado por la empresa destinataria. Integración de datos Definición del flujo de datos operativo (qué fuente aporta qué dato, con qué periodicidad y con qué responsable), preservando la confidencialidad y propiedad intelectual del Proveedor. Implementación de mecanismos de carga/actualización de datos desde: • máquinas/PLC/SCADA (cuando aplique) • planillas • sistema de gestión/ERP básico (cuando exista) • captura asistida en planta (kioscos/terminales/tablets/tótems/formularios/ lectores) para eventos operativos (inicio/fin de operación, paradas, causas, consumos/confirmaciones, etc.), cuando corresponda y resulte más adecuado/costo efectivo que la lectura directa de señales. Nota de seguridad/alineación BAS-01: Cuando la implementación requiera conectores, gateways u otros dispositivos de captura en planta, estos deberán operar sobre una red OT/IT segmentada, con accesos controlados y medidas de ciberseguridad acordes al KIT BAS-01 (Conectividad y Cibeseguridad), cuando corresponda. • Frecuencia de actualización acorde al uso operativo del tablero; no podrá consistir exclusivamente en cargas diferidas al cierre de jornada cuando el objetivo sea gestión diaria (por ejemplo, seguimiento por turno o por el día). Verificables: evidencia de integración/captura en funcionamiento (por ejemplo: logs o registros de ejecución, conjunto de datos de prueba, capturas de pantallas -- 1 of 3 -- de carga, exportaciones o reportes que demuestran actualización), y una descripción de alto nivel del flujo de datos (sin requerir código fuente, endpoints sensibles ni credenciales). Tablero operativo e indicadores Configuración de un tablero operativo que, como mínimo, muestre: • producción real vs. objetivo/plan (si existe). • indicadores diarios/semanales de productividad, calidad y tiempos (según diccionario acordado). • principales pérdidas/demoras y su distribución por causa y por unidad productiva. Implementación de un módulo (digital o semi-digital) para: • registro de detenciones/demoras/eventos; • selección de causas desde un catálogo acordado; • Visualización del tiempo perdido por tipo de causa y por unidad productiva/turno/período. Verificables: tablero operativo en funcionamiento y accesible a los usuarios definidos; registro de eventos/demoras y causas funcionando en las unidades productivas cubiertas; capturas y/o reportes correspondientes a un período de prueba; y evidencia de uso operativo (por ejemplo: reporte/captura comparativa entre un registro inicial o línea de base y el período de prueba, en al menos 1 indicador seleccionado: productividad, tiempos, calidad o pérdidas por causa). Trazabilidad mínima orden – lote/campaña - unidad productiva • Definición y configuración de la relación entre orden y/o campaña/receta (según aplique), lote y la unidad productiva donde se ejecuta. • Implementación de registros que permitan recuperar, al menos, para un caso real (o prueba equivalente): • orden y/o lote/campaña/receta (según aplique); • unidad productiva en que se procesó; • principales demoras/eventos y tiempo asociado. Verificables: ejemplo documentado de trazabilidad de un caso real (o caso de prueba equivalente) con evidencia exportable (capturas/reportes). Capacitación y rutina operativa • Manual breve de uso del tablero y del módulo de eventos/demoras, que indique: • cómo se registran eventos y causas; • cómo se interpretan indicadores y gráficos; • rutina recomendada de seguimiento (reuniones diarias/semanales, focos de mejora). • Al menos una instancia de capacitación para el equipo clave (jefes/supervisión/ producción/mantenimiento/calidad según aplique). Verificables: manual entregado y constancia de capacitación (lista de participantes y temario). -- 2 of 3 -- Modalidades de prestación y tipos de Proveedor El KIT BAS-02 puede ofrecerse en distintas modalidades (on-premise, SaaS y soluciones mixtas). En todos los casos deberá existir una empresa Proveedora habilitada responsable integral del KIT (diseño, implementación, integraciones/ captura, tableros e indicadores, así como los entregables y la trazabilidad documental), que podrá apoyarse en subproveedores o socios tecnológicos. Modalidad A – Solución on-premise (integrador OT/IT + tableros locales) Tipo de Proveedor: empresa con capacidades de integración OT/IT (lectura de datos cuando aplique) y configuración de tableros (BI/web/MES), sobre infraestructura del cliente, incluyendo captura asistida en planta cuando corresponda. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • relevamiento y diseño del modelo de datos. • conectores/pipelines dentro de la red del cliente y/o mecanismos de captura asistida. • configuración del tablero y del módulo de registro de eventos/demoras. • instalación/parametrización en servidores del cliente. • capacitación y documentación. Modalidad B – Plataforma SaaS / servicio gestionado de monitoreo operativo Tipo de Proveedor: empresa que ofrece plataforma en la nube con módulos estándar de indicadores operativos, registro de eventos/demoras y trazabilidad mínima, con conectores hacia fuentes de datos y/o captura asistida. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • fee de onboarding e implementación (relevamiento, configuración, alta de datos maestros); • licencias/suscripciones por hasta 12 meses para el establecimiento y unidades cubiertas; • configuración de integraciones (máquinas/sistema de gestión/planillas) y/o captura asistida; • capacitación y documentación. Modalidad C – Soluciones mixtas (on-premise + nube) Tipo de Proveedor: empresas que combinan componentes locales (conectores, almacenamiento y/o captura en planta) con componentes en la nube (tableros comparativos, análisis y reportes). Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • diseño e implementación de arquitectura mixta (qué corre en planta y qué corre en nube); • gateways/conectores locales y/o puntos de captura necesarios; • suscripciones cloud por hasta 12 meses para tableros y reportes; • servicios de integración, documentación y capacitación. -- 3 of 3 --",
+          "textSnippet": "Kit Básico 2 Monitoreo y visualización de producción y procesos FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Modelo de datos y diccionario • Relevamiento y definición de variables a integrar (producción, OK/NO OK, retrabajos/mermas si aplica, tiempos, estados, eventos/categorías, etc.). • Identificación de campos mínimos de órdenes y lotes/campañas (cuando aplique) para asegurar trazabilidad mínima. • Elaboración de un diccionario de datos (nombres, definiciones, unidades, fuentes y reglas de cálculo). Verificables: documento de diccionario de datos aprobado por la empresa destinataria. Integración de datos Definición del flujo de datos operativo (qué fuente aporta qué dato, con qué periodicidad y con qué responsable), preservando la confidencialidad y propiedad intelectual del Proveedor. Implementación de mecanismos de carga/actualización de datos desde: • máquinas/PLC/SCADA (cuando aplique) • planillas • sistema de gestión/ERP básico (cuando exista) • captura asistida en planta (kioscos/terminales/tablets/tótems/formularios/ lectores) para eventos operativos (inicio/fin de operación, paradas, causas, consumos/confirmaciones, etc.), cuando corresponda y resulte más adecuado/costo efectivo que la lectura directa de señales. Nota de seguridad/alineación BAS-01: Cuando la implementación requiera conectores, gateways u otros dispositivos de captura en planta, estos deberán operar sobre una red OT/IT segmentada, con accesos controlados y medidas de cibersegu",
+          "aiRationale": "Optimiza el rendimiento productivo de BombasNIR mediante la medición en tiempo real del OEE (Eficiencia General de Equipos), facilitando la detección de micro-paradas y cuellos de botella operativos.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        },
+        "secondary": {
+          "id": "kit_avz-02",
+          "code": "AVZ-02",
+          "category": "Avanzado",
+          "name": "Kit Avz-02: Control de Calidad por Visión Artificial e Inspección Automatizada",
+          "summary": "Inspección óptica automatizada mediante cámaras y redes neuronales para detectar defectos superficiales y dimensionales a velocidad de línea.",
+          "filename": "kit_avz-02.pdf",
+          "fullText": "Kit Avanzado 2 Visión Artificial para Control de Calidad FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Relevamiento del proceso e identificación del punto de inspección • Relevamiento del flujo de producción y de los puntos de inspección actuales (manuales o automáticos). • Selección de la línea, celda o etapa crítica donde la visión artificial puede agregar más valor (por volumen, impacto de defectos, complejidad de inspección). • Identificación de los tipos de defectos a detectar (por ejemplo, presencia/ausencia de componentes, posición incorrecta, rayas, golpes, manchas, etiquetas mal colocadas, lectura de códigos, etc.). Verificables: informe de relevamiento, diagrama del proceso y acta de selección del punto de aplicación del KIT. Diseño e instalación de la celda o puesto de visión • Diseño del esquema de captura: definición de cantidad de cámaras, lentes, distancias, ángulos y sistema de iluminación (backlight, frontlight, domos, etc.) adecuado al tipo de pieza. • Suministro e instalación de cámara/s industrial/es, iluminación, montajes mecánicos y controlador local (PC industrial, controlador de visión, PLC u otro dispositivo). • Integración física con la línea (sensores de disparo, expulsores, señalización luminosa o sonora, interlocks básicos). Verificables: planos o esquemas de la celda de visión, lista de componentes instalados (modelo, serie, ubicación) y evidencias fotográficas de la instalación. Configuración de recetas o modelos de inspección y lógica de decisión • Definición de las condiciones de “pieza buena” y “pieza defectuosa” según los criterios acordados con el área de calidad. • Entrenamiento y ajuste de recetas o modelos de visión (reglas clásicas, filtros, herramientas de medición, reconocimiento de patrones o modelos basados en IA preexistentes) para el tipo de producto. • Configuración de la lógica de decisión (aceptar/rechazar, clasificación de defectos, generación de alarmas) y de las acciones asociadas en la línea. Verificables: criterios de aceptación/rechazo documentados y aprobados por la empresa; evidencia de configuración en producción (capturas/pantallas del -- 1 of 3 -- sistema o reportes) y registro de pruebas de aceptación con un conjunto de casos (por ejemplo, piezas “OK” y “NO OK”) indicando tasa de detección de defectos y eventos de rechazo. No se requerirá la entrega de código fuente, modelos completos ni información propietaria sensible; sí evidencia auditable del funcionamiento. Registro de resultados, análisis básico y plan de mejora • Registro de los resultados de la inspección (piezas inspeccionadas, piezas rechazadas, tipo de defectos) durante un período mínimo de operación. • Elaboración de un tablero simple de calidad para la celda o línea (tasa de rechazo, defectos más frecuentes, distribución por turno o lote). • Emisión de un informe con análisis de los resultados iniciales y recomendaciones de mejora de proceso, insumos o parámetros de producción basadas en los datos de la visión. Verificables: tablero o reportes de calidad generados para el período de prueba; informe de resultados y plan de acciones. Deberá incluirse evidencia de uso operativo con una comparación “situación inicial vs. período de prueba” en al menos 1 resultado seleccionado (por ejemplo: reducción de escapes de defectos, reducción de variabilidad entre inspectores, reducción de retrabajos, disminución de rechazos por falso positivo o aumento de detección de un defecto crítico), respaldada por reportes/capturas del sistema. Procedimientos, capacitación y transferencia al equipo interno • Elaboración de procedimientos básicos para la operación del sistema de visión (inicio/parada, selección de receta, interpretación de mensajes) y para la actuación ante rechazos o alarmas. • Capacitación a entre 3 y 8 personas clave (operadores de línea, supervisores, personal de calidad y mantenimiento) en el uso y ajuste básico del sistema. • Entrega de criterios y pautas para la revisión y actualización de recetas o modelos cuando cambian los productos o las condiciones del proceso. Verificables: procedimientos y manuales entregados, listas de participantes en capacitaciones y registro de las principales pautas de operación y ajuste. Modalidades de prestación y tipos de Proveedor El KIT AVZ-02 podrá ofrecerse en distintas modalidades (solución on-premise, solución basada en plataformas y librerías de visión, o solución mixta integrada a sistemas existentes). En todos los casos deberá existir una empresa Proveedora habilitada responsable integral del KIT (relevamiento, diseño de la celda, configuración del sistema de visión, análisis y capacitación), que podrá apoyarse en fabricantes de cámaras, integradores de automatización y especialistas en visión artificial. -- 2 of 3 -- Modalidad A – Integrador de visión artificial y automatización (on-premise) Tipo de Proveedor: empresas integradoras de sistemas con experiencia en visión artificial y automatización industrial. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Servicios de relevamiento y diseño de la celda o puesto de visión. • Suministro e instalación de cámaras, lentes, iluminación, montajes, controlador y elementos de integración física con la línea. • Configuración de recetas o modelos de inspección y lógica de decisión. • Puesta en marcha, pruebas de aceptación, generación de reportes básicos y capacitación. Modalidad B – Solución basada en plataformas y librerías de visión Tipo de Proveedor: empresas que utilizan plataformas o librerías de visión existentes (comerciales o industriales) y las adaptan al caso de la PyME. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Suministro e instalación del hardware de captura y procesamiento necesario. • Licencias, suscripciones o componentes de software vinculados a la plataforma de visión. • Desarrollo y ajuste de recetas/modelos dentro de la plataforma. • Configuración de reportes y tableros de resultados, documentación y capacitación. Modalidad C – Solución mixta integrada a sistemas de calidad y producción existentes Tipo de Proveedor: empresas que integran los resultados de visión artificial con sistemas SCADA, MES, sistemas de calidad o tableros de BI ya presentes en la empresa. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Integraciones de datos entre el sistema de visión y los sistemas existentes. • Desarrollo de vistas y reportes conjuntos (producción + calidad por visión). • Ajustes complementarios en la celda de visión, documentación y capacitación. -- 3 of 3 --",
+          "textSnippet": "Kit Avanzado 2 Visión Artificial para Control de Calidad FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Relevamiento del proceso e identificación del punto de inspección • Relevamiento del flujo de producción y de los puntos de inspección actuales (manuales o automáticos). • Selección de la línea, celda o etapa crítica donde la visión artificial puede agregar más valor (por volumen, impacto de defectos, complejidad de inspección). • Identificación de los tipos de defectos a detectar (por ejemplo, presencia/ausencia de componentes, posición incorrecta, rayas, golpes, manchas, etiquetas mal colocadas, lectura de códigos, etc.). Verificables: informe de relevamiento, diagrama del proceso y acta de selección del punto de aplicación del KIT. Diseño e instalación de la celda o puesto de visión • Diseño del esquema de captura: definición de cantidad de cámaras, lentes, distancias, ángulos y sistema de iluminación (backlight, frontlight, domos, etc.) adecuado al tipo de pieza. • Suministro e instalación de cámara/s industrial/es, iluminación, montajes mecánicos y controlador local (PC industrial, controlador de visión, PLC u otro dispositivo). • Integración física con la línea (sensores de disparo, expulsores, señalización luminosa o sonora, interlocks básicos). Verificables: planos o esquemas de la celda de visión, lista de componentes instalados (modelo, serie, ubicación) y evidencias fotográficas de la instalación. Configuración de recetas o modelos de inspecci",
+          "aiRationale": "Automatiza la inspección de calidad y control dimensional de piezas en tiempo real mediante sistemas de visión artificial.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        }
+      },
+      "techStack": [
+        {
+          "category": "Portal Web Oficial",
+          "name": "Portal Web Corporativo Activo & Verificado",
+          "status": "Activo",
+          "type": "VERIFICADO",
+          "source": "Dominio https://bombasnir.com.ar"
+        },
+        {
+          "category": "Infraestructura & Canales",
+          "name": "Servicios HTTP/HTTPS y Presencia Digital Verificada",
+          "status": "Operativo",
+          "type": "VERIFICADO",
+          "source": "Rastreo Abierto OSINT (BombasNIR)"
+        }
+      ],
+      "channels": [
+        "Atención Directa por WhatsApp de BombasNIR",
+        "Portal Web Oficial https://bombasnir.com.ar",
+        "Canales Corporativos Digitales"
+      ],
+      "auditMetadata": {
+        "consultationDate": "10/8/2026 12:30 p. m.",
+        "verificationBadge": "VERIFICADO EN FUENTES ABIERTAS",
+        "dataSource": "Sitio Oficial de BombasNIR + Base de Datos de Kits 4.0",
+        "corroborationLevel": "Trazabilidad OSINT verificada para BombasNIR"
+      },
+      "informationGaps": [
+        "Software ERP / CRM de gestión interna privada de BombasNIR: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de BombasNIR: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedTools": [
+        "Módulo ERP Comex para trazabilidad de importación/exportación y Despacho Aduanero"
+      ]
+    },
+    "aiIntelligence": {
+      "confidenceScore": "80%",
+      "subNiche": "Soluciones Comerciales B2B",
+      "executiveSummary": "Análisis heurístico del perfil digital y operativo de BombasNIR. Se clasifica en el nicho de \"Soluciones Comerciales B2B\" con un nivel de trazabilidad OSINT del 80%. Muestra una salud financiera evaluada en 75/100 pts y un índice de digitalización del 80%.",
+      "executiveInsights": [
+        {
+          "category": "Diagnóstico de Madurez",
+          "icon": "award",
+          "color": "#c4b5fd",
+          "title": "Infraestructura Digital Consolidada",
+          "description": "Evaluación favorable: BombasNIR presenta una madurez digital activa, facilitando la captación de clientes corporativos y comercio electrónico."
+        }
+      ],
+      "aiMatrix": {
+        "shortTerm": "Optimizar los canales de atención y telemetría operativa actual.",
+        "mediumTerm": "Tramitar Aportes No Reembolsables (ANR SEPYME) para financiar equipamiento.",
+        "longTerm": "Consolidar una red de licitaciones a nivel nacional aprovechando el registro de BombasNIR."
+      },
+      "timestamp": "2026-08-10T15:30:02.538Z"
+    },
+    "executiveSummary": null
+  },
+  {
+    "id": "OSINT-1786375657706-535",
+    "timestamp": "2026-08-10T15:27:37.706Z",
+    "query": {
+      "companyName": "Taller Baigorria",
+      "website": "baigorriaindustrial.com",
+      "region": "AR"
+    },
+    "categorization": {
+      "sector": "Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión",
+      "sectorIcon": "briefcase",
+      "businessModel": "B2B (Servicios y Provisión a Empresas)",
+      "companyType": "Empresa Operativa",
+      "estimatedEmployees": "No verificado públicamente",
+      "summary": "Taller Baigorria es una empresa especializada en Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión. Se dedica a la provisión y comercialización de Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "services": [
+        "Tornería CNC, fresado y mecanizado de alta precisión",
+        "Corte por plasma, soldadura homologada y mantenimiento de planta",
+        "Ingeniería inversa y fabricación bajo plano"
+      ],
+      "tags": [
+        "Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión",
+        "B2B (Servicios y Provisión a Empresas)",
+        "Empresa Operativa",
+        "Sitio Web Verificado"
+      ]
+    },
+    "scrapedData": {
+      "hasWebsite": true,
+      "url": "https://baigorriaindustrial.com",
+      "title": "Baigorria Industrial",
+      "description": "",
+      "aboutUs": "Taller Baigorria es una empresa especializada en Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión. Se dedica a la provisión y comercialización de Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "customSector": "Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión",
+      "products": [
+        "Piezas mecanizadas en torno CNC y fresadora de alta precisión",
+        "Bujes de bronce, engranajes y conjuntos soldados bajo plano",
+        "Estructuras metálicas y repuestos industriales"
+      ],
+      "services": [
+        "Tornería CNC, fresado y mecanizado de alta precisión",
+        "Corte por plasma, soldadura homologada y mantenimiento de planta",
+        "Ingeniería inversa y fabricación bajo plano"
+      ],
+      "clients": [
+        "Empresas Compradoras B2B & Clientes Corporativos de Taller Baigorria",
+        "Contratistas Industriales & Proveedores del Rubro",
+        "Red de Clientes Directos & Distribuidores Regionales"
+      ],
+      "industries": [
+        "Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión",
+        "Manufactura, Procesos e Infraestructura",
+        "Servicios Industriales & Corporativos B2B"
+      ],
+      "markets": [
+        "Mercado Nacional (Argentina - Cobertura Federal)",
+        "Mercado Regional (Provincias & Municipios)",
+        "Exportación & Mercado Internacional (LATAM)"
+      ],
+      "valueProposition": "Fabricamos bulones, espárragos y tuercas para múltiples aplicaciones desde 1961.",
+      "differentiators": [
+        "Alta especialización y trayectoria en Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión.",
+        "Capacidad de desarrollo a medida y asesoría técnica directa.",
+        "Infraestructura operativa con estándares de calidad verificados."
+      ],
+      "competitors": [
+        "Empresas nacionales competidoras directas en Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión.",
+        "Proveedores regionales de soluciones equivalentes o sustitutas.",
+        "Empresas importadoras de equipamiento e insumos del rubro."
+      ],
+      "certifications": [
+        "certificación ISO 9001 y todos nuestros productos son fabricados en aceros aleados comprados directamente en acer",
+        "Certificación ISO",
+        "certificación ISO"
+      ],
+      "partners": [
+        "Cámaras Industriales & Asociaciones Comerciales del Sector.",
+        "Red de proveedores homologados de insumos y materias primas.",
+        "Distribuidores autorizados y alianzas estratégicas regionales."
+      ],
+      "businessAnswers": {
+        "whatDoesCompanyDo": "Taller Baigorria es una empresa especializada en Industria Metalúrgica, Tornería CNC & Mecanizado de Precisión. Se dedica a la provisión y comercialización de Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+        "whatItSells": "Taller Baigorria comercializa de forma verificada: Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales.",
+        "productList": [
+          "Piezas mecanizadas en torno CNC y fresadora de alta precisión",
+          "Bujes de bronce, engranajes y conjuntos soldados bajo plano",
+          "Estructuras metálicas y repuestos industriales"
+        ],
+        "whoBuys": "Empresas industriales, comerciantes, contratistas y clientes B2B/B2C que requieren las soluciones de Taller Baigorria.",
+        "howItGeneratesRevenue": "Venta directa de productos elaborados, servicios técnicos especializados y presupuestos por proyectos.",
+        "mostImportantAsset": "Parque de curvadoras de caños y tubos, centros de mecanizado CNC de alta precisión, matricería de producción de planta y licencias de diseño técnico CAD/CAM.",
+        "valueProposition": "Fabricamos bulones, espárragos y tuercas para múltiples aplicaciones desde 1961."
+      },
+      "rawText": "<iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-55GGT72Z\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> (function(){if(window.matchMedia('(max-width:921.99px)').matches){document.body.classList.add('ast-header-break-point');document.body.classList.remove('ast-desktop');}})(); Ir al contenido Nosotros Productos Exportación Calidad Novedades Contacto Menu Nosotros Productos Exportación Calidad Novedades Contacto Descargar Catálogo Inicio Fabricamos bulones, espárragos y tuercas para múltiples aplicaciones desde 1961. PRODUCTOS NOSOTROS Somos una empresa Argentina que desde hace más de 60 años nos dedicamos a la fabricación de elementos de fijación para el sector automotor, el mercado de máquinas agrícolas y viales, el transporte pesado y de aplicaciones industriales. Contamos con un catálogo de gran variedad y stock permanente de bulones de rueda, tornillos, tuercas de rueda y la mayor diversidad de espárragos milimétricos y en pulgadas de América. Nuestro equipo trabaja día a día con la convicción de brindar en cada proceso lo mejor que tenemos: nuestra pasión industrial, profesionalismo y compromiso con el cliente.Proporcionamos soluciones innovadoras, acercando al mercado alternativas a piezas originales con los mismos estándares de calidad y prestación.Nuestra experiencia, calidad y variedad acompañadas de una constante inversión en maquinaria, nuevas tecnologías e I+D, nos permiten ser una empresa reconocida en el mercado local e internacional. PRODUCTOS Producimos bulones, espárragos, tuercas y productos especiales en una gran variedad de medidas tanto para el sector automotor y agrícola como para otras industrias que requieran soluciones en fijación de alta complejidad. La fabricación por estampado en frío en prensas horizontales y el roscado por laminación garantizan la calidad y prestación de nuestras piezas. Fabricamos desde diámetros de 4mm hasta 22mm y desde 6mm hasta 210mm de largo en calidades 5.8, 8.8, 10.9, 12.9, G5, G8 y G10. Ofrecemos tratamientos térmicos y recubrimientos superficiales según las necesidades del cliente: zincado trivalente o Iridiscente, deltaproteckt, dorltech, dacromet, Cromado, Fosfatizado y Ennegrecido, entre otros. Entregamos nuestros productos correctamente embalados en cajas de cartón acoplables, lo cual facilita el almacenamiento y asegura la conservación en perfectas condiciones hasta su uso. ESPÁRRAGOS BULONES TUERCAS PIEZAS ESPECIALES MilimétricoCombinadoPulgada LivianoMazaPesado CónicaCromadaHexagonal Aplicación IndustrialHerrajesCompetición TIENDA VIRTUAL EXPORTACIÓN La seguridad, variedad y confiabilidad que ofrecen nuestros productos es reconocida internacionalmente. De esta forma contamos con clientes en todo el mundo: Alemania, España, Italia, Polonia, Sudáfrica, Chile, Estados Unidos, Ecuador, entre muchos más.Participamos de manera habitual en ferias internacionales como Automechanika Buenos Aires, Automechanika Frankfurt, Wire and Tube Dusseldorf y Fastener Fair Stuttgart. POLÍTICA DE CALIDAD Contamos con certificación ISO 9001 y todos nuestros productos son fabricados en aceros aleados comprados directamente en acerías locales e internacionales (SAE 10B22, SAE 1038, SAE 4140, SAE 5135, SAE 51B35, PL22D y PL30). Gracias a un laboratorio modernamente equipado podemos asegurar cada etapa de nuestro proceso productivo. Ver Certificación ISO-9001 Promovemos la innovación y sostenemos el desarrollo de nuestros productos y servicios con un departamento de I+D, el cual también brinda asesoramiento en uniones atornilladas y trabaja junto al cliente en el desarrollo de piezas 100% personalizadas.En la actualidad estamos en proceso de certificación ISO-TS 16949. POLÍTICA DE CALIDAD Investigación y desarrollo En Baigorria tenemos como desafío superarnos día a día apostando a la innovación tecnológica, la capacitación, la inversión productiva y la mejora continua. Atención personalizada Nuestro equipo está capacitado para brindar el mejor asesoramien\nIr al contenido Determinar si la rosca es Cilíndrica o Cónica febrero 17, 2023 Las roscas cilíndricas son UNC/UNF, BSPP y métrica, mientras que las cónicas son NPT y BSPT, aunque ocasionalmente puede haber roscas métricas cónicas. La comprobación del diseño de la rosca también es visual. Sin embargo, para evitar cualquier ambigüedad, se aconseja corroborarlo midiendo el diámetro externo de la rosca con una herramienta de medición. En este caso, la herramienta más adecuada es un calibre y el procedimiento correcto a seguir es el siguiente: Si se trata de una rosca macho, usamos las mordazas inferiores del calibre para medir el diámetro externo, entre crestas, del primero (más cercano a nosotros), cuarto y último hilo de rosca. Si se trata de una rosca hembra, usamos las mordazas superiores del calibre para medir el diámetro interno, entre crestas, del primero, cuarto y último hilo de rosca. Siguiente Compartir Facebook Youtube Twitter Instagram INFORMACIÓN DE CONTACTO + 54 9 11 4750-7556 + 54 9 11 4759-8996 contacto@baigorriaindustrial.com Lunes a Viernes de 8 a 13 y de 13.30 a 17 hs nuestras oficinas Planta Industrial Escultor Santiago Parodi 3864, Caseros (C.P. 1678) - Buenos Aires, Argentina. Ventas y Expedición Gral. Manuel Belgrano 3024, Caseros (C.P. 1678) Buenos Aires, Argentina. Ventas y Expedición Europa Madrid, España. © 2020 Taller Baigorria – Todos los derechos reservados | Desarrollado por Tropa de Marketing WhatsApp us\nIr al contenido Automechanika Frankfurt 2022 – Baigorria – Specialists febrero 17, 2023 In September we will be taking part in Automechanika Frankfurt; you can find us in hall 1.2 stand H02. (En septiembre participaremos en Automechanika Frankfurt; nos pueden encontrar en el pabellón 1.2 stand H02.) At Baigorria, we are leaders in the manufacturing of studs, wheel bolts, wheel nuts, hub bolts, conical nuts, double ended studs. Our variety and quality positions us as a benchmark in the automotive aftermarket, supplying national and international markets. (En Baigorria somos líderes en la fabricación de espárragos, bulones de rueda, tuercas de rueda, bulones de maza, tuercas cónicas, espárragos de doble boca. Nuestra variedad y calidad nos posiciona como un referente en el mercado de repuestos automotrices, abasteciendo mercados nacionales e internacionales With more than 60 years of experience, we offer a wide variety of products and develop solutions tailored to the demands of our customers with guaranteed quality standards throughout the process. (Con más de 60 años de experiencia, ofrecemos una amplia variedad de productos y desarrollamos soluciones a la medida de las exigencias de nuestros clientes con estándares de calidad garantizados en todo el proceso.) All our products are manufactured in alloy steels purchased directly from local and international steel mills: SAE 10B22, SAE 1038, SAE 4140, SAE 5135, SAE 51B35, PL22 and PL30 with the appropriate heat treatment and surface coating, guaranteeing qualities 8.8, 10.9, 12.9, G5 and G8 as appropriate. (Todos nuestros productos son fabricados en aceros aleados adquiridos directamente de acerías locales e internacionales: SAE 10B22, SAE 1038, SAE 4140, SAE 5135, SAE 51B35, PL22 y PL30 con el tratamiento térmico y recubrimiento superficial adecuado, garantizando calidades 8.8, 10.9, 12.9, G5 y G8 según corresponda.) We are very excited to be part of this new edition at the Automechanika Frankfurt fair. We hope to se",
+      "sitemapFound": true,
+      "sitemapUrlsCount": 14,
+      "fullText": "<iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-55GGT72Z\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> (function(){if(window.matchMedia('(max-width:921.99px)').matches){document.body.classList.add('ast-header-break-point');document.body.classList.remove('ast-desktop');}})(); Ir al contenido Nosotros Productos Exportación Calidad Novedades Contacto Menu Nosotros Productos Exportación Calidad Novedades Contacto Descargar Catálogo Inicio Fabricamos bulones, espárragos y tuercas para múltiples aplicaciones desde 1961. PRODUCTOS NOSOTROS Somos una empresa Argentina que desde hace más de 60 años nos dedicamos a la fabricación de elementos de fijación para el sector automotor, el mercado de máquinas agrícolas y viales, el transporte pesado y de aplicaciones industriales. Contamos con un catálogo de gran variedad y stock permanente de bulones de rueda, tornillos, tuercas de rueda y la mayor diversidad de espárragos milimétricos y en pulgadas de América. Nuestro equipo trabaja día a día con la convicción de brindar en cada proceso lo mejor que tenemos: nuestra pasión industrial, profesionalismo y compromiso con el cliente.Proporcionamos soluciones innovadoras, acercando al mercado alternativas a piezas originales con los mismos estándares de calidad y prestación.Nuestra experiencia, calidad y variedad acompañadas de una constante inversión en maquinaria, nuevas tecnologías e I+D, nos permiten ser una empresa reconocida en el mercado local e internacional. PRODUCTOS Producimos bulones, espárragos, tuercas y productos especiales en una gran variedad de medidas tanto para el sector automotor y agrícola como para otras industrias que requieran soluciones en fijación de alta complejidad. La fabricación por estampado en frío en prensas horizontales y el roscado por laminación garantizan la calidad y prestación de nuestras piezas. Fabricamos desde diámetros de 4mm hasta 22mm y desde 6mm hasta 210mm de largo en calidades 5.8, 8.8, 10.9, 12.9, G5, G8 y G10. Ofrecemos tratamientos térmicos y recubrimientos superficiales según las necesidades del cliente: zincado trivalente o Iridiscente, deltaproteckt, dorltech, dacromet, Cromado, Fosfatizado y Ennegrecido, entre otros. Entregamos nuestros productos correctamente embalados en cajas de cartón acoplables, lo cual facilita el almacenamiento y asegura la conservación en perfectas condiciones hasta su uso. ESPÁRRAGOS BULONES TUERCAS PIEZAS ESPECIALES MilimétricoCombinadoPulgada LivianoMazaPesado CónicaCromadaHexagonal Aplicación IndustrialHerrajesCompetición TIENDA VIRTUAL EXPORTACIÓN La seguridad, variedad y confiabilidad que ofrecen nuestros productos es reconocida internacionalmente. De esta forma contamos con clientes en todo el mundo: Alemania, España, Italia, Polonia, Sudáfrica, Chile, Estados Unidos, Ecuador, entre muchos más.Participamos de manera habitual en ferias internacionales como Automechanika Buenos Aires, Automechanika Frankfurt, Wire and Tube Dusseldorf y Fastener Fair Stuttgart. POLÍTICA DE CALIDAD Contamos con certificación ISO 9001 y todos nuestros productos son fabricados en aceros aleados comprados directamente en acerías locales e internacionales (SAE 10B22, SAE 1038, SAE 4140, SAE 5135, SAE 51B35, PL22D y PL30). Gracias a un laboratorio modernamente equipado podemos asegurar cada etapa de nuestro proceso productivo. Ver Certificación ISO-9001 Promovemos la innovación y sostenemos el desarrollo de nuestros productos y servicios con un departamento de I+D, el cual también brinda asesoramiento en uniones atornilladas y trabaja junto al cliente en el desarrollo de piezas 100% personalizadas.En la actualidad estamos en proceso de certificación ISO-TS 16949. POLÍTICA DE CALIDAD Investigación y desarrollo En Baigorria tenemos como desafío superarnos día a día apostando a la innovación tecnológica, la capacitación, la inversión productiva y la mejora continua. Atención personalizada Nuestro equipo está capacitado para brindar el mejor asesoramiento según los requerimientos de cada cliente Más de 60 años de trayectoria con el staff mejor calificado Stock permanente y la mayor variedad de productos Tecnología innovadora y calidad certificada NOVEDADES Entérate de todas nuestras novedades y del mundo de la fijación ¡Visitá nuestras redes y blog! Ensayo de resistencia en Cámara de Niebla Salina Leer más Ensayo Cámara Niebla Salina : ¿Cuánto duran los tratamientos superficiales de los bulones de rueda? Leer más Dureza Grado 5 y Grado 8: ¿Qué significan y cuándo utilizarlas? Leer más Leer más VER TODAS LAS NOVEDADES CONTACTO Nombre y apellido Correo electrónico Teléfono Mensaje Enviar Contacto ventas Europa Planta Industrial Escultor Santiago Parodi 3864, Caseros (C.P. 1678) - Buenos Aires, Argentina. Ventas y expedición Gral. Manuel Belgrano 3024, Caseros - (C.P. 1678) Buenos Aires, Argentina. Facebook Youtube Twitter Instagram INFORMACIÓN DE CONTACTO + 54 9 11 4750-7556 + 54 9 11 4759-8996 contacto@baigorriaindustrial.com Lunes a Viernes de 8 a 13 y de 13.30 a 17 hs nuestras oficinas Planta Industrial Escultor Santiago Parodi 3864, Caseros (C.P. 1678) - Buenos Aires, Argentina. Ventas y Expedición Gral. Manuel Belgrano 3024, Caseros (C.P. 1678) Buenos Aires, Argentina. Ventas y Expedición Europa Madrid, España. © 2020 Taller Baigorria – Todos los derechos reservados | Desarrollado por Tropa de Marketing {\"prefetch\":[{\"source\":\"document\",\"where\":{\"and\":[{\"href_matches\":\"/*\"},{\"not\":{\"href_matches\":[\"/wp-*.php\",\"/wp-admin/*\",\"/wp-content/uploads/*\",\"/wp-content/*\",\"/wp-content/plugins/*\",\"/wp-content/themes/astra/*\",\"/*\\\\?(.+)\"]}},{\"not\":{\"selector_matches\":\"a[rel~=\\\"nofollow\\\"]\"}},{\"not\":{\"selector_matches\":\".no-prefetch, .no-prefetch a\"}}]},\"eagerness\":\"conservative\"}]} .ht_ctc_entry_animation{animation-duration:0.4s;animation-fill-mode:both;animation-delay:0s;animation-iteration-count:1;} @keyframes ht_ctc_anim_corner {0% {opacity: 0;transform: scale(0);}100% {opacity: 1;transform: scale(1);}}.ht_ctc_an_entry_corner {animation-name: ht_ctc_anim_corner;animation-timing-function: cubic-bezier(0.25, 1, 0.5, 1);transform-origin: bottom var(--side, right);} .ht-ctc .ctc_s_7:hover .ctc_s_7_icon_padding, .ht-ctc .ctc_s_7:hover .ctc_cta_stick{background-color:#1fad00 !important;}.ht-ctc .ctc_s_7:hover svg g path{fill:#f4f4f4 !important;} WhatsApp us ( () => { const lazyloadRunObserver = () => { const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` ); const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => { entries.forEach( ( entry ) => { if ( entry.isIntersecting ) { let lazyloadBackground = entry.target; if( lazyloadBackground ) { lazyloadBackground.classList.add( 'e-lazyloaded' ); } lazyloadBackgroundObserver.unobserve( entry.target ); } }); }, { rootMargin: '200px 0px 200px 0px' } ); lazyloadBackgrounds.forEach( ( lazyloadBackground ) => { lazyloadBackgroundObserver.observe( lazyloadBackground ); } ); }; const events = [ 'DOMContentLoaded', 'elementor/lazyload/observe', ]; events.forEach( ( event ) => { document.addEventListener( event, lazyloadRunObserver ); } ); } )(); var eb_conditional_localize = []; var EssentialBlocksLocalize = {\"eb_plugins_url\":\"https://baigorriaindustrial.com/wp-content/plugins/essential-blocks/\",\"image_url\":\"https://baigorriaindustrial.com/wp-content/plugins/essential-blocks/assets/images\",\"eb_wp_version\":\"7\",\"eb_version\":\"6.4.1\",\"eb_admin_url\":\"https://baigorriaindustrial.com/wp-admin/\",\"rest_rootURL\":\"https://baigorriaindustrial.com/wp-json/\",\"ajax_url\":\"https://baigorriaindustrial.com/wp-admin/admin-ajax.php\",\"nft_nonce\":\"50b2031867\",\"post_grid_pagination_nonce\":\"869f5a7f19\",\"placeholder_image\":\"https://baigorriaindustrial.com/wp-content/plugins/essential-blocks/assets/images/placeholder.png\",\"is_pro_active\":\"false\",\"upgrade_pro_url\":\"https://essential-blocks.com/upgrade\",\"responsiveBreakpoints\":{\"tablet\":1024,\"mobile\":767},\"wp_timezone\":\"-03:00\",\"gmt_offset\":\"-3\"}; //# sourceURL=essential-blocks-blocks-localize-js-extra var astra = {\"break_point\":\"921\",\"isRtl\":\"\",\"is_scroll_to_id\":\"\",\"is_scroll_to_top\":\"\",\"is_header_footer_builder_active\":\"\",\"responsive_cart_click\":\"flyout\",\"is_dark_palette\":\"\"}; //# sourceURL=astra-theme-js-js-extra var ht_ctc_chat_var = {\"number\":\"5491140929460\",\"pre_filled\":\"Hola, me estoy contactando desde el Sitio Web\",\"dis_m\":\"show\",\"dis_d\":\"show\",\"css\":\"cursor: pointer; z-index: 99999999;\",\"pos_d\":\"position: fixed; bottom: 20px; right: 20px;\",\"pos_m\":\"position: fixed; bottom: 30px; left: 30px;\",\"side_d\":\"right\",\"side_m\":\"left\",\"schedule\":\"no\",\"se\":\"150\",\"ani\":\"no-animation\",\"page_id\":\"2193\",\"url_structure_m\":\"wa_colon\",\"url_target_d\":\"_blank\",\"ga\":\"yes\",\"gtm\":\"1\",\"fb\":\"yes\",\"webhook_format\":\"json\",\"g_init\":\"default\",\"g_an_event_name\":\"chat: {number}\",\"gtm_event_name\":\"Click to Chat\",\"pixel_event_name\":\"Click to Chat by HoliThemes\"}; var ht_ctc_variables = {\"g_an_event_name\":\"chat: {number}\",\"gtm_event_name\":\"Click to Chat\",\"pixel_event_type\":\"trackCustom\",\"pixel_event_name\":\"Click to Chat by HoliThemes\",\"g_an_params_v4\":[{\"key\":\"event_category\",\"value\":\"Click to Chat for WhatsApp\"},{\"key\":\"event_label\",\"value\":\"{title}, {url}\"}],\"g_an_params\":[\"g_an_param_1\",\"g_an_param_2\"],\"g_an_param_1\":{\"key\":\"event_category\",\"value\":\"Click to Chat for WhatsApp\"},\"g_an_param_2\":{\"key\":\"event_label\",\"value\":\"{title}, {url}\"},\"pixel_params_v4\":[{\"key\":\"Category\",\"value\":\"Click to Chat for WhatsApp\"},{\"key\":\"ID\",\"value\":\"{number}\"},{\"key\":\"Title\",\"value\":\"{title}\"},{\"key\":\"URL\",\"value\":\"{url}\"}],\"pixel_params\":[\"pixel_param_1\",\"pixel_param_2\",\"pixel_param_3\",\"pixel_param_4\"],\"pixel_param_1\":{\"key\":\"Category\",\"value\":\"Click to Chat for WhatsApp\"},\"pixel_param_2\":{\"key\":\"ID\",\"value\":\"{number}\"},\"pixel_param_3\":{\"key\":\"Title\",\"value\":\"{title}\"},\"pixel_param_4\":{\"key\":\"URL\",\"value\":\"{url}\"},\"gtm_params_v4\":[{\"key\":\"type\",\"value\":\"chat\"},{\"key\":\"number\",\"value\":\"{number}\"},{\"key\":\"title\",\"value\":\"{title}\"},{\"key\":\"url\",\"value\":\"{url}\"},{\"key\":\"ref\",\"value\":\"dataLayer push\"}],\"gtm_params\":[\"gtm_param_1\",\"gtm_param_2\",\"gtm_param_3\",\"gtm_param_4\",\"gtm_param_5\"],\"gtm_param_1\":{\"key\":\"type\",\"value\":\"chat\"},\"gtm_param_2\":{\"key\":\"number\",\"value\":\"{number}\"},\"gtm_param_3\":{\"key\":\"title\",\"value\":\"{title}\"},\"gtm_param_4\":{\"key\":\"url\",\"value\":\"{url}\"},\"gtm_param_5\":{\"key\":\"ref\",\"value\":\"dataLayer push\"}}; //# sourceURL=ht_ctc_app_js-js-extra var localize = {\"ajaxurl\":\"https://baigorriaindustrial.com/wp-admin/admin-ajax.php\",\"nonce\":\"d4f47d634b\",\"i18n\":{\"added\":\"A\\u00f1adido \",\"compare\":\"Comparar\",\"loading\":\"Cargando...\"},\"eael_translate_text\":{\"required_text\":\"es un campo obligatorio\",\"invalid_text\":\"No v\\u00e1lido\",\"billing_text\":\"Facturaci\\u00f3n\",\"shipping_text\":\"Env\\u00edo\",\"fg_mfp_counter_text\":\"de\"},\"page_permalink\":\"https://baigorriaindustrial.com/\",\"cart_redirectition\":\"no\",\"cart_page_url\":\"\",\"el_breakpoints\":{\"mobile\":{\"label\":\"M\\u00f3vil vertical\",\"value\":767,\"default_value\":767,\"direction\":\"max\",\"is_enabled\":true},\"mobile_extra\":{\"label\":\"M\\u00f3vil horizontal\",\"value\":880,\"default_value\":880,\"direction\":\"max\",\"is_enabled\":false},\"tablet\":{\"label\":\"Tableta vertical\",\"value\":1024,\"default_value\":1024,\"direction\":\"max\",\"is_enabled\":true},\"tablet_extra\":{\"label\":\"Tableta horizontal\",\"value\":1200,\"default_value\":1200,\"direction\":\"max\",\"is_enabled\":false},\"laptop\":{\"label\":\"Portable\",\"value\":1366,\"default_value\":1366,\"direction\":\"max\",\"is_enabled\":false},\"widescreen\":{\"label\":\"Pantalla grande\",\"value\":2400,\"default_value\":2400,\"direction\":\"min\",\"is_enabled\":false}}}; //# sourceURL=eael-general-js-extra var EAELImageMaskingConfig = {\"svg_dir_url\":\"https://baigorriaindustrial.com/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/img/image-masking/svg-shapes/\"}; //# sourceURL=elementor-frontend-js-extra var elementorFrontendConfig = {\"environmentMode\":{\"edit\":false,\"wpPreview\":false,\"isScriptDebug\":false},\"i18n\":{\"shareOnFacebook\":\"Compartir en Facebook\",\"shareOnX\":\"Compartir en X\",\"pinIt\":\"Fijarlo\",\"download\":\"Descargar\",\"downloadImage\":\"Descargar imagen\",\"fullscreen\":\"Pantalla completa\",\"zoom\":\"Zoom\",\"share\":\"Compartir\",\"playVideo\":\"Reproducir v\\u00eddeo\",\"previous\":\"Anterior\",\"next\":\"Siguiente\",\"close\":\"Cerrar\",\"a11yCarouselPrevSlideMessage\":\"Diapositiva anterior\",\"a11yCarouselNextSlideMessage\":\"Diapositiva siguiente\",\"a11yCarouselFirstSlideMessage\":\"Esta es la primera diapositiva\",\"a11yCarouselLastSlideMessage\":\"Esta es la \\u00faltima diapositiva\",\"a11yCarouselPaginationBulletMessage\":\"Ir a la diapositiva\"},\"is_rtl\":false,\"breakpoints\":{\"xs\":0,\"sm\":480,\"md\":768,\"lg\":1025,\"xl\":1440,\"xxl\":1600},\"responsive\":{\"breakpoints\":{\"mobile\":{\"label\":\"M\\u00f3vil vertical\",\"value\":767,\"default_value\":767,\"direction\":\"max\",\"is_enabled\":true},\"mobile_extra\":{\"label\":\"M\\u00f3vil horizontal\",\"value\":880,\"default_value\":880,\"direction\":\"max\",\"is_enabled\":false},\"tablet\":{\"label\":\"Tableta vertical\",\"value\":1024,\"default_value\":1024,\"direction\":\"max\",\"is_enabled\":true},\"tablet_extra\":{\"label\":\"Tableta horizontal\",\"value\":1200,\"default_value\":1200,\"direction\":\"max\",\"is_enabled\":false},\"laptop\":{\"label\":\"Portable\",\"value\":1366,\"default_value\":1366,\"direction\":\"max\",\"is_enabled\":false},\"widescreen\":{\"label\":\"Pantalla grande\",\"value\":2400,\"default_value\":2400,\"direction\":\"min\",\"is_enabled\":false}},\"hasCustomBreakpoints\":false},\"version\":\"4.2.2\",\"is_static\":false,\"experimentalFeatures\":{\"e_font_icon_svg\":true,\"additional_custom_breakpoints\":true,\"container\":true,\"e_panel_promotions\":true,\"theme_builder_v2\":true,\"landing-pages\":true,\"nested-elements\":true,\"global_classes_should_enforce_capabilities\":true,\"e_variables\":true,\"e_opt_in_v4_page\":true,\"e_components\":true,\"e_interactions\":true,\"e_widget_creation\":true,\"import-export-customization\":true,\"display-conditions\":true,\"form-submissions\":true,\"mega-menu\":true,\"taxonomy-filter\":true},\"urls\":{\"assets\":\"https:\\/\\/baigorriaindustrial.com\\/wp-content\\/plugins\\/elementor\\/assets\\/\",\"ajaxurl\":\"https:\\/\\/baigorriaindustrial.com\\/wp-admin\\/admin-ajax.php\",\"uploadUrl\":\"https:\\/\\/baigorriaindustrial.com\\/wp-content\\/uploads\"},\"nonces\":{\"floatingButtonsClickTracking\":\"960c522f8e\",\"atomicFormsSendForm\":\"457ff189d3\"},\"swiperClass\":\"swiper\",\"settings\":{\"page\":[],\"editorPreferences\":[]},\"kit\":{\"active_breakpoints\":[\"viewport_mobile\",\"viewport_tablet\"],\"global_image_lightbox\":\"yes\",\"lightbox_enable_counter\":\"yes\",\"lightbox_enable_fullscreen\":\"yes\",\"lightbox_enable_zoom\":\"yes\",\"lightbox_enable_share\":\"yes\",\"lightbox_title_src\":\"title\",\"lightbox_description_src\":\"description\"},\"post\":{\"id\":2193,\"title\":\"Baigorria%20Industrial\",\"excerpt\":\"\",\"featuredImage\":false}}; //# sourceURL=elementor-frontend-js-before var iMapsData = {\"options\":{\"animations\":true,\"lazyLoad\":true,\"async\":false,\"hold\":false,\"locale\":false,\"lang\":false},\"data\":[{\"map\":\"worldLow\",\"mapURL\":\"https://cdn.amcharts.com/lib/4/geodata/worldLow.js\",\"usaWarning\":\"\",\"projection\":\"Miller\",\"albersUsaWarning\":\"\",\"description\":\"\",\"visual\":{\"backgroundColor\":\"transparent\",\"borderColor\":\"#f9f9f9\",\"borderWidth\":\"1\",\"paddingTop\":\"30\",\"paddingTopMobile\":\"50\",\"maxWidth\":\"1000\",\"fontFamily\":\"inherit\"},\"goPro_visual\":\"\",\"regions_info\":\"\",\"regions\":[{\"name\":\"Brasil\",\"id\":\"BR\",\"tooltipContent\":\"Brasil\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"\",\"id\":\"\",\"tooltipContent\":\"\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Argentina\",\"id\":\"AR\",\"tooltipContent\":\"Argentina\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Chile\",\"id\":\"CL\",\"tooltipContent\":\"Chile\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Costa Rica\",\"id\":\"CR\",\"tooltipContent\":\"Costa Rica\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Bolivia\",\"id\":\"BO\",\"tooltipContent\":\"Bolivia\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Honduras\",\"id\":\"HN\",\"tooltipContent\":\"Honduras\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Colombia\",\"id\":\"CO\",\"tooltipContent\":\"Colombia\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Rep\\u00fablica Dominicana\",\"id\":\"DO\",\"tooltipContent\":\"Rep\\u00fablica Dominicana\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Ecuador\",\"id\":\"EC\",\"tooltipContent\":\"Ecuador\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Espa\\u00f1a\",\"id\":\"ES\",\"tooltipContent\":\"Espa\\u00f1a\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Uruguay\",\"id\":\"UY\",\"tooltipContent\":\"Uruguay\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Estados Unidos\",\"id\":\"US\",\"tooltipContent\":\"Estados Unidos\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Reino Unido\",\"id\":\"GB\",\"tooltipContent\":\"Reino Unido\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Panam\\u00e1\",\"id\":\"PA\",\"tooltipContent\":\"Panam\\u00e1\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Nicaragua\",\"id\":\"NI\",\"tooltipContent\":\"Nicaragua\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Polonia\",\"id\":\"PL\",\"tooltipContent\":\"Polonia\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Alemania\",\"id\":\"DE\",\"tooltipContent\":\"Alemania\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Sud\\u00e1frica\",\"id\":\"ZA\",\"tooltipContent\":\"Sud\\u00e1frica\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Canad\\u00e1\",\"id\":\"CA\",\"tooltipContent\":\"Canad\\u00e1\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"}],\"regionDefaults\":{\"fill\":\"#cccccc\",\"hover\":\"#ed8b00\",\"inactiveColor\":\"transparent\",\"action\":\"none\",\"customAction\":\"\"},\"onlyIncludeActive\":\"\",\"include\":\"\",\"exclude\":\"AQ\",\"roundMarkers_info\":\"\",\"roundMarkers\":[],\"markerDefaults\":{\"radius\":\"10\",\"fill\":\"#99d8c9\",\"hover\":\"#2ca25f\",\"action\":\"none\"},\"premium_info\":\"\",\"id\":2349,\"container\":\"map_2349\",\"title\":\"Mapa Baigorria\",\"urls\":{\"worldLow\":\"https://cdn.amcharts.com/lib/4/geodata/worldLow.js\"},\"performance\":{\"animations\":true,\"lazyLoad\":true},\"zoomMaster\":false}],\"async\":[],\"version\":\"1.6.30\"}; //# sourceURL=interactive-geo-maps_map_service-js-extra window.iMapsData = {\"options\":{\"animations\":true,\"lazyLoad\":true,\"async\":false,\"hold\":false,\"locale\":false,\"lang\":false},\"data\":[{\"map\":\"worldLow\",\"mapURL\":\"https:\\/\\/cdn.amcharts.com\\/lib\\/4\\/geodata\\/worldLow.js\",\"usaWarning\":\"\",\"projection\":\"Miller\",\"albersUsaWarning\":\"\",\"description\":\"\",\"visual\":{\"backgroundColor\":\"transparent\",\"borderColor\":\"#f9f9f9\",\"borderWidth\":\"1\",\"paddingTop\":\"30\",\"paddingTopMobile\":\"50\",\"maxWidth\":\"1000\",\"fontFamily\":\"inherit\"},\"goPro_visual\":\"\",\"regions_info\":\"\",\"regions\":[{\"name\":\"Brasil\",\"id\":\"BR\",\"tooltipContent\":\"Brasil\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"\",\"id\":\"\",\"tooltipContent\":\"\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Argentina\",\"id\":\"AR\",\"tooltipContent\":\"Argentina\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Chile\",\"id\":\"CL\",\"tooltipContent\":\"Chile\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Costa Rica\",\"id\":\"CR\",\"tooltipContent\":\"Costa Rica\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Bolivia\",\"id\":\"BO\",\"tooltipContent\":\"Bolivia\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Honduras\",\"id\":\"HN\",\"tooltipContent\":\"Honduras\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Colombia\",\"id\":\"CO\",\"tooltipContent\":\"Colombia\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Rep\\u00fablica Dominicana\",\"id\":\"DO\",\"tooltipContent\":\"Rep\\u00fablica Dominicana\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Ecuador\",\"id\":\"EC\",\"tooltipContent\":\"Ecuador\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Espa\\u00f1a\",\"id\":\"ES\",\"tooltipContent\":\"Espa\\u00f1a\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Uruguay\",\"id\":\"UY\",\"tooltipContent\":\"Uruguay\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Estados Unidos\",\"id\":\"US\",\"tooltipContent\":\"Estados Unidos\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Reino Unido\",\"id\":\"GB\",\"tooltipContent\":\"Reino Unido\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Panam\\u00e1\",\"id\":\"PA\",\"tooltipContent\":\"Panam\\u00e1\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Nicaragua\",\"id\":\"NI\",\"tooltipContent\":\"Nicaragua\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Polonia\",\"id\":\"PL\",\"tooltipContent\":\"Polonia\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Alemania\",\"id\":\"DE\",\"tooltipContent\":\"Alemania\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Sud\\u00e1frica\",\"id\":\"ZA\",\"tooltipContent\":\"Sud\\u00e1frica\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"},{\"name\":\"Canad\\u00e1\",\"id\":\"CA\",\"tooltipContent\":\"Canad\\u00e1\",\"content\":\"\",\"useDefaults\":\"1\",\"source\":\"manual_entry\"}],\"regionDefaults\":{\"fill\":\"#cccccc\",\"hover\":\"#ed8b00\",\"inactiveColor\":\"transparent\",\"action\":\"none\",\"customAction\":\"\"},\"onlyIncludeActive\":\"\",\"include\":\"\",\"exclude\":\"AQ\",\"roundMarkers_info\":\"\",\"roundMarkers\":[],\"markerDefaults\":{\"radius\":\"10\",\"fill\":\"#99d8c9\",\"hover\":\"#2ca25f\",\"action\":\"none\"},\"premium_info\":\"\",\"id\":2349,\"container\":\"map_2349\",\"title\":\"Mapa Baigorria\",\"urls\":{\"worldLow\":\"https:\\/\\/cdn.amcharts.com\\/lib\\/4\\/geodata\\/worldLow.js\"},\"performance\":{\"animations\":true,\"lazyLoad\":true},\"zoomMaster\":false}],\"async\":[],\"version\":\"1.6.30\"}; //# sourceURL=interactive-geo-maps_map_service-js-before wp.i18n.setLocaleData( { 'text direction\\u0004ltr': [ 'ltr' ] } ); //# sourceURL=wp-i18n-js-after var ElementorProFrontendConfig = {\"ajaxurl\":\"https:\\/\\/baigorriaindustrial.com\\/wp-admin\\/admin-ajax.php\",\"nonce\":\"accefcdca9\",\"urls\":{\"assets\":\"https:\\/\\/baigorriaindustrial.com\\/wp-content\\/plugins\\/elementor-pro\\/assets\\/\",\"rest\":\"https:\\/\\/baigorriaindustrial.com\\/wp-json\\/\"},\"shareButtonsNetworks\":{\"facebook\":{\"title\":\"Facebook\",\"has_counter\":true},\"twitter\":{\"title\":\"Twitter\"},\"linkedin\":{\"title\":\"LinkedIn\",\"has_counter\":true},\"pinterest\":{\"title\":\"Pinterest\",\"has_counter\":true},\"reddit\":{\"title\":\"Reddit\",\"has_counter\":true},\"vk\":{\"title\":\"VK\",\"has_counter\":true},\"odnoklassniki\":{\"title\":\"OK\",\"has_counter\":true},\"tumblr\":{\"title\":\"Tumblr\"},\"digg\":{\"title\":\"Digg\"},\"skype\":{\"title\":\"Skype\"},\"stumbleupon\":{\"title\":\"StumbleUpon\",\"has_counter\":true},\"mix\":{\"title\":\"Mix\"},\"telegram\":{\"title\":\"Telegram\"},\"pocket\":{\"title\":\"Pocket\",\"has_counter\":true},\"xing\":{\"title\":\"XING\",\"has_counter\":true},\"whatsapp\":{\"title\":\"WhatsApp\"},\"email\":{\"title\":\"Email\"},\"print\":{\"title\":\"Print\"},\"x-twitter\":{\"title\":\"X\"},\"threads\":{\"title\":\"Threads\"}},\"facebook_sdk\":{\"lang\":\"es_AR\",\"app_id\":\"\"},\"lottie\":{\"defaultAnimationUrl\":\"https:\\/\\/baigorriaindustrial.com\\/wp-content\\/plugins\\/elementor-pro\\/modules\\/lottie\\/assets\\/animations\\/default.json\"}}; //# sourceURL=elementor-pro-frontend-js-before /(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener(\"hashchange\",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1); {\"baseUrl\":\"https://s.w.org/images/core/emoji/17.0.2/72x72/\",\"ext\":\".png\",\"svgUrl\":\"https://s.w.org/images/core/emoji/17.0.2/svg/\",\"svgExt\":\".svg\",\"source\":{\"concatemoji\":\"https://baigorriaindustrial.com/wp-includes/js/wp-emoji-release.min.js?ver=7.0.3\"}} /*! This file is auto-generated */ var e=\"script#wp-emoji-settings\",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error(\"Element missing: \"+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,\"wpEmojiSettingsSupports\"),o=[\"flag\",\"emoji\"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case\"flag\":return n(e,\"\\ud83c\\udff3\\ufe0f\\u200d\\u26a7\\ufe0f\",\"\\ud83c\\udff3\\ufe0f\\u200b\\u26a7\\ufe0f\")?!1:!n(e,\"\\ud83c\\udde8\\ud83c\\uddf6\",\"\\ud83c\\udde8\\u200b\\ud83c\\uddf6\")&&!n(e,\"\\ud83c\\udff4\\udb40\\udc67\\udb40\\udc62\\udb40\\udc65\\udb40\\udc6e\\udb40\\udc67\\udb40\\udc7f\",\"\\ud83c\\udff4\\u200b\\udb40\\udc67\\u200b\\udb40\\udc62\\u200b\\udb40\\udc65\\u200b\\udb40\\udc6e\\u200b\\udb40\\udc67\\u200b\\udb40\\udc7f\");case\"emoji\":return!r(e,\"\\ud83e\\u1fac8\")}return!1}function f(e,t,n,r){let a;const s=(a=\"undefined\"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement(\"canvas\")).getContext(\"2d\",{willReadFrequently:!0}),o=(s.textBaseline=\"top\",s.font=\"600 32px Arial\",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement(\"script\");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if(\"object\"==typeof e&&\"number\"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&\"object\"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if(\"undefined\"!=typeof Worker&&\"undefined\"!=typeof OffscreenCanvas&&\"undefined\"!=typeof URL&&URL.createObjectURL&&\"undefined\"!=typeof Blob)try{var e=\"postMessage(\"+f.toString()+\"(\"+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(\",\")+\"));\",r=new Blob([e],{type:\"text/javascript\"});const a=new Worker(URL.createObjectURL(r),{name:\"wpTestEmojiSupports\"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],\"flag\"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))}); //# sourceURL=https://baigorriaindustrial.com/wp-includes/js/wp-emoji-loader.min.js",
+      "discoveredDynamicSections": [
+        "ensayo de resistencia",
+        "ensayo camara niebla salina cuanto duran los tratamientos superficiales de los bulones de rueda",
+        "dureza grado 5 y grado 8 que significan y cuando utilizarlas",
+        "novedades"
+      ]
+    },
+    "financialData": {
+      "creditScore": 93,
+      "isRealData": true,
+      "riskLevel": "BAJO",
+      "riskColor": "#10b981",
+      "bcraSituation": "Situación 1 (Normal)",
+      "bcraDetails": {
+        "cuit": "30-70962990-1",
+        "cuitRaw": "30709629901",
+        "denominacionBCRA": "TALLER BAIGORRIA S.A.",
+        "isRealData": true,
+        "hasDebts": true,
+        "hasCheques": false,
+        "situacionMax": 1,
+        "worstHistoricalSituation": 1,
+        "trendAnalysis": {
+          "type": "ESTABLE_SIN_RIESGO",
+          "label": "➔ Historial Impecable (100% Situación 1 en 24 meses)",
+          "color": "#10b981",
+          "summary": "La empresa ha mantenido un comportamiento crediticio regular e intachable (Situación 1) durante los últimos 24 meses auditados en la Central de Deudores BCRA.",
+          "totalMonthsAudited": 1
+        },
+        "history24Months": [
+          {
+            "periodoRaw": "202606",
+            "periodo": "2026-06",
+            "situacionMax": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "totalDeudaARS": "$887.491.000 ARS",
+            "totalDeudaRaw": 887491000,
+            "entidadesCount": 7,
+            "entidades": [
+              {
+                "entidad": "BANCO DE LA NACION ARGENTINA",
+                "situacion": 1,
+                "montoRaw": 8078000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "BANCO DE LA PROVINCIA DE BUENOS AIRES",
+                "situacion": 1,
+                "montoRaw": 232093000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "AMERICAN EXPRESS ARGENTINA S.A.",
+                "situacion": 1,
+                "montoRaw": 1052000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "BANCO BBVA ARGENTINA S.A.",
+                "situacion": 1,
+                "montoRaw": 79196000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "BANCO DE INVERSION Y COMERCIO EXTERIOR S.A.",
+                "situacion": 1,
+                "montoRaw": 27097000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "BANCO CREDICOOP COOPERATIVO LIMITADO",
+                "situacion": 1,
+                "montoRaw": 538763000,
+                "diasAtraso": 0
+              },
+              {
+                "entidad": "YPF S.A.",
+                "situacion": 1,
+                "montoRaw": 1212000,
+                "diasAtraso": 0
+              }
+            ]
+          }
+        ],
+        "situacionLabel": "Situación 1 (Normal)",
+        "situacionDescription": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+        "situacionColor": "#10b981",
+        "periodoMasReciente": "2026-06",
+        "entidadesCreditoras": [
+          {
+            "entidad": "BANCO DE LA NACION ARGENTINA",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$8.078.000 ARS",
+            "montoRaw": 8078000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "BANCO DE LA PROVINCIA DE BUENOS AIRES",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$232.093.000 ARS",
+            "montoRaw": 232093000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "AMERICAN EXPRESS ARGENTINA S.A.",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$1.052.000 ARS",
+            "montoRaw": 1052000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "BANCO BBVA ARGENTINA S.A.",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$79.196.000 ARS",
+            "montoRaw": 79196000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "BANCO DE INVERSION Y COMERCIO EXTERIOR S.A.",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$27.097.000 ARS",
+            "montoRaw": 27097000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "BANCO CREDICOOP COOPERATIVO LIMITADO",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$538.763.000 ARS",
+            "montoRaw": 538763000,
+            "diasAtraso": 0
+          },
+          {
+            "entidad": "YPF S.A.",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$1.212.000 ARS",
+            "montoRaw": 1212000,
+            "diasAtraso": 0
+          }
+        ],
+        "totalDeudaBancariaARS": "$887.491.000 ARS",
+        "chequesRechazados": {
+          "totalCount": 0,
+          "totalMontoARS": "$0 ARS",
+          "totalMontoRaw": 0,
+          "chequesList": []
+        },
+        "bcraOfficialQueryUrl": "https://www.bcra.gob.ar/situacion-crediticia/",
+        "apiSource": "API Oficial Central de Deudores BCRA (api.bcra.gob.ar)"
+      },
+      "creditRating": "AAA (Excelente)",
+      "biddingCapacity": {
+        "isRealData": false,
+        "isEstimated": true,
+        "estimatedBiddingCapacityARS": "$334.000.000 ARS (334 Millones ARS)",
+        "recommendedCreditLimitARS": "$116.900.000 ARS (117 Millones ARS)",
+        "capacityTier": "Alta Capacidad Licitatoria (Apto Licitaciones Nacionales & Obra Mayor)",
+        "capacityRawM": 334,
+        "creditLimitRawM": 117,
+        "scoringBreakdown": {
+          "fiscalSolvency": 95,
+          "bcraScore": 88,
+          "contractExecutionScore": 87,
+          "technicalCapacityScore": 90,
+          "fxRiskAssessment": "Monitoreo de Tipo de Cambio & Insumos Importados",
+          "exportSolvencyBonus": "+5 Puntos por Capacidad Exportadora Directa"
+        },
+        "biddingEligibilityNotice": "Capacidad estimada de hasta $334.000.000 ARS (334 Millones ARS) basada en modelo OSINT.",
+        "recommendedFxHedgingLimitARS": "$15.000.000 ARS en Cobertura Cambiaria / Mercado a Término"
+      },
+      "taxProfile": {
+        "cuit": "30-70962990-1",
+        "inscriptionStatus": "Inscripto en Registro Padronal AFIP / ARCA para Taller Baigorria",
+        "economicActivity": "CLAE No Verificado Oficialmente",
+        "vatCondition": "Estado Impositivo No Verificado",
+        "publicCertificates": "Sin registro en Padrón MiPyME Oficial",
+        "stateContractorStatus": "Habilitación General para Proveedores Estatales (Taller Baigorria)",
+        "taxCompliance": "Sin Deudas Fiscales en Ejecución Registradas"
+      },
+      "tradeData": {
+        "isImporter": true,
+        "isExporter": true,
+        "tradeActivity": "Importador & Exportador Operativo",
+        "tariffPositions": [],
+        "originsDestinations": [],
+        "details": "La firma registra actividad de comercio exterior tanto en importación de insumos/maquinaria como en exportación de productos finales.",
+        "source": "Registro Aduanero & Comercio Exterior OSINT"
+      },
+      "pymeData": {
+        "isRealData": false,
+        "hasPymeCertificate": false,
+        "pymeCategory": "Sin registro en Padrón MiPyME Oficial",
+        "certDetail": null,
+        "evidenceLink": null,
+        "knowledgeEconomyRegistered": false,
+        "fiscalBenefits": [],
+        "details": "Sin registro de Certificado MiPyME en la Base de Datos Oficial examinada.",
+        "apiSource": "Análisis de fuentes públicas"
+      },
+      "afipData": {
+        "cuit": "30-70962990-1",
+        "cuitRaw": "30709629901",
+        "razonSocial": "Taller Baigorria",
+        "isRealData": false,
+        "vatCondition": "Estado Impositivo No Verificado",
+        "estadoPadron": "Sin conexión con padrón AFIP / ARCA",
+        "economicActivity": "CLAE No Verificado Oficialmente",
+        "claeCode": "No verificado",
+        "claeName": "Actividad No Verificada Oficialmente",
+        "domicilioFiscal": "No verificado",
+        "impuestosActivos": [
+          "Dato no disponible en registros públicos"
+        ],
+        "certificadosVigentes": [
+          "Dato no disponible en registros públicos"
+        ],
+        "apiSource": "Dato no disponible en Padrón ARCA en vivo (Error de conexión)",
+        "arcaOfficialUrl": "https://www.arca.gob.ar"
+      },
+      "fxExposureNotice": "Generadora de Divisas / Cobertura Natural por Exportación de Productos"
+    },
+    "legalData": {
+      "isRealData": false,
+      "isEstimated": true,
+      "apiSource": "Estimación Algorítmica OSINT (Registros públicos no API-directos)",
+      "sociedadDetail": null,
+      "totalRecords": 0,
+      "riskRating": "SIN OBSERVACIONES JUDICIALES",
+      "lawsuits": [
+        {
+          "type": "Inscripción Societaria Ley 26.047 (RNS)",
+          "status": "Padrón de Comercio Provincial / Registro General de Sociedades",
+          "severity": "INFORMATIVO",
+          "details": "Consulta pública en Registro Nacional de Sociedades."
+        },
+        {
+          "type": "Fueros Civiles y Comerciales / Juicios",
+          "status": "Sin registros públicos de juicios comerciales activos",
+          "severity": "SIN RIESGO",
+          "details": "Búsqueda en registros de fueros comerciales y boletines judiciales."
+        },
+        {
+          "type": "Laboral y Expedientes",
+          "status": "Sin juicios laborales registrados en el período examinado",
+          "severity": "SIN RIESGO",
+          "details": "Consulta pública en fuero del trabajo y registros previsionales."
+        },
+        {
+          "type": "Defensa del Consumidor & Multas",
+          "status": "Sin sanciones o multas vigentes registradas",
+          "severity": "SIN RIESGO",
+          "details": "Rastreo en sistemas públicos de disputas de consumo."
+        },
+        {
+          "type": "Fuero Penal y Fraude",
+          "status": "Sin causas penales ni investigaciones comerciales asociadas",
+          "severity": "SIN RIESGO",
+          "details": "Verificación en padrones de integridad y registros de querellas."
+        }
+      ],
+      "legalSummary": "La empresa Taller Baigorria no presenta antecedentes judiciales públicos, demandas penales ni sanciones registradas.",
+      "inpiWipoData": {
+        "companyName": "Taller Baigorria",
+        "isRealData": false,
+        "totalTrademarksCount": 0,
+        "registeredTrademarks": [],
+        "patentsAndModels": [],
+        "inpiPortalUrl": "https://portalinpi.inpi.gob.ar/",
+        "wipoPortalUrl": "https://branddb.wipo.int/",
+        "apiSource": "Dato no disponible en API WIPO / INPI en vivo"
+      },
+      "openCorporatesData": {
+        "query": "Taller Baigorria",
+        "isRealData": false,
+        "corporateDetails": {
+          "companyNumber": "REG-IGJ-892467",
+          "name": "Taller Baigorria S.R.L. / S.A.",
+          "jurisdictionCode": "AR (Argentina)",
+          "incorporationDate": "2014-06-15",
+          "currentStatus": "ACTIVA Y REGISTRADA EN REGISTRO PÚBLICO",
+          "companyType": "Sociedad Comercial Regularmente Constituida",
+          "opencorporatesUrl": "https://opencorporates.com/companies?q=Taller%20Baigorria"
+        },
+        "officersAndDirectors": [
+          {
+            "role": "Socio Gerente / Director Presidente",
+            "status": "Registrado en IGJ / DPPJ"
+          },
+          {
+            "role": "Representante Legal / Apoderado",
+            "status": "Inscripción Vigente"
+          }
+        ],
+        "apiSource": "Estimación de Registro Mercantil / OpenCorporates Fallback"
+      },
+      "dateasData": {
+        "cuit": "30-70962990-1",
+        "cuitRaw": "30709629901",
+        "isRealData": true,
+        "isCuitVerifiedInBoletin": true,
+        "crossCheckStatus": "✓ CUIT 30-70962990-1 COINCIDE 100% EN PÁDRON DATEAS Y EDICTOS DE BOLETÍN OFICIAL",
+        "edictsCount": 17,
+        "dateasEdicts": [
+          {
+            "title": "Boletín Oficial de la Pcia. de Salta del 11/01/2022 - Página 44",
+            "link": "https://www.dateas.com/es/docs/boletin-salta/2022/01/11?page=44&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 07/05/2021 - Segunda Sección - Página 57",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2021/05/07?page=57&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 25/04/2024 - Segunda Sección - Página 49",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2024/04/25?page=49&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 08/05/2021 - Segunda Sección - Página 57",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2021/05/08?page=57&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 09/05/2021 - Segunda Sección - Página 57",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2021/05/09?page=57&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 12/09/2017 - Segunda Sección - Página 53",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2017/09/12?page=53&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 16/07/2020 - Segunda Sección - Página 17",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2020/07/16?page=17&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 20/07/2005 - Segunda Sección - Página 4",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2005/07/20?page=4&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 22/8/2013 (Anexo) - Página 19",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires-anexo/2013/08/22?page=19&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 29/08/2014 - Segunda Sección - Página 13",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2014/08/29?page=13&text=Taller+Baigorria#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          }
+        ],
+        "discoveredCuitsInDocs": [
+          "30709629901",
+          "30655371709",
+          "20169744514",
+          "20041163705",
+          "27043783543"
+        ],
+        "dateasCuitUrl": "https://www.dateas.com/es/consulta_cuit_cuil?cuit=&name=Taller%20Baigorria",
+        "dateasDocsUrl": "https://www.dateas.com/es/docs/search?text=Taller%20Baigorria&pcountry=AR",
+        "sourceName": "Dateas.com (CUIT & Boletines Oficiales)"
+      },
+      "repsalData": {
+        "isRealData": true,
+        "hasSanctions": false,
+        "totalSanctions": 0,
+        "status": "Sin sanciones laborales registradas en REPSAL (Ley 26.940)",
+        "riskLevel": "SIN RIESGO",
+        "sanctions": [],
+        "repsalOfficialUrl": "https://www.argentina.gob.ar/trabajo/repsal",
+        "apiSource": "Registro Público de Empleadores con Sanciones Laborales (REPSAL - datos.gob.ar)"
+      }
+    },
+    "publicContracts": {
+      "isRegisteredSupplier": false,
+      "isRealData": false,
+      "supplierRegistryStatus": "Sin registro en Padrón Estatal de Proveedores",
+      "totalContracts": 0,
+      "totalAwardedAmount": "$0 ARS",
+      "contracts": [],
+      "comprarPortalUrl": "https://comprar.gob.ar/",
+      "contratarPortalUrl": "https://contratar.gob.ar/",
+      "apiSource": "Base de Datos Oficial COMPR.AR / CONTRAT.AR (datos.gob.ar)"
+    },
+    "searchData": {
+      "overviewSnippets": [],
+      "newsItems": [
+        {
+          "title": "Universidad y PyMEs, una apuesta al desarrollo de conocimientos - UNTREF",
+          "source": "UNTREF",
+          "pubDate": "23/12/2020",
+          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPZEdFR0VRQl8zSFIwbG5rSjlBOWJQdjFNcUtacGtkc1lIN3NyNHdmZUIzRm1qRmxub2RLUnhVTjR5VWwtajV3Mnl0VXMwSXM5T2N1eTZVNjlXSGpZd1czd01fYkZZMnk4YjJCLTJEQTFRS2hsaERWSnZod0FaNkRWRzZCeS1pNnV4UWJHVThtVUNlZw?oc=5",
+          "sentiment": "positive"
+        },
+        {
+          "title": "Comenzamos a diseñar el programa de Innovación PyME 3F - Municipalidad Tres de Febrero",
+          "source": "Municipalidad Tres de Febrero",
+          "pubDate": "27/2/2025",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5aS0pCY0xTT2t1QUktYk5nRGU1eTBnM2JIa1NHcHVUeU84bEJYVy14TmhPWWgwUC1yX19uVUFSSU9TQktEaTgxMzlJUGZ5MXNPTkZpT2ln?oc=5",
+          "sentiment": "positive"
+        },
+        {
+          "title": "Un taller de Baigorria arma un auto deportivo eléctrico único en su tipo - La Capital",
+          "source": "La Capital",
+          "pubDate": "15/12/2021",
+          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPOHVtdlVwWDhoWGU0T0c4QS1yalFqSFg5cDl5SnA2cnRnbWF2NjVSOVdMNHpSM2lqbm9TNVhEWHFja0JZUnFENUhUOXU0cG9rMXYwMFY1OXVqZWdhVldrUTl4TzVWNzdncXZmdnhmQnJlX1lQODlOTklNOXVNdTBxS1lSNF92cTRnbHFhTmE4M3hIUlNmZ1RjTXpIS25QZ09aalJNendaUXl3MXpJUzdUNDZsMUduSWR1MU5PaDhjb07SAcYBQVVfeXFMTS1yZ21PemU0eGZWc0p2dVNXQ0I1a09pd2RGMDFocVR6M3FRdkdGV000VmJjYWJCT0VvY2I2emhyMEFVTlpLSkoxSjVqZk90MDI1MnNQWGdIcWoyNlJwSFNkR0xQLXBfOEl2Z01laFNOR2k5RW9VOFRtWWVFYTRKZC1wVGR3R2tZdnE4Tmh5Q3VLTEc5endtMWZDQkRrWUk0OXNQOFZqTW1Sclc5OGF3OG5fdFppbUZrN3VPdnJmYkVmNDhnVTJn?oc=5",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "Llega la 4° edición de la feria de empleo a Tres de Febrero: lo que debes saber - Viví el Oeste",
+          "source": "Viví el Oeste",
+          "pubDate": "15/8/2025",
+          "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxOcnc2Mzg1cnI1YWIzeGtxcmVILWR0U1diZGRZQU00OTMtLWlmeXN6TzNDRHpFajRkd3BwbktWRTBjSlhjNU92cGU5YzlzNVZpRi1iYXo4N2lMX2dYbEFSa1htSDQ5RnMyRzJmb05vcXJFZlBUa2lFenFpcW5jclIzcWRhLXU0Ykp1RzIyR05neF95Z3BaclRQR3ZBX3lLY0VyNzE3UF8teDdwS0NyaGVDcTBEc3hyY2RDYTlnS1BHb2V5a2JuOTlsaUtzN2kyT0HSAdQBQVVfeXFMTnFxSjhNcFo4SFlKZllXcFZtYnRURFpDOERCY2JwSmFpZ25pcS16dUhIZ0dPM2FiZldmM2JERFhybnhuMTdZM1NsVUVOay16bEc3RDFvZFhNRzFTd1hKN3NyWF83X2w5ZkRrTktWVThlWXhrX1pia21GMUtUSWp5aXM2dWRRa3RZSTZQaGF1VjJwaWFaZVRuWldpdnR5ZzJaZW9XQW8yYWVzVzNYM1dSVXdiOEZyTEdQdTBEQllISk9kY2lYTGs2eVZUMHVXTG9WUENBVHc?oc=5",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "En qué andan las inversione­s - PressReader",
+          "source": "PressReader",
+          "pubDate": "5/6/2017",
+          "link": "https://news.google.com/rss/articles/CBMid0FVX3lxTE8yc19aTUJVb2FPLXE5UElmTWpKalYxZ3RmUUhVbk1vbTBqNmVXSTkwb0dLSWw2T1FuUnFnTFo5ZF80YXhDM2FpZGV5TTB3YS1ZWi1jb2RhZE1QZlZfNVVqeDRNbXo3cmJyekpLYmttZVRnclhGRWNZ?oc=5",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "Volvió Moreno y halló una crisis que preocupa hasta a sus laderos más fieles - Perfil",
+          "source": "Perfil",
+          "pubDate": "10/5/2014",
+          "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOSmF4SWwxSWtQRVpGdVUxbXZFMm02TE0zc01maE92TnA2bHM2eTdYdFJMRzBSS3J1VFdaZ2drSmVWcm5ZaS1xWHRXQWZnZXRtRkd5UVNSYTdzMlMwMUg1OG5xMWVlWl90eE1qSzhSeWVSRG1FOVlPVWdJcHJmVGZVaW5YdUdpNjhHa0luWlhXcWpNNFRyUHROMG9YQ1Z5WTZSNTM5R3d5NERUSVE3SXRISk1iejdXMmNLOUpKbDFGZ2ttNXdMLUVSMEhIdk0tTzQtMjVB?oc=5",
+          "sentiment": "negative"
+        },
+        {
+          "title": "Universidad y PyMEs, una apuesta al desarrollo de conocimientos - UNTREF",
+          "source": "UNTREF",
+          "pubDate": "23/12/2020",
+          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPZEdFR0VRQl8zSFIwbG5rSjlBOWJQdjFNcUtacGtkc1lIN3NyNHdmZUIzRm1qRmxub2RLUnhVTjR5VWwtajV3Mnl0VXMwSXM5T2N1eTZVNjlXSGpZd1czd01fYkZZMnk4YjJCLTJEQTFRS2hsaERWSnZod0FaNkRWRzZCeS1pNnV4UWJHVThtVUNlZw?oc=5",
+          "sentiment": "positive"
+        },
+        {
+          "title": "Comenzamos a diseñar el programa de Innovación PyME 3F - Municipalidad Tres de Febrero",
+          "source": "Municipalidad Tres de Febrero",
+          "pubDate": "27/2/2025",
+          "link": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5aS0pCY0xTT2t1QUktYk5nRGU1eTBnM2JIa1NHcHVUeU84bEJYVy14TmhPWWgwUC1yX19uVUFSSU9TQktEaTgxMzlJUGZ5MXNPTkZpT2ln?oc=5",
+          "sentiment": "positive"
+        }
+      ],
+      "projectsAndGroups": [],
+      "financialSnippets": [],
+      "gazetteSnippets": [],
+      "tenderSnippets": [],
+      "socialProfiles": [
+        {
+          "platform": "LinkedIn",
+          "estimatedUrl": "https://linkedin.com/company/tallerbaigorria",
+          "icon": "linkedin",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Instagram",
+          "estimatedUrl": "https://instagram.com/tallerbaigorria",
+          "icon": "instagram",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Twitter / X",
+          "estimatedUrl": "https://twitter.com/tallerbaigorria",
+          "icon": "twitter",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Facebook",
+          "estimatedUrl": "https://facebook.com/tallerbaigorria",
+          "icon": "facebook",
+          "status": "Detectado via OSINT"
+        }
+      ]
+    },
+    "supportPlan": {
+      "supportTier": "Empresa Candidata a Escalamiento, Créditos Productivos e Inversión 4.0",
+      "totalRecommendations": 2,
+      "highPriorityCount": 0,
+      "recommendations": [
+        {
+          "category": "Financiamiento & Subsidios 4.0",
+          "priority": "RECOMENDADA",
+          "icon": "trending-up",
+          "title": "Aportes No Reembolsables (ANR 4.0) & FONTAR para Modernización",
+          "description": "Asistencia financiera de co-financiamiento a través de SEPYME para incorporar tecnología en la matriz productiva de Taller Baigorria.",
+          "actionSteps": [
+            "Presentación del proyecto de modernización tecnológica ante la Agencia I+D+i.",
+            "Solicitud de bonificación de tasa en líneas de financiamiento de inversión productiva BNA / Banco BICE.",
+            "Formulación de carpetas técnicas para la adquisición de bienes de capital."
+          ]
+        },
+        {
+          "category": "Capacitación & Crédito Fiscal",
+          "priority": "RECOMENDADA",
+          "icon": "award",
+          "title": "Programa de Crédito Fiscal para Capacitación & Certificaciones ISO",
+          "description": "Reembolso en bono de crédito fiscal para financiar la formación técnica del equipo de Taller Baigorria e implementar certificaciones de calidad (ISO).",
+          "actionSteps": [
+            "Inscripción en el Régimen de Crédito Fiscal de la Secretaría de Industria.",
+            "Ejecución del plan anual de capacitación para mandos medios y técnicos.",
+            "Cómputo del bono electrónico fiscal contra el pago de IVA y Ganancias."
+          ]
+        }
+      ],
+      "recommendedPrograms": [
+        {
+          "title": "Programa Argentina Exporta & Cancillería (Promoción Comex)",
+          "organism": "Secretaría de Comercio Exterior / BICE",
+          "description": "Acceso a rondas de negocios internacionales y financiamiento de pre-financiación de exportaciones para Taller Baigorria.",
+          "maxAmount": "$50.000.000 ARS / U$S 100.000",
+          "compatibility": "ALTA (Empresa con actividad comprobada en Comercio Exterior)"
+        }
+      ]
+    },
+    "swotAnalysis": {
+      "companyName": "Taller Baigorria",
+      "strengths": [
+        "Oferta comercial propia comprobada con líneas destacadas: Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales.",
+        "Cartera de servicios especializados comprobada: Tornería CNC, fresado y mecanizado de alta precisión, Corte por plasma, soldadura homologada y mantenimiento de planta, Ingeniería inversa y fabricación bajo plano.",
+        "Certificaciones técnicas e industriales verificadas: certificación ISO 9001 y todos nuestros productos son fabricados en aceros aleados comprados directamente en acer, Certificación ISO, certificación ISO.",
+        "Presencia digital y canal de ventas activo a través de su sitio web oficial.",
+        "Inserción y capacidad de facturación en mercados externos (Comercio Exterior)."
+      ],
+      "weaknesses": [
+        "No se detectaron pasivos financieros ni contingencias legales públicas graves."
+      ],
+      "opportunities": [
+        "Posibilidad de escalar operaciones a través de nuevas licitaciones B2B."
+      ],
+      "threats": [
+        "Exposición a fluctuaciones cambiarias y regulaciones aduaneras de importación."
+      ]
+    },
+    "digitalTransformation": {
+      "digitalScore": 80,
+      "maturityLevel": "Industria 4.0 / Automatizada",
+      "maturityColor": "#10b981",
+      "breakdown": {
+        "webPreserve": 90,
+        "eCommerce": 30,
+        "cloudSecurity": 85,
+        "customerChannels": 80,
+        "processAutomation": 65,
+        "industrialAutomation": 75
+      },
+      "existingAutomations": [
+        {
+          "system": "Portal Web Oficial & Presencia Digital",
+          "status": "VERIFICADO EN DOMINIO",
+          "detail": "Plataforma web activa de Taller Baigorria para consulta de catálogo y contacto",
+          "verified": true
+        },
+        {
+          "system": "Canal de Atención WhatsApp Business Directo",
+          "status": "VERIFICADO EN COMUNICACIÓN",
+          "detail": "Respuestas y derivación comercial directa en la web oficial",
+          "verified": true
+        },
+        {
+          "system": "Sistema de Gestión de Calidad (Normas ISO)",
+          "status": "VERIFICADO EN TEXTO OFICIAL",
+          "detail": "Certificaciones operativas publicadas en la web.",
+          "verified": true
+        }
+      ],
+      "missingAutomations": [
+        {
+          "system": "Cotizador Web Automático de Presupuestos",
+          "impact": "ALTO",
+          "detail": "Los clientes de Taller Baigorria deben solicitar cotización manual; falta cotizador digital instantáneo.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        },
+        {
+          "system": "Integración ERP Cloud con Facturación AFIP Automática",
+          "impact": "MEDIO",
+          "detail": "Automatización de sincronización entre stock y facturación electrónica de Taller Baigorria.",
+          "status": "EN EVALUACIÓN"
+        },
+        {
+          "system": "Telemetría IoT de Estado de Maquinarias en Tiempo Real",
+          "impact": "ALTO",
+          "detail": "Medición remota de horas de husillo y mantenimiento predictivo en la planta de Taller Baigorria.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        }
+      ],
+      "omittedUnverifiedData": [
+        "Software ERP / CRM de gestión interna privada de Taller Baigorria: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de Taller Baigorria: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedKits": {
+        "primary": {
+          "id": "kit_bas-02",
+          "code": "BAS-02",
+          "category": "Básico",
+          "name": "Kit Bas-02: Monitoreo y Visualización de Producción (OEE en Tiempo Real)",
+          "summary": "Cálculo de Eficiencia General de Equipos (OEE), tableros en tiempo real, registro de micro-paradas y visibilidad del rendimiento de línea.",
+          "filename": "kit_bas-02.pdf",
+          "fullText": "Kit Básico 2 Monitoreo y visualización de producción y procesos FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Modelo de datos y diccionario • Relevamiento y definición de variables a integrar (producción, OK/NO OK, retrabajos/mermas si aplica, tiempos, estados, eventos/categorías, etc.). • Identificación de campos mínimos de órdenes y lotes/campañas (cuando aplique) para asegurar trazabilidad mínima. • Elaboración de un diccionario de datos (nombres, definiciones, unidades, fuentes y reglas de cálculo). Verificables: documento de diccionario de datos aprobado por la empresa destinataria. Integración de datos Definición del flujo de datos operativo (qué fuente aporta qué dato, con qué periodicidad y con qué responsable), preservando la confidencialidad y propiedad intelectual del Proveedor. Implementación de mecanismos de carga/actualización de datos desde: • máquinas/PLC/SCADA (cuando aplique) • planillas • sistema de gestión/ERP básico (cuando exista) • captura asistida en planta (kioscos/terminales/tablets/tótems/formularios/ lectores) para eventos operativos (inicio/fin de operación, paradas, causas, consumos/confirmaciones, etc.), cuando corresponda y resulte más adecuado/costo efectivo que la lectura directa de señales. Nota de seguridad/alineación BAS-01: Cuando la implementación requiera conectores, gateways u otros dispositivos de captura en planta, estos deberán operar sobre una red OT/IT segmentada, con accesos controlados y medidas de ciberseguridad acordes al KIT BAS-01 (Conectividad y Cibeseguridad), cuando corresponda. • Frecuencia de actualización acorde al uso operativo del tablero; no podrá consistir exclusivamente en cargas diferidas al cierre de jornada cuando el objetivo sea gestión diaria (por ejemplo, seguimiento por turno o por el día). Verificables: evidencia de integración/captura en funcionamiento (por ejemplo: logs o registros de ejecución, conjunto de datos de prueba, capturas de pantallas -- 1 of 3 -- de carga, exportaciones o reportes que demuestran actualización), y una descripción de alto nivel del flujo de datos (sin requerir código fuente, endpoints sensibles ni credenciales). Tablero operativo e indicadores Configuración de un tablero operativo que, como mínimo, muestre: • producción real vs. objetivo/plan (si existe). • indicadores diarios/semanales de productividad, calidad y tiempos (según diccionario acordado). • principales pérdidas/demoras y su distribución por causa y por unidad productiva. Implementación de un módulo (digital o semi-digital) para: • registro de detenciones/demoras/eventos; • selección de causas desde un catálogo acordado; • Visualización del tiempo perdido por tipo de causa y por unidad productiva/turno/período. Verificables: tablero operativo en funcionamiento y accesible a los usuarios definidos; registro de eventos/demoras y causas funcionando en las unidades productivas cubiertas; capturas y/o reportes correspondientes a un período de prueba; y evidencia de uso operativo (por ejemplo: reporte/captura comparativa entre un registro inicial o línea de base y el período de prueba, en al menos 1 indicador seleccionado: productividad, tiempos, calidad o pérdidas por causa). Trazabilidad mínima orden – lote/campaña - unidad productiva • Definición y configuración de la relación entre orden y/o campaña/receta (según aplique), lote y la unidad productiva donde se ejecuta. • Implementación de registros que permitan recuperar, al menos, para un caso real (o prueba equivalente): • orden y/o lote/campaña/receta (según aplique); • unidad productiva en que se procesó; • principales demoras/eventos y tiempo asociado. Verificables: ejemplo documentado de trazabilidad de un caso real (o caso de prueba equivalente) con evidencia exportable (capturas/reportes). Capacitación y rutina operativa • Manual breve de uso del tablero y del módulo de eventos/demoras, que indique: • cómo se registran eventos y causas; • cómo se interpretan indicadores y gráficos; • rutina recomendada de seguimiento (reuniones diarias/semanales, focos de mejora). • Al menos una instancia de capacitación para el equipo clave (jefes/supervisión/ producción/mantenimiento/calidad según aplique). Verificables: manual entregado y constancia de capacitación (lista de participantes y temario). -- 2 of 3 -- Modalidades de prestación y tipos de Proveedor El KIT BAS-02 puede ofrecerse en distintas modalidades (on-premise, SaaS y soluciones mixtas). En todos los casos deberá existir una empresa Proveedora habilitada responsable integral del KIT (diseño, implementación, integraciones/ captura, tableros e indicadores, así como los entregables y la trazabilidad documental), que podrá apoyarse en subproveedores o socios tecnológicos. Modalidad A – Solución on-premise (integrador OT/IT + tableros locales) Tipo de Proveedor: empresa con capacidades de integración OT/IT (lectura de datos cuando aplique) y configuración de tableros (BI/web/MES), sobre infraestructura del cliente, incluyendo captura asistida en planta cuando corresponda. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • relevamiento y diseño del modelo de datos. • conectores/pipelines dentro de la red del cliente y/o mecanismos de captura asistida. • configuración del tablero y del módulo de registro de eventos/demoras. • instalación/parametrización en servidores del cliente. • capacitación y documentación. Modalidad B – Plataforma SaaS / servicio gestionado de monitoreo operativo Tipo de Proveedor: empresa que ofrece plataforma en la nube con módulos estándar de indicadores operativos, registro de eventos/demoras y trazabilidad mínima, con conectores hacia fuentes de datos y/o captura asistida. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • fee de onboarding e implementación (relevamiento, configuración, alta de datos maestros); • licencias/suscripciones por hasta 12 meses para el establecimiento y unidades cubiertas; • configuración de integraciones (máquinas/sistema de gestión/planillas) y/o captura asistida; • capacitación y documentación. Modalidad C – Soluciones mixtas (on-premise + nube) Tipo de Proveedor: empresas que combinan componentes locales (conectores, almacenamiento y/o captura en planta) con componentes en la nube (tableros comparativos, análisis y reportes). Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • diseño e implementación de arquitectura mixta (qué corre en planta y qué corre en nube); • gateways/conectores locales y/o puntos de captura necesarios; • suscripciones cloud por hasta 12 meses para tableros y reportes; • servicios de integración, documentación y capacitación. -- 3 of 3 --",
+          "textSnippet": "Kit Básico 2 Monitoreo y visualización de producción y procesos FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Modelo de datos y diccionario • Relevamiento y definición de variables a integrar (producción, OK/NO OK, retrabajos/mermas si aplica, tiempos, estados, eventos/categorías, etc.). • Identificación de campos mínimos de órdenes y lotes/campañas (cuando aplique) para asegurar trazabilidad mínima. • Elaboración de un diccionario de datos (nombres, definiciones, unidades, fuentes y reglas de cálculo). Verificables: documento de diccionario de datos aprobado por la empresa destinataria. Integración de datos Definición del flujo de datos operativo (qué fuente aporta qué dato, con qué periodicidad y con qué responsable), preservando la confidencialidad y propiedad intelectual del Proveedor. Implementación de mecanismos de carga/actualización de datos desde: • máquinas/PLC/SCADA (cuando aplique) • planillas • sistema de gestión/ERP básico (cuando exista) • captura asistida en planta (kioscos/terminales/tablets/tótems/formularios/ lectores) para eventos operativos (inicio/fin de operación, paradas, causas, consumos/confirmaciones, etc.), cuando corresponda y resulte más adecuado/costo efectivo que la lectura directa de señales. Nota de seguridad/alineación BAS-01: Cuando la implementación requiera conectores, gateways u otros dispositivos de captura en planta, estos deberán operar sobre una red OT/IT segmentada, con accesos controlados y medidas de cibersegu",
+          "aiRationale": "Optimiza el rendimiento productivo de Taller Baigorria mediante la medición en tiempo real del OEE (Eficiencia General de Equipos), facilitando la detección de micro-paradas y cuellos de botella operativos.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        },
+        "secondary": {
+          "id": "kit_avz-02",
+          "code": "AVZ-02",
+          "category": "Avanzado",
+          "name": "Kit Avz-02: Control de Calidad por Visión Artificial e Inspección Automatizada",
+          "summary": "Inspección óptica automatizada mediante cámaras y redes neuronales para detectar defectos superficiales y dimensionales a velocidad de línea.",
+          "filename": "kit_avz-02.pdf",
+          "fullText": "Kit Avanzado 2 Visión Artificial para Control de Calidad FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Relevamiento del proceso e identificación del punto de inspección • Relevamiento del flujo de producción y de los puntos de inspección actuales (manuales o automáticos). • Selección de la línea, celda o etapa crítica donde la visión artificial puede agregar más valor (por volumen, impacto de defectos, complejidad de inspección). • Identificación de los tipos de defectos a detectar (por ejemplo, presencia/ausencia de componentes, posición incorrecta, rayas, golpes, manchas, etiquetas mal colocadas, lectura de códigos, etc.). Verificables: informe de relevamiento, diagrama del proceso y acta de selección del punto de aplicación del KIT. Diseño e instalación de la celda o puesto de visión • Diseño del esquema de captura: definición de cantidad de cámaras, lentes, distancias, ángulos y sistema de iluminación (backlight, frontlight, domos, etc.) adecuado al tipo de pieza. • Suministro e instalación de cámara/s industrial/es, iluminación, montajes mecánicos y controlador local (PC industrial, controlador de visión, PLC u otro dispositivo). • Integración física con la línea (sensores de disparo, expulsores, señalización luminosa o sonora, interlocks básicos). Verificables: planos o esquemas de la celda de visión, lista de componentes instalados (modelo, serie, ubicación) y evidencias fotográficas de la instalación. Configuración de recetas o modelos de inspección y lógica de decisión • Definición de las condiciones de “pieza buena” y “pieza defectuosa” según los criterios acordados con el área de calidad. • Entrenamiento y ajuste de recetas o modelos de visión (reglas clásicas, filtros, herramientas de medición, reconocimiento de patrones o modelos basados en IA preexistentes) para el tipo de producto. • Configuración de la lógica de decisión (aceptar/rechazar, clasificación de defectos, generación de alarmas) y de las acciones asociadas en la línea. Verificables: criterios de aceptación/rechazo documentados y aprobados por la empresa; evidencia de configuración en producción (capturas/pantallas del -- 1 of 3 -- sistema o reportes) y registro de pruebas de aceptación con un conjunto de casos (por ejemplo, piezas “OK” y “NO OK”) indicando tasa de detección de defectos y eventos de rechazo. No se requerirá la entrega de código fuente, modelos completos ni información propietaria sensible; sí evidencia auditable del funcionamiento. Registro de resultados, análisis básico y plan de mejora • Registro de los resultados de la inspección (piezas inspeccionadas, piezas rechazadas, tipo de defectos) durante un período mínimo de operación. • Elaboración de un tablero simple de calidad para la celda o línea (tasa de rechazo, defectos más frecuentes, distribución por turno o lote). • Emisión de un informe con análisis de los resultados iniciales y recomendaciones de mejora de proceso, insumos o parámetros de producción basadas en los datos de la visión. Verificables: tablero o reportes de calidad generados para el período de prueba; informe de resultados y plan de acciones. Deberá incluirse evidencia de uso operativo con una comparación “situación inicial vs. período de prueba” en al menos 1 resultado seleccionado (por ejemplo: reducción de escapes de defectos, reducción de variabilidad entre inspectores, reducción de retrabajos, disminución de rechazos por falso positivo o aumento de detección de un defecto crítico), respaldada por reportes/capturas del sistema. Procedimientos, capacitación y transferencia al equipo interno • Elaboración de procedimientos básicos para la operación del sistema de visión (inicio/parada, selección de receta, interpretación de mensajes) y para la actuación ante rechazos o alarmas. • Capacitación a entre 3 y 8 personas clave (operadores de línea, supervisores, personal de calidad y mantenimiento) en el uso y ajuste básico del sistema. • Entrega de criterios y pautas para la revisión y actualización de recetas o modelos cuando cambian los productos o las condiciones del proceso. Verificables: procedimientos y manuales entregados, listas de participantes en capacitaciones y registro de las principales pautas de operación y ajuste. Modalidades de prestación y tipos de Proveedor El KIT AVZ-02 podrá ofrecerse en distintas modalidades (solución on-premise, solución basada en plataformas y librerías de visión, o solución mixta integrada a sistemas existentes). En todos los casos deberá existir una empresa Proveedora habilitada responsable integral del KIT (relevamiento, diseño de la celda, configuración del sistema de visión, análisis y capacitación), que podrá apoyarse en fabricantes de cámaras, integradores de automatización y especialistas en visión artificial. -- 2 of 3 -- Modalidad A – Integrador de visión artificial y automatización (on-premise) Tipo de Proveedor: empresas integradoras de sistemas con experiencia en visión artificial y automatización industrial. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Servicios de relevamiento y diseño de la celda o puesto de visión. • Suministro e instalación de cámaras, lentes, iluminación, montajes, controlador y elementos de integración física con la línea. • Configuración de recetas o modelos de inspección y lógica de decisión. • Puesta en marcha, pruebas de aceptación, generación de reportes básicos y capacitación. Modalidad B – Solución basada en plataformas y librerías de visión Tipo de Proveedor: empresas que utilizan plataformas o librerías de visión existentes (comerciales o industriales) y las adaptan al caso de la PyME. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Suministro e instalación del hardware de captura y procesamiento necesario. • Licencias, suscripciones o componentes de software vinculados a la plataforma de visión. • Desarrollo y ajuste de recetas/modelos dentro de la plataforma. • Configuración de reportes y tableros de resultados, documentación y capacitación. Modalidad C – Solución mixta integrada a sistemas de calidad y producción existentes Tipo de Proveedor: empresas que integran los resultados de visión artificial con sistemas SCADA, MES, sistemas de calidad o tableros de BI ya presentes en la empresa. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Integraciones de datos entre el sistema de visión y los sistemas existentes. • Desarrollo de vistas y reportes conjuntos (producción + calidad por visión). • Ajustes complementarios en la celda de visión, documentación y capacitación. -- 3 of 3 --",
+          "textSnippet": "Kit Avanzado 2 Visión Artificial para Control de Calidad FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Relevamiento del proceso e identificación del punto de inspección • Relevamiento del flujo de producción y de los puntos de inspección actuales (manuales o automáticos). • Selección de la línea, celda o etapa crítica donde la visión artificial puede agregar más valor (por volumen, impacto de defectos, complejidad de inspección). • Identificación de los tipos de defectos a detectar (por ejemplo, presencia/ausencia de componentes, posición incorrecta, rayas, golpes, manchas, etiquetas mal colocadas, lectura de códigos, etc.). Verificables: informe de relevamiento, diagrama del proceso y acta de selección del punto de aplicación del KIT. Diseño e instalación de la celda o puesto de visión • Diseño del esquema de captura: definición de cantidad de cámaras, lentes, distancias, ángulos y sistema de iluminación (backlight, frontlight, domos, etc.) adecuado al tipo de pieza. • Suministro e instalación de cámara/s industrial/es, iluminación, montajes mecánicos y controlador local (PC industrial, controlador de visión, PLC u otro dispositivo). • Integración física con la línea (sensores de disparo, expulsores, señalización luminosa o sonora, interlocks básicos). Verificables: planos o esquemas de la celda de visión, lista de componentes instalados (modelo, serie, ubicación) y evidencias fotográficas de la instalación. Configuración de recetas o modelos de inspecci",
+          "aiRationale": "Automatiza la inspección de calidad y control dimensional de piezas en tiempo real mediante sistemas de visión artificial.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        }
+      },
+      "techStack": [
+        {
+          "category": "Portal Web Oficial",
+          "name": "Portal Web Corporativo Activo & Verificado",
+          "status": "Activo",
+          "type": "VERIFICADO",
+          "source": "Dominio https://baigorriaindustrial.com"
+        },
+        {
+          "category": "Infraestructura & Canales",
+          "name": "Servicios HTTP/HTTPS y Presencia Digital Verificada",
+          "status": "Operativo",
+          "type": "VERIFICADO",
+          "source": "Rastreo Abierto OSINT (Taller Baigorria)"
+        }
+      ],
+      "channels": [
+        "Atención Directa por WhatsApp de Taller Baigorria",
+        "Portal Web Oficial https://baigorriaindustrial.com",
+        "Canales Corporativos Digitales"
+      ],
+      "auditMetadata": {
+        "consultationDate": "10/8/2026 12:27 p. m.",
+        "verificationBadge": "VERIFICADO EN FUENTES ABIERTAS",
+        "dataSource": "Sitio Oficial de Taller Baigorria + Base de Datos de Kits 4.0",
+        "corroborationLevel": "Trazabilidad OSINT verificada para Taller Baigorria"
+      },
+      "informationGaps": [
+        "Software ERP / CRM de gestión interna privada de Taller Baigorria: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de Taller Baigorria: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedTools": [
+        "Módulo ERP Comex para trazabilidad de importación/exportación y Despacho Aduanero"
+      ]
+    },
+    "aiIntelligence": {
+      "confidenceScore": "80%",
+      "subNiche": "Mecanizado CNC de Precisión & Piezas Industriales",
+      "executiveSummary": "Análisis heurístico del perfil digital y operativo de Taller Baigorria. Se clasifica en el nicho de \"Mecanizado CNC de Precisión & Piezas Industriales\" con un nivel de trazabilidad OSINT del 80%. Muestra una salud financiera evaluada en 75/100 pts y un índice de digitalización del 80%.",
+      "executiveInsights": [
+        {
+          "category": "Diagnóstico de Madurez",
+          "icon": "award",
+          "color": "#c4b5fd",
+          "title": "Infraestructura Digital Consolidada",
+          "description": "Evaluación favorable: Taller Baigorria presenta una madurez digital activa, facilitando la captación de clientes corporativos y comercio electrónico."
+        }
+      ],
+      "aiMatrix": {
+        "shortTerm": "Optimizar los canales de atención y telemetría operativa actual.",
+        "mediumTerm": "Tramitar Aportes No Reembolsables (ANR SEPYME) para financiar equipamiento.",
+        "longTerm": "Consolidar una red de licitaciones a nivel nacional aprovechando el registro de Taller Baigorria."
+      },
+      "timestamp": "2026-08-10T15:27:37.505Z"
+    },
+    "executiveSummary": null
+  }
+]

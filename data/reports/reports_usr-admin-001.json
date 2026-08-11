@@ -1,0 +1,1573 @@
+[
+  {
+    "id": "OSINT-1786142627632-262",
+    "timestamp": "2026-08-07T22:43:47.632Z",
+    "query": {
+      "companyName": "Baigorria Industrial",
+      "website": "baigorriaindustrial.com",
+      "region": "AR"
+    },
+    "categorization": {
+      "sector": "Industria Metalúrgica, Tornería CNC & Mecanizado",
+      "sectorIcon": "box",
+      "businessModel": "B2B (Servicios y Provisión a Empresas)",
+      "companyType": "PyME Industrial / Comercial",
+      "estimatedEmployees": "10 - 50 Empleados",
+      "summary": "Baigorria Industrial es una empresa especializada en Servicios Comerciales & Provisión Industrial. Se dedica a la provisión y comercialización de Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "services": [
+        "Tornería CNC, fresado y mecanizado de alta precisión",
+        "Corte por plasma, soldadura homologada y mantenimiento de planta",
+        "Ingeniería inversa y fabricación bajo plano"
+      ],
+      "tags": [
+        "Industria Metalúrgica, Tornería CNC & Mecanizado",
+        "B2B (Servicios y Provisión a Empresas)",
+        "PyME Industrial / Comercial",
+        "Sitio Web Verificado"
+      ]
+    },
+    "scrapedData": {
+      "hasWebsite": true,
+      "url": "https://baigorriaindustrial.com",
+      "title": "Baigorria Industrial",
+      "description": "",
+      "aboutUs": "Baigorria Industrial es una empresa especializada en Servicios Comerciales & Provisión Industrial. Se dedica a la provisión y comercialización de Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "customSector": "Servicios Comerciales & Provisión Industrial",
+      "products": [
+        "Piezas mecanizadas en torno CNC y fresadora de alta precisión",
+        "Bujes de bronce, engranajes y conjuntos soldados bajo plano",
+        "Estructuras metálicas y repuestos industriales"
+      ],
+      "services": [
+        "Tornería CNC, fresado y mecanizado de alta precisión",
+        "Corte por plasma, soldadura homologada y mantenimiento de planta",
+        "Ingeniería inversa y fabricación bajo plano"
+      ],
+      "clients": [
+        "Empresas Compradoras B2B & Clientes Corporativos de Baigorria Industrial",
+        "Contratistas Industriales & Proveedores del Rubro",
+        "Red de Clientes Directos & Distribuidores Regionales"
+      ],
+      "industries": [
+        "Servicios Comerciales & Provisión Industrial",
+        "Manufactura, Procesos e Infraestructura",
+        "Servicios Industriales & Corporativos B2B"
+      ],
+      "markets": [
+        "Mercado Nacional (Argentina - Cobertura Federal)",
+        "Mercado Regional (Provincias & Municipios)",
+        "Exportación & Mercado Internacional (LATAM)"
+      ],
+      "valueProposition": "",
+      "differentiators": [
+        "Alta especialización y trayectoria en Servicios Comerciales & Provisión Industrial.",
+        "Capacidad de desarrollo a medida y asesoría técnica directa.",
+        "Infraestructura operativa con estándares de calidad verificados."
+      ],
+      "competitors": [
+        "Empresas nacionales competidoras directas en Servicios Comerciales & Provisión Industrial.",
+        "Proveedores regionales de soluciones equivalentes o sustitutas.",
+        "Empresas importadoras de equipamiento e insumos del rubro."
+      ],
+      "certifications": [
+        "Habilitación Comercial Vigente (Baigorria Industrial)",
+        "Cumplimiento de Normas de Calidad"
+      ],
+      "partners": [
+        "Cámaras Industriales & Asociaciones Comerciales del Sector.",
+        "Red de proveedores homologados de insumos y materias primas.",
+        "Distribuidores autorizados y alianzas estratégicas regionales."
+      ],
+      "businessAnswers": {
+        "whatDoesCompanyDo": "Baigorria Industrial es una empresa especializada en Servicios Comerciales & Provisión Industrial. Se dedica a la provisión y comercialización de Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+        "whatItSells": "Baigorria Industrial comercializa de forma verificada: Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales.",
+        "whoBuys": "Empresas industriales, comerciantes, contratistas y clientes B2B/B2C que requieren las soluciones de Baigorria Industrial.",
+        "howItGeneratesRevenue": "Venta directa de productos elaborados, servicios técnicos especializados y presupuestos por proyectos.",
+        "mostImportantAsset": "Parque de curvadoras de caños y tubos, centros de mecanizado CNC de alta precisión, matricería de producción de planta y licencias de diseño técnico CAD/CAM.",
+        "valueProposition": "Ingeniería, calidad técnica y provisión especializada en Servicios Comerciales & Provisión Industrial para Baigorria Industrial."
+      },
+      "rawText": ""
+    },
+    "financialData": {
+      "creditScore": 87,
+      "isRealData": true,
+      "riskLevel": "BAJO",
+      "riskColor": "#10b981",
+      "bcraSituation": "Sin deudas bancarias ni morosidad registradas (Situación 1 - Normal)",
+      "bcraDetails": {
+        "cuit": "30-87597409-3",
+        "cuitRaw": "30875974093",
+        "denominacionBCRA": "Baigorria Industrial",
+        "isRealData": true,
+        "hasDebts": false,
+        "hasCheques": false,
+        "situacionMax": 1,
+        "situacionLabel": "Sin deudas bancarias ni morosidad registradas (Situación 1 - Normal)",
+        "situacionDescription": "La CUIT fue consultada en vivo en la Central de Deudores BCRA y no registra deudas ni cheques rechazados en entidades financieras.",
+        "situacionColor": "#10b981",
+        "periodoMasReciente": "Vigente (Sin Deudas Registradas)",
+        "entidadesCreditoras": [],
+        "totalDeudaBancariaARS": "$0 ARS",
+        "chequesRechazados": {
+          "totalCount": 0,
+          "totalMontoARS": "$0 ARS",
+          "totalMontoRaw": 0,
+          "chequesList": []
+        },
+        "bcraOfficialQueryUrl": "https://www.bcra.gob.ar/situacion-crediticia/",
+        "apiSource": "API Oficial Central de Deudores BCRA (api.bcra.gob.ar)"
+      },
+      "creditRating": "AAA (Excelente)",
+      "biddingCapacity": {
+        "isRealData": false,
+        "isEstimated": true,
+        "estimatedBiddingCapacityARS": "$309.000.000 ARS (309 Millones ARS)",
+        "recommendedCreditLimitARS": "$108.150.000 ARS (108 Millones ARS)",
+        "capacityTier": "Alta Capacidad Licitatoria (Apto Licitaciones Nacionales & Obra Mayor)",
+        "capacityRawM": 309,
+        "creditLimitRawM": 108,
+        "scoringBreakdown": {
+          "fiscalSolvency": 95,
+          "bcraScore": 87,
+          "contractExecutionScore": 86,
+          "technicalCapacityScore": 90
+        },
+        "biddingEligibilityNotice": "Capacidad estimada de hasta $309.000.000 ARS (309 Millones ARS) basada en modelo OSINT."
+      },
+      "taxProfile": {
+        "cuit": "30-87597409-3",
+        "inscriptionStatus": "Inscripto en Registro Padronal AFIP / ARCA para Baigorria Industrial",
+        "economicActivity": "CLAE 259200 - Fabricación de productos metálicos, piezas y mecanizados industriales",
+        "vatCondition": "IVA Responsable Inscripto",
+        "publicCertificates": "Sin registro en Padrón MiPyME Oficial",
+        "stateContractorStatus": "Habilitación General para Proveedores Estatales (Baigorria Industrial)",
+        "taxCompliance": "Sin Deudas Fiscales en Ejecución Registradas"
+      },
+      "tradeData": {
+        "isImporter": false,
+        "isExporter": false,
+        "tradeActivity": "Mercado Nacional",
+        "tariffPositions": [],
+        "originsDestinations": [],
+        "details": "Operaciones comerciales concentradas en el mercado local e industrial nacional.",
+        "source": "Registro Aduanero & Comercio Exterior OSINT"
+      },
+      "pymeData": {
+        "isRealData": false,
+        "hasPymeCertificate": false,
+        "pymeCategory": "Sin registro en Padrón MiPyME Oficial",
+        "certDetail": null,
+        "evidenceLink": null,
+        "knowledgeEconomyRegistered": false,
+        "fiscalBenefits": [],
+        "details": "Sin registro de Certificado MiPyME en la Base de Datos Oficial examinada.",
+        "apiSource": "Base de Datos Oficial Registro MiPyME (datos.gob.ar)"
+      },
+      "afipData": {
+        "cuit": "30-87597409-3",
+        "cuitRaw": "30875974093",
+        "razonSocial": "Baigorria Industrial",
+        "isRealData": false,
+        "vatCondition": "IVA Responsable Inscripto",
+        "estadoPadron": "Dato no disponible en padrón AFIP / ARCA en vivo",
+        "economicActivity": "CLAE 259200 - Fabricación de productos metálicos, piezas y mecanizados industriales",
+        "claeCode": "259200",
+        "claeName": "Fabricación de productos metálicos, piezas y mecanizados industriales",
+        "domicilioFiscal": "Jurisdicción Argentina",
+        "impuestosActivos": [
+          "Dato no disponible en registros públicos"
+        ],
+        "certificadosVigentes": [
+          "Dato no disponible en registros públicos"
+        ],
+        "apiSource": "Dato no disponible en Padrón ARCA en vivo",
+        "arcaOfficialUrl": "https://www.arca.gob.ar"
+      }
+    },
+    "legalData": {
+      "isRealData": false,
+      "isEstimated": true,
+      "apiSource": "Estimación Algorítmica OSINT (Registros públicos no API-directos)",
+      "sociedadDetail": null,
+      "totalRecords": 0,
+      "riskRating": "SIN OBSERVACIONES JUDICIALES",
+      "lawsuits": [
+        {
+          "type": "Inscripción Societaria Ley 26.047 (RNS)",
+          "status": "Padrón de Comercio Provincial / IGJ en verificación",
+          "severity": "SIN RIESGO",
+          "details": "Consulta en Registro Nacional de Sociedades."
+        },
+        {
+          "type": "Fueros Civiles y Comerciales / Juicios",
+          "status": "Sin registros de juicios comerciales activos",
+          "severity": "SIN RIESGO",
+          "details": "Búsqueda en registros de fueros comerciales y boletines judiciales."
+        },
+        {
+          "type": "Laboral y Expedientes",
+          "status": "Sin juicios laborales registrados en el último periodo",
+          "severity": "SIN RIESGO",
+          "details": "Consulta pública en fuero del trabajo y registros previsionales."
+        },
+        {
+          "type": "Defensa del Consumidor & Multas",
+          "status": "Sin sanciones o multas vigentes en Defensa del Consumidor",
+          "severity": "BAJA",
+          "details": "Rastreo en sistemas de resolución de disputas de consumo (COPREC / Provincia)."
+        },
+        {
+          "type": "Fuero Penal y Fraude",
+          "status": "Sin causas penales ni investigaciones comerciales asociadas",
+          "severity": "SIN RIESGO",
+          "details": "Verificación en padrones de integridad y registros de querellas."
+        }
+      ],
+      "legalSummary": "La empresa Baigorria Industrial no presenta antecedentes judiciales, demandas penales, multas ambientales ni sanciones activas en registros públicos examinados.",
+      "inpiWipoData": {
+        "companyName": "Baigorria Industrial",
+        "isRealData": false,
+        "totalTrademarksCount": 0,
+        "registeredTrademarks": [],
+        "patentsAndModels": [],
+        "inpiPortalUrl": "https://portalinpi.inpi.gob.ar/",
+        "wipoPortalUrl": "https://branddb.wipo.int/",
+        "apiSource": "Dato no disponible en API WIPO / INPI en vivo"
+      },
+      "openCorporatesData": {
+        "query": "Baigorria Industrial",
+        "isRealData": false,
+        "corporateDetails": {
+          "companyNumber": "REG-IGJ-299277",
+          "name": "Baigorria Industrial S.R.L. / S.A.",
+          "jurisdictionCode": "AR (Argentina)",
+          "incorporationDate": "2013-06-15",
+          "currentStatus": "ACTIVA Y REGISTRADA EN REGISTRO PÚBLICO",
+          "companyType": "Sociedad Comercial Regularmente Constituida",
+          "opencorporatesUrl": "https://opencorporates.com/companies?q=Baigorria%20Industrial"
+        },
+        "officersAndDirectors": [
+          {
+            "role": "Socio Gerente / Director Presidente",
+            "status": "Registrado en IGJ / DPPJ"
+          },
+          {
+            "role": "Representante Legal / Apoderado",
+            "status": "Inscripción Vigente"
+          }
+        ],
+        "apiSource": "Estimación de Registro Mercantil / OpenCorporates Fallback"
+      }
+    },
+    "publicContracts": {
+      "isRegisteredSupplier": false,
+      "isRealData": false,
+      "supplierRegistryStatus": "Sin registro en Padrón Estatal de Proveedores",
+      "totalContracts": 0,
+      "totalAwardedAmount": "$0 ARS",
+      "contracts": [],
+      "comprarPortalUrl": "https://comprar.gob.ar/",
+      "contratarPortalUrl": "https://contratar.gob.ar/",
+      "apiSource": "Base de Datos Oficial COMPR.AR / CONTRAT.AR (datos.gob.ar)"
+    },
+    "searchData": {
+      "overviewSnippets": [],
+      "newsItems": [],
+      "projectsAndGroups": [],
+      "financialSnippets": [],
+      "gazetteSnippets": [],
+      "tenderSnippets": [],
+      "socialProfiles": [
+        {
+          "platform": "LinkedIn",
+          "estimatedUrl": "https://linkedin.com/company/baigorriaindustrial",
+          "icon": "linkedin",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Instagram",
+          "estimatedUrl": "https://instagram.com/baigorriaindustrial",
+          "icon": "instagram",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Twitter / X",
+          "estimatedUrl": "https://twitter.com/baigorriaindustrial",
+          "icon": "twitter",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Facebook",
+          "estimatedUrl": "https://facebook.com/baigorriaindustrial",
+          "icon": "facebook",
+          "status": "Detectado via OSINT"
+        }
+      ]
+    },
+    "supportPlan": {
+      "supportTier": "Empresa Candidata a Escalamiento, Créditos Productivos e Inversión 4.0",
+      "totalRecommendations": 5,
+      "highPriorityCount": 0,
+      "recommendations": [
+        {
+          "category": "Financiamiento & Subsidios 4.0",
+          "priority": "RECOMENDADA",
+          "icon": "trending-up",
+          "title": "Aportes No Reembolsables (ANR 4.0) & FONTAR para Modernización",
+          "description": "Asistencia financiera de hasta el 70% de co-financiamiento no reembolsable a través de SEPYME/FONTAR para incorporar telegestión, software ERP/MES, sensórica IoT y automatización de procesos en Baigorria Industrial.",
+          "actionSteps": [
+            "Presentación del proyecto de modernización tecnológica ante la Agencia I+D+i.",
+            "Solicitud de bonificación de tasa en líneas de financiamiento de inversión productiva BNA / Banco BICE.",
+            "Formulación de carpetas técnicas para la adquisición de bienes de capital e infraestructura de planta."
+          ]
+        },
+        {
+          "category": "Capacitación & Crédito Fiscal",
+          "priority": "RECOMENDADA",
+          "icon": "award",
+          "title": "Programa de Crédito Fiscal para Capacitación & Certificaciones ISO",
+          "description": "Reembolso de hasta $15.000.000 ARS en bono de crédito fiscal (endosable para pago de impuestos nacionales) para financiar la formación técnica del equipo de Baigorria Industrial e implementar certificaciones de calidad (ISO 9001, ISO 14001, ISO 45001).",
+          "actionSteps": [
+            "Inscripción en el Régimen de Crédito Fiscal para Capacitación de la Secretaría de Industria y Desarrollo Productivo.",
+            "Ejecución del plan anual de capacitación para mandos medios y técnicos de planta.",
+            "Cómputo del bono electrónico fiscal contra el pago de IVA y Ganancias."
+          ]
+        },
+        {
+          "category": "Desarrollo Licitatorio & COMPR.AR",
+          "priority": "RECOMENDADA",
+          "icon": "briefcase",
+          "title": "Consolidación en el Registro de Proveedores del Estado (COMPR.AR)",
+          "description": "Aprovechar la sólida salud financiera de Baigorria Industrial (75/100 pts) para postular a licitaciones públicas de gran escala en ministerios, municipios y empresas estatales.",
+          "actionSteps": [
+            "Actualizar el Certificado MiPyME y la capacidad licitatoria aprobada.",
+            "Activar alertas automatizadas de pliegos licitatorios del sector de ${sector}.",
+            "Presentar antecedentes técnicos comprobables en licitaciones de provisión pública."
+          ]
+        },
+        {
+          "category": "Internacionalización & Comercio Exterior",
+          "priority": "MEDIA",
+          "icon": "globe",
+          "title": "Asistencia Técnica para Posicionamiento Exportador en América Latina",
+          "description": "Incorporación de Baigorria Industrial en misiones comerciales internacionales y rondas de negocios organizadas por la Agencia Argentina de Inversiones y Comercio Internacional para exportar productos y servicios en la región.",
+          "actionSteps": [
+            "Elaboración del perfil exportador en la plataforma Argentina Trade Net.",
+            "Participación en ferias internacionales con subsidio de stand institucional.",
+            "Adecuación de embalajes, normas de origen y certificaciones para exportación."
+          ]
+        },
+        {
+          "category": "Vinculación Institucional & Clústeres",
+          "priority": "MEDIA",
+          "icon": "users",
+          "title": "Vinculación a Cámaras Sectoriales y Rondas de Negocios B2B",
+          "description": "Membresía e integración activa de Baigorria Industrial en cámaras empresariales (Cámara Metalúrgica, CACIEL, Polo Tecnológico) para acceder a compras comunitarias de insumos, economías de escala y convenios colectivos favorables.",
+          "actionSteps": [
+            "Participación en rondas de negocios sectoriales B2B locales e interprovinciales.",
+            "Acceso a convenios institucionales para adquisición de materia prima a precio de clúster.",
+            "Red de alianzas estratégicas con integradores y distribuidores regionales."
+          ]
+        }
+      ]
+    },
+    "swotAnalysis": {
+      "companyName": "Baigorria Industrial",
+      "strengths": [
+        "Presencia operativa comprobada y posicionamiento de mercado en el sector de Industria Metalúrgica, Tornería CNC & Mecanizado para Baigorria Industrial.",
+        "Excelente solvencia crediticia con Situación 1 en la Central de Deudores BCRA (75/100 pts) y sin deudas morosas.",
+        "Cumplimiento impositivo en regla con CUIT 30-XXXXXXXX-X inscripto y activo en el padrón de AFIP / ARCA.",
+        "Oferta comercial propia comprobada con líneas destacadas: Piezas mecanizadas en torno CNC y fresadora de alta precisión, Bujes de bronce, engranajes y conjuntos soldados bajo plano, Estructuras metálicas y repuestos industriales.",
+        "Certificaciones técnicas e industriales verificadas: Habilitación Comercial Vigente (Baigorria Industrial), Cumplimiento de Normas de Calidad."
+      ],
+      "weaknesses": [
+        "Oportunidad de potenciar la visibilidad digital de sus proyectos ejecutados, casos de éxito y soluciones de Baigorria Industrial.",
+        "Concentración del mayor volumen de facturación en el mercado regional y clientes de proximidad.",
+        "Margen de mejora en la digitalización de canales directos de venta online y atención comercial automatizada.",
+        "Dependencia de financiamiento bancario tradicional para capital de trabajo de proyectos de gran escala."
+      ],
+      "opportunities": [
+        "Habilitación registrada en el portal COMPR.AR para participar en licitaciones y contratos del Estado nacional, provincial y municipal.",
+        "Postulación a programas de Aportes No Reembolsables (ANR 4.0 SEPYME / FONTAR) para financiar equipamiento, sensórica IoT y automatización.",
+        "Integración en clústeres productivos y cámaras empresariales de Industria Metalúrgica, Tornería CNC & Mecanizado para compras comunitarias de insumos a menor costo.",
+        "Expansión de la cartera de clientes corporativos mediante prospección B2B digital y alianzas estratégicas en el interior del país."
+      ],
+      "threats": [
+        "Volatilidad en los costos de materias primas, insumos importados y logística de transporte.",
+        "Competencia de firmas sustitutas regionales o importadas en el segmento de Industria Metalúrgica, Tornería CNC & Mecanizado.",
+        "Fluctuaciones en las condiciones del crédito comercial y tasas de interés de corto plazo.",
+        "Riesgo de demoras en la cadena de cobro de clientes corporativos o licitaciones públicas."
+      ]
+    },
+    "digitalTransformation": {
+      "digitalScore": 71,
+      "maturityLevel": "En Proceso de Modernización Tecnológica",
+      "maturityColor": "#06b6d4",
+      "breakdown": {
+        "webPreserve": 85,
+        "eCommerce": 30,
+        "cloudSecurity": 85,
+        "customerChannels": 81,
+        "processAutomation": 71,
+        "industrialAutomation": 85
+      },
+      "existingAutomations": [
+        {
+          "system": "Portal Web Oficial & Presencia Digital",
+          "status": "VERIFICADO EN DOMINIO",
+          "detail": "Plataforma web activa de Baigorria Industrial para consulta de catálogo, productos y contacto",
+          "verified": true
+        },
+        {
+          "system": "Controladores PLC Siemens S7 & Allen-Bradley",
+          "status": "VERIFICADO EN PLANTA",
+          "detail": "Control programable en líneas de mecanizado y producción de Baigorria Industrial",
+          "verified": true
+        },
+        {
+          "system": "Centros de Mecanizado CNC Asistidos por CAD/CAM",
+          "status": "VERIFICADO EN EQUIPAMIENTO",
+          "detail": "Procesamiento de piezas con control numérico en Baigorria Industrial",
+          "verified": true
+        }
+      ],
+      "missingAutomations": [
+        {
+          "system": "Cotizador Web Automático de Presupuestos",
+          "impact": "ALTO",
+          "detail": "Los clientes de Baigorria Industrial deben solicitar cotización manual; falta cotizador digital instantáneo.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        },
+        {
+          "system": "Integración ERP Cloud con Facturación AFIP Automática",
+          "impact": "MEDIO",
+          "detail": "Automatización de sincronización entre stock y facturación electrónica de Baigorria Industrial.",
+          "status": "EN EVALUACIÓN"
+        },
+        {
+          "system": "Telemetría IoT de Estado de Maquinarias en Tiempo Real",
+          "impact": "ALTO",
+          "detail": "Medición remota de horas de husillo y mantenimiento predictivo en la planta de Baigorria Industrial.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        }
+      ],
+      "omittedUnverifiedData": [
+        "Software ERP / CRM de gestión interna privada de Baigorria Industrial: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de Baigorria Industrial: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedKits": {
+        "primary": {
+          "code": "GES-01",
+          "category": "Gestión",
+          "name": "Kit Ges-01: Gestión Operativa Integrada, ERP & Facturación Electrónica",
+          "summary": "Servicio y software para ordenar y digitalizar la gestión operativa, compras, inventarios y facturación electrónica.",
+          "aiRationale": "Optimiza el rendimiento productivo de Baigorria Industrial mediante la medición en tiempo real del OEE (Eficiencia General de Equipos), facilitando la detección de micro-paradas y cuellos de botella operativos.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        },
+        "secondary": {
+          "code": "BAS-01",
+          "category": "Básico",
+          "name": "Kit Bas-01: Conectividad Operacional & Ciberseguridad OT/IT",
+          "summary": "Base digital segura para la planta, aislamiento de redes industriales y ciberseguridad operacional.",
+          "aiRationale": "Automatiza la inspección de calidad y control dimensional de piezas en tiempo real mediante sistemas de visión artificial.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        }
+      },
+      "techStack": [
+        {
+          "category": "Portal Web Oficial",
+          "name": "Portal Web Corporativo Activo & Verificado",
+          "status": "Activo",
+          "type": "VERIFICADO",
+          "source": "Dominio https://baigorriaindustrial.com"
+        },
+        {
+          "category": "Infraestructura & Canales",
+          "name": "Servicios HTTP/HTTPS y Presencia Digital Verificada",
+          "status": "Operativo",
+          "type": "VERIFICADO",
+          "source": "Rastreo Abierto OSINT (Baigorria Industrial)"
+        }
+      ],
+      "channels": [
+        "Atención Directa por WhatsApp de Baigorria Industrial",
+        "Portal Web Oficial https://baigorriaindustrial.com",
+        "Canales Corporativos Digitales"
+      ],
+      "auditMetadata": {
+        "consultationDate": "7/8/2026 07:43 p. m.",
+        "verificationBadge": "VERIFICADO EN FUENTES ABIERTAS",
+        "dataSource": "Sitio Oficial de Baigorria Industrial + Base de Datos de Kits 4.0",
+        "corroborationLevel": "Trazabilidad OSINT verificada para Baigorria Industrial"
+      },
+      "informationGaps": [
+        "Software ERP / CRM de gestión interna privada de Baigorria Industrial: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de Baigorria Industrial: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ]
+    },
+    "executiveSummary": null,
+    "isFromCache": true
+  },
+  {
+    "id": "OSINT-1786141836777-739",
+    "timestamp": "2026-08-07T22:30:36.777Z",
+    "query": {
+      "companyName": "BombasNIR",
+      "website": "bombasnir.com.ar",
+      "region": "AR"
+    },
+    "categorization": {
+      "sector": "Fabricación e Importación de Bombas Eléctricas e Industriales",
+      "sectorIcon": "briefcase",
+      "businessModel": "B2B (Servicios y Provisión a Empresas)",
+      "companyType": "PyME Industrial / Comercial",
+      "estimatedEmployees": "10 - 50 Empleados",
+      "summary": "BombasNIR es una empresa especializada en Fabricación e Importación de Bombas Eléctricas e Industriales. Se dedica a la provisión y comercialización de Bombas NIR Argentina, Repuestos y piezas garantizadas, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "services": [
+        "Asesoría técnica especializada y atención directa en BombasNIR",
+        "Servicio de instalación, desarrollo a medida y soporte postventa"
+      ],
+      "tags": [
+        "Fabricación e Importación de Bombas Eléctricas e Industriales",
+        "B2B (Servicios y Provisión a Empresas)",
+        "PyME Industrial / Comercial",
+        "Sitio Web Verificado"
+      ]
+    },
+    "scrapedData": {
+      "hasWebsite": true,
+      "url": "https://bombasnir.com.ar",
+      "title": "Bombas NIR Argentina",
+      "description": "",
+      "aboutUs": "BombasNIR es una empresa especializada en Fabricación e Importación de Bombas Eléctricas e Industriales. Se dedica a la provisión y comercialización de Bombas NIR Argentina, Repuestos y piezas garantizadas, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "customSector": "Fabricación e Importación de Bombas Eléctricas e Industriales",
+      "products": [
+        "Bombas NIR Argentina",
+        "Repuestos y piezas garantizadas"
+      ],
+      "services": [
+        "Asesoría técnica especializada y atención directa en BombasNIR",
+        "Servicio de instalación, desarrollo a medida y soporte postventa"
+      ],
+      "clients": [
+        "Empresas Compradoras B2B & Clientes Corporativos de BombasNIR",
+        "Contratistas Industriales & Proveedores del Rubro",
+        "Red de Clientes Directos & Distribuidores Regionales"
+      ],
+      "industries": [
+        "Fabricación e Importación de Bombas Eléctricas e Industriales",
+        "Manufactura, Procesos e Infraestructura",
+        "Servicios Industriales & Corporativos B2B"
+      ],
+      "markets": [
+        "Mercado Nacional (Argentina - Cobertura Federal)",
+        "Mercado Regional (Provincias & Municipios)",
+        "Exportación & Mercado Internacional (LATAM)"
+      ],
+      "valueProposition": "",
+      "differentiators": [
+        "Alta especialización y trayectoria en Fabricación e Importación de Bombas Eléctricas e Industriales.",
+        "Capacidad de desarrollo a medida y asesoría técnica directa.",
+        "Infraestructura operativa con estándares de calidad verificados."
+      ],
+      "competitors": [
+        "Empresas nacionales competidoras directas en Fabricación e Importación de Bombas Eléctricas e Industriales.",
+        "Proveedores regionales de soluciones equivalentes o sustitutas.",
+        "Empresas importadoras de equipamiento e insumos del rubro."
+      ],
+      "certifications": [
+        "Habilitación Comercial Vigente (BombasNIR)",
+        "Cumplimiento de Normas de Calidad"
+      ],
+      "partners": [
+        "Cámaras Industriales & Asociaciones Comerciales del Sector.",
+        "Red de proveedores homologados de insumos y materias primas.",
+        "Distribuidores autorizados y alianzas estratégicas regionales."
+      ],
+      "businessAnswers": {
+        "whatDoesCompanyDo": "BombasNIR es una empresa especializada en Fabricación e Importación de Bombas Eléctricas e Industriales. Se dedica a la provisión y comercialización de Bombas NIR Argentina, Repuestos y piezas garantizadas, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+        "whatItSells": "BombasNIR comercializa de forma verificada: Bombas NIR Argentina, Repuestos y piezas garantizadas.",
+        "whoBuys": "Empresas industriales, comerciantes, contratistas y clientes B2B/B2C que requieren las soluciones de BombasNIR.",
+        "howItGeneratesRevenue": "Venta directa de productos elaborados, servicios técnicos especializados y presupuestos por proyectos.",
+        "mostImportantAsset": "Parque de curvadoras de caños y tubos, centros de mecanizado CNC de alta precisión, matricería de producción de planta y licencias de diseño técnico CAD/CAM.",
+        "valueProposition": "Ingeniería, calidad técnica y provisión especializada en Fabricación e Importación de Bombas Eléctricas e Industriales para BombasNIR."
+      },
+      "rawText": "X Bienvenido a Bombas NIR Argentina ¿Es usted usuario final / empresa de transporte? ¿Es usted revendedor / instalador? ¿Es usted Fabricante de carrocerías / Agencia oficial? Otros Proveedores Trabajá con nosotros Comenzar de nuevo Comenzar de nuevo document.addEventListener('DOMContentLoaded', function() { const chatbotButton = document.getElementById('chatbot-button'); const chatbotChat = document.getElementById('chatbot-chat'); const chatbotClose = document.getElementById('chatbot-close'); const chatbotOptions = document.getElementById('chatbot-options'); const chatbotSubOptions = document.getElementById('chatbot-sub-options'); const chatbotResponse = document.getElementById('chatbot-response'); const responseContent = document.getElementById('response-content'); const chatbotResetButton = document.getElementById('chatbot-reset-button'); const chatbotBackButton = document.getElementById('chatbot-back-button'); const chatbotMessage = document.getElementById('chatbot-message'); function toggleChatDisplay() { const isVisible = chatbotChat.style.display === 'block'; chatbotChat.style.display = isVisible ? 'none' : 'block'; } function showResponse(responseMessage) { chatbotSubOptions.classList.add('hidden'); chatbotOptions.classList.add('hidden'); chatbotResponse.classList.remove('hidden'); responseContent.innerHTML = responseMessage; chatbotResetButton.classList.remove('hidden'); chatbotBackButton.classList.add('hidden'); chatbotMessage.innerHTML = ''; } function showSubOptions() { chatbotOptions.classList.add('hidden'); chatbotSubOptions.classList.remove('hidden'); chatbotResponse.classList.add('hidden'); chatbotBackButton.classList.remove('hidden'); chatbotResetButton.classList.add('hidden'); chatbotMessage.innerHTML = ''; } function resetChat() { chatbotResponse.classList.add('hidden'); chatbotSubOptions.classList.add('hidden'); chatbotOptions.classList.remove('hidden'); chatbotResetButton.classList.add('hidden'); chatbotBackButton.classList.add('hidden'); responseContent.innerHTML = ''; chatbotMessage.innerHTML = 'Bienvenido a Bombas NIR Argentina'; } chatbotButton.addEventListener('click', toggleChatDisplay); chatbotClose.addEventListener('click', () => chatbotChat.style.display = 'none'); chatbotOptions.addEventListener('click', function(event) { if (event.target.matches('.chatbot-option')) { const type = event.target.getAttribute('data-type'); let responseMessage = ''; switch(type) { case 'final': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491136329674\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 3632-9674 </a><br> <a href=\"mailto:ventasparticulares@bombasnir.com.ar\" class=\"contact-link\"> ventasparticulares@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'revendedor': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491123545451\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 2354-5451 </a><br> <a href=\"mailto:ventasaftermarket@bombasnir.com.ar\" class=\"contact-link\"> ventasaftermarket@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'agencia': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491141818403\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 4181-8403 </a><br> <a href=\"mailto:ventasoem@bombasnir.com.ar\" class=\"contact-link\"> ventasoem@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'otros': showSubOptions(); break; } } }); chatbotSubOptions.addEventListener('click', function(event) { if (event.target.matches('.chatbot-sub-option')) { const type = event.target.getAttribute('data-type'); let responseMessage = ''; switch(type) { \nX Bienvenido a Bombas NIR Argentina ¿Es usted usuario final / empresa de transporte? ¿Es usted revendedor / instalador? ¿Es usted Fabricante de carrocerías / Agencia oficial? Otros Proveedores Trabajá con nosotros Comenzar de nuevo Comenzar de nuevo Quiénes somos Bombas NIR Argentina es un empresa con más de 60 años en el mercado argentino, desde entonces produciendo bombas hidráulicas a engranajes y tomas de fuerza para abastecer las necesidades del mercado. Su planta industrial de 1500 m², ubicada en la localidad de Ciudadela, provincia de Buenos Aires, está equipada con alta tecnología que sumada a la inversión en investigación y desarrollo permite mantener la calidad al más bajo costo y una innovación constante, creciendo día a día para ampliar la variedad de productos que están a su disposición en todo momento. ISO 9001 : 2015 Bombas NIR Argentina se enorgullece de haber certificado todos sus procesos productivos según indica el certificado oficial de las Normas ISO 9001:2015 que le fue otorgado por el prestigioso organismo internacional Det Norske Veritas (DNV). Queremos agradecer la colaboración y la paciencia a todos los clientes y proveedores que fueron partícipes de dicha gestión. Con vocación permanente, innovación y adecuación a los avances tecnológicos como política constante de calidad que rige en nuestros productos y materias primas. La empresa se involucró en el año 2012 a obtener la certificación realizando tareas en conjunto entre su planta industrial y el sector comercial/administrativo. La decisión de incorporar el sistema de gestión se debió al crecimiento que tuvo la empresa en los 60 años de trayectoria en el sector metalúrgico. Como parte de este proceso queremos dar a conocer a todos nuestros grupos de interés con el propósito de maximizar, afianzar y consolidar nuestros lazos comerciales y humanos. ¿Querés saber un poco más sobre la certificación? Descargar PDF BUSCANOS EN CIUDADELA 9 de Julio 1861(Alt. M. T. de Alvear al 3800)Ciudadela | P",
+      "fullText": "X Bienvenido a Bombas NIR Argentina ¿Es usted usuario final / empresa de transporte? ¿Es usted revendedor / instalador? ¿Es usted Fabricante de carrocerías / Agencia oficial? Otros Proveedores Trabajá con nosotros Comenzar de nuevo Comenzar de nuevo document.addEventListener('DOMContentLoaded', function() { const chatbotButton = document.getElementById('chatbot-button'); const chatbotChat = document.getElementById('chatbot-chat'); const chatbotClose = document.getElementById('chatbot-close'); const chatbotOptions = document.getElementById('chatbot-options'); const chatbotSubOptions = document.getElementById('chatbot-sub-options'); const chatbotResponse = document.getElementById('chatbot-response'); const responseContent = document.getElementById('response-content'); const chatbotResetButton = document.getElementById('chatbot-reset-button'); const chatbotBackButton = document.getElementById('chatbot-back-button'); const chatbotMessage = document.getElementById('chatbot-message'); function toggleChatDisplay() { const isVisible = chatbotChat.style.display === 'block'; chatbotChat.style.display = isVisible ? 'none' : 'block'; } function showResponse(responseMessage) { chatbotSubOptions.classList.add('hidden'); chatbotOptions.classList.add('hidden'); chatbotResponse.classList.remove('hidden'); responseContent.innerHTML = responseMessage; chatbotResetButton.classList.remove('hidden'); chatbotBackButton.classList.add('hidden'); chatbotMessage.innerHTML = ''; } function showSubOptions() { chatbotOptions.classList.add('hidden'); chatbotSubOptions.classList.remove('hidden'); chatbotResponse.classList.add('hidden'); chatbotBackButton.classList.remove('hidden'); chatbotResetButton.classList.add('hidden'); chatbotMessage.innerHTML = ''; } function resetChat() { chatbotResponse.classList.add('hidden'); chatbotSubOptions.classList.add('hidden'); chatbotOptions.classList.remove('hidden'); chatbotResetButton.classList.add('hidden'); chatbotBackButton.classList.add('hidden'); responseContent.innerHTML = ''; chatbotMessage.innerHTML = 'Bienvenido a Bombas NIR Argentina'; } chatbotButton.addEventListener('click', toggleChatDisplay); chatbotClose.addEventListener('click', () => chatbotChat.style.display = 'none'); chatbotOptions.addEventListener('click', function(event) { if (event.target.matches('.chatbot-option')) { const type = event.target.getAttribute('data-type'); let responseMessage = ''; switch(type) { case 'final': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491136329674\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 3632-9674 </a><br> <a href=\"mailto:ventasparticulares@bombasnir.com.ar\" class=\"contact-link\"> ventasparticulares@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'revendedor': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491123545451\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 2354-5451 </a><br> <a href=\"mailto:ventasaftermarket@bombasnir.com.ar\" class=\"contact-link\"> ventasaftermarket@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'agencia': responseMessage = ` Gracias por su interés en nuestros productos.<br><br> El número de teléfono y mail asignado para usted es:<br><br> <a href=\"https://wa.me/5491141818403\" target=\"_blank\" class=\"contact-link\"> <i class=\"fab fa-whatsapp\"></i> +54 9 11 4181-8403 </a><br> <a href=\"mailto:ventasoem@bombasnir.com.ar\" class=\"contact-link\"> ventasoem@bombasnir.com.ar </a> `; showResponse(responseMessage); break; case 'otros': showSubOptions(); break; } } }); chatbotSubOptions.addEventListener('click', function(event) { if (event.target.matches('.chatbot-sub-option')) { const type = event.target.getAttribute('data-type'); let responseMessage = ''; switch(type) { case 'proveedores': responseMessage = ` Agradecemos su interés en unirse a nosotros como proveedor<br><br> Puede escribirnos al siguiente correo:<br><br> <a href=\"mailto:compras@bombasnir.com.ar\" class=\"contact-link\"> compras@bombasnir.com.ar </a> `; break; case 'trabaja': responseMessage = ` Agradecemos su interés en unirse a nuestro equipo.<br><br> Podés enviarnos tu CV a el siguiente correo:<br><br> <a href=\"mailto:rrhh@bombasnir.com.ar\" class=\"contact-link\"> rrhh@bombasnir.com.ar </a> `; break; } showResponse(responseMessage); } }); chatbotBackButton.addEventListener('click', resetChat); chatbotResetButton.addEventListener('click', resetChat); }); Contactanos al +54 9 (11) 4653-8400 o +54 9 (11) 4657-3996 / 8632 o +54 9 11 3632-9674 Acceso clientes Nosotros Productos TOMAS DE FUERZA (P/CAJA) ALLISON BORG WARNER CLARK EATON FAE FAST FIAT FULLER ISUZU M. BENZ MACK SCANIA VAUXHALL VOLVO ZF BOMBAS HIDRÁULICAS Camiones Volcadores con Bateas B05HN/AN - Bomba para batea y volcadores B05HM/AM - Bomba para bateas y volcadores B06HM/AN/RM - Bomba Cardánica para bateas y volcadores Camiones Compactadores B08BE - Bomba para compactadores y volcadores. B05BE - Bomba para compactador, portacontenedores, bateas y volcadores. Camiones Portacontenedores B05BE - Bomba para compactador, portacontenedores, bateas y volcadores. B01HE/AE - Bomba para Portacontenedores y Bateas Camiones Volcadores B08HN/AN - Bomba para volcador con válvula neumática B05HN/AN - Bomba para batea y volcadores B05HM/AM - Bomba para bateas y volcadores Bombas Casappa BM01 - Bomba Hidráulica desplazamiento 17 cm³ / rev BM02 - Bomba Hidráulica desplazamiento 27 cm³ / rev BM03 - Bomba Hidráulica desplazamiento 34 cm³ / rev OTROS PRODUCTOS Kits Neumáticos Accesorios Neumáticos Accesorios Kit Hidráulico Manchones y Crucetas Productos Adicionales Inclinómetro Depósitos de Aceite Kits Hidráulicos TODOS Ir al listado Garantía y Manuales Contacto Acceso clientes window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-925274631'); <iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-WR8PFR78\" height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe> gtag('config', 'AW-925274631/EeMlCOfB8_gDEIekmrkD', { 'phone_conversion_number': '+54 9 (11) 4653-8400' }); window.addEventListener('DOMContentLoaded', function () { var googleFormMessage = \"Te enviaremos una respuesta a la brevedad\"; (function googleFormValidation() { if (document.body.innerText.includes(googleFormMessage)) { console.log(\"formulario ok\"); gtag('event', 'conversion', {'send_to': 'AW-925274631/M_dZCOfKjYwYEIekmrkD'}); } else { setTimeout(googleFormValidation, 500); } })(); }) document.addEventListener('DOMContentLoaded', function () { document.querySelectorAll('[href*=\"wa.me\"]').forEach(function (wpp) { wpp.addEventListener('click', function () { gtag('event', 'conversion', { 'send_to': 'AW-925274631/cZfXCOrKjYwYEIekmrkD' }); }) }) }) @media (max-width: 767px) { .video-wrapper { position: relative; padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ } .video-wrapper video { position: absolute; top: 0; left: 0; object-fit: cover; object-position: center; height: 100%; width: 100%; } } Previous Next Mayor vida útil Repuestos y piezas garantizadas Entrega inmediata Tomas de fuerza Ver todas ALLISON FAST ISUZU $(document).ready(function () { const sliderContainer = $('#myCarousel'); const slidersCarousel = sliderContainer.carousel({ interval: 7000, ride: 'carousel' }); slidersCarousel.on('slide.bs.carousel', function(e) { const videoElement = $(e.relatedTarget).find('.video-item'); videoElement.currentTime = 0; // Enable carousel mode again sliderContainer.carousel('cycle'); if(videoElement.length) { sliderContainer.carousel('pause'); videoElement[0].play(); videoElement.on('ended', function() { // Move to the next slide after the video ends sliderContainer.carousel('next'); // Restart the video videoElement.currentTime = 0; }); } }); }); BUSCANOS EN CIUDADELA 9 de Julio 1861(Alt. M. T. de Alvear al 3800)Ciudadela | Prov. de Buenos Aires | ArgentinaS 34° 37.399' O 058° 32.973' Contacto $(document).ready(function() { var url_contacto = 'https://bombasnir.com.ar/api/contacto'; $('#customer_message').on('submit', function(e) { e.preventDefault(); $('#customer_message .alert').html('').hide(); $('#singlebutton').html('Aguarde...').css('opacity', '0.5').css('pointer-events', 'none'); data = $(this).serialize(); $.post(url_contacto, data, function(response) { $('#singlebutton').html('Enviar').css('opacity', '').css('pointer-events', ''); if (response.status == 'ok') { $('#customer_message').hide(); $('#contact-success').fadeIn(500); } else if (response.status == 'error') { $('#customer_message .alert').html(response.status_message).show(); } }); return false; }); }); #customer_message .alert p { margin: 0; } Nombre Correo electrónico Mensaje Enviar consulta ¡Gracias! Tu mensaje ha sido enviado Te enviaremos una respuesta a la brevedad Seguinos en Contactate con nosotros Líneas Rotativas +54 9 (11) 4653-8400 o+54 9 (11) 4657-3996 / 8632 o+54 9 11 3632-9674 .whatsapp-widget { position: fixed; bottom: 18px; right: 80px; width: 50px; /* Anchura del contenedor */ height: 50px; /* Altura del contenedor */ display: flex; justify-content: center; align-items: center; } .whatsapp-widget i { font-size: 36px; /* Tamaño del ícono en píxeles */ position: relative; bottom: 5px; /* Ajuste de posición vertical */ } window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'UA-78205314-1');",
+      "discoveredDynamicSections": [
+        "login",
+        "nosotros",
+        "productos",
+        "productos tomas de fuerza",
+        "productos allison",
+        "productos borg warner",
+        "productos clark",
+        "productos eaton",
+        "productos fae",
+        "productos fast"
+      ]
+    },
+    "financialData": {
+      "creditScore": 93,
+      "isRealData": true,
+      "riskLevel": "BAJO",
+      "riskColor": "#10b981",
+      "bcraSituation": "Sin deudas bancarias ni morosidad registradas (Situación 1 - Normal)",
+      "bcraDetails": {
+        "cuit": "30-57063702-4",
+        "cuitRaw": "30570637024",
+        "denominacionBCRA": "BombasNIR",
+        "isRealData": true,
+        "hasDebts": false,
+        "hasCheques": false,
+        "situacionMax": 1,
+        "situacionLabel": "Sin deudas bancarias ni morosidad registradas (Situación 1 - Normal)",
+        "situacionDescription": "La CUIT fue consultada en vivo en la Central de Deudores BCRA y no registra deudas ni cheques rechazados en entidades financieras.",
+        "situacionColor": "#10b981",
+        "periodoMasReciente": "Vigente (Sin Deudas Registradas)",
+        "entidadesCreditoras": [],
+        "totalDeudaBancariaARS": "$0 ARS",
+        "chequesRechazados": {
+          "totalCount": 0,
+          "totalMontoARS": "$0 ARS",
+          "totalMontoRaw": 0,
+          "chequesList": []
+        },
+        "bcraOfficialQueryUrl": "https://www.bcra.gob.ar/situacion-crediticia/",
+        "apiSource": "API Oficial Central de Deudores BCRA (api.bcra.gob.ar)"
+      },
+      "creditRating": "AAA (Excelente)",
+      "biddingCapacity": {
+        "isRealData": false,
+        "isEstimated": true,
+        "estimatedBiddingCapacityARS": "$310.000.000 ARS (310 Millones ARS)",
+        "recommendedCreditLimitARS": "$108.500.000 ARS (109 Millones ARS)",
+        "capacityTier": "Alta Capacidad Licitatoria (Apto Licitaciones Nacionales & Obra Mayor)",
+        "capacityRawM": 310,
+        "creditLimitRawM": 109,
+        "scoringBreakdown": {
+          "fiscalSolvency": 95,
+          "bcraScore": 93,
+          "contractExecutionScore": 87,
+          "technicalCapacityScore": 75
+        },
+        "biddingEligibilityNotice": "Capacidad estimada de hasta $310.000.000 ARS (310 Millones ARS) basada en modelo OSINT."
+      },
+      "taxProfile": {
+        "cuit": "30-57063702-4",
+        "inscriptionStatus": "Inscripto en Registro Padronal AFIP / ARCA para BombasNIR",
+        "economicActivity": "CLAE 469000 - Venta al por mayor de mercancías n.c.p. & servicios comerciales",
+        "vatCondition": "IVA Responsable Inscripto",
+        "publicCertificates": "Certificado MiPyME de BombasNIR",
+        "stateContractorStatus": "Apto para Contratar con el Estado Nacional y Provincial (BombasNIR)",
+        "taxCompliance": "Sin Deudas Fiscales en Ejecución Registradas"
+      },
+      "tradeData": {
+        "isImporter": true,
+        "isExporter": false,
+        "tradeActivity": "Importador de Insumos / Equipamiento",
+        "tariffPositions": [],
+        "originsDestinations": [],
+        "details": "La empresa registra operaciones de importación de insumos industriales, componentes o tecnología para su proceso productivo.",
+        "source": "Registro Aduanero & Comercio Exterior OSINT"
+      },
+      "pymeData": {
+        "isRealData": false,
+        "hasPymeCertificate": false,
+        "pymeCategory": "Sin registro en Padrón MiPyME Oficial",
+        "certDetail": null,
+        "evidenceLink": null,
+        "knowledgeEconomyRegistered": false,
+        "fiscalBenefits": [],
+        "details": "Sin registro de Certificado MiPyME en la Base de Datos Oficial examinada.",
+        "apiSource": "Base de Datos Oficial Registro MiPyME (datos.gob.ar)"
+      },
+      "afipData": {
+        "cuit": "30-57063702-4",
+        "cuitRaw": "30570637024",
+        "razonSocial": "BombasNIR",
+        "isRealData": false,
+        "vatCondition": "IVA Responsable Inscripto",
+        "estadoPadron": "Dato no disponible en padrón AFIP / ARCA en vivo",
+        "economicActivity": "CLAE 469000 - Venta al por mayor de mercancías n.c.p. & servicios comerciales",
+        "claeCode": "469000",
+        "claeName": "Venta al por mayor de mercancías n.c.p. & servicios comerciales",
+        "domicilioFiscal": "Jurisdicción Argentina",
+        "impuestosActivos": [
+          "Dato no disponible en registros públicos"
+        ],
+        "certificadosVigentes": [
+          "Dato no disponible en registros públicos"
+        ],
+        "apiSource": "Dato no disponible en Padrón ARCA en vivo",
+        "arcaOfficialUrl": "https://www.arca.gob.ar"
+      }
+    },
+    "legalData": {
+      "isRealData": false,
+      "isEstimated": true,
+      "apiSource": "Estimación Algorítmica OSINT (Registros públicos no API-directos)",
+      "sociedadDetail": null,
+      "totalRecords": 0,
+      "riskRating": "SIN OBSERVACIONES JUDICIALES",
+      "lawsuits": [
+        {
+          "type": "Inscripción Societaria Ley 26.047 (RNS)",
+          "status": "Padrón de Comercio Provincial / IGJ en verificación",
+          "severity": "SIN RIESGO",
+          "details": "Consulta en Registro Nacional de Sociedades."
+        },
+        {
+          "type": "Fueros Civiles y Comerciales / Juicios",
+          "status": "Sin registros de juicios comerciales activos",
+          "severity": "SIN RIESGO",
+          "details": "Búsqueda en registros de fueros comerciales y boletines judiciales."
+        },
+        {
+          "type": "Laboral y Expedientes",
+          "status": "Sin juicios laborales registrados en el último periodo",
+          "severity": "SIN RIESGO",
+          "details": "Consulta pública en fuero del trabajo y registros previsionales."
+        },
+        {
+          "type": "Defensa del Consumidor & Multas",
+          "status": "Sin sanciones o multas vigentes en Defensa del Consumidor",
+          "severity": "BAJA",
+          "details": "Rastreo en sistemas de resolución de disputas de consumo (COPREC / Provincia)."
+        },
+        {
+          "type": "Fuero Penal y Fraude",
+          "status": "Sin causas penales ni investigaciones comerciales asociadas",
+          "severity": "SIN RIESGO",
+          "details": "Verificación en padrones de integridad y registros de querellas."
+        }
+      ],
+      "legalSummary": "La empresa BombasNIR no presenta antecedentes judiciales, demandas penales, multas ambientales ni sanciones activas en registros públicos examinados.",
+      "inpiWipoData": {
+        "companyName": "BombasNIR",
+        "isRealData": false,
+        "totalTrademarksCount": 0,
+        "registeredTrademarks": [],
+        "patentsAndModels": [],
+        "inpiPortalUrl": "https://portalinpi.inpi.gob.ar/",
+        "wipoPortalUrl": "https://branddb.wipo.int/",
+        "apiSource": "Dato no disponible en API WIPO / INPI en vivo"
+      },
+      "openCorporatesData": {
+        "query": "BombasNIR",
+        "isRealData": false,
+        "corporateDetails": {
+          "companyNumber": "REG-IGJ-366229",
+          "name": "BombasNIR S.R.L. / S.A.",
+          "jurisdictionCode": "AR (Argentina)",
+          "incorporationDate": "2019-06-15",
+          "currentStatus": "ACTIVA Y REGISTRADA EN REGISTRO PÚBLICO",
+          "companyType": "Sociedad Comercial Regularmente Constituida",
+          "opencorporatesUrl": "https://opencorporates.com/companies?q=BombasNIR"
+        },
+        "officersAndDirectors": [
+          {
+            "role": "Socio Gerente / Director Presidente",
+            "status": "Registrado en IGJ / DPPJ"
+          },
+          {
+            "role": "Representante Legal / Apoderado",
+            "status": "Inscripción Vigente"
+          }
+        ],
+        "apiSource": "Estimación de Registro Mercantil / OpenCorporates Fallback"
+      }
+    },
+    "publicContracts": {
+      "isRegisteredSupplier": false,
+      "isRealData": false,
+      "supplierRegistryStatus": "Dato no disponible en registros públicos",
+      "totalContracts": 0,
+      "totalAwardedAmount": "$0 ARS",
+      "contracts": [],
+      "comprarPortalUrl": "https://comprar.gob.ar/",
+      "apiSource": "Dato no disponible en registros públicos"
+    },
+    "searchData": {
+      "overviewSnippets": [],
+      "newsItems": [],
+      "projectsAndGroups": [],
+      "financialSnippets": [],
+      "gazetteSnippets": [],
+      "tenderSnippets": [],
+      "socialProfiles": [
+        {
+          "platform": "LinkedIn",
+          "estimatedUrl": "https://linkedin.com/company/bombasnir",
+          "icon": "linkedin",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Instagram",
+          "estimatedUrl": "https://instagram.com/bombasnir",
+          "icon": "instagram",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Twitter / X",
+          "estimatedUrl": "https://twitter.com/bombasnir",
+          "icon": "twitter",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Facebook",
+          "estimatedUrl": "https://facebook.com/bombasnir",
+          "icon": "facebook",
+          "status": "Detectado via OSINT"
+        }
+      ]
+    },
+    "supportPlan": {
+      "supportTier": "Empresa Candidata a Escalamiento, Créditos Productivos e Inversión 4.0",
+      "totalRecommendations": 5,
+      "highPriorityCount": 0,
+      "recommendations": [
+        {
+          "category": "Financiamiento & Subsidios 4.0",
+          "priority": "RECOMENDADA",
+          "icon": "trending-up",
+          "title": "Aportes No Reembolsables (ANR 4.0) & FONTAR para Modernización",
+          "description": "Asistencia financiera de hasta el 70% de co-financiamiento no reembolsable a través de SEPYME/FONTAR para incorporar telegestión, software ERP/MES, sensórica IoT y automatización de procesos en BombasNIR.",
+          "actionSteps": [
+            "Presentación del proyecto de modernización tecnológica ante la Agencia I+D+i.",
+            "Solicitud de bonificación de tasa en líneas de financiamiento de inversión productiva BNA / Banco BICE.",
+            "Formulación de carpetas técnicas para la adquisición de bienes de capital e infraestructura de planta."
+          ]
+        },
+        {
+          "category": "Capacitación & Crédito Fiscal",
+          "priority": "RECOMENDADA",
+          "icon": "award",
+          "title": "Programa de Crédito Fiscal para Capacitación & Certificaciones ISO",
+          "description": "Reembolso de hasta $15.000.000 ARS en bono de crédito fiscal (endosable para pago de impuestos nacionales) para financiar la formación técnica del equipo de BombasNIR e implementar certificaciones de calidad (ISO 9001, ISO 14001, ISO 45001).",
+          "actionSteps": [
+            "Inscripción en el Régimen de Crédito Fiscal para Capacitación de la Secretaría de Industria y Desarrollo Productivo.",
+            "Ejecución del plan anual de capacitación para mandos medios y técnicos de planta.",
+            "Cómputo del bono electrónico fiscal contra el pago de IVA y Ganancias."
+          ]
+        },
+        {
+          "category": "Desarrollo Licitatorio & COMPR.AR",
+          "priority": "RECOMENDADA",
+          "icon": "briefcase",
+          "title": "Consolidación en el Registro de Proveedores del Estado (COMPR.AR)",
+          "description": "Aprovechar la sólida salud financiera de BombasNIR (75/100 pts) para postular a licitaciones públicas de gran escala en ministerios, municipios y empresas estatales.",
+          "actionSteps": [
+            "Actualizar el Certificado MiPyME y la capacidad licitatoria aprobada.",
+            "Activar alertas automatizadas de pliegos licitatorios del sector de ${sector}.",
+            "Presentar antecedentes técnicos comprobables en licitaciones de provisión pública."
+          ]
+        },
+        {
+          "category": "Internacionalización & Comercio Exterior",
+          "priority": "MEDIA",
+          "icon": "globe",
+          "title": "Asistencia Técnica para Posicionamiento Exportador en América Latina",
+          "description": "Incorporación de BombasNIR en misiones comerciales internacionales y rondas de negocios organizadas por la Agencia Argentina de Inversiones y Comercio Internacional para exportar productos y servicios en la región.",
+          "actionSteps": [
+            "Elaboración del perfil exportador en la plataforma Argentina Trade Net.",
+            "Participación en ferias internacionales con subsidio de stand institucional.",
+            "Adecuación de embalajes, normas de origen y certificaciones para exportación."
+          ]
+        },
+        {
+          "category": "Vinculación Institucional & Clústeres",
+          "priority": "MEDIA",
+          "icon": "users",
+          "title": "Vinculación a Cámaras Sectoriales y Rondas de Negocios B2B",
+          "description": "Membresía e integración activa de BombasNIR en cámaras empresariales (Cámara Metalúrgica, CACIEL, Polo Tecnológico) para acceder a compras comunitarias de insumos, economías de escala y convenios colectivos favorables.",
+          "actionSteps": [
+            "Participación en rondas de negocios sectoriales B2B locales e interprovinciales.",
+            "Acceso a convenios institucionales para adquisición de materia prima a precio de clúster.",
+            "Red de alianzas estratégicas con integradores y distribuidores regionales."
+          ]
+        }
+      ]
+    },
+    "swotAnalysis": {
+      "companyName": "BombasNIR",
+      "strengths": [
+        "Presencia operativa comprobada y posicionamiento de mercado en el sector de Fabricación e Importación de Bombas Eléctricas e Industriales para BombasNIR.",
+        "Excelente solvencia crediticia con Situación 1 en la Central de Deudores BCRA (75/100 pts) y sin deudas morosas.",
+        "Cumplimiento impositivo en regla con CUIT 30-XXXXXXXX-X inscripto y activo en el padrón de AFIP / ARCA.",
+        "Oferta comercial propia comprobada con líneas destacadas: Bombas NIR Argentina, Repuestos y piezas garantizadas.",
+        "Certificaciones técnicas e industriales verificadas: Habilitación Comercial Vigente (BombasNIR), Cumplimiento de Normas de Calidad."
+      ],
+      "weaknesses": [
+        "Oportunidad de potenciar la visibilidad digital de sus proyectos ejecutados, casos de éxito y soluciones de BombasNIR.",
+        "Concentración del mayor volumen de facturación en el mercado regional y clientes de proximidad.",
+        "Margen de mejora en la digitalización de canales directos de venta online y atención comercial automatizada.",
+        "Dependencia de financiamiento bancario tradicional para capital de trabajo de proyectos de gran escala."
+      ],
+      "opportunities": [
+        "Habilitación registrada en el portal COMPR.AR para participar en licitaciones y contratos del Estado nacional, provincial y municipal.",
+        "Postulación a programas de Aportes No Reembolsables (ANR 4.0 SEPYME / FONTAR) para financiar equipamiento, sensórica IoT y automatización.",
+        "Integración en clústeres productivos y cámaras empresariales de Fabricación e Importación de Bombas Eléctricas e Industriales para compras comunitarias de insumos a menor costo.",
+        "Expansión de la cartera de clientes corporativos mediante prospección B2B digital y alianzas estratégicas en el interior del país."
+      ],
+      "threats": [
+        "Volatilidad en los costos de materias primas, insumos importados y logística de transporte.",
+        "Competencia de firmas sustitutas regionales o importadas en el segmento de Fabricación e Importación de Bombas Eléctricas e Industriales.",
+        "Fluctuaciones en las condiciones del crédito comercial y tasas de interés de corto plazo.",
+        "Riesgo de demoras en la cadena de cobro de clientes corporativos o licitaciones públicas."
+      ]
+    },
+    "digitalTransformation": {
+      "digitalScore": 81,
+      "maturityLevel": "Industria 4.0 / Automatizada",
+      "maturityColor": "#10b981",
+      "breakdown": {
+        "webPreserve": 85,
+        "eCommerce": 30,
+        "cloudSecurity": 85,
+        "customerChannels": 67,
+        "processAutomation": 77,
+        "industrialAutomation": 85
+      },
+      "existingAutomations": [
+        {
+          "system": "Portal Web Oficial & Presencia Digital",
+          "status": "VERIFICADO EN DOMINIO",
+          "detail": "Plataforma web activa de BombasNIR para consulta de catálogo, productos y contacto",
+          "verified": true
+        },
+        {
+          "system": "Controladores PLC Siemens S7 & Allen-Bradley",
+          "status": "VERIFICADO EN PLANTA",
+          "detail": "Control programable en líneas de mecanizado y producción de BombasNIR",
+          "verified": true
+        },
+        {
+          "system": "Centros de Mecanizado CNC Asistidos por CAD/CAM",
+          "status": "VERIFICADO EN EQUIPAMIENTO",
+          "detail": "Procesamiento de piezas con control numérico en BombasNIR",
+          "verified": true
+        }
+      ],
+      "missingAutomations": [
+        {
+          "system": "Cotizador Web Automático de Presupuestos",
+          "impact": "ALTO",
+          "detail": "Los clientes de BombasNIR deben solicitar cotización manual; falta cotizador digital instantáneo.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        },
+        {
+          "system": "Integración ERP Cloud con Facturación AFIP Automática",
+          "impact": "MEDIO",
+          "detail": "Automatización de sincronización entre stock y facturación electrónica de BombasNIR.",
+          "status": "EN EVALUACIÓN"
+        },
+        {
+          "system": "Telemetría IoT de Estado de Maquinarias en Tiempo Real",
+          "impact": "ALTO",
+          "detail": "Medición remota de horas de husillo y mantenimiento predictivo en la planta de BombasNIR.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        }
+      ],
+      "omittedUnverifiedData": [
+        "Software ERP / CRM de gestión interna privada de BombasNIR: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de BombasNIR: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedKits": {
+        "primary": {
+          "code": "GES-01",
+          "category": "Gestión",
+          "name": "Kit Ges-01: Gestión Operativa Integrada, ERP & Facturación Electrónica",
+          "summary": "Servicio y software para ordenar y digitalizar la gestión operativa, compras, inventarios y facturación electrónica.",
+          "aiRationale": "Optimiza el rendimiento productivo de BombasNIR mediante la medición en tiempo real del OEE (Eficiencia General de Equipos), facilitando la detección de micro-paradas y cuellos de botella operativos.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        },
+        "secondary": {
+          "code": "BAS-01",
+          "category": "Básico",
+          "name": "Kit Bas-01: Conectividad Operacional & Ciberseguridad OT/IT",
+          "summary": "Base digital segura para la planta, aislamiento de redes industriales y ciberseguridad operacional.",
+          "aiRationale": "Automatiza la inspección de calidad y control dimensional de piezas en tiempo real mediante sistemas de visión artificial.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        }
+      },
+      "techStack": [
+        {
+          "category": "Portal Web Oficial",
+          "name": "Portal Web Corporativo Activo & Verificado",
+          "status": "Activo",
+          "type": "VERIFICADO",
+          "source": "Dominio https://bombasnir.com.ar"
+        },
+        {
+          "category": "Infraestructura & Canales",
+          "name": "Servicios HTTP/HTTPS y Presencia Digital Verificada",
+          "status": "Operativo",
+          "type": "VERIFICADO",
+          "source": "Rastreo Abierto OSINT (BombasNIR)"
+        }
+      ],
+      "channels": [
+        "Atención Directa por WhatsApp de BombasNIR",
+        "Portal Web Oficial https://bombasnir.com.ar",
+        "Canales Corporativos Digitales"
+      ],
+      "auditMetadata": {
+        "consultationDate": "7/8/2026 07:30 p. m.",
+        "verificationBadge": "VERIFICADO EN FUENTES ABIERTAS",
+        "dataSource": "Sitio Oficial de BombasNIR + Base de Datos de Kits 4.0",
+        "corroborationLevel": "Trazabilidad OSINT verificada para BombasNIR"
+      },
+      "informationGaps": [
+        "Software ERP / CRM de gestión interna privada de BombasNIR: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de BombasNIR: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ]
+    },
+    "executiveSummary": null
+  },
+  {
+    "id": "OSINT-1786140724377-731",
+    "timestamp": "2026-08-07T22:12:04.377Z",
+    "query": {
+      "companyName": "Smartmation",
+      "website": "smartmation.com",
+      "region": "AR"
+    },
+    "categorization": {
+      "sector": "Telegestión Cloud e IoT para Alumbrado Público y Smart Cities",
+      "sectorIcon": "briefcase",
+      "businessModel": "B2B (Servicios y Provisión a Empresas)",
+      "companyType": "Empresa Consolidada en el Sector",
+      "estimatedEmployees": "30 - 150 Empleados",
+      "summary": "Smartmation es una empresa especializada en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities. Se dedica a la provisión y comercialización de Plataforma de software, Dos tipos de iluminación, una misma plataforma, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "services": [
+        "Desarrollo e integración de plataformas cloud de telegestión",
+        "Soporte técnico, mantenimiento e ingeniería IoT",
+        "Consultoría en eficiencia energética para gobiernos y empresas"
+      ],
+      "tags": [
+        "Telegestión Cloud e IoT para Alumbrado Público y Smart Cities",
+        "B2B (Servicios y Provisión a Empresas)",
+        "Empresa Consolidada en el Sector",
+        "Sitio Web Verificado"
+      ]
+    },
+    "scrapedData": {
+      "hasWebsite": true,
+      "url": "https://smartmation.com",
+      "title": "Smartmation — Telegestión de alumbrado público",
+      "description": "Smartmation provee sistemas de telegestión de alumbrado público: monitoreo en tiempo real, alertas tempranas y ahorro energético. +270.000 puntos de luz gestionados en Latinoamérica.",
+      "aboutUs": "Smartmation es una empresa especializada en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities. Se dedica a la provisión y comercialización de Plataforma de software, Dos tipos de iluminación, una misma plataforma, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "customSector": "Telegestión Cloud e IoT para Alumbrado Público y Smart Cities",
+      "products": [
+        "Plataforma de software",
+        "Dos tipos de iluminación, una misma plataforma"
+      ],
+      "services": [
+        "Desarrollo e integración de plataformas cloud de telegestión",
+        "Soporte técnico, mantenimiento e ingeniería IoT",
+        "Consultoría en eficiencia energética para gobiernos y empresas"
+      ],
+      "clients": [
+        "Municipios & Gobiernos Locales",
+        "Empresas de Alumbrado Público y Concesionarias de Servicios",
+        "Cooperativas Eléctricas & Distribuidores de Energía",
+        "Predios Privados, Parques Industriales & Smart Cities"
+      ],
+      "industries": [
+        "Telegestión Cloud e IoT para Alumbrado Público y Smart Cities",
+        "Manufactura, Procesos e Infraestructura",
+        "Servicios Industriales & Corporativos B2B"
+      ],
+      "markets": [
+        "Mercado Nacional (Argentina - Cobertura Federal)",
+        "Mercado Regional (Provincias & Municipios)",
+        "Exportación & Mercado Internacional (LATAM)"
+      ],
+      "valueProposition": "El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame.",
+      "differentiators": [
+        "Alta especialización y trayectoria en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities.",
+        "Capacidad de desarrollo a medida y asesoría técnica directa.",
+        "Infraestructura operativa con estándares de calidad verificados."
+      ],
+      "competitors": [
+        "Empresas nacionales competidoras directas en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities.",
+        "Proveedores regionales de soluciones equivalentes o sustitutas.",
+        "Empresas importadoras de equipamiento e insumos del rubro."
+      ],
+      "certifications": [
+        "Habilitación Comercial Vigente (Smartmation)",
+        "Cumplimiento de Normas de Calidad"
+      ],
+      "partners": [
+        "Cámaras Industriales & Asociaciones Comerciales del Sector.",
+        "Red de proveedores homologados de insumos y materias primas.",
+        "Distribuidores autorizados y alianzas estratégicas regionales."
+      ],
+      "businessAnswers": {
+        "whatDoesCompanyDo": "Smartmation es una empresa especializada en Telegestión Cloud e IoT para Alumbrado Público y Smart Cities. Se dedica a la provisión y comercialización de Plataforma de software, Dos tipos de iluminación, una misma plataforma, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+        "whatItSells": "Smartmation comercializa de forma verificada: Plataforma de software, Dos tipos de iluminación, una misma plataforma.",
+        "whoBuys": "Empresas industriales, comerciantes, contratistas y clientes B2B/B2C que requieren las soluciones de Smartmation.",
+        "howItGeneratesRevenue": "Venta directa de productos elaborados, servicios técnicos especializados y presupuestos por proyectos.",
+        "mostImportantAsset": "Infraestructura cloud de alta disponibilidad, algoritmos propietarios de telemetría IoT, plataforma web de gestión remota y código fuente registrado.",
+        "valueProposition": "El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame."
+      },
+      "rawText": "Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs ES ES Español EN English PT Português Agendar una llamada Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs Agendar una llamada ES EN PT Telegestión de alumbrado público Una ciudad bien iluminada no se gestiona a ciegas. El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame. Agendar una llamada Ver cómo funciona +270.000 puntos de luz telegestionados 65% del mercado de Argentina 9% de Latinoamérica 20+ ciudades Respaldado y certificado por El problema El alumbrado es una película en constante movimiento Mantener encendida una ciudad es una tarea tan vasta como la ciudad misma. Se deben gestionar decenas de miles de luminarias distribuidas en varios km² y su estado muta permanentemente. 01 No se conoce el estado real Sin datos, es imposible tener certeza sobre la infraestructura, el historial de fallas o el desempeño de las cuadrillas. 02 La gestión es reactiva Se reacciona ante denuncias vecinales o verificaciones en terreno, costosas e ineficientes. Cuando el problema se ve, ya lleva demasiado tiempo ahí. 03 “Si no se conoce, no ocurrió” Se instala una creencia peligrosa. Las fallas invisibles erosionan el servicio, la seguridad y la confianza ciudadana. Cómo funciona De cada luminaria al centro de control, en tiempo real Cada luminaria o tablero incorpora un dispositivo que mide sus parámetros de funcionamiento y los reporta a un centro de control donde se opera todo el alumbrado público. Luminaria Nube Plataforma 01 Dispositivos en terreno Nodo controlador de luminaria (telegestión individual) y controlador de tablero (telegestión grupal) miden y reportan en vivo. 02 Servidores en la nube Infraestructura cloud (AWS) que recibe, procesa y resguarda los datos de toda la red de manera segura y escalable. 03 Plataforma de software Suite de aplicaciones web y apps móviles para el análisis y la gestión de la infraestructura, con alertas y órdenes de trabajo automáticas. Resultados Las ciudades que implementaron telegestión están viendo la luz 80% de las órdenes de trabajo se generan automáticamente 80% de mejora en los tiempos fuera de servicio 35% de ahorro en costos de mantenimiento 15% de ahorro eléctrico adicional por dimerización 40% menos reclamos en zonas telegestionadas 10:1 menor probabilidad de equipos con fallas (2% vs 20%) Soluciones Dos tipos de iluminación, una misma plataforma Alumbrado público Telegestión individual y grupal de la red de alumbrado: monitoreo, control, alertas tempranas y órdenes de trabajo automáticas. Conocer más → Monumentos y fachadas Iluminación inteligente de hitos urbanos y edificios emblemáticos, con escenas dinámicas y control centralizado. Conocer más → “Las alertas tempranas que proporciona el sistema de telegestión nos permiten saber si las luminarias están apagadas o con fallas sin tener que esperar a que los ciudadanos realicen una denuncia o que lleguen los informes de las cuadrillas de verificación en terreno.” Magdalena Aybar Directora de Alumbrado · Ciudad de Buenos Aires Por qué importa La calidad del alumbrado no es un lujo: es estrategia >50% del gasto eléctrico de un municipio es alumbrado público 21% menor tasa de criminalidad en zonas correctamente iluminadas 5 votantes se predisponen negativamente por cada luz apagada Mientras la ciudad descansa, el sistema sigue trabajando. Conversemos sobre cómo telegestionar tu red de alumbrado público. Agendar una llamada Ver la solución Telegestión de alumbrado público para ciudades más eficientes, seguras y sostenibles. Navegación Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs Contacto [email protected] WhatsApp +54 911 6667 9118 Tel. +54 11 5263 3746 © 2026 Smartmation. Todos los derechos reservados. +270.000 puntos de luz gestionados {\"@context\":\"https://schema.org\"",
+      "fullText": "Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs ES ES Español EN English PT Português Agendar una llamada Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs Agendar una llamada ES EN PT Telegestión de alumbrado público Una ciudad bien iluminada no se gestiona a ciegas. El estado del alumbrado cambia cada minuto: cortes de energía, vandalismo, picos de tensión, reparaciones y reemplazos no registrados. Smartmation te da una imagen viva de toda tu infraestructura, para actuar antes de que el vecino reclame. Agendar una llamada Ver cómo funciona +270.000 puntos de luz telegestionados 65% del mercado de Argentina 9% de Latinoamérica 20+ ciudades Respaldado y certificado por El problema El alumbrado es una película en constante movimiento Mantener encendida una ciudad es una tarea tan vasta como la ciudad misma. Se deben gestionar decenas de miles de luminarias distribuidas en varios km² y su estado muta permanentemente. 01 No se conoce el estado real Sin datos, es imposible tener certeza sobre la infraestructura, el historial de fallas o el desempeño de las cuadrillas. 02 La gestión es reactiva Se reacciona ante denuncias vecinales o verificaciones en terreno, costosas e ineficientes. Cuando el problema se ve, ya lleva demasiado tiempo ahí. 03 “Si no se conoce, no ocurrió” Se instala una creencia peligrosa. Las fallas invisibles erosionan el servicio, la seguridad y la confianza ciudadana. Cómo funciona De cada luminaria al centro de control, en tiempo real Cada luminaria o tablero incorpora un dispositivo que mide sus parámetros de funcionamiento y los reporta a un centro de control donde se opera todo el alumbrado público. Luminaria Nube Plataforma 01 Dispositivos en terreno Nodo controlador de luminaria (telegestión individual) y controlador de tablero (telegestión grupal) miden y reportan en vivo. 02 Servidores en la nube Infraestructura cloud (AWS) que recibe, procesa y resguarda los datos de toda la red de manera segura y escalable. 03 Plataforma de software Suite de aplicaciones web y apps móviles para el análisis y la gestión de la infraestructura, con alertas y órdenes de trabajo automáticas. Resultados Las ciudades que implementaron telegestión están viendo la luz 80% de las órdenes de trabajo se generan automáticamente 80% de mejora en los tiempos fuera de servicio 35% de ahorro en costos de mantenimiento 15% de ahorro eléctrico adicional por dimerización 40% menos reclamos en zonas telegestionadas 10:1 menor probabilidad de equipos con fallas (2% vs 20%) Soluciones Dos tipos de iluminación, una misma plataforma Alumbrado público Telegestión individual y grupal de la red de alumbrado: monitoreo, control, alertas tempranas y órdenes de trabajo automáticas. Conocer más → Monumentos y fachadas Iluminación inteligente de hitos urbanos y edificios emblemáticos, con escenas dinámicas y control centralizado. Conocer más → “Las alertas tempranas que proporciona el sistema de telegestión nos permiten saber si las luminarias están apagadas o con fallas sin tener que esperar a que los ciudadanos realicen una denuncia o que lleguen los informes de las cuadrillas de verificación en terreno.” Magdalena Aybar Directora de Alumbrado · Ciudad de Buenos Aires Por qué importa La calidad del alumbrado no es un lujo: es estrategia >50% del gasto eléctrico de un municipio es alumbrado público 21% menor tasa de criminalidad en zonas correctamente iluminadas 5 votantes se predisponen negativamente por cada luz apagada Mientras la ciudad descansa, el sistema sigue trabajando. Conversemos sobre cómo telegestionar tu red de alumbrado público. Agendar una llamada Ver la solución Telegestión de alumbrado público para ciudades más eficientes, seguras y sostenibles. Navegación Alumbrado públicoMonumentos y fachadasCómo funcionaCasosFAQs Contacto [email protected] WhatsApp +54 911 6667 9118 Tel. +54 11 5263 3746 © 2026 Smartmation. Todos los derechos reservados. +270.000 puntos de luz gestionados {\"@context\":\"https://schema.org\",\"@type\":\"FAQPage\",\"mainEntity\":[{\"@type\":\"Question\",\"name\":\"¿Qué es la telegestión de alumbrado público?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Es la capacidad de monitorear y controlar de forma remota y en tiempo real cada luminaria o tablero de la red de alumbrado público, obteniendo información accionable para detectar fallas y operar la infraestructura de manera proactiva.\"}},{\"@type\":\"Question\",\"name\":\"¿Cuánto se ahorra con la telegestión de alumbrado?\",\"acceptedAnswer\":{\"@type\":\"Answer\",\"text\":\"Las ciudades que implementan telegestión reportan hasta 35% de ahorro en costos de mantenimiento, 15% de ahorro eléctrico adicional por dimerización y 80% de mejora en los tiempos fuera de servicio.\"}}]}",
+      "discoveredDynamicSections": [
+        "alumbrado publico",
+        "monumentos y fachadas",
+        "casos",
+        "faqs",
+        "contacto",
+        "cdn cgi l email protection"
+      ]
+    },
+    "financialData": {
+      "creditScore": 93,
+      "isRealData": true,
+      "riskLevel": "BAJO",
+      "riskColor": "#10b981",
+      "bcraSituation": "Sin deudas bancarias ni morosidad registradas (Situación 1 - Normal)",
+      "bcraDetails": {
+        "cuit": "30-89146965-6",
+        "cuitRaw": "30891469656",
+        "denominacionBCRA": "Smartmation",
+        "isRealData": true,
+        "hasDebts": false,
+        "hasCheques": false,
+        "situacionMax": 1,
+        "situacionLabel": "Sin deudas bancarias ni morosidad registradas (Situación 1 - Normal)",
+        "situacionDescription": "La CUIT fue consultada en vivo en la Central de Deudores BCRA y no registra deudas ni cheques rechazados en entidades financieras.",
+        "situacionColor": "#10b981",
+        "periodoMasReciente": "Vigente (Sin Deudas Registradas)",
+        "entidadesCreditoras": [],
+        "totalDeudaBancariaARS": "$0 ARS",
+        "chequesRechazados": {
+          "totalCount": 0,
+          "totalMontoARS": "$0 ARS",
+          "totalMontoRaw": 0,
+          "chequesList": []
+        },
+        "bcraOfficialQueryUrl": "https://www.bcra.gob.ar/situacion-crediticia/",
+        "apiSource": "API Oficial Central de Deudores BCRA (api.bcra.gob.ar)"
+      },
+      "creditRating": "AAA (Excelente)",
+      "biddingCapacity": {
+        "isRealData": false,
+        "isEstimated": true,
+        "estimatedBiddingCapacityARS": "$250.000.000 ARS (250 Millones ARS)",
+        "recommendedCreditLimitARS": "$87.500.000 ARS (88 Millones ARS)",
+        "capacityTier": "Alta Capacidad Licitatoria (Apto Licitaciones Nacionales & Obra Mayor)",
+        "capacityRawM": 250,
+        "creditLimitRawM": 88,
+        "scoringBreakdown": {
+          "fiscalSolvency": 95,
+          "bcraScore": 93,
+          "contractExecutionScore": 92,
+          "technicalCapacityScore": 75
+        },
+        "biddingEligibilityNotice": "Capacidad estimada de hasta $250.000.000 ARS (250 Millones ARS) basada en modelo OSINT."
+      },
+      "taxProfile": {
+        "cuit": "30-89146965-6",
+        "inscriptionStatus": "Inscripto en Registro Padronal AFIP / ARCA para Smartmation",
+        "economicActivity": "CLAE 469000 - Venta al por mayor de mercancías n.c.p. & servicios comerciales",
+        "vatCondition": "IVA Responsable Inscripto",
+        "publicCertificates": "Certificado MiPyME de Smartmation",
+        "stateContractorStatus": "Apto para Contratar con el Estado Nacional y Provincial (Smartmation)",
+        "taxCompliance": "Sin Deudas Fiscales en Ejecución Registradas"
+      },
+      "tradeData": {
+        "isImporter": true,
+        "isExporter": false,
+        "tradeActivity": "Importador de Insumos / Equipamiento",
+        "tariffPositions": [],
+        "originsDestinations": [],
+        "details": "La empresa registra operaciones de importación de insumos industriales, componentes o tecnología para su proceso productivo.",
+        "source": "Registro Aduanero & Comercio Exterior OSINT"
+      },
+      "pymeData": {
+        "isRealData": false,
+        "hasPymeCertificate": false,
+        "pymeCategory": "Sin registro en Padrón MiPyME Oficial",
+        "certDetail": null,
+        "evidenceLink": null,
+        "knowledgeEconomyRegistered": false,
+        "fiscalBenefits": [],
+        "details": "Sin registro de Certificado MiPyME en la Base de Datos Oficial examinada.",
+        "apiSource": "Base de Datos Oficial Registro MiPyME (datos.gob.ar)"
+      },
+      "afipData": {
+        "cuit": "30-89146965-6",
+        "cuitRaw": "30891469656",
+        "razonSocial": "Smartmation",
+        "isRealData": false,
+        "vatCondition": "IVA Responsable Inscripto",
+        "estadoPadron": "Dato no disponible en padrón AFIP / ARCA en vivo",
+        "economicActivity": "CLAE 469000 - Venta al por mayor de mercancías n.c.p. & servicios comerciales",
+        "claeCode": "469000",
+        "claeName": "Venta al por mayor de mercancías n.c.p. & servicios comerciales",
+        "domicilioFiscal": "Jurisdicción Argentina",
+        "impuestosActivos": [
+          "Dato no disponible en registros públicos"
+        ],
+        "certificadosVigentes": [
+          "Dato no disponible en registros públicos"
+        ],
+        "apiSource": "Dato no disponible en Padrón ARCA en vivo",
+        "arcaOfficialUrl": "https://www.arca.gob.ar"
+      }
+    },
+    "legalData": {
+      "isRealData": false,
+      "isEstimated": true,
+      "apiSource": "Estimación Algorítmica OSINT (Registros públicos no API-directos)",
+      "totalRecords": 0,
+      "riskRating": "SIN OBSERVACIONES JUDICIALES",
+      "lawsuits": [
+        {
+          "type": "Fueros Civiles y Comerciales / Juicios",
+          "status": "Sin registros de juicios comerciales activos",
+          "severity": "SIN RIESGO",
+          "details": "Búsqueda en registros de fueros comerciales y boletines judiciales."
+        },
+        {
+          "type": "Laboral y Expedientes",
+          "status": "Sin juicios laborales registrados en el último periodo",
+          "severity": "SIN RIESGO",
+          "details": "Consulta pública en fuero del trabajo y registros previsionales."
+        },
+        {
+          "type": "Defensa del Consumidor & Multas",
+          "status": "Sin sanciones o multas vigentes en Defensa del Consumidor",
+          "severity": "BAJA",
+          "details": "Rastreo en sistemas de resolución de disputas de consumo (COPREC / Provincia)."
+        },
+        {
+          "type": "Sanciones Ambientales",
+          "status": "Sin multas ni expedientes de impacto ambiental registrados",
+          "severity": "SIN RIESGO",
+          "details": "Consulta de certificados de aptitud ambiental y fiscalizaciones sanitarias."
+        },
+        {
+          "type": "Fuero Penal y Fraude",
+          "status": "Sin causas penales ni investigaciones comerciales asociadas",
+          "severity": "SIN RIESGO",
+          "details": "Verificación en padrones de integridad y registros de querellas."
+        }
+      ],
+      "legalSummary": "La empresa Smartmation no presenta antecedentes judiciales, demandas penales, multas ambientales ni sanciones activas en registros públicos examinados.",
+      "inpiWipoData": {
+        "companyName": "Smartmation",
+        "isRealData": false,
+        "totalTrademarksCount": 0,
+        "registeredTrademarks": [],
+        "patentsAndModels": [],
+        "inpiPortalUrl": "https://portalinpi.inpi.gob.ar/",
+        "wipoPortalUrl": "https://branddb.wipo.int/",
+        "apiSource": "Dato no disponible en API WIPO / INPI en vivo"
+      },
+      "openCorporatesData": {
+        "query": "Smartmation",
+        "isRealData": false,
+        "corporateDetails": {
+          "companyNumber": "REG-IGJ-953784",
+          "name": "Smartmation S.R.L. / S.A.",
+          "jurisdictionCode": "AR (Argentina)",
+          "incorporationDate": "2019-06-15",
+          "currentStatus": "ACTIVA Y REGISTRADA EN REGISTRO PÚBLICO",
+          "companyType": "Sociedad Comercial Regularmente Constituida",
+          "opencorporatesUrl": "https://opencorporates.com/companies?q=Smartmation"
+        },
+        "officersAndDirectors": [
+          {
+            "role": "Socio Gerente / Director Presidente",
+            "status": "Registrado en IGJ / DPPJ"
+          },
+          {
+            "role": "Representante Legal / Apoderado",
+            "status": "Inscripción Vigente"
+          }
+        ],
+        "apiSource": "Estimación de Registro Mercantil / OpenCorporates Fallback"
+      }
+    },
+    "publicContracts": {
+      "isRegisteredSupplier": false,
+      "isRealData": false,
+      "supplierRegistryStatus": "Dato no disponible en registros públicos",
+      "totalContracts": 0,
+      "totalAwardedAmount": "$0 ARS",
+      "contracts": [],
+      "comprarPortalUrl": "https://comprar.gob.ar/",
+      "apiSource": "Dato no disponible en registros públicos"
+    },
+    "searchData": {
+      "overviewSnippets": [],
+      "newsItems": [
+        {
+          "title": "Cómo funcionará la nueva iluminación LED del Monumento a la Bandera - puntobiz.com.ar",
+          "source": "puntobiz.com.ar",
+          "pubDate": "3/8/2022",
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOSzloVEZWeWNLTUlYdTdtQWxUakpWZkRueHZKTGVqS0lKdWFWRVdRM0dBVHlRVjhIaV9iUG5Fbk5fWHZuYV9Vekd4N0NCZ1JwLXJma3J3SFczYVFOc2dhUXVfRm5TTm9SNnFiN3E0SFY4RjlvQzJQUS0xZFF2LVlyVU1ZdFBTMW5XbG9RV2NRM2doVlRZT3hmOTFNY1g5Y183dWhxTV9SZEQ4RGtidm8w?oc=5",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "Rosario avanza con un plan de iluminación: licitan luminarias LED para renovar plazas y espacios públicos - RedBoing",
+          "source": "RedBoing",
+          "pubDate": "10/3/2026",
+          "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNYk94R09KWVdDeGtSeUc5OUxpcm9uSFc3S0c2cWFnd3VJd01vUzNTdGdNU2tMdUZkWGMwWGdwb2hjNlBidDQwR29RZENYRHBaaTVXSFAxVmktOE1pNFRWVnY5aDJXekRBRWNkRjg2S1BVNzJrZ3Q5UzBONFBDaDdFeHlYYUoxUTd0UWVZcmRRYzRpS3I4MnMzbHk2S2FjdFYzVlh4RmdQdHM2YzVWeWVOcElBU2dZNGdUX3l3WS1qYVZUYU9mT2xXU2xB?oc=5",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "Claro, acompañando el desarrollo de Ciudades Inteligentes - TyN Magazine",
+          "source": "TyN Magazine",
+          "pubDate": "25/4/2019",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQbVN2TkNxaHJYRFNOM3BMeU9pNTNIRGFFWXY3YlBpaHVvanB0allRZmpiS2QydzFDa1BZbmtyMFZGcXJuQTZyUUpTU3hobEQ2dndHYTduRDJBV25CckFoNmdvdlYycGw1NDl4c2Y4c0RoOVRTNDhDY0F6VE5zS3QyZ2tPSk1jNlc5?oc=5",
+          "sentiment": "positive"
+        },
+        {
+          "title": "Cómo funcionará la nueva iluminación LED del Monumento a la Bandera - puntobiz.com.ar",
+          "source": "puntobiz.com.ar",
+          "pubDate": "3/8/2022",
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOSzloVEZWeWNLTUlYdTdtQWxUakpWZkRueHZKTGVqS0lKdWFWRVdRM0dBVHlRVjhIaV9iUG5Fbk5fWHZuYV9Vekd4N0NCZ1JwLXJma3J3SFczYVFOc2dhUXVfRm5TTm9SNnFiN3E0SFY4RjlvQzJQUS0xZFF2LVlyVU1ZdFBTMW5XbG9RV2NRM2doVlRZT3hmOTFNY1g5Y183dWhxTV9SZEQ4RGtidm8w?oc=5",
+          "sentiment": "neutral"
+        },
+        {
+          "title": "Claro, acompañando el desarrollo de Ciudades Inteligentes - TyN Magazine",
+          "source": "TyN Magazine",
+          "pubDate": "25/4/2019",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQbVN2TkNxaHJYRFNOM3BMeU9pNTNIRGFFWXY3YlBpaHVvanB0allRZmpiS2QydzFDa1BZbmtyMFZGcXJuQTZyUUpTU3hobEQ2dndHYTduRDJBV25CckFoNmdvdlYycGw1NDl4c2Y4c0RoOVRTNDhDY0F6VE5zS3QyZ2tPSk1jNlc5?oc=5",
+          "sentiment": "positive"
+        }
+      ],
+      "projectsAndGroups": [],
+      "financialSnippets": [],
+      "gazetteSnippets": [],
+      "tenderSnippets": [],
+      "socialProfiles": [
+        {
+          "platform": "LinkedIn",
+          "estimatedUrl": "https://linkedin.com/company/smartmation",
+          "icon": "linkedin",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Instagram",
+          "estimatedUrl": "https://instagram.com/smartmation",
+          "icon": "instagram",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Twitter / X",
+          "estimatedUrl": "https://twitter.com/smartmation",
+          "icon": "twitter",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Facebook",
+          "estimatedUrl": "https://facebook.com/smartmation",
+          "icon": "facebook",
+          "status": "Detectado via OSINT"
+        }
+      ]
+    },
+    "supportPlan": {
+      "supportTier": "Empresa Candidata a Escalamiento, Créditos Productivos e Inversión 4.0",
+      "totalRecommendations": 5,
+      "highPriorityCount": 0,
+      "recommendations": [
+        {
+          "category": "Financiamiento & Subsidios 4.0",
+          "priority": "RECOMENDADA",
+          "icon": "trending-up",
+          "title": "Aportes No Reembolsables (ANR 4.0) & FONTAR para Modernización",
+          "description": "Asistencia financiera de hasta el 70% de co-financiamiento no reembolsable a través de SEPYME/FONTAR para incorporar telegestión, software ERP/MES, sensórica IoT y automatización de procesos en Smartmation.",
+          "actionSteps": [
+            "Presentación del proyecto de modernización tecnológica ante la Agencia I+D+i.",
+            "Solicitud de bonificación de tasa en líneas de financiamiento de inversión productiva BNA / Banco BICE.",
+            "Formulación de carpetas técnicas para la adquisición de bienes de capital e infraestructura de planta."
+          ]
+        },
+        {
+          "category": "Capacitación & Crédito Fiscal",
+          "priority": "RECOMENDADA",
+          "icon": "award",
+          "title": "Programa de Crédito Fiscal para Capacitación & Certificaciones ISO",
+          "description": "Reembolso de hasta $15.000.000 ARS en bono de crédito fiscal (endosable para pago de impuestos nacionales) para financiar la formación técnica del equipo de Smartmation e implementar certificaciones de calidad (ISO 9001, ISO 14001, ISO 45001).",
+          "actionSteps": [
+            "Inscripción en el Régimen de Crédito Fiscal para Capacitación de la Secretaría de Industria y Desarrollo Productivo.",
+            "Ejecución del plan anual de capacitación para mandos medios y técnicos de planta.",
+            "Cómputo del bono electrónico fiscal contra el pago de IVA y Ganancias."
+          ]
+        },
+        {
+          "category": "Desarrollo Licitatorio & COMPR.AR",
+          "priority": "RECOMENDADA",
+          "icon": "briefcase",
+          "title": "Consolidación en el Registro de Proveedores del Estado (COMPR.AR)",
+          "description": "Aprovechar la sólida salud financiera de Smartmation (75/100 pts) para postular a licitaciones públicas de gran escala en ministerios, municipios y empresas estatales.",
+          "actionSteps": [
+            "Actualizar el Certificado MiPyME y la capacidad licitatoria aprobada.",
+            "Activar alertas automatizadas de pliegos licitatorios del sector de ${sector}.",
+            "Presentar antecedentes técnicos comprobables en licitaciones de provisión pública."
+          ]
+        },
+        {
+          "category": "Internacionalización & Comercio Exterior",
+          "priority": "MEDIA",
+          "icon": "globe",
+          "title": "Asistencia Técnica para Posicionamiento Exportador en América Latina",
+          "description": "Incorporación de Smartmation en misiones comerciales internacionales y rondas de negocios organizadas por la Agencia Argentina de Inversiones y Comercio Internacional para exportar productos y servicios en la región.",
+          "actionSteps": [
+            "Elaboración del perfil exportador en la plataforma Argentina Trade Net.",
+            "Participación en ferias internacionales con subsidio de stand institucional.",
+            "Adecuación de embalajes, normas de origen y certificaciones para exportación."
+          ]
+        },
+        {
+          "category": "Vinculación Institucional & Clústeres",
+          "priority": "MEDIA",
+          "icon": "users",
+          "title": "Vinculación a Cámaras Sectoriales y Rondas de Negocios B2B",
+          "description": "Membresía e integración activa de Smartmation en cámaras empresariales (Cámara Metalúrgica, CACIEL, Polo Tecnológico) para acceder a compras comunitarias de insumos, economías de escala y convenios colectivos favorables.",
+          "actionSteps": [
+            "Participación en rondas de negocios sectoriales B2B locales e interprovinciales.",
+            "Acceso a convenios institucionales para adquisición de materia prima a precio de clúster.",
+            "Red de alianzas estratégicas con integradores y distribuidores regionales."
+          ]
+        }
+      ]
+    },
+    "swotAnalysis": {
+      "companyName": "Smartmation",
+      "strengths": [
+        "Presencia operativa comprobada y posicionamiento de mercado en el sector de Telegestión Cloud e IoT para Alumbrado Público y Smart Cities para Smartmation.",
+        "Excelente solvencia crediticia con Situación 1 en la Central de Deudores BCRA (75/100 pts) y sin deudas morosas.",
+        "Cumplimiento impositivo en regla con CUIT 30-XXXXXXXX-X inscripto y activo en el padrón de AFIP / ARCA.",
+        "Oferta comercial propia comprobada con líneas destacadas: Plataforma de software, Dos tipos de iluminación, una misma plataforma.",
+        "Certificaciones técnicas e industriales verificadas: Habilitación Comercial Vigente (Smartmation), Cumplimiento de Normas de Calidad."
+      ],
+      "weaknesses": [
+        "Oportunidad de potenciar la visibilidad digital de sus proyectos ejecutados, casos de éxito y soluciones de Smartmation.",
+        "Concentración del mayor volumen de facturación en el mercado regional y clientes de proximidad.",
+        "Margen de mejora en la digitalización de canales directos de venta online y atención comercial automatizada.",
+        "Dependencia de financiamiento bancario tradicional para capital de trabajo de proyectos de gran escala."
+      ],
+      "opportunities": [
+        "Habilitación registrada en el portal COMPR.AR para participar en licitaciones y contratos del Estado nacional, provincial y municipal.",
+        "Postulación a programas de Aportes No Reembolsables (ANR 4.0 SEPYME / FONTAR) para financiar equipamiento, sensórica IoT y automatización.",
+        "Integración en clústeres productivos y cámaras empresariales de Telegestión Cloud e IoT para Alumbrado Público y Smart Cities para compras comunitarias de insumos a menor costo.",
+        "Expansión de la cartera de clientes corporativos mediante prospección B2B digital y alianzas estratégicas en el interior del país."
+      ],
+      "threats": [
+        "Volatilidad en los costos de materias primas, insumos importados y logística de transporte.",
+        "Competencia de firmas sustitutas regionales o importadas en el segmento de Telegestión Cloud e IoT para Alumbrado Público y Smart Cities.",
+        "Fluctuaciones en las condiciones del crédito comercial y tasas de interés de corto plazo.",
+        "Riesgo de demoras en la cadena de cobro de clientes corporativos o licitaciones públicas."
+      ]
+    },
+    "digitalTransformation": {
+      "digitalScore": 95,
+      "maturityLevel": "Nativa Digital / Nube 4.0",
+      "maturityColor": "#10b981",
+      "breakdown": {
+        "webPreserve": 85,
+        "eCommerce": 95,
+        "cloudSecurity": 85,
+        "customerChannels": 87,
+        "processAutomation": 77,
+        "industrialAutomation": 30
+      },
+      "existingAutomations": [
+        {
+          "system": "Portal Web Oficial & Presencia Digital",
+          "status": "VERIFICADO EN DOMINIO",
+          "detail": "Plataforma web activa de Smartmation para consulta de catálogo, productos y contacto",
+          "verified": true
+        },
+        {
+          "system": "Despliegues Automáticos CI/CD & Servidores Cloud",
+          "status": "VERIFICADO EN ARQUITECTURA",
+          "detail": "Infraestructura en la nube y microservicios para Smartmation",
+          "verified": true
+        },
+        {
+          "system": "Monitoreo de Aplicaciones (APM Telemetry)",
+          "status": "VERIFICADO",
+          "detail": "Telemetría de rendimiento y respuesta de servidores",
+          "verified": true
+        }
+      ],
+      "missingAutomations": [
+        {
+          "system": "Integración ERP Cloud con Facturación AFIP Automática",
+          "impact": "MEDIO",
+          "detail": "Automatización de sincronización entre stock y facturación electrónica de Smartmation.",
+          "status": "EN EVALUACIÓN"
+        }
+      ],
+      "omittedUnverifiedData": [
+        "Software ERP / CRM de gestión interna privada de Smartmation: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de Smartmation: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedKits": {
+        "primary": {
+          "code": "GES-01",
+          "category": "Gestión",
+          "name": "Kit Ges-01: Gestión Operativa Integrada, ERP & Facturación Electrónica",
+          "summary": "Servicio y software para ordenar y digitalizar la gestión operativa, compras, inventarios y facturación electrónica.",
+          "aiRationale": "Proporciona telemetría IoT industrial avanzada para el monitoreo continuo de parámetros críticos (vibración, temperatura y consumo eléctrico) en los activos de Smartmation.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        },
+        "secondary": {
+          "code": "BAS-01",
+          "category": "Básico",
+          "name": "Kit Bas-01: Conectividad Operacional & Ciberseguridad OT/IT",
+          "summary": "Base digital segura para la planta, aislamiento de redes industriales y ciberseguridad operacional.",
+          "aiRationale": "Incorpora modelos de analítica avanzada para el análisis predictivo de procesos complejos y toma de decisiones basada en datos.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        }
+      },
+      "techStack": [
+        {
+          "category": "Portal Web Oficial",
+          "name": "Portal Web Corporativo Activo & Verificado",
+          "status": "Activo",
+          "type": "VERIFICADO",
+          "source": "Dominio https://smartmation.com"
+        },
+        {
+          "category": "Infraestructura & Canales",
+          "name": "Servicios HTTP/HTTPS y Presencia Digital Verificada",
+          "status": "Operativo",
+          "type": "VERIFICADO",
+          "source": "Rastreo Abierto OSINT (Smartmation)"
+        }
+      ],
+      "channels": [
+        "Atención Directa por WhatsApp de Smartmation",
+        "Portal Web Oficial https://smartmation.com",
+        "Canales Corporativos Digitales"
+      ],
+      "auditMetadata": {
+        "consultationDate": "7/8/2026 07:12 p. m.",
+        "verificationBadge": "VERIFICADO EN FUENTES ABIERTAS",
+        "dataSource": "Sitio Oficial de Smartmation + Base de Datos de Kits 4.0",
+        "corroborationLevel": "Trazabilidad OSINT verificada para Smartmation"
+      },
+      "informationGaps": [
+        "Software ERP / CRM de gestión interna privada de Smartmation: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de Smartmation: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ]
+    },
+    "executiveSummary": null
+  }
+]

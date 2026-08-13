@@ -32,6 +32,7 @@ export default function SharedReportPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
+  const [downloadingPdf, setDownloadingPdf] = useState(false);
 
   useEffect(() => {
     fetch(`/api/share/${token}`)
@@ -101,14 +102,18 @@ export default function SharedReportPage() {
         </div>
         <div style={{ display: 'flex', gap: '10px' }}>
           <button 
+            disabled={downloadingPdf}
             onClick={() => {
-              import('../utils/pdfReportGenerator').then(({ downloadFullPdfReport }) => {
-                downloadFullPdfReport(report);
-              });
+              if (downloadingPdf) return;
+              setDownloadingPdf(true);
+              import('../utils/pdfReportGenerator')
+                .then(({ downloadFullPdfReport }) => downloadFullPdfReport(report))
+                .catch(err => console.error('Error generating PDF:', err))
+                .finally(() => setDownloadingPdf(false));
             }}
-            style={{ fontSize: '0.82rem', color: '#10b981', background: 'rgba(16,185,129,0.1)', padding: '6px 14px', borderRadius: '20px', border: '1px solid rgba(16,185,129,0.3)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+            style={{ fontSize: '0.82rem', color: '#10b981', background: 'rgba(16,185,129,0.1)', padding: '6px 14px', borderRadius: '20px', border: '1px solid rgba(16,185,129,0.3)', cursor: downloadingPdf ? 'wait' : 'pointer', display: 'flex', alignItems: 'center', gap: '6px', opacity: downloadingPdf ? 0.7 : 1 }}
           >
-            <Download size={13} /> Descargar PDF
+            <Download size={13} /> {downloadingPdf ? 'Generando PDF...' : 'Descargar PDF'}
           </button>
           <a href="/" style={{ fontSize: '0.82rem', color: '#60a5fa', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(37,99,235,0.1)', padding: '6px 14px', borderRadius: '20px', border: '1px solid rgba(37,99,235,0.3)' }}>
             <ExternalLink size={13} /> Acceder a la plataforma

@@ -3,6 +3,8 @@ import puppeteer from 'puppeteer';
 import cors from 'cors';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fs from 'fs';
+import crypto from 'crypto';
 import { scrapeCompanyWebsite } from './services/websiteScraperService.js';
 import { searchCompanyOSINT } from './services/searchService.js';
 import { analyzeFinancials } from './services/financialService.js';
@@ -58,6 +60,28 @@ const PORT = process.env.PORT || 5000;
 // In-Memory Report Cache with TTL (15 minutes)
 const scanReportCache = new Map();
 const CACHE_TTL_MS = 15 * 60 * 1000;
+
+// Persistent Share Links (Render-safe by writing to data directory)
+const SHARE_FILE = path.join(__dirname, 'data', 'sharedReports.json');
+let sharedReports = new Map();
+try {
+  if (fs.existsSync(SHARE_FILE)) {
+    const raw = fs.readFileSync(SHARE_FILE, 'utf-8');
+    const parsed = JSON.parse(raw);
+    sharedReports = new Map(Object.entries(parsed));
+  }
+} catch (e) {
+  console.log('[SHARE] No se pudo cargar el archivo de compartidos:', e.message);
+}
+
+const saveSharedReportsToDisk = () => {
+  try {
+    const obj = Object.fromEntries(sharedReports);
+    fs.writeFileSync(SHARE_FILE, JSON.stringify(obj, null, 2), 'utf-8');
+  } catch (e) {
+    console.error('[SHARE] Error guardando links:', e);
+  }
+};
 
 function getCachedScanReport(companyName, website) {
   const cleanComp = (companyName || '').trim().toLowerCase();
@@ -1183,6 +1207,46 @@ app.post('/api/generate-pdf', async (req, res) => {
   } catch (error) {
     console.error('PDF Generation Error:', error);
     res.status(500).send('Error generating PDF');
+  }
+});
+
+// --- RUTAS DE LINKS PÚBLICOS COMPARTIDOS ---
+app.post('/api/share', (req, res) => {
+  try {
+    const { report } = req.body;
+    if (!report) return res.status(400).json({ success: false, error: 'No se envió ningún reporte.' });
+    
+    // Prune expired tokens (older than 7 days)
+    const now = Date.now();
+    for (const [key, value] of sharedReports.entries()) {
+      if (now - value.createdAt > 7 * 24 * 60 * 60 * 1000) sharedReports.delete(key);
+    }
+    
+    const token = crypto.randomBytes(12).toString('hex');
+    sharedReports.set(token, { report, createdAt: Date.now() });
+    saveSharedReportsToDisk();
+    
+    res.json({ success: true, token });
+  } catch (e) {
+    res.status(500).json({ success: false, error: 'Error interno al generar link.' });
+  }
+});
+
+app.get('/api/share/:token', (req, res) => {
+  try {
+    const { token } = req.params;
+    const entry = sharedReports.get(token);
+    
+    if (!entry) return res.status(404).json({ success: false, error: 'Link inválido o expirado.' });
+    if (Date.now() - entry.createdAt > 7 * 24 * 60 * 60 * 1000) {
+      sharedReports.delete(token);
+      saveSharedReportsToDisk();
+      return res.status(404).json({ success: false, error: 'Link expirado (más de 7 días).' });
+    }
+    
+    res.json({ success: true, report: entry.report });
+  } catch (e) {
+    res.status(500).json({ success: false, error: 'Error interno al leer reporte compartido.' });
   }
 });
 

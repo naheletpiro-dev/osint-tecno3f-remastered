@@ -2,8 +2,8 @@ import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 dotenv.config();
 
-let lastWorkingModel = 'gemini-2.0-flash';
-const baseModels = ['gemini-2.0-flash', 'gemini-2.5-pro', 'gemini-2.0-flash-lite', 'gemini-1.5-flash'];
+let lastWorkingModel = 'gemini-2.5-flash';
+const baseModels = ['gemini-2.5-flash', 'gemini-2.5-flash-lite-preview-06-17', 'gemini-2.0-flash-exp', 'gemini-1.5-flash-latest'];
 
 /**
  * Fallback to Groq API using native fetch
@@ -174,10 +174,10 @@ Devuelve UN SOLO JSON con las siguientes llaves exactas:
   "sector": "Sector exacto y rubro comercial catalogado",
   "businessModel": "Modelo de negocio verificado (ej: B2B Industrial, B2C)",
   "companyType": "Tipo y clasificación de empresa (ej: PyME Industrial, Corporación)",
-  "whatItSells": "Catálogo resumido de lo que vende o provee",
-  "whoBuys": "Perfil de compradores y sectores destino",
-  "howItGeneratesRevenue": "Mecanismo principal de generación de ingresos",
-  "mostImportantAsset": "Activos críticos concretos (ej: parque de maquinaria, software propio, certificaciones)",
+  "whatItSells": "Descripción detallada de 3 a 5 oraciones sobre qué vende o provee exactamente. Evita listas cortas, redacta en formato de párrafo.",
+  "whoBuys": "Descripción detallada de 3 a 5 oraciones sobre quiénes son sus clientes, público objetivo y mercado destino.",
+  "howItGeneratesRevenue": "Descripción detallada de 3 a 5 oraciones sobre cómo genera ingresos, modelo de monetización y tipos de contratos.",
+  "mostImportantAsset": "Descripción detallada de 3 a 5 oraciones sobre su activo estratégico más crítico (maquinaria, certificaciones, licencias, know-how, etc.) y por qué le da una ventaja competitiva.",
   "valueProposition": "Propuesta de valor principal",
   "executiveSummary": "Síntesis ejecutiva de 2 párrafos organizando el perfil comercial, solvencia BCRA y oferta",
   "strengths": ["Fortaleza comprobada 1", "Fortaleza comprobada 2"],

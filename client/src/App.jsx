@@ -21,6 +21,7 @@ import WatchlistModal from './components/WatchlistModal';
 import AuthModal from './components/AuthModal';
 import OsintChatbot from './components/OsintChatbot';
 import Footer from './components/Footer';
+import SharedReportPage from './components/SharedReportPage';
 
 import { LayoutDashboard, Briefcase, HelpCircle, Target, Scale, Landmark, Newspaper, HeartHandshake, History, AlertCircle, Layers, FileCheck, RefreshCw, Cpu, ShieldCheck } from 'lucide-react';
 
@@ -86,6 +87,28 @@ export default function App() {
   const [showPresentation, setShowPresentation] = useState(false);
   const [showWatchlistModal, setShowWatchlistModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [shareModal, setShareModal] = useState(null);
+
+  const handleShare = async () => {
+    if (!report) return;
+    setShareModal({ loading: true });
+    try {
+      const token = user?.token || localStorage.getItem('osint_auth_token');
+      const res = await fetch('/api/share', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': token ? `Bearer ${token}` : '' },
+        body: JSON.stringify({ report })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setShareModal({ url: `${window.location.origin}/share/${data.token}` });
+      } else {
+        setShareModal({ error: data.error || 'Error al generar el link.' });
+      }
+    } catch (e) {
+      setShareModal({ error: 'Error de conexión.' });
+    }
+  };
 
   // Initial Theme Effect is now managed mostly in store, but we can ensure it's applied on mount
   useEffect(() => {
@@ -202,6 +225,33 @@ export default function App() {
 
   return (
     <ErrorBoundary>
+      {/* PUBLIC SHARE ROUTE - no auth, no blur */}
+      <Routes>
+        <Route path="/share/:token" element={<SharedReportPage />} />
+      </Routes>
+
+      {/* Share Modal */}
+      {shareModal && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.75)', zIndex: 9999, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }} onClick={() => setShareModal(null)}>
+          <div style={{ background: '#0f172a', border: '1px solid rgba(56,189,248,0.3)', borderRadius: '20px', padding: '36px', maxWidth: '480px', width: '100%', textAlign: 'center' }} onClick={e => e.stopPropagation()}>
+            {shareModal.loading && <p style={{ color: '#38bdf8' }}>Generando link público...</p>}
+            {shareModal.error && <p style={{ color: '#f87171' }}>{shareModal.error}</p>}
+            {shareModal.url && (
+              <>
+                <div style={{ fontSize: '1.2rem', fontWeight: 800, marginBottom: '8px' }}>🔗 Link Público Creado</div>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.88rem', marginBottom: '16px' }}>Cualquier persona con este link puede ver el análisis en modo lectura (válido 7 días).</p>
+                <div style={{ background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(56,189,248,0.2)', borderRadius: '10px', padding: '12px 16px', marginBottom: '16px', wordBreak: 'break-all', fontSize: '0.82rem', color: '#38bdf8', textAlign: 'left' }}>
+                  {shareModal.url}
+                </div>
+                <div style={{ display: 'flex', gap: '10px', justifyContent: 'center' }}>
+                  <button className="btn-primary" onClick={() => navigator.clipboard.writeText(shareModal.url)}>📋 Copiar Link</button>
+                  <button className="btn-secondary" onClick={() => setShareModal(null)}>Cerrar</button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
       <AuthModal
         user={user}
         onLogin={(userData, keepSession) => {
@@ -232,6 +282,7 @@ export default function App() {
           currentPath={location.pathname}
           onOpenPresentation={() => setShowPresentation(true)}
           onOpenWatchlist={() => setShowWatchlistModal(true)}
+          onShare={handleShare}
         />
 
         {/* 403 Forbidden Access Protection against IDOR & Parameter Tampering */}
@@ -435,7 +486,7 @@ export default function App() {
           </>
         )}
 
-        <OsintChatbot report={report} user={user} />
+        <OsintChatbot currentReport={report} user={user} />
         {report && showPresentation && <PresentationModal report={report} onClose={() => setShowPresentation(false)} />}
         {user && showWatchlistModal && <WatchlistModal user={user} onClose={() => setShowWatchlistModal(false)} onSelectReport={handleLoadReportFromHistory} />}
         <Footer />

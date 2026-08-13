@@ -1,0 +1,653 @@
+[
+  {
+    "id": "OSINT-1786629045229-694",
+    "timestamp": "2026-08-13T13:50:45.230Z",
+    "query": {
+      "companyName": "tecniark",
+      "website": "https://tecniark.com.ar/",
+      "region": "AR"
+    },
+    "categorization": {
+      "sector": "Electrónica",
+      "sectorIcon": "briefcase",
+      "businessModel": "B2B Industrial",
+      "companyType": "PyME Industrial",
+      "estimatedEmployees": "No verificado públicamente",
+      "summary": "En términos de solvencia, Tecniark cuenta con una situación BCRA normal y una deuda total ARS de $4.823.000 ARS. La empresa también tiene una condición IVA no verificada y un CLAE no verificado oficialmente. A pesar de esto, la empresa ha demostrado una capacidad para generar ingresos y establecerse en el mercado industrial. Con una estrategia de negocio enfocada en la satisfacción del cliente y la calidad de sus productos y servicios, Tecniark busca continuar creciendo y estableciéndose como un proveedor confiable en el mercado.",
+      "services": [
+        "Mantenimiento",
+        "Al servicio de la industria"
+      ],
+      "tags": [
+        "S.A. | Tableros Eléctricos de Baja y Media Tensión",
+        "B2B (Servicios y Provisión a Empresas)",
+        "Empresa Operativa",
+        "Sitio Web Verificado"
+      ]
+    },
+    "scrapedData": {
+      "hasWebsite": true,
+      "url": "https://tecniark.com.ar/",
+      "title": "Tecniark S.A. | Tableros Eléctricos de Baja y Media Tensión",
+      "description": "Fabricación de tableros eléctricos de baja y media tensión, CCM, automatización industrial, gabinetes metálicos y sistemas SEN Plus ABB.",
+      "aboutUs": "tecniark es una empresa especializada en S.A. | Tableros Eléctricos de Baja y Media Tensión. Se dedica a la provisión y comercialización de Gabinetes metálicos y sistemas SEN Plus ABB, Fabricación de tableros eléctricos de baja y media tensión, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+      "customSector": "S.A. | Tableros Eléctricos de Baja y Media Tensión",
+      "products": [
+        "Gabinetes metálicos y sistemas SEN Plus ABB",
+        "Fabricación de tableros eléctricos de baja y media tensión"
+      ],
+      "services": [
+        "Mantenimiento",
+        "Al servicio de la industria"
+      ],
+      "clients": [
+        "Empresas industriales y corporativas"
+      ],
+      "industries": [
+        "Industria manufacturera",
+        "Generación y distribución de energía"
+      ],
+      "markets": [
+        "Argentina",
+        "Mercado regional ( América Latina )"
+      ],
+      "valueProposition": "Diseño y fabricación de tableros eléctricos de baja y media tensión, adaptados a los requerimientos de cada proyecto industrial.",
+      "differentiators": [
+        "Por el momento el dato no está disponible."
+      ],
+      "competitors": [
+        "Por el momento el dato no está disponible."
+      ],
+      "certifications": [
+        "Habilitación Comercial Vigente (tecniark)",
+        "Cumplimiento de Normas de Calidad"
+      ],
+      "partners": [
+        "Por el momento el dato no está disponible."
+      ],
+      "businessAnswers": {
+        "whatDoesCompanyDo": "tecniark es una empresa especializada en S.A. | Tableros Eléctricos de Baja y Media Tensión. Se dedica a la provisión y comercialización de Gabinetes metálicos y sistemas SEN Plus ABB, Fabricación de tableros eléctricos de baja y media tensión, ofreciendo soluciones integrales para el sector corporativo e industrial.",
+        "whatItSells": "Tecniark se especializa en la fabricación de tableros eléctricos de baja y media tensión, así como en la provisión de gabinetes metálicos y sistemas SEN Plus ABB. Ofrece soluciones integrales para el sector corporativo e industrial, abarcando desde el diseño y fabricación de tableros eléctricos hasta la implementación de soluciones de automatización industrial. La empresa también brinda servicios de mantenimiento preventivo y correctivo para maximizar la disponibilidad y vida útil de los equipos. Con una amplia gama de productos y servicios, Tecniark busca satisfacer las necesidades específicas de cada proyecto industrial, garantizando la confiabilidad y seguridad de los tableros eléctricos.",
+        "productList": [
+          "Gabinetes metálicos y sistemas SEN Plus ABB",
+          "Fabricación de tableros eléctricos de baja y media tensión"
+        ],
+        "whoBuys": "Los clientes de Tecniark son principalmente empresas industriales y corporativas que requieren soluciones eléctricas de baja y media tensión para sus operaciones. Aunque no se especifican públicamente los nombres de los clientes, se puede inferir que la empresa atiende a una variedad de sectores, incluyendo la industria manufacturera, la generación y distribución de energía, y otros mercados que necesitan sistemas de control y distribución de energía eléctrica. La empresa busca establecer relaciones a largo plazo con sus clientes, ofreciéndoles soluciones personalizadas y servicios de alta calidad.",
+        "howItGeneratesRevenue": "Tecniark genera ingresos a través de la venta de sus productos y servicios, incluyendo la fabricación de tableros eléctricos, la provisión de gabinetes metálicos y sistemas SEN Plus ABB, y la prestación de servicios de mantenimiento y automatización industrial. La empresa también puede generar ingresos a través de contratos de servicio y mantenimiento a largo plazo con sus clientes. Con una estrategia de negocio enfocada en la satisfacción del cliente y la calidad de sus productos y servicios, Tecniark busca establecerse como un proveedor confiable y preferido en el mercado industrial.",
+        "mostImportantAsset": "El activo estratégico más crítico de Tecniark es su capacidad para diseñar y fabricar tableros eléctricos de alta calidad y personalizados para satisfacer las necesidades específicas de cada proyecto industrial. Esta capacidad, combinada con su experiencia en la implementación de soluciones de automatización industrial y su compromiso con la calidad y la seguridad, le da a la empresa una ventaja competitiva en el mercado. Además, la empresa cuenta con una certificación de calidad y una experiencia de más de 25 años en el sector, lo que refuerza su posición en el mercado.",
+        "valueProposition": "Diseño y fabricación de tableros eléctricos de baja y media tensión, adaptados a los requerimientos de cada proyecto industrial.",
+        "targetAudience": "Los clientes de Tecniark son principalmente empresas industriales y corporativas que requieren soluciones eléctricas de baja y media tensión para sus operaciones. Aunque no se especifican públicamente los nombres de los clientes, se puede inferir que la empresa atiende a una variedad de sectores, incluyendo la industria manufacturera, la generación y distribución de energía, y otros mercados que necesitan sistemas de control y distribución de energía eléctrica. La empresa busca establecer relaciones a largo plazo con sus clientes, ofreciéndoles soluciones personalizadas y servicios de alta calidad."
+      },
+      "rawText": "(function(){if(window.matchMedia('(max-width:921.99px)').matches){document.body.classList.add('ast-header-break-point');document.body.classList.remove('ast-desktop');}})(); Ir al contenido Inicio Empresa Productos Sen PLUS Descargas Contacto Inicio Empresa Productos Sen PLUS Descargas Contacto Ingeniería eléctrica al servicio de la industria Nuestros servicios Fabricacion de Tableros Diseño y fabricación de tableros eléctricos de baja y media tensión, adaptados a los requerimientos de cada proyecto industrial. Ensayos Verificación funcional, pruebas eléctricas y control de calidad para garantizar la confiabilidad y seguridad de tableros electricos. Ingeniería Desarrollo de ingeniería eléctrica, dibujos técnicos y soluciones personalizadas para aplicaciones industriales. Mantenimiento Servicios de mantenimiento preventivo y correctivo para maximizar la disponibilidad y vida útil. PLC Programación e integración de PLC, HMI y sistemas de control. Automatización Implementación de soluciones de automatización industrial orientadas a la eficiencia, monitoreo y control de procesos. Nuestra experiencia Desde 1997, Tecniark S.A. desarrolla soluciones eléctricas de baja y media tensión, combinando ingeniería, calidad certificada y tecnología de vanguardia para acompañar proyectos industriales en todo el país y la región. Algunos de nuestros clientes Contactanos Estas precisando un tablero o ingenieria para tu obra? dejanos un mensaje y te cotizamos lo que necesites. click aqui Inicio Empresa Productos Sen PLUS Descargas Contacto ©2026 Tecniark. Todos los derechos reservados. {\"prefetch\":[{\"source\":\"document\",\"where\":{\"and\":[{\"href_matches\":\"/*\"},{\"not\":{\"href_matches\":[\"/wp-*.php\",\"/wp-admin/*\",\"/wp-content/uploads/*\",\"/wp-content/*\",\"/wp-content/plugins/*\",\"/wp-content/themes/astra/*\",\"/*\\\\?(.+)\"]}},{\"not\":{\"selector_matches\":\"a[rel~=\\\"nofollow\\\"]\"}},{\"not\":{\"selector_matches\":\".no-prefetch, .no-prefetch a\"}}]},\"eagerness\":\"conservative\"}]} ( () => { const lazyloadRunObserver = () => { const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` ); const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => { entries.forEach( ( entry ) => { if ( entry.isIntersecting ) { let lazyloadBackground = entry.target; if( lazyloadBackground ) { lazyloadBackground.classList.add( 'e-lazyloaded' ); } lazyloadBackgroundObserver.unobserve( entry.target ); } }); }, { rootMargin: '200px 0px 200px 0px' } ); lazyloadBackgrounds.forEach( ( lazyloadBackground ) => { lazyloadBackgroundObserver.observe( lazyloadBackground ); } ); }; const events = [ 'DOMContentLoaded', 'elementor/lazyload/observe', ]; events.forEach( ( event ) => { document.addEventListener( event, lazyloadRunObserver ); } ); } )(); var eb_conditional_localize = []; var EssentialBlocksLocalize = {\"eb_plugins_url\":\"https://tecniark.com.ar/wp-content/plugins/essential-blocks/\",\"image_url\":\"https://tecniark.com.ar/wp-content/plugins/essential-blocks/assets/images\",\"eb_wp_version\":\"7\",\"eb_version\":\"6.4.1\",\"eb_admin_url\":\"https://tecniark.com.ar/wp-admin/\",\"rest_rootURL\":\"https://tecniark.com.ar/wp-json/\",\"ajax_url\":\"https://tecniark.com.ar/wp-admin/admin-ajax.php\",\"nft_nonce\":\"02e9335425\",\"post_grid_pagination_nonce\":\"43fd5242e0\",\"placeholder_image\":\"https://tecniark.com.ar/wp-content/plugins/essential-blocks/assets/images/placeholder.png\",\"is_pro_active\":\"false\",\"upgrade_pro_url\":\"https://essential-blocks.com/upgrade\",\"responsiveBreakpoints\":{\"tablet\":1024,\"mobile\":767},\"wp_timezone\":\"+00:00\",\"gmt_offset\":\"0\"}; //# sourceURL=essential-blocks-blocks-localize-js-extra var astra = {\"break_point\":\"921\",\"isRtl\":\"\",\"is_scroll_to_id\":\"\",\"is_scroll_to_top\":\"\",\"is_header_footer_builder_active\":\"1\",\"responsive_cart_click\":\"flyout\",\"is_dark_palette\":\"\"}; //# sourceURL=astra-theme-js-js-extra var fluentformElementor = {\"adminUrl\":\"https://tecniark.com.ar/wp-admin/admin.php\"}; //# sourceURL=fluentform-elementor-js-extra var starter_templates_zip_preview = {\"Ast\nIr al contenido Ingeniería eléctrica al servicio de la industria Nuestros servicios Fabricacion de Tableros Diseño y fabricación de tableros eléctricos de baja y media tensión, adaptados a los requerimientos de cada proyecto industrial. Ensayos Verificación funcional, pruebas eléctricas y control de calidad para garantizar la confiabilidad y seguridad de tableros electricos. Ingeniería Desarrollo de ingeniería eléctrica, dibujos técnicos y soluciones personalizadas para aplicaciones industriales. Mantenimiento Servicios de mantenimiento preventivo y correctivo para maximizar la disponibilidad y vida útil. PLC Programación e integración de PLC, HMI y sistemas de control. Automatización Implementación de soluciones de automatización industrial orientadas a la eficiencia, monitoreo y control de procesos. Nuestra experiencia Desde 1997, Tecniark S.A. desarrolla soluciones eléctricas de baja y media tensión, combinando ingeniería, calidad certificada y tecnología de vanguardia para acompañar proyectos industriales en todo el país y la región. Algunos de nuestros clientes Contactanos Estas precisando un tablero o ingenieria para tu obra? dejanos un mensaje y te cotizamos lo que necesites. click aqui\nIr al contenido Ingeniería eléctrica al servicio de la industria Nuestros servicios Fabricacion de Tableros Diseño y fabricación de tableros eléctricos de baja y media tensión, adaptados a los requerimientos de cada proyecto industrial. Ensayos Verificación funcional, pruebas eléctricas y control de calidad para garantizar la confiabilidad y seguridad de tableros electricos. Ingeniería Desarrollo de ingeniería eléctrica, dibujos técnicos y soluciones personalizadas para aplicaciones industriales. Mantenimiento Servicios de mantenimiento preventivo y correctivo para maximizar la disponibilidad y vida útil. PLC Programación e integración de PLC, HMI y sistemas de control. Automatización Implementación de soluciones de automatización industrial orientadas a la eficiencia, monitoreo y control de procesos. Nuestra experiencia Desde 1997, Tecniark S.A. desarrolla soluciones eléctricas de baja y media tensión, combinando ingeniería, calidad certificada y tecnología de vanguardia para acompañar proyectos industriales en todo el país y la región. Algunos de nuestros clientes Contactanos Estas precisando un tablero o ingenieria para tu obra? dejanos un mensaje y te cotizamos lo que necesites. click aqui",
+      "sitemapFound": true,
+      "sitemapUrlsCount": 9,
+      "fullText": "(function(){if(window.matchMedia('(max-width:921.99px)').matches){document.body.classList.add('ast-header-break-point');document.body.classList.remove('ast-desktop');}})(); Ir al contenido Inicio Empresa Productos Sen PLUS Descargas Contacto Inicio Empresa Productos Sen PLUS Descargas Contacto Ingeniería eléctrica al servicio de la industria Nuestros servicios Fabricacion de Tableros Diseño y fabricación de tableros eléctricos de baja y media tensión, adaptados a los requerimientos de cada proyecto industrial. Ensayos Verificación funcional, pruebas eléctricas y control de calidad para garantizar la confiabilidad y seguridad de tableros electricos. Ingeniería Desarrollo de ingeniería eléctrica, dibujos técnicos y soluciones personalizadas para aplicaciones industriales. Mantenimiento Servicios de mantenimiento preventivo y correctivo para maximizar la disponibilidad y vida útil. PLC Programación e integración de PLC, HMI y sistemas de control. Automatización Implementación de soluciones de automatización industrial orientadas a la eficiencia, monitoreo y control de procesos. Nuestra experiencia Desde 1997, Tecniark S.A. desarrolla soluciones eléctricas de baja y media tensión, combinando ingeniería, calidad certificada y tecnología de vanguardia para acompañar proyectos industriales en todo el país y la región. Algunos de nuestros clientes Contactanos Estas precisando un tablero o ingenieria para tu obra? dejanos un mensaje y te cotizamos lo que necesites. click aqui Inicio Empresa Productos Sen PLUS Descargas Contacto ©2026 Tecniark. Todos los derechos reservados. {\"prefetch\":[{\"source\":\"document\",\"where\":{\"and\":[{\"href_matches\":\"/*\"},{\"not\":{\"href_matches\":[\"/wp-*.php\",\"/wp-admin/*\",\"/wp-content/uploads/*\",\"/wp-content/*\",\"/wp-content/plugins/*\",\"/wp-content/themes/astra/*\",\"/*\\\\?(.+)\"]}},{\"not\":{\"selector_matches\":\"a[rel~=\\\"nofollow\\\"]\"}},{\"not\":{\"selector_matches\":\".no-prefetch, .no-prefetch a\"}}]},\"eagerness\":\"conservative\"}]} ( () => { const lazyloadRunObserver = () => { const lazyloadBackgrounds = document.querySelectorAll( `.e-con.e-parent:not(.e-lazyloaded)` ); const lazyloadBackgroundObserver = new IntersectionObserver( ( entries ) => { entries.forEach( ( entry ) => { if ( entry.isIntersecting ) { let lazyloadBackground = entry.target; if( lazyloadBackground ) { lazyloadBackground.classList.add( 'e-lazyloaded' ); } lazyloadBackgroundObserver.unobserve( entry.target ); } }); }, { rootMargin: '200px 0px 200px 0px' } ); lazyloadBackgrounds.forEach( ( lazyloadBackground ) => { lazyloadBackgroundObserver.observe( lazyloadBackground ); } ); }; const events = [ 'DOMContentLoaded', 'elementor/lazyload/observe', ]; events.forEach( ( event ) => { document.addEventListener( event, lazyloadRunObserver ); } ); } )(); var eb_conditional_localize = []; var EssentialBlocksLocalize = {\"eb_plugins_url\":\"https://tecniark.com.ar/wp-content/plugins/essential-blocks/\",\"image_url\":\"https://tecniark.com.ar/wp-content/plugins/essential-blocks/assets/images\",\"eb_wp_version\":\"7\",\"eb_version\":\"6.4.1\",\"eb_admin_url\":\"https://tecniark.com.ar/wp-admin/\",\"rest_rootURL\":\"https://tecniark.com.ar/wp-json/\",\"ajax_url\":\"https://tecniark.com.ar/wp-admin/admin-ajax.php\",\"nft_nonce\":\"02e9335425\",\"post_grid_pagination_nonce\":\"43fd5242e0\",\"placeholder_image\":\"https://tecniark.com.ar/wp-content/plugins/essential-blocks/assets/images/placeholder.png\",\"is_pro_active\":\"false\",\"upgrade_pro_url\":\"https://essential-blocks.com/upgrade\",\"responsiveBreakpoints\":{\"tablet\":1024,\"mobile\":767},\"wp_timezone\":\"+00:00\",\"gmt_offset\":\"0\"}; //# sourceURL=essential-blocks-blocks-localize-js-extra var astra = {\"break_point\":\"921\",\"isRtl\":\"\",\"is_scroll_to_id\":\"\",\"is_scroll_to_top\":\"\",\"is_header_footer_builder_active\":\"1\",\"responsive_cart_click\":\"flyout\",\"is_dark_palette\":\"\"}; //# sourceURL=astra-theme-js-js-extra var fluentformElementor = {\"adminUrl\":\"https://tecniark.com.ar/wp-admin/admin.php\"}; //# sourceURL=fluentform-elementor-js-extra var starter_templates_zip_preview = {\"AstColorPaletteVarPrefix\":\"--ast-global-color-\",\"AstEleColorPaletteVarPrefix\":[\"ast-global-color-0\",\"ast-global-color-1\",\"ast-global-color-2\",\"ast-global-color-3\",\"ast-global-color-4\",\"ast-global-color-5\",\"ast-global-color-6\",\"ast-global-color-7\",\"ast-global-color-8\"]}; //# sourceURL=starter-templates-zip-preview-js-extra var EAELImageMaskingConfig = {\"svg_dir_url\":\"https://tecniark.com.ar/wp-content/plugins/essential-addons-for-elementor-lite/assets/front-end/img/image-masking/svg-shapes/\"}; //# sourceURL=elementor-frontend-js-extra var elementorFrontendConfig = {\"environmentMode\":{\"edit\":false,\"wpPreview\":false,\"isScriptDebug\":false},\"i18n\":{\"shareOnFacebook\":\"Compartir en Facebook\",\"shareOnX\":\"Compartir en X\",\"pinIt\":\"Pinear\",\"download\":\"Descargar\",\"downloadImage\":\"Descargar imagen\",\"fullscreen\":\"Pantalla completa\",\"zoom\":\"Zoom\",\"share\":\"Compartir\",\"playVideo\":\"Reproducir v\\u00eddeo\",\"previous\":\"Anterior\",\"next\":\"Siguiente\",\"close\":\"Cerrar\",\"a11yCarouselPrevSlideMessage\":\"Diapositiva anterior\",\"a11yCarouselNextSlideMessage\":\"Diapositiva siguiente\",\"a11yCarouselFirstSlideMessage\":\"Esta es la primera diapositiva\",\"a11yCarouselLastSlideMessage\":\"Esta es la \\u00faltima diapositiva\",\"a11yCarouselPaginationBulletMessage\":\"Ir a la diapositiva\"},\"is_rtl\":false,\"breakpoints\":{\"xs\":0,\"sm\":480,\"md\":768,\"lg\":1025,\"xl\":1440,\"xxl\":1600},\"responsive\":{\"breakpoints\":{\"mobile\":{\"label\":\"M\\u00f3vil vertical\",\"value\":767,\"default_value\":767,\"direction\":\"max\",\"is_enabled\":true},\"mobile_extra\":{\"label\":\"M\\u00f3vil horizontal\",\"value\":880,\"default_value\":880,\"direction\":\"max\",\"is_enabled\":false},\"tablet\":{\"label\":\"Tableta vertical\",\"value\":1024,\"default_value\":1024,\"direction\":\"max\",\"is_enabled\":true},\"tablet_extra\":{\"label\":\"Tableta horizontal\",\"value\":1200,\"default_value\":1200,\"direction\":\"max\",\"is_enabled\":false},\"laptop\":{\"label\":\"Port\\u00e1til\",\"value\":1366,\"default_value\":1366,\"direction\":\"max\",\"is_enabled\":false},\"widescreen\":{\"label\":\"Pantalla grande\",\"value\":2400,\"default_value\":2400,\"direction\":\"min\",\"is_enabled\":false}},\"hasCustomBreakpoints\":false},\"version\":\"4.2.2\",\"is_static\":false,\"experimentalFeatures\":{\"additional_custom_breakpoints\":true,\"container\":true,\"e_panel_promotions\":true,\"nested-elements\":true,\"e_atomic_elements\":true,\"atomic_widgets_should_enforce_capabilities\":true,\"editor_mcp\":true,\"e_bc_migrations\":true,\"e_classes\":true,\"global_classes_should_enforce_capabilities\":true,\"e_variables\":true,\"e_variables_manager\":true,\"e_opt_in_v4_page\":true,\"e_opt_in_v4\":true,\"e_components\":true,\"e_interactions\":true,\"e_widget_creation\":true,\"import-export-customization\":true},\"urls\":{\"assets\":\"https:\\/\\/tecniark.com.ar\\/wp-content\\/plugins\\/elementor\\/assets\\/\",\"ajaxurl\":\"https:\\/\\/tecniark.com.ar\\/wp-admin\\/admin-ajax.php\",\"uploadUrl\":\"https:\\/\\/tecniark.com.ar\\/wp-content\\/uploads\"},\"nonces\":{\"floatingButtonsClickTracking\":\"6a5311d406\",\"atomicFormsSendForm\":\"29003f06d6\"},\"swiperClass\":\"swiper\",\"settings\":{\"page\":[],\"editorPreferences\":[]},\"kit\":{\"active_breakpoints\":[\"viewport_mobile\",\"viewport_tablet\"],\"global_image_lightbox\":\"yes\",\"lightbox_enable_counter\":\"yes\",\"lightbox_enable_fullscreen\":\"yes\",\"lightbox_enable_zoom\":\"yes\",\"lightbox_enable_share\":\"yes\",\"lightbox_title_src\":\"title\",\"lightbox_description_src\":\"description\"},\"post\":{\"id\":1448,\"title\":\"Tecniark%20S.A.%20%7C%20Tableros%20El%C3%A9ctricos%20de%20Baja%20y%20Media%20Tensi%C3%B3n\",\"excerpt\":\"\",\"featuredImage\":false}}; //# sourceURL=elementor-frontend-js-before var localize = {\"ajaxurl\":\"https://tecniark.com.ar/wp-admin/admin-ajax.php\",\"nonce\":\"15f5450c32\",\"i18n\":{\"added\":\"A\\u00f1adido\",\"compare\":\"Comparar\",\"loading\":\"Cargando...\"},\"eael_translate_text\":{\"required_text\":\"es un campo obligatorio\",\"invalid_text\":\"No v\\u00e1lido\",\"billing_text\":\"Facturaci\\u00f3n\",\"shipping_text\":\"Env\\u00edo\",\"fg_mfp_counter_text\":\"de\"},\"page_permalink\":\"https://tecniark.com.ar/\",\"cart_redirectition\":\"\",\"cart_page_url\":\"\",\"el_breakpoints\":{\"mobile\":{\"label\":\"M\\u00f3vil vertical\",\"value\":767,\"default_value\":767,\"direction\":\"max\",\"is_enabled\":true},\"mobile_extra\":{\"label\":\"M\\u00f3vil horizontal\",\"value\":880,\"default_value\":880,\"direction\":\"max\",\"is_enabled\":false},\"tablet\":{\"label\":\"Tableta vertical\",\"value\":1024,\"default_value\":1024,\"direction\":\"max\",\"is_enabled\":true},\"tablet_extra\":{\"label\":\"Tableta horizontal\",\"value\":1200,\"default_value\":1200,\"direction\":\"max\",\"is_enabled\":false},\"laptop\":{\"label\":\"Port\\u00e1til\",\"value\":1366,\"default_value\":1366,\"direction\":\"max\",\"is_enabled\":false},\"widescreen\":{\"label\":\"Pantalla grande\",\"value\":2400,\"default_value\":2400,\"direction\":\"min\",\"is_enabled\":false}}}; //# sourceURL=eael-general-js-extra /(trident|msie)/i.test(navigator.userAgent)&&document.getElementById&&window.addEventListener&&window.addEventListener(\"hashchange\",function(){var t,e=location.hash.substring(1);/^[A-z0-9_-]+$/.test(e)&&(t=document.getElementById(e))&&(/^(?:a|select|input|button|textarea)$/i.test(t.tagName)||(t.tabIndex=-1),t.focus())},!1); {\"baseUrl\":\"https://s.w.org/images/core/emoji/17.0.2/72x72/\",\"ext\":\".png\",\"svgUrl\":\"https://s.w.org/images/core/emoji/17.0.2/svg/\",\"svgExt\":\".svg\",\"source\":{\"concatemoji\":\"https://tecniark.com.ar/wp-includes/js/wp-emoji-release.min.js?ver=7.0.4\"}} /*! This file is auto-generated */ var e=\"script#wp-emoji-settings\",t=document.querySelector(e);if(!(t instanceof HTMLScriptElement))throw new Error(\"Element missing: \"+e);const r=JSON.parse(t.text),s=(window._wpemojiSettings=r,\"wpEmojiSettingsSupports\"),o=[\"flag\",\"emoji\"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(s,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const r=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===r[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,r){switch(t){case\"flag\":return n(e,\"\\ud83c\\udff3\\ufe0f\\u200d\\u26a7\\ufe0f\",\"\\ud83c\\udff3\\ufe0f\\u200b\\u26a7\\ufe0f\")?!1:!n(e,\"\\ud83c\\udde8\\ud83c\\uddf6\",\"\\ud83c\\udde8\\u200b\\ud83c\\uddf6\")&&!n(e,\"\\ud83c\\udff4\\udb40\\udc67\\udb40\\udc62\\udb40\\udc65\\udb40\\udc6e\\udb40\\udc67\\udb40\\udc7f\",\"\\ud83c\\udff4\\u200b\\udb40\\udc67\\u200b\\udb40\\udc62\\u200b\\udb40\\udc65\\u200b\\udb40\\udc6e\\u200b\\udb40\\udc67\\u200b\\udb40\\udc7f\");case\"emoji\":return!r(e,\"\\ud83e\\u1fac8\")}return!1}function f(e,t,n,r){let a;const s=(a=\"undefined\"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement(\"canvas\")).getContext(\"2d\",{willReadFrequently:!0}),o=(s.textBaseline=\"top\",s.font=\"600 32px Arial\",{});return e.forEach(e=>{o[e]=t(s,e,n,r)}),o}function a(e){var t=document.createElement(\"script\");t.src=e,t.defer=!0,document.head.appendChild(t)}r.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(s));if(\"object\"==typeof e&&\"number\"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&\"object\"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if(\"undefined\"!=typeof Worker&&\"undefined\"!=typeof OffscreenCanvas&&\"undefined\"!=typeof URL&&URL.createObjectURL&&\"undefined\"!=typeof Blob)try{var e=\"postMessage(\"+f.toString()+\"(\"+[JSON.stringify(o),u.toString(),c.toString(),p.toString()].join(\",\")+\"));\",r=new Blob([e],{type:\"text/javascript\"});const a=new Worker(URL.createObjectURL(r),{name:\"wpTestEmojiSupports\"});return void(a.onmessage=e=>{i(n=e.data),a.terminate(),t(n)})}catch(e){}i(n=f(o,u,c,p))}t(n)}).then(e=>{for(const n in e)r.supports[n]=e[n],r.supports.everything=r.supports.everything&&r.supports[n],\"flag\"!==n&&(r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&r.supports[n]);var t;r.supports.everythingExceptFlag=r.supports.everythingExceptFlag&&!r.supports.flag,r.supports.everything||((t=r.source||{}).concatemoji?a(t.concatemoji):t.wpemoji&&t.twemoji&&(a(t.twemoji),a(t.wpemoji)))}); //# sourceURL=https://tecniark.com.ar/wp-includes/js/wp-emoji-loader.min.js",
+      "discoveredDynamicSections": [
+        "about",
+        "services",
+        "sen plus",
+        "elementor pagina 2646",
+        "contact"
+      ]
+    },
+    "financialData": {
+      "creditScore": 87,
+      "isRealData": true,
+      "riskLevel": "BAJO",
+      "riskColor": "#10b981",
+      "bcraSituation": "Situación 1 (Normal)",
+      "bcraDetails": {
+        "cuit": "30-69526141-8",
+        "cuitRaw": "30695261418",
+        "denominacionBCRA": "TECNIARK SA",
+        "isRealData": true,
+        "hasDebts": true,
+        "hasCheques": false,
+        "situacionMax": 1,
+        "worstHistoricalSituation": 1,
+        "trendAnalysis": {
+          "type": "ESTABLE_SIN_RIESGO",
+          "label": "➔ Historial Impecable (100% Situación 1 en 24 meses)",
+          "color": "#10b981",
+          "summary": "La empresa ha mantenido un comportamiento crediticio regular e intachable (Situación 1) durante los últimos 24 meses auditados en la Central de Deudores BCRA.",
+          "totalMonthsAudited": 1
+        },
+        "history24Months": [
+          {
+            "periodoRaw": "202606",
+            "periodo": "2026-06",
+            "situacionMax": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "totalDeudaARS": "$4.823.000 ARS",
+            "totalDeudaRaw": 4823000,
+            "entidadesCount": 1,
+            "entidades": [
+              {
+                "entidad": "BANCO SANTANDER ARGENTINA S.A.",
+                "situacion": 1,
+                "montoRaw": 4823000,
+                "diasAtraso": 0
+              }
+            ]
+          }
+        ],
+        "situacionLabel": "Situación 1 (Normal)",
+        "situacionDescription": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+        "situacionColor": "#10b981",
+        "periodoMasReciente": "2026-06",
+        "entidadesCreditoras": [
+          {
+            "entidad": "BANCO SANTANDER ARGENTINA S.A.",
+            "situacion": 1,
+            "situacionInfo": {
+              "label": "Situación 1 (Normal)",
+              "description": "Pago puntual, atraso no superior a 31 días. Sin riesgo crediticio registrado.",
+              "color": "#10b981",
+              "priority": "NORMAL"
+            },
+            "montoARS": "$4.823.000 ARS",
+            "montoRaw": 4823000,
+            "diasAtraso": 0
+          }
+        ],
+        "totalDeudaBancariaARS": "$4.823.000 ARS",
+        "chequesRechazados": {
+          "totalCount": 0,
+          "totalMontoARS": "$0 ARS",
+          "totalMontoRaw": 0,
+          "chequesList": []
+        },
+        "bcraOfficialQueryUrl": "https://www.bcra.gob.ar/situacion-crediticia/",
+        "apiSource": "API Oficial Central de Deudores BCRA (api.bcra.gob.ar)"
+      },
+      "creditRating": "AAA (Excelente)",
+      "biddingCapacity": {
+        "isRealData": false,
+        "isEstimated": true,
+        "estimatedBiddingCapacityARS": "$269.000.000 ARS (269 Millones ARS)",
+        "recommendedCreditLimitARS": "$94.150.000 ARS (94 Millones ARS)",
+        "capacityTier": "Alta Capacidad Licitatoria (Apto Licitaciones Nacionales & Obra Mayor)",
+        "capacityRawM": 269,
+        "creditLimitRawM": 94,
+        "scoringBreakdown": {
+          "fiscalSolvency": 95,
+          "bcraScore": 87,
+          "contractExecutionScore": 86,
+          "technicalCapacityScore": 75
+        },
+        "biddingEligibilityNotice": "Capacidad estimada de hasta $269.000.000 ARS (269 Millones ARS) basada en heurística simulada."
+      },
+      "taxProfile": {
+        "cuit": "30-69526141-8",
+        "inscriptionStatus": "Inscripto en Registro Padronal AFIP / ARCA para tecniark",
+        "economicActivity": "CLAE No Verificado Oficialmente",
+        "vatCondition": "Estado Impositivo No Verificado",
+        "publicCertificates": "Sin registro en Padrón MiPyME Oficial",
+        "stateContractorStatus": "Habilitación General para Proveedores Estatales (tecniark)",
+        "taxCompliance": "Sin Deudas Fiscales en Ejecución Registradas"
+      },
+      "tradeData": {
+        "isImporter": false,
+        "isExporter": false,
+        "tradeActivity": "Mercado Nacional",
+        "tariffPositions": [],
+        "originsDestinations": [],
+        "details": "Operaciones comerciales concentradas en el mercado local e industrial nacional.",
+        "source": "Registro Aduanero & Comercio Exterior OSINT"
+      },
+      "pymeData": {
+        "isRealData": false,
+        "hasPymeCertificate": false,
+        "pymeCategory": "Sin registro en Padrón MiPyME Oficial",
+        "certDetail": null,
+        "evidenceLink": null,
+        "knowledgeEconomyRegistered": false,
+        "fiscalBenefits": [],
+        "details": "Sin registro de Certificado MiPyME en la Base de Datos Oficial examinada.",
+        "apiSource": "Análisis de fuentes públicas"
+      },
+      "afipData": {
+        "cuit": "30-69526141-8",
+        "cuitRaw": "30695261418",
+        "razonSocial": "tecniark",
+        "isRealData": false,
+        "vatCondition": "Estado Impositivo No Verificado",
+        "estadoPadron": "Sin conexión con padrón AFIP / ARCA",
+        "economicActivity": "CLAE No Verificado Oficialmente",
+        "claeCode": "No verificado",
+        "claeName": "Actividad No Verificada Oficialmente",
+        "domicilioFiscal": "No verificado",
+        "impuestosActivos": [
+          "Dato no disponible en registros públicos"
+        ],
+        "certificadosVigentes": [
+          "Dato no disponible en registros públicos"
+        ],
+        "apiSource": "Dato no disponible en Padrón ARCA en vivo (Error de conexión)",
+        "arcaOfficialUrl": "https://www.arca.gob.ar"
+      }
+    },
+    "legalData": {
+      "isRealData": false,
+      "isEstimated": true,
+      "apiSource": "Estimación Algorítmica OSINT (Registros públicos no API-directos)",
+      "sociedadDetail": null,
+      "totalRecords": 0,
+      "riskRating": "SIN OBSERVACIONES JUDICIALES",
+      "lawsuits": [
+        {
+          "type": "Inscripción Societaria Ley 26.047 (RNS)",
+          "status": "Padrón de Comercio Provincial / Registro General de Sociedades",
+          "severity": "INFORMATIVO",
+          "details": "Consulta pública en Registro Nacional de Sociedades."
+        },
+        {
+          "type": "Fueros Civiles y Comerciales / Juicios",
+          "status": "Sin registros públicos de juicios comerciales activos",
+          "severity": "SIN RIESGO",
+          "details": "Búsqueda en registros de fueros comerciales y boletines judiciales."
+        },
+        {
+          "type": "Laboral y Expedientes",
+          "status": "Sin juicios laborales registrados en el período examinado",
+          "severity": "SIN RIESGO",
+          "details": "Consulta pública en fuero del trabajo y registros previsionales."
+        },
+        {
+          "type": "Defensa del Consumidor & Multas",
+          "status": "Sin sanciones o multas vigentes registradas",
+          "severity": "SIN RIESGO",
+          "details": "Rastreo en sistemas públicos de disputas de consumo."
+        },
+        {
+          "type": "Fuero Penal y Fraude",
+          "status": "Sin causas penales ni investigaciones comerciales asociadas",
+          "severity": "SIN RIESGO",
+          "details": "Verificación en padrones de integridad y registros de querellas."
+        }
+      ],
+      "legalSummary": "La empresa tecniark no presenta antecedentes judiciales públicos, demandas penales ni sanciones registradas.",
+      "inpiWipoData": {
+        "companyName": "tecniark",
+        "isRealData": false,
+        "totalTrademarksCount": 0,
+        "registeredTrademarks": [],
+        "patentsAndModels": [],
+        "inpiPortalUrl": "https://portalinpi.inpi.gob.ar/",
+        "wipoPortalUrl": "https://branddb.wipo.int/",
+        "apiSource": "Dato no disponible en API WIPO / INPI en vivo"
+      },
+      "openCorporatesData": {
+        "query": "tecniark",
+        "isRealData": false,
+        "corporateDetails": {
+          "companyNumber": "REG-IGJ-676399",
+          "name": "tecniark S.R.L. / S.A.",
+          "jurisdictionCode": "AR (Argentina)",
+          "incorporationDate": "2013-06-15",
+          "currentStatus": "ACTIVA Y REGISTRADA EN REGISTRO PÚBLICO",
+          "companyType": "Sociedad Comercial Regularmente Constituida",
+          "opencorporatesUrl": "https://opencorporates.com/companies?q=tecniark"
+        },
+        "officersAndDirectors": [
+          {
+            "role": "Socio Gerente / Director Presidente",
+            "status": "Registrado en IGJ / DPPJ"
+          },
+          {
+            "role": "Representante Legal / Apoderado",
+            "status": "Inscripción Vigente"
+          }
+        ],
+        "apiSource": "Estimación de Registro Mercantil / OpenCorporates Fallback"
+      },
+      "dateasData": {
+        "cuit": "30-69526141-8",
+        "cuitRaw": "30695261418",
+        "isRealData": true,
+        "isCuitVerifiedInBoletin": false,
+        "crossCheckStatus": "✓ CUIT 30-69526141-8 VERIFICADO EN CUIT/CUIL DATEAS",
+        "edictsCount": 17,
+        "dateasEdicts": [
+          {
+            "title": "Boletín Oficial de la Ciudad de Buenos Aires del 30/5/2018 (Anexo) - Página 304",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-de-la-ciudad-de-buenos-aires-anexo/2018/05/30?page=304&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 22/06/2023 - Segunda Sección - Página 59",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2023/06/22?page=59&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 05/09/2006 - Tercera Sección - Página 12",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-3ra-seccion/2006/09/05?page=12&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 21/03/2006 - Tercera Sección - Página 15",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-3ra-seccion/2006/03/21?page=15&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 18/12/2007 - Tercera Sección - Página 12",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-3ra-seccion/2007/12/18?page=12&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 31/10/1997 - Segunda Sección - Página 7",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/1997/10/31?page=7&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 02/03/2017 - Segunda Sección - Página 16",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2017/03/02?page=16&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 30/12/2002 - Primera Sección - Página 52",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-1ra-seccion/2002/12/30?page=52&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 20/05/2011 - Segunda Sección - Página 17",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-2da-seccion/2011/05/20?page=17&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          },
+          {
+            "title": "Boletín Oficial de la República Argentina del 13/03/2001 - Primera Sección - Página 26",
+            "link": "https://www.dateas.com/es/docs/boletin-oficial-republica-argentina-1ra-seccion/2001/03/13?page=26&text=tecniark#highlight-1",
+            "source": "Dateas Documentos Públicos / Boletín Oficial"
+          }
+        ],
+        "discoveredCuitsInDocs": [
+          "30677749314"
+        ],
+        "dateasCuitUrl": "https://www.dateas.com/es/consulta_cuit_cuil?cuit=&name=tecniark",
+        "dateasDocsUrl": "https://www.dateas.com/es/docs/search?text=tecniark&pcountry=AR",
+        "sourceName": "Dateas.com (CUIT & Boletines Oficiales)"
+      },
+      "repsalData": {
+        "isRealData": true,
+        "hasSanctions": false,
+        "totalSanctions": 0,
+        "status": "Sin sanciones laborales registradas en REPSAL (Ley 26.940)",
+        "riskLevel": "SIN RIESGO",
+        "sanctions": [],
+        "repsalOfficialUrl": "https://www.argentina.gob.ar/trabajo/repsal",
+        "apiSource": "Registro Público de Empleadores con Sanciones Laborales (REPSAL - datos.gob.ar)"
+      }
+    },
+    "publicContracts": {
+      "isRegisteredSupplier": false,
+      "isRealData": false,
+      "supplierRegistryStatus": "Sin registro en Padrón Estatal de Proveedores",
+      "totalContracts": 0,
+      "totalAwardedAmount": "$0 ARS",
+      "contracts": [],
+      "comprarPortalUrl": "https://comprar.gob.ar/",
+      "contratarPortalUrl": "https://contratar.gob.ar/",
+      "apiSource": "Base de Datos Oficial COMPR.AR / CONTRAT.AR (datos.gob.ar)"
+    },
+    "searchData": {
+      "overviewSnippets": [],
+      "newsItems": [
+        {
+          "title": "Concluyen obra en Atucha I con una inversión de $6.000 millones - El Economista - Últimas noticias económicas y financieras",
+          "source": "El Economista - Últimas noticias económicas y financieras",
+          "pubDate": "30/8/2022",
+          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNVllMQ25YZXhfZjBlMWZVcnc5cTlQc0trWkVYTllWUXpOaWdNT2FCdHRzMzBqakgwdDdlWTZnTnBjTEZCci12d2JjaTFUVHJUX0ZNRkd4eU9VN2k1eHJ4VUVmR3ZSUU0zOGQ0b29Ka2N3N0J3eFg2RTc3U214SmVvbWM0dW5mWHVnUUVjYTl0RUVNVm5rYUQ0RTlud9IBoAFBVV95cUxQRVlMcDZGY2tNN2U3ZGRWXzI0Zjc4blhZcnhmNUU1akk2amY4dWdsakFVeWF0SjFHYmU2cHp3TmVORTdtZnZYMVN3SHg4UklSTVNvT2NYemNkVjNCc0xwZDhYb1FQVTlrWlpfRkRDWUs3dXhaVmpsM3dxUjJhX3FzZk83a3J3X05HNUtobmMwWFYyc0ZGNzZmaFgzYm5Qb3Fr?oc=5",
+          "sentiment": "positive"
+        },
+        {
+          "title": "Nucleoeléctrica concluyó una obra que permitirá el funcionamiento de Atucha I - Letra P",
+          "source": "Letra P",
+          "pubDate": "28/8/2022",
+          "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQLWVUWW1mU2J6OVRHRG1uUVpub2lMUGdZVWpsSlpjc0h5STI1cE5aU05MVFMtQThCNE1xWk5SSUpxS0otRmhUZ2Z5NEpEOXdrUlVMV0hXVWJmMEp3Q0ZzSmZKT2pKVkpTSXdiS3ZDekVGeExxbl9CdmlJMkFqUHpJeERXRHVQTk8zaXFwczNNUVhNSUszNHluT1RkYmZtVUZ0TUh1dFhPVHNDS0F0WDZLWFNjNF9LYU54bjI0a3pnblhMLVNW0gHKAUFVX3lxTFBscnRKUFRsQUJtM2o4d0lzY3RPV2xxTnhGUUVMSlZDU3Z1QzdVVE51Sk5aXy16SXBwVl9QdTJ1S0ZieE1XandORXpYZGJ3aTlQMnMzMUNEMU1OekdfMTMzNlphd1N1WnlQbFg3VnZQcTNEVzNoa05oTWJRQm4tSV9Kc3QwVWJKSExWeUlkUWhjS2tCakNzSDhWdm5xaXVDOHNFTjlHbUZyVWZHbWU4d0RvZXVPclFEaVBWTW9UQVVrbmNfTU1zeEo5S2c?oc=5",
+          "sentiment": "neutral"
+        }
+      ],
+      "projectsAndGroups": [],
+      "financialSnippets": [],
+      "gazetteSnippets": [],
+      "tenderSnippets": [],
+      "socialProfiles": [
+        {
+          "platform": "LinkedIn",
+          "estimatedUrl": "https://linkedin.com/company/tecniark",
+          "icon": "linkedin",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Instagram",
+          "estimatedUrl": "https://instagram.com/tecniark",
+          "icon": "instagram",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Twitter / X",
+          "estimatedUrl": "https://twitter.com/tecniark",
+          "icon": "twitter",
+          "status": "Detectado via OSINT"
+        },
+        {
+          "platform": "Facebook",
+          "estimatedUrl": "https://facebook.com/tecniark",
+          "icon": "facebook",
+          "status": "Detectado via OSINT"
+        }
+      ]
+    },
+    "supportPlan": {
+      "supportTier": "Empresa Candidata a Escalamiento, Créditos Productivos e Inversión 4.0",
+      "totalRecommendations": 2,
+      "highPriorityCount": 0,
+      "recommendations": [
+        {
+          "category": "Financiamiento & Subsidios 4.0",
+          "priority": "RECOMENDADA",
+          "icon": "trending-up",
+          "title": "Aportes No Reembolsables (ANR 4.0) & FONTAR para Modernización",
+          "description": "Asistencia financiera de co-financiamiento a través de SEPYME para incorporar tecnología en la matriz productiva de tecniark.",
+          "actionSteps": [
+            "Presentación del proyecto de modernización tecnológica ante la Agencia I+D+i.",
+            "Solicitud de bonificación de tasa en líneas de financiamiento de inversión productiva BNA / Banco BICE.",
+            "Formulación de carpetas técnicas para la adquisición de bienes de capital."
+          ]
+        },
+        {
+          "category": "Capacitación & Crédito Fiscal",
+          "priority": "RECOMENDADA",
+          "icon": "award",
+          "title": "Programa de Crédito Fiscal para Capacitación & Certificaciones ISO",
+          "description": "Reembolso en bono de crédito fiscal para financiar la formación técnica del equipo de tecniark e implementar certificaciones de calidad (ISO).",
+          "actionSteps": [
+            "Inscripción en el Régimen de Crédito Fiscal de la Secretaría de Industria.",
+            "Ejecución del plan anual de capacitación para mandos medios y técnicos.",
+            "Cómputo del bono electrónico fiscal contra el pago de IVA y Ganancias."
+          ]
+        }
+      ],
+      "recommendedPrograms": []
+    },
+    "swotAnalysis": {
+      "companyName": "tecniark",
+      "strengths": [
+        "Capacidad para diseñar y fabricar tableros eléctricos de alta calidad y personalizados",
+        "Experiencia en la implementación de soluciones de automatización industrial"
+      ],
+      "weaknesses": [
+        "Dependencia de la demanda del sector industrial"
+      ],
+      "opportunities": [
+        "Crecimiento del mercado industrial en Argentina y la región"
+      ],
+      "threats": [
+        "Competencia de otras empresas que ofrecen soluciones eléctricas y de automatización industrial"
+      ]
+    },
+    "digitalTransformation": {
+      "digitalScore": 65,
+      "maturityLevel": "En Proceso de Modernización Tecnológica",
+      "maturityColor": "#06b6d4",
+      "breakdown": {
+        "webPreserve": 90,
+        "eCommerce": 30,
+        "cloudSecurity": 85,
+        "customerChannels": 80,
+        "processAutomation": 45,
+        "industrialAutomation": 30
+      },
+      "existingAutomations": [
+        {
+          "system": "Portal Web Oficial & Presencia Digital",
+          "status": "VERIFICADO EN DOMINIO",
+          "detail": "Plataforma web activa de tecniark para consulta de catálogo y contacto",
+          "verified": true
+        }
+      ],
+      "missingAutomations": [
+        {
+          "system": "Cotizador Web Automático de Presupuestos",
+          "impact": "ALTO",
+          "detail": "Los clientes de tecniark deben solicitar cotización manual; falta cotizador digital instantáneo.",
+          "status": "PENDIENTE DE IMPLEMENTACIÓN"
+        },
+        {
+          "system": "Integración ERP Cloud con Facturación AFIP Automática",
+          "impact": "MEDIO",
+          "detail": "Automatización de sincronización entre stock y facturación electrónica de tecniark.",
+          "status": "EN EVALUACIÓN"
+        }
+      ],
+      "omittedUnverifiedData": [
+        "Software ERP / CRM de gestión interna privada de tecniark: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de tecniark: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ],
+      "recommendedKits": {
+        "primary": {
+          "id": "kit_bas-02",
+          "code": "BAS-02",
+          "category": "Básico",
+          "name": "Kit Bas-02: Monitoreo y Visualización de Producción (OEE en Tiempo Real)",
+          "summary": "Cálculo de Eficiencia General de Equipos (OEE), tableros en tiempo real, registro de micro-paradas y visibilidad del rendimiento de línea.",
+          "filename": "kit_bas-02.pdf",
+          "fullText": "Kit Básico 2 Monitoreo y visualización de producción y procesos FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Modelo de datos y diccionario • Relevamiento y definición de variables a integrar (producción, OK/NO OK, retrabajos/mermas si aplica, tiempos, estados, eventos/categorías, etc.). • Identificación de campos mínimos de órdenes y lotes/campañas (cuando aplique) para asegurar trazabilidad mínima. • Elaboración de un diccionario de datos (nombres, definiciones, unidades, fuentes y reglas de cálculo). Verificables: documento de diccionario de datos aprobado por la empresa destinataria. Integración de datos Definición del flujo de datos operativo (qué fuente aporta qué dato, con qué periodicidad y con qué responsable), preservando la confidencialidad y propiedad intelectual del Proveedor. Implementación de mecanismos de carga/actualización de datos desde: • máquinas/PLC/SCADA (cuando aplique) • planillas • sistema de gestión/ERP básico (cuando exista) • captura asistida en planta (kioscos/terminales/tablets/tótems/formularios/ lectores) para eventos operativos (inicio/fin de operación, paradas, causas, consumos/confirmaciones, etc.), cuando corresponda y resulte más adecuado/costo efectivo que la lectura directa de señales. Nota de seguridad/alineación BAS-01: Cuando la implementación requiera conectores, gateways u otros dispositivos de captura en planta, estos deberán operar sobre una red OT/IT segmentada, con accesos controlados y medidas de ciberseguridad acordes al KIT BAS-01 (Conectividad y Cibeseguridad), cuando corresponda. • Frecuencia de actualización acorde al uso operativo del tablero; no podrá consistir exclusivamente en cargas diferidas al cierre de jornada cuando el objetivo sea gestión diaria (por ejemplo, seguimiento por turno o por el día). Verificables: evidencia de integración/captura en funcionamiento (por ejemplo: logs o registros de ejecución, conjunto de datos de prueba, capturas de pantallas -- 1 of 3 -- de carga, exportaciones o reportes que demuestran actualización), y una descripción de alto nivel del flujo de datos (sin requerir código fuente, endpoints sensibles ni credenciales). Tablero operativo e indicadores Configuración de un tablero operativo que, como mínimo, muestre: • producción real vs. objetivo/plan (si existe). • indicadores diarios/semanales de productividad, calidad y tiempos (según diccionario acordado). • principales pérdidas/demoras y su distribución por causa y por unidad productiva. Implementación de un módulo (digital o semi-digital) para: • registro de detenciones/demoras/eventos; • selección de causas desde un catálogo acordado; • Visualización del tiempo perdido por tipo de causa y por unidad productiva/turno/período. Verificables: tablero operativo en funcionamiento y accesible a los usuarios definidos; registro de eventos/demoras y causas funcionando en las unidades productivas cubiertas; capturas y/o reportes correspondientes a un período de prueba; y evidencia de uso operativo (por ejemplo: reporte/captura comparativa entre un registro inicial o línea de base y el período de prueba, en al menos 1 indicador seleccionado: productividad, tiempos, calidad o pérdidas por causa). Trazabilidad mínima orden – lote/campaña - unidad productiva • Definición y configuración de la relación entre orden y/o campaña/receta (según aplique), lote y la unidad productiva donde se ejecuta. • Implementación de registros que permitan recuperar, al menos, para un caso real (o prueba equivalente): • orden y/o lote/campaña/receta (según aplique); • unidad productiva en que se procesó; • principales demoras/eventos y tiempo asociado. Verificables: ejemplo documentado de trazabilidad de un caso real (o caso de prueba equivalente) con evidencia exportable (capturas/reportes). Capacitación y rutina operativa • Manual breve de uso del tablero y del módulo de eventos/demoras, que indique: • cómo se registran eventos y causas; • cómo se interpretan indicadores y gráficos; • rutina recomendada de seguimiento (reuniones diarias/semanales, focos de mejora). • Al menos una instancia de capacitación para el equipo clave (jefes/supervisión/ producción/mantenimiento/calidad según aplique). Verificables: manual entregado y constancia de capacitación (lista de participantes y temario). -- 2 of 3 -- Modalidades de prestación y tipos de Proveedor El KIT BAS-02 puede ofrecerse en distintas modalidades (on-premise, SaaS y soluciones mixtas). En todos los casos deberá existir una empresa Proveedora habilitada responsable integral del KIT (diseño, implementación, integraciones/ captura, tableros e indicadores, así como los entregables y la trazabilidad documental), que podrá apoyarse en subproveedores o socios tecnológicos. Modalidad A – Solución on-premise (integrador OT/IT + tableros locales) Tipo de Proveedor: empresa con capacidades de integración OT/IT (lectura de datos cuando aplique) y configuración de tableros (BI/web/MES), sobre infraestructura del cliente, incluyendo captura asistida en planta cuando corresponda. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • relevamiento y diseño del modelo de datos. • conectores/pipelines dentro de la red del cliente y/o mecanismos de captura asistida. • configuración del tablero y del módulo de registro de eventos/demoras. • instalación/parametrización en servidores del cliente. • capacitación y documentación. Modalidad B – Plataforma SaaS / servicio gestionado de monitoreo operativo Tipo de Proveedor: empresa que ofrece plataforma en la nube con módulos estándar de indicadores operativos, registro de eventos/demoras y trazabilidad mínima, con conectores hacia fuentes de datos y/o captura asistida. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • fee de onboarding e implementación (relevamiento, configuración, alta de datos maestros); • licencias/suscripciones por hasta 12 meses para el establecimiento y unidades cubiertas; • configuración de integraciones (máquinas/sistema de gestión/planillas) y/o captura asistida; • capacitación y documentación. Modalidad C – Soluciones mixtas (on-premise + nube) Tipo de Proveedor: empresas que combinan componentes locales (conectores, almacenamiento y/o captura en planta) con componentes en la nube (tableros comparativos, análisis y reportes). Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • diseño e implementación de arquitectura mixta (qué corre en planta y qué corre en nube); • gateways/conectores locales y/o puntos de captura necesarios; • suscripciones cloud por hasta 12 meses para tableros y reportes; • servicios de integración, documentación y capacitación. -- 3 of 3 --",
+          "textSnippet": "Kit Básico 2 Monitoreo y visualización de producción y procesos FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Modelo de datos y diccionario • Relevamiento y definición de variables a integrar (producción, OK/NO OK, retrabajos/mermas si aplica, tiempos, estados, eventos/categorías, etc.). • Identificación de campos mínimos de órdenes y lotes/campañas (cuando aplique) para asegurar trazabilidad mínima. • Elaboración de un diccionario de datos (nombres, definiciones, unidades, fuentes y reglas de cálculo). Verificables: documento de diccionario de datos aprobado por la empresa destinataria. Integración de datos Definición del flujo de datos operativo (qué fuente aporta qué dato, con qué periodicidad y con qué responsable), preservando la confidencialidad y propiedad intelectual del Proveedor. Implementación de mecanismos de carga/actualización de datos desde: • máquinas/PLC/SCADA (cuando aplique) • planillas • sistema de gestión/ERP básico (cuando exista) • captura asistida en planta (kioscos/terminales/tablets/tótems/formularios/ lectores) para eventos operativos (inicio/fin de operación, paradas, causas, consumos/confirmaciones, etc.), cuando corresponda y resulte más adecuado/costo efectivo que la lectura directa de señales. Nota de seguridad/alineación BAS-01: Cuando la implementación requiera conectores, gateways u otros dispositivos de captura en planta, estos deberán operar sobre una red OT/IT segmentada, con accesos controlados y medidas de cibersegu",
+          "aiRationale": "Optimiza el rendimiento productivo de tecniark mediante la medición en tiempo real del OEE (Eficiencia General de Equipos), facilitando la detección de micro-paradas y cuellos de botella operativos.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        },
+        "secondary": {
+          "id": "kit_avz-02",
+          "code": "AVZ-02",
+          "category": "Avanzado",
+          "name": "Kit Avz-02: Control de Calidad por Visión Artificial e Inspección Automatizada",
+          "summary": "Inspección óptica automatizada mediante cámaras y redes neuronales para detectar defectos superficiales y dimensionales a velocidad de línea.",
+          "filename": "kit_avz-02.pdf",
+          "fullText": "Kit Avanzado 2 Visión Artificial para Control de Calidad FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Relevamiento del proceso e identificación del punto de inspección • Relevamiento del flujo de producción y de los puntos de inspección actuales (manuales o automáticos). • Selección de la línea, celda o etapa crítica donde la visión artificial puede agregar más valor (por volumen, impacto de defectos, complejidad de inspección). • Identificación de los tipos de defectos a detectar (por ejemplo, presencia/ausencia de componentes, posición incorrecta, rayas, golpes, manchas, etiquetas mal colocadas, lectura de códigos, etc.). Verificables: informe de relevamiento, diagrama del proceso y acta de selección del punto de aplicación del KIT. Diseño e instalación de la celda o puesto de visión • Diseño del esquema de captura: definición de cantidad de cámaras, lentes, distancias, ángulos y sistema de iluminación (backlight, frontlight, domos, etc.) adecuado al tipo de pieza. • Suministro e instalación de cámara/s industrial/es, iluminación, montajes mecánicos y controlador local (PC industrial, controlador de visión, PLC u otro dispositivo). • Integración física con la línea (sensores de disparo, expulsores, señalización luminosa o sonora, interlocks básicos). Verificables: planos o esquemas de la celda de visión, lista de componentes instalados (modelo, serie, ubicación) y evidencias fotográficas de la instalación. Configuración de recetas o modelos de inspección y lógica de decisión • Definición de las condiciones de “pieza buena” y “pieza defectuosa” según los criterios acordados con el área de calidad. • Entrenamiento y ajuste de recetas o modelos de visión (reglas clásicas, filtros, herramientas de medición, reconocimiento de patrones o modelos basados en IA preexistentes) para el tipo de producto. • Configuración de la lógica de decisión (aceptar/rechazar, clasificación de defectos, generación de alarmas) y de las acciones asociadas en la línea. Verificables: criterios de aceptación/rechazo documentados y aprobados por la empresa; evidencia de configuración en producción (capturas/pantallas del -- 1 of 3 -- sistema o reportes) y registro de pruebas de aceptación con un conjunto de casos (por ejemplo, piezas “OK” y “NO OK”) indicando tasa de detección de defectos y eventos de rechazo. No se requerirá la entrega de código fuente, modelos completos ni información propietaria sensible; sí evidencia auditable del funcionamiento. Registro de resultados, análisis básico y plan de mejora • Registro de los resultados de la inspección (piezas inspeccionadas, piezas rechazadas, tipo de defectos) durante un período mínimo de operación. • Elaboración de un tablero simple de calidad para la celda o línea (tasa de rechazo, defectos más frecuentes, distribución por turno o lote). • Emisión de un informe con análisis de los resultados iniciales y recomendaciones de mejora de proceso, insumos o parámetros de producción basadas en los datos de la visión. Verificables: tablero o reportes de calidad generados para el período de prueba; informe de resultados y plan de acciones. Deberá incluirse evidencia de uso operativo con una comparación “situación inicial vs. período de prueba” en al menos 1 resultado seleccionado (por ejemplo: reducción de escapes de defectos, reducción de variabilidad entre inspectores, reducción de retrabajos, disminución de rechazos por falso positivo o aumento de detección de un defecto crítico), respaldada por reportes/capturas del sistema. Procedimientos, capacitación y transferencia al equipo interno • Elaboración de procedimientos básicos para la operación del sistema de visión (inicio/parada, selección de receta, interpretación de mensajes) y para la actuación ante rechazos o alarmas. • Capacitación a entre 3 y 8 personas clave (operadores de línea, supervisores, personal de calidad y mantenimiento) en el uso y ajuste básico del sistema. • Entrega de criterios y pautas para la revisión y actualización de recetas o modelos cuando cambian los productos o las condiciones del proceso. Verificables: procedimientos y manuales entregados, listas de participantes en capacitaciones y registro de las principales pautas de operación y ajuste. Modalidades de prestación y tipos de Proveedor El KIT AVZ-02 podrá ofrecerse en distintas modalidades (solución on-premise, solución basada en plataformas y librerías de visión, o solución mixta integrada a sistemas existentes). En todos los casos deberá existir una empresa Proveedora habilitada responsable integral del KIT (relevamiento, diseño de la celda, configuración del sistema de visión, análisis y capacitación), que podrá apoyarse en fabricantes de cámaras, integradores de automatización y especialistas en visión artificial. -- 2 of 3 -- Modalidad A – Integrador de visión artificial y automatización (on-premise) Tipo de Proveedor: empresas integradoras de sistemas con experiencia en visión artificial y automatización industrial. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Servicios de relevamiento y diseño de la celda o puesto de visión. • Suministro e instalación de cámaras, lentes, iluminación, montajes, controlador y elementos de integración física con la línea. • Configuración de recetas o modelos de inspección y lógica de decisión. • Puesta en marcha, pruebas de aceptación, generación de reportes básicos y capacitación. Modalidad B – Solución basada en plataformas y librerías de visión Tipo de Proveedor: empresas que utilizan plataformas o librerías de visión existentes (comerciales o industriales) y las adaptan al caso de la PyME. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Suministro e instalación del hardware de captura y procesamiento necesario. • Licencias, suscripciones o componentes de software vinculados a la plataforma de visión. • Desarrollo y ajuste de recetas/modelos dentro de la plataforma. • Configuración de reportes y tableros de resultados, documentación y capacitación. Modalidad C – Solución mixta integrada a sistemas de calidad y producción existentes Tipo de Proveedor: empresas que integran los resultados de visión artificial con sistemas SCADA, MES, sistemas de calidad o tableros de BI ya presentes en la empresa. Componentes y gastos elegibles a los efectos del Beneficio FONPEC (ejemplos): • Integraciones de datos entre el sistema de visión y los sistemas existentes. • Desarrollo de vistas y reportes conjuntos (producción + calidad por visión). • Ajustes complementarios en la celda de visión, documentación y capacitación. -- 3 of 3 --",
+          "textSnippet": "Kit Avanzado 2 Visión Artificial para Control de Calidad FICHA TÉCNICA Sección Contenido Componentes del KIT y verificables Relevamiento del proceso e identificación del punto de inspección • Relevamiento del flujo de producción y de los puntos de inspección actuales (manuales o automáticos). • Selección de la línea, celda o etapa crítica donde la visión artificial puede agregar más valor (por volumen, impacto de defectos, complejidad de inspección). • Identificación de los tipos de defectos a detectar (por ejemplo, presencia/ausencia de componentes, posición incorrecta, rayas, golpes, manchas, etiquetas mal colocadas, lectura de códigos, etc.). Verificables: informe de relevamiento, diagrama del proceso y acta de selección del punto de aplicación del KIT. Diseño e instalación de la celda o puesto de visión • Diseño del esquema de captura: definición de cantidad de cámaras, lentes, distancias, ángulos y sistema de iluminación (backlight, frontlight, domos, etc.) adecuado al tipo de pieza. • Suministro e instalación de cámara/s industrial/es, iluminación, montajes mecánicos y controlador local (PC industrial, controlador de visión, PLC u otro dispositivo). • Integración física con la línea (sensores de disparo, expulsores, señalización luminosa o sonora, interlocks básicos). Verificables: planos o esquemas de la celda de visión, lista de componentes instalados (modelo, serie, ubicación) y evidencias fotográficas de la instalación. Configuración de recetas o modelos de inspecci",
+          "aiRationale": "Automatiza la inspección de calidad y control dimensional de piezas en tiempo real mediante sistemas de visión artificial.",
+          "fundingCoverage": "Financiamiento del 50% del valor neto del kit mediante Aportes No Reembolsables (ANR Kit 4.0 - Secretaría de Industria / Min. de Economía)"
+        }
+      },
+      "techStack": [
+        {
+          "category": "Portal Web Oficial",
+          "name": "Portal Web Corporativo Activo & Verificado",
+          "status": "Activo",
+          "type": "VERIFICADO",
+          "source": "Dominio https://tecniark.com.ar/"
+        },
+        {
+          "category": "Infraestructura & Canales",
+          "name": "Servicios HTTP/HTTPS y Presencia Digital Verificada",
+          "status": "Operativo",
+          "type": "VERIFICADO",
+          "source": "Rastreo Abierto OSINT (tecniark)"
+        }
+      ],
+      "channels": [
+        "Atención Directa por WhatsApp de tecniark",
+        "Portal Web Oficial https://tecniark.com.ar/",
+        "Canales Corporativos Digitales"
+      ],
+      "auditMetadata": {
+        "consultationDate": "13/8/2026 10:50 a. m.",
+        "verificationBadge": "VERIFICADO EN FUENTES ABIERTAS",
+        "dataSource": "Sitio Oficial de tecniark + Base de Datos de Kits 4.0",
+        "corroborationLevel": "Trazabilidad OSINT verificada para tecniark"
+      },
+      "informationGaps": [
+        "Software ERP / CRM de gestión interna privada de tecniark: Omitido por no estar expuesto en puertos abiertos.",
+        "Red SCADA / HMI interna de planta de tecniark: No verificada en fuentes abiertas públicas (Red Privada).",
+        "Contraseñas o credenciales de acceso: Omitidas por política estricta de seguridad OSINT."
+      ]
+    },
+    "aiIntelligence": {
+      "confidenceScore": "80%",
+      "subNiche": "Soluciones Comerciales B2B",
+      "executiveSummary": "Análisis heurístico del perfil digital y operativo de tecniark. Se clasifica en el nicho de \"Soluciones Comerciales B2B\" con un nivel de trazabilidad OSINT del 80%. Muestra una salud financiera evaluada en 75/100 pts y un índice de digitalización del 65%.",
+      "executiveInsights": [
+        {
+          "category": "Diagnóstico de Madurez",
+          "icon": "award",
+          "color": "#c4b5fd",
+          "title": "Infraestructura Digital Consolidada",
+          "description": "Evaluación favorable: tecniark presenta una madurez digital activa, facilitando la captación de clientes corporativos y comercio electrónico."
+        }
+      ],
+      "aiMatrix": {
+        "shortTerm": "Optimizar los canales de atención y telemetría operativa actual.",
+        "mediumTerm": "Tramitar Aportes No Reembolsables (ANR SEPYME) para financiar equipamiento.",
+        "longTerm": "Consolidar una red de licitaciones a nivel nacional aprovechando el registro de tecniark."
+      },
+      "timestamp": "2026-08-13T13:50:38.492Z"
+    },
+    "localDbData": {
+      "razonSocial": "TECNIARK S.A.",
+      "cuitOriginal": "30695261418",
+      "cuit": "30695261418",
+      "tipoOrganizacion": "Empresa",
+      "direccion": {
+        "calle": "Congreso",
+        "numero": 9200,
+        "localidad": "Loma Hermosa",
+        "cp": 1657
+      },
+      "actividad": {
+        "codigo": 271020,
+        "rubro": "Electrónica",
+        "descripcion": "Fabricación de aparatos de distribución y control de la energía eléctrica",
+        "tipoProducto": "",
+        "productosPrincipales": "Fabricación de tableros eléctricos y producción de gabinetes metálicos"
+      },
+      "empleados": 60,
+      "contactos": [
+        {
+          "nombre": "Luis Arko (Pte.)",
+          "celular": "11 5872-5160"
+        },
+        {
+          "nombre": "Leonardo Luciano Arko",
+          "celular": "11 5900-6163"
+        }
+      ],
+      "telefonos": [
+        "11 4739-1100"
+      ],
+      "web": "https://tecniark.com.ar/",
+      "comex": {
+        "importa": "Si",
+        "exporta": "Si"
+      },
+      "activa": "Si"
+    },
+    "executiveSummary": "En términos de solvencia, Tecniark cuenta con una situación BCRA normal y una deuda total ARS de $4.823.000 ARS. La empresa también tiene una condición IVA no verificada y un CLAE no verificado oficialmente. A pesar de esto, la empresa ha demostrado una capacidad para generar ingresos y establecerse en el mercado industrial. Con una estrategia de negocio enfocada en la satisfacción del cliente y la calidad de sus productos y servicios, Tecniark busca continuar creciendo y estableciéndose como un proveedor confiable en el mercado."
+  }
+]

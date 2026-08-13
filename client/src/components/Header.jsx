@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Download, FileText, RefreshCw, Sun, Moon, ShieldCheck, Tv, Eye, ChevronDown, FolderDown, Wrench, UserCheck, History, LogOut, Shield } from 'lucide-react';
+import { Download, FileText, RefreshCw, Sun, Moon, ShieldCheck, Tv, Eye, ChevronDown, FolderDown, Wrench, UserCheck, History, LogOut, Shield, Link } from 'lucide-react';
 import { downloadFullPdfReport } from '../utils/pdfReportGenerator';
 
-export default function Header({ currentReport, onReset, user, onLogin, onLogout, onOpenHistory, historyCount, theme, onToggleTheme, onOpenAdmin, onNavigateHome, currentPath, onOpenPresentation, onOpenWatchlist }) {
+export default function Header({ currentReport, onReset, user, onLogin, onLogout, onOpenHistory, historyCount, theme, onToggleTheme, onOpenAdmin, onNavigateHome, currentPath, onOpenPresentation, onOpenWatchlist, onShare }) {
   const [downloadingPdf, setDownloadingPdf] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null); // 'export' | 'tools' | 'user' | null
 
@@ -176,6 +176,19 @@ export default function Header({ currentReport, onReset, user, onLogin, onLogout
                   <Download size={15} style={{ color: '#a78bfa' }} />
                   <span>Exportar JSON</span>
                 </button>
+
+                {onShare && (
+                  <>
+                    <div style={{ height: '1px', background: 'rgba(255,255,255,0.08)', margin: '4px 2px' }} />
+                    <button
+                      style={{ width: '100%', padding: '10px 14px', background: 'none', border: 'none', color: '#38bdf8', fontSize: '0.88rem', display: 'flex', alignItems: 'center', gap: '10px', cursor: 'pointer', borderRadius: '8px', textAlign: 'left', fontWeight: 600 }}
+                      onClick={() => { onShare(); setOpenDropdown(null); }}
+                    >
+                      <Link size={15} />
+                      <span>Crear Link Público (solo lectura)</span>
+                    </button>
+                  </>
+                )}
               </div>
             )}
           </div>

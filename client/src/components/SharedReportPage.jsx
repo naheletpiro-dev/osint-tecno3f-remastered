@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { LayoutDashboard, Briefcase, HelpCircle, Target, Scale, Landmark, Newspaper, HeartHandshake, FileCheck, Cpu, Layers, AlertCircle, ExternalLink, Lock } from 'lucide-react';
+import { LayoutDashboard, Briefcase, HelpCircle, Target, Scale, Landmark, Newspaper, HeartHandshake, FileCheck, Cpu, Layers, AlertCircle, ExternalLink, Lock, Download } from 'lucide-react';
 
 import OverviewTab from './OverviewTab';
 import ProjectsTab from './ProjectsTab';
@@ -99,9 +99,21 @@ export default function SharedReportPage() {
             </div>
           </div>
         </div>
-        <a href="/" style={{ fontSize: '0.82rem', color: '#60a5fa', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(37,99,235,0.1)', padding: '6px 14px', borderRadius: '20px', border: '1px solid rgba(37,99,235,0.3)' }}>
-          <ExternalLink size={13} /> Acceder a la plataforma
-        </a>
+        <div style={{ display: 'flex', gap: '10px' }}>
+          <button 
+            onClick={() => {
+              import('../utils/pdfReportGenerator').then(({ downloadFullPdfReport }) => {
+                downloadFullPdfReport(report);
+              });
+            }}
+            style={{ fontSize: '0.82rem', color: '#10b981', background: 'rgba(16,185,129,0.1)', padding: '6px 14px', borderRadius: '20px', border: '1px solid rgba(16,185,129,0.3)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px' }}
+          >
+            <Download size={13} /> Descargar PDF
+          </button>
+          <a href="/" style={{ fontSize: '0.82rem', color: '#60a5fa', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '6px', background: 'rgba(37,99,235,0.1)', padding: '6px 14px', borderRadius: '20px', border: '1px solid rgba(37,99,235,0.3)' }}>
+            <ExternalLink size={13} /> Acceder a la plataforma
+          </a>
+        </div>
       </div>
 
       <div style={{ padding: '0 20px 40px 20px', maxWidth: '1400px', margin: '0 auto' }}>

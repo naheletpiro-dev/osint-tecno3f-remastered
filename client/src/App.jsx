@@ -223,12 +223,20 @@ export default function App() {
   const isAdminRoute = location.pathname.startsWith('/admin');
   const isUnauthorizedUserOnAdmin = isAdminRoute && user && user.role !== 'admin';
 
+  const isShareRoute = location.pathname.startsWith('/share/');
+
+  if (isShareRoute) {
+    return (
+      <ErrorBoundary>
+        <Routes>
+          <Route path="/share/:token" element={<SharedReportPage />} />
+        </Routes>
+      </ErrorBoundary>
+    );
+  }
+
   return (
     <ErrorBoundary>
-      {/* PUBLIC SHARE ROUTE - no auth, no blur */}
-      <Routes>
-        <Route path="/share/:token" element={<SharedReportPage />} />
-      </Routes>
 
       {/* Share Modal */}
       {shareModal && (

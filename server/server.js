@@ -1170,15 +1170,6 @@ app.post('/api/osint/chat', chatRateLimiter, async (req, res) => {
   }
 });
 
-// Fallback to React index.html for SPA routing
-app.get('*', (req, res) => {
-  res.sendFile(path.join(clientDistPath, 'index.html'), (err) => {
-    if (err) {
-      res.status(404).send('Servidor OSINT activo. Construya la aplicación cliente con `npm run build:client`');
-    }
-  });
-});
-
 app.post('/api/generate-pdf', async (req, res) => {
   try {
     const { html } = req.body;
@@ -1248,6 +1239,15 @@ app.get('/api/share/:token', (req, res) => {
   } catch (e) {
     res.status(500).json({ success: false, error: 'Error interno al leer reporte compartido.' });
   }
+});
+
+// Fallback to React index.html for SPA routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientDistPath, 'index.html'), (err) => {
+    if (err) {
+      res.status(404).send('Servidor OSINT activo. Construya la aplicación cliente con `npm run build:client`');
+    }
+  });
 });
 
 app.listen(PORT, () => {

@@ -79,7 +79,7 @@ export default function SharedReportPage() {
         <AlertCircle size={48} style={{ color: '#f43f5e', marginBottom: '16px' }} />
         <h2 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#f43f5e', marginBottom: '10px' }}>Link inválido o expirado</h2>
         <p style={{ color: '#fecdd3', fontSize: '0.92rem', lineHeight: '1.6', marginBottom: '24px' }}>{error}</p>
-        <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>Los links públicos tienen una vigencia de 7 días.</p>
+        <p style={{ color: 'var(--text-muted)', fontSize: '0.82rem' }}>Los links públicos tienen una vigencia de 45 días.</p>
       </div>
     </div>
   );

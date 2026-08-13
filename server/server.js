@@ -1207,10 +1207,10 @@ app.post('/api/share', (req, res) => {
     const { report } = req.body;
     if (!report) return res.status(400).json({ success: false, error: 'No se envió ningún reporte.' });
     
-    // Prune expired tokens (older than 7 days)
+    // Prune expired tokens (older than 45 days)
     const now = Date.now();
     for (const [key, value] of sharedReports.entries()) {
-      if (now - value.createdAt > 7 * 24 * 60 * 60 * 1000) sharedReports.delete(key);
+      if (now - value.createdAt > 45 * 24 * 60 * 60 * 1000) sharedReports.delete(key);
     }
     
     const token = crypto.randomBytes(12).toString('hex');
@@ -1229,10 +1229,10 @@ app.get('/api/share/:token', (req, res) => {
     const entry = sharedReports.get(token);
     
     if (!entry) return res.status(404).json({ success: false, error: 'Link inválido o expirado.' });
-    if (Date.now() - entry.createdAt > 7 * 24 * 60 * 60 * 1000) {
+    if (Date.now() - entry.createdAt > 45 * 24 * 60 * 60 * 1000) {
       sharedReports.delete(token);
       saveSharedReportsToDisk();
-      return res.status(404).json({ success: false, error: 'Link expirado (más de 7 días).' });
+      return res.status(404).json({ success: false, error: 'Link expirado (más de 45 días).' });
     }
     
     res.json({ success: true, report: entry.report });

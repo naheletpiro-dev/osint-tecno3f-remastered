@@ -652,5 +652,13 @@
       "executiveSummary": "En términos de solvencia, Tecniark cuenta con una situación BCRA normal y una deuda total ARS de $4.823.000 ARS. La empresa también tiene una condición IVA no verificada y un CLAE no verificado oficialmente. A pesar de esto, la empresa ha demostrado una capacidad para generar ingresos y establecerse en el mercado industrial. Con una estrategia de negocio enfocada en la satisfacción del cliente y la calidad de sus productos y servicios, Tecniark busca continuar creciendo y estableciéndose como un proveedor confiable en el mercado."
     },
     "createdAt": 1786629113110
+  },
+  "e7d9af3297a29ca8be7c9d06": {
+    "report": {
+      "query": {
+        "companyName": "Test"
+      }
+    },
+    "createdAt": 1786630009975
   }
 }

@@ -125,7 +125,8 @@ const defaultAllowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5000',
   'http://127.0.0.1:3000',
-  'http://127.0.0.1:5000'
+  'http://127.0.0.1:5000',
+  'https://tecno3f-osint.onrender.com'
 ];
 
 if (process.env.RENDER_EXTERNAL_URL) {

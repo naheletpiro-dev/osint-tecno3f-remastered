@@ -610,5 +610,6 @@ export async function downloadFullPdfReport(report) {
     a.remove();
   } catch (e) {
     console.error('PDF Generation Error:', e);
+    alert('Hubo un error al generar el PDF. Si estás en Render, es posible que Puppeteer necesite configuración adicional (Chromium). Revisá los logs del servidor para más detalles.');
   }
 }

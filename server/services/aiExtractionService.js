@@ -2,8 +2,8 @@ import { GoogleGenAI } from '@google/genai';
 import dotenv from 'dotenv';
 dotenv.config();
 
-let lastWorkingModel = 'gemini-2.5-flash';
-const baseModels = ['gemini-2.5-flash', 'gemini-2.5-flash-lite-preview-06-17', 'gemini-2.0-flash-exp', 'gemini-1.5-flash-latest'];
+let lastWorkingModel = 'gemini-1.5-flash';
+const baseModels = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'];
 
 /**
  * Fallback to Groq API using native fetch
@@ -17,7 +17,7 @@ async function callGroqFocused(apiKey, prompt, mimeType) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile', // Fast, capable model for JSON extraction
+        model: 'llama3-70b-8192', // Fast, capable model for JSON extraction
         messages: [{ role: 'user', content: prompt }],
         response_format: mimeType === 'application/json' ? { type: 'json_object' } : undefined,
         temperature: 0.1

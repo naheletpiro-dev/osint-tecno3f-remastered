@@ -803,7 +803,7 @@ app.get('/api/osint/scan-stream', scanRateLimiter, async (req, res) => {
       categorization.sector = localDbData.actividad.rubro;
     } else if (localDbData?.actividad?.descripcion) {
       categorization.sector = localDbData.actividad.descripcion;
-    } else if (afipData?.economicActivity) {
+    } else if (afipData?.economicActivity && !afipData.economicActivity.includes('No Verificado')) {
       categorization.sector = afipData.economicActivity;
     }
 

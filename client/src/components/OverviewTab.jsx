@@ -89,7 +89,7 @@ export default function OverviewTab({ report = {}, onTabChange }) {
             </div>
           </div>
           <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            {data.localDbData && (
+            {report.localDbData && (
               <span style={{ fontSize: '0.76rem', fontWeight: 800, padding: '4px 12px', borderRadius: '20px', background: 'rgba(234, 179, 8, 0.15)', color: '#eab308', border: '1px solid rgba(234, 179, 8, 0.3)' }}>
                 ★ REGISTRO MUNICIPAL LOCAL DETECTADO
               </span>
@@ -101,14 +101,14 @@ export default function OverviewTab({ report = {}, onTabChange }) {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}>
-          {data.localDbData && (
+          {report.localDbData && (
             <div style={{ background: 'rgba(234, 179, 8, 0.1)', padding: '14px', borderRadius: '10px', border: '1px solid rgba(234, 179, 8, 0.3)', gridColumn: '1 / -1' }}>
               <span style={{ fontSize: '0.74rem', color: '#fde047', textTransform: 'uppercase', fontWeight: 700 }}>📌 Base de Datos Municipal</span>
               <div style={{ fontSize: '0.88rem', color: '#fef08a', marginTop: '6px', display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <span><strong>Empleados:</strong> {data.localDbData.empleados || 'N/D'}</span>
-                <span><strong>Actividad:</strong> {data.localDbData.actividad?.descripcion || 'N/D'}</span>
-                <span><strong>Teléfonos:</strong> {(data.localDbData.telefonos || []).join(', ') || 'N/D'}</span>
-                <span><strong>Contactos:</strong> {(data.localDbData.contactos || []).map(c => `${c.nombre} (${c.celular})`).join(', ') || 'N/D'}</span>
+                <span><strong>Empleados:</strong> {report.localDbData.empleados || 'N/D'}</span>
+                <span><strong>Actividad:</strong> {report.localDbData.actividad?.descripcion || 'N/D'}</span>
+                <span><strong>Teléfonos:</strong> {(report.localDbData.telefonos || []).join(', ') || 'N/D'}</span>
+                <span><strong>Contactos:</strong> {(report.localDbData.contactos || []).map(c => `${c.nombre} (${c.celular})`).join(', ') || 'N/D'}</span>
               </div>
             </div>
           )}

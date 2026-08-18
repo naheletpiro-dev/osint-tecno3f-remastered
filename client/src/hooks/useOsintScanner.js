@@ -55,7 +55,7 @@ export function useOsintScanner() {
         setError('Tiempo de espera agotado. El servidor tardó demasiado en responder.');
         setLoading(false);
         cleanup();
-      }, 20000); // 20 seconds timeout for SSE inactivity
+      }, 90000); // 90 seconds timeout for heavy AI generation
     };
 
     resetTimeout();

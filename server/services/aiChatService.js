@@ -307,10 +307,10 @@ PROCESO DE RAZONAMIENTO PROFUNDO Y RESPUESTA FINAL DE TECNOBOT3F:
 `;
 
 // Model memory cache: remember the last working model to prevent sequential 4-model cascade delays
-let cachedWorkingModel = 'gemini-1.5-flash';
+let cachedWorkingModel = 'gemini-3.5-flash';
 
     // Strategy 1: @google/genai SDK (v2+) with cached model priority
-    const baseModels = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-1.0-pro'];
+    const baseModels = ['gemini-3.5-flash', 'gemini-flash-latest', 'gemini-3.7-flash'];
     const modelsToTryGenAI = [cachedWorkingModel, ...baseModels.filter(m => m !== cachedWorkingModel)];
 
     for (const modelName of modelsToTryGenAI) {
@@ -343,7 +343,7 @@ let cachedWorkingModel = 'gemini-1.5-flash';
     try {
       const { GoogleGenerativeAI } = await import('@google/generative-ai');
       const genAI = new GoogleGenerativeAI(apiKey);
-      const fallbackModels = ['gemini-1.5-flash', 'gemini-1.5-pro'];
+      const fallbackModels = ['gemini-3.5-flash', 'gemini-flash-latest'];
 
       for (const modelName of fallbackModels) {
         try {
